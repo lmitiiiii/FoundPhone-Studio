@@ -6,7 +6,7 @@ export const widgetSchema = z.object({
     .string()
     .regex(/^widget-[a-zA-Z0-9-]+$/)
     .max(80),
-  type: z.enum(["calendar", "clock", "weather", "notes", "battery"]),
+  type: z.enum(["calendar", "clock", "weather", "notes", "battery", "photos", "music"]),
   size: z.enum(["small", "medium", "large"]),
 });
 export const layoutSchema = z
@@ -58,7 +58,7 @@ export function defaultLayout(input: Work): DeviceLayout {
   return {
     version: 1,
     workId: w.id,
-    previewLayoutRevision: markchan ? 1 : w.id === "ui-test-phone-v2" ? 1 : 0,
+    previewLayoutRevision: markchan ? 2 : w.id === "ui-test-phone-v2" ? 1 : 0,
     apps: structuredClone(w.apps)
       .sort((a, b) => (a.id === "appstore" ? -1 : b.id === "appstore" ? 1 : 0))
       .map((a) =>
@@ -68,8 +68,8 @@ export function defaultLayout(input: Work): DeviceLayout {
       ),
     widgets: markchan
       ? [
-          { id: "widget-markchan-calendar", type: "calendar", size: "medium" },
-          { id: "widget-markchan-clock", type: "clock", size: "small" },
+          { id: "widget-markchan-photos", type: "photos", size: "medium" },
+          { id: "widget-markchan-music", type: "music", size: "small" },
           { id: "widget-markchan-battery", type: "battery", size: "small" },
         ]
       : [],
@@ -77,8 +77,8 @@ export function defaultLayout(input: Work): DeviceLayout {
     cleared: [],
     positions: markchan
       ? {
-          "widget-markchan-calendar": { page: 0, x: 0, y: 0 },
-          "widget-markchan-clock": { page: 0, x: 0, y: 2 },
+          "widget-markchan-photos": { page: 0, x: 0, y: 0 },
+          "widget-markchan-music": { page: 0, x: 0, y: 2 },
           "widget-markchan-battery": { page: 0, x: 2, y: 2 },
         }
       : {},
@@ -107,22 +107,27 @@ export function validateLayout(raw: unknown, input: Work) {
     store.visible = true;
     store.folder = "";
   }
-  if (w.id === "markchan-found-phone" && layout.previewLayoutRevision < 1) {
-    if (layout.widgets.length === 0) {
-      layout.widgets.push(
-        { id: "widget-markchan-calendar", type: "calendar", size: "medium" },
-        { id: "widget-markchan-clock", type: "clock", size: "small" },
-        { id: "widget-markchan-battery", type: "battery", size: "small" },
-      );
-    }
-    if (Object.keys(layout.positions).length === 0) {
-      layout.positions = {
-        "widget-markchan-calendar": { page: 0, x: 0, y: 0 },
-        "widget-markchan-clock": { page: 0, x: 0, y: 2 },
-        "widget-markchan-battery": { page: 0, x: 2, y: 2 },
-      };
-    }
-    layout.previewLayoutRevision = 1;
+  if (w.id === "markchan-found-phone" && layout.previewLayoutRevision < 2) {
+    layout.widgets = layout.widgets.filter(
+      (widget) =>
+        widget.id !== "widget-markchan-calendar" &&
+        widget.id !== "widget-markchan-clock" &&
+        widget.id !== "widget-markchan-photos" &&
+        widget.id !== "widget-markchan-music",
+    );
+    layout.widgets.push(
+      { id: "widget-markchan-photos", type: "photos", size: "medium" },
+      { id: "widget-markchan-music", type: "music", size: "small" },
+    );
+    layout.positions = {
+      ...layout.positions,
+      "widget-markchan-photos": { page: 0, x: 0, y: 0 },
+      "widget-markchan-music": { page: 0, x: 0, y: 2 },
+      "widget-markchan-battery": { page: 0, x: 2, y: 2 },
+    };
+    delete layout.positions["widget-markchan-calendar"];
+    delete layout.positions["widget-markchan-clock"];
+    layout.previewLayoutRevision = 2;
   }
   if (w.id === "ui-test-phone-v2" && layout.previewLayoutRevision < 1) {
     const visibleApps = ["wechat", "douyin"];
