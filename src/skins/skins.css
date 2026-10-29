@@ -4297,3 +4297,48 @@
 .catalog-slot[hidden] {
   display: none;
 }
+
+
+/* Safari: native iPhone browser chrome and search/article views */
+.safari-browser-page {
+  display:flex; flex:1; min-height:0; flex-direction:column; overflow:hidden; background:#fff; color:#202124;
+}
+.safari-browser-toolbar {
+  display:flex; align-items:center; gap:8px; padding:8px 10px; background:#f7f7f9; border-bottom:1px solid #e6e6e8;
+}
+.safari-browser-toolbar > button { display:grid; place-items:center; flex:0 0 25px; padding:3px 0; color:#1674d1; }
+.safari-browser-address {
+  display:flex; align-items:center; gap:6px; min-width:0; flex:1; padding:0 10px; border-radius:10px; background:#e6e7eb; color:#656a73;
+}
+.safari-browser-address input { min-width:0; flex:1; padding:9px 0; border:0; outline:0; box-shadow:none; background:transparent; color:#25262a; font-size:11px; }
+.safari-search-tabs { display:flex; gap:21px; align-items:center; padding:0 18px; height:39px; flex:0 0 39px; border-bottom:1px solid #e8eaed; color:#5f6368; font-size:11px; }
+.safari-search-tabs span { height:100%; display:flex; align-items:center; }
+.safari-search-tabs .active { color:#1a73e8; border-bottom:2px solid #1a73e8; }
+.safari-google-results { overflow-y:auto; flex:1; padding:10px 17px 20px; background:#fff; }
+.safari-google-results .safari-results-count { margin:3px 0 16px; color:#70757a; font-size:10px; }
+.safari-google-result { display:block; width:100%; padding:0 0 17px; margin:0 0 15px; border:0; border-bottom:1px solid #f0f0f0; background:#fff; text-align:left; }
+.safari-site-line { display:flex; align-items:center; gap:8px; color:#202124; }
+.safari-favicon { width:26px; height:26px; flex:0 0 26px; display:grid; place-items:center; border:1px solid #eef0f2; border-radius:50%; background:#f8f9fa; color:#4285f4; font-size:12px; font-weight:600; text-transform:uppercase; }
+.safari-site-line > span:nth-child(2) { display:flex; min-width:0; flex:1; flex-direction:column; gap:2px; }
+.safari-site-line strong { font-size:10px; font-weight:500; }
+.safari-site-line small { overflow:hidden; color:#70757a; font-size:9px; text-overflow:ellipsis; white-space:nowrap; }
+.safari-site-line > svg { color:#70757a; }
+.safari-google-result h3 { margin:7px 0 4px; color:#1a0dab; font-size:14px; line-height:1.4; font-weight:400; }
+.safari-google-result p { margin:0; color:#4d5156; font-size:11px; line-height:1.55; }
+.safari-more-results { display:flex; align-items:center; justify-content:center; gap:5px; width:100%; padding:10px; border:1px solid #dadce0; border-radius:22px; color:#1a73e8; background:#fff; font-size:11px; }
+.safari-article-scroll { flex:1; overflow-y:auto; background:#fff; }
+.safari-article-source { display:flex; align-items:center; gap:9px; padding:15px 18px 7px; }
+.safari-article-source > div { display:flex; flex-direction:column; gap:3px; }
+.safari-article-source strong { font-size:11px; font-weight:500; }
+.safari-article-source small { color:#70757a; font-size:9px; }
+.safari-article { padding:7px 19px 20px; }
+.safari-article h1 { margin:8px 0 10px; color:#202124; font-size:23px; font-weight:500; line-height:1.32; letter-spacing:-.4px; }
+.safari-article-meta { margin-bottom:17px; color:#70757a; font-size:10px; }
+.safari-article .safari-article-intro { margin:0 0 18px; color:#42464b; font-size:13px; line-height:1.75; }
+.safari-article section { margin:18px 0; }
+.safari-article section h2 { margin:0 0 7px; color:#202124; font-size:16px; font-weight:600; }
+.safari-article section p { margin:0; color:#3c4043; font-size:12px; line-height:1.8; }
+.safari-article-footer { padding-top:15px; border-top:1px solid #eee; color:#9aa0a6; font-size:9px; }
+.safari-back-search { display:flex; align-items:center; gap:4px; padding:9px 18px 15px; color:#1674d1; background:#fff; font-size:11px; }
+.safari-bottom-bar { display:flex; align-items:center; justify-content:space-around; flex:0 0 43px; border-top:1px solid #e2e2e6; background:#f8f8fa; color:#1674d1; }
+.safari-bottom-bar button { display:grid; place-items:center; min-width:32px; padding:7px 3px; color:#1674d1; }
