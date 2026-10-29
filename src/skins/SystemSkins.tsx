@@ -789,6 +789,7 @@ export function MusicSkin(p: Props) {
   const { tab, setTab, items } = useContent(p, "资料库");
   const [song, setSong] = useTrack(p, items);
   const [artwork, setArtwork] = useState<Record<string, string>>({});
+  const artworkLookupKey = items.filter((i) => i.kind === "audio").map((i) => `${i.id}:${i.title}:${meta(i, "artist", i.sender)}:${meta(i, "coverUrl")}`).join("|");
   useEffect(() => {
     let active = true;
     const terms: Record<string, string> = {
@@ -829,7 +830,7 @@ export function MusicSkin(p: Props) {
       if (active) setArtwork(Object.fromEntries(pairs.filter((pair) => pair[1])));
     });
     return () => { active = false; };
-  }, [items]);
+  }, [artworkLookupKey]);
 
   const coverFor = (i: Item) => artwork[i.id] || safeMedia(meta(i, "coverUrl"));
   return (
