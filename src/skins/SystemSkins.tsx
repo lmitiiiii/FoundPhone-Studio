@@ -809,14 +809,34 @@ export function MusicSkin(p: Props) {
   useEffect(() => {
     let active = true;
     const terms: Record<string, string> = {
-      "song-1": "Billionaire Travie McCoy Bruno Mars",
-      "song-2": "E.T.A. Justin Bieber",
+      "song-1": "Billionaire Travie McCoy",
+      "song-2": "E.T.A. Justin Bieber Changes",
       "song-3": "Intentions Justin Bieber Quavo",
       "song-4": "Love Never Felt So Good Michael Jackson",
       "song-5": "Goodbye Summer f(x) D.O.",
-      "song-6": "첫 눈 EXO",
+      "song-6": "EXO 첫 눈 The First Snow",
       "song-7": "PLAYBOY EXO",
       "song-8": "Thriller Michael Jackson",
+    };
+    const titleAliases: Record<string, string[]> = {
+      "song-1": ["Billionaire (feat. Bruno Mars)", "Billionaire"],
+      "song-2": ["E.T.A."],
+      "song-3": ["Intentions (feat. Quavo)", "Intentions"],
+      "song-4": ["Love Never Felt So Good"],
+      "song-5": ["Goodbye Summer (feat. D.O.)", "Goodbye Summer"],
+      "song-6": ["첫 눈 (The First Snow)", "첫 눈", "The First Snow"],
+      "song-7": ["PLAYBOY", "Playboy"],
+      "song-8": ["Thriller"],
+    };
+    const artistAliases: Record<string, string[]> = {
+      "song-1": ["Travie McCoy"],
+      "song-2": ["Justin Bieber"],
+      "song-3": ["Justin Bieber"],
+      "song-4": ["Michael Jackson"],
+      "song-5": ["f(x)", "fx"],
+      "song-6": ["EXO"],
+      "song-7": ["EXO"],
+      "song-8": ["Michael Jackson"],
     };
     Promise.all(items.filter((i) => i.kind === "audio").map(async (i) => {
       const saved = safeMedia(meta(i, "coverUrl"));
@@ -828,11 +848,16 @@ export function MusicSkin(p: Props) {
         const data = await response.json() as { results?: Array<{ trackName?: string; artistName?: string; artworkUrl100?: string; previewUrl?: string }> };
         const results = data.results || [];
         const clean = (value: string) => value.toLowerCase().replace(/[^a-z0-9가-힣]/gi, "");
-        const target = clean(i.id === "song-6" ? "첫 눈" : i.title.replace(/\s*\(feat\..*?\)/i, ""));
-        const expectedArtist = clean(artistFor(i).split(" feat. ")[0]);
-        const exact = results.find((r) => clean(r.trackName || "") === target && clean(r.artistName || "").includes(expectedArtist))
-          || results.find((r) => clean(r.trackName || "") === target)
-          || results.find((r) => clean(r.trackName || "").includes(target) || target.includes(clean(r.trackName || "")));
+        const expectedTitles = (titleAliases[i.id] || [i.title]).map(clean);
+        const expectedArtists = (artistAliases[i.id] || [artistFor(i)]).map(clean);
+        const exact = results.find((r) => {
+          const track = clean(r.trackName || "");
+          const artist = clean(r.artistName || "");
+          const titleMatches = expectedTitles.some((title) => title === track);
+          const artistMatches = expectedArtists.some((name) => artist === name || artist.startsWith(name));
+          return titleMatches && artistMatches;
+        });
+        // Never borrow a different song's cover or preview just because its title looks similar.
         const image = exact?.artworkUrl100?.replace(/\d+x\d+bb/, "600x600bb") || "";
         return { id: i.id, image, preview: exact?.previewUrl || "" };
       } catch {
