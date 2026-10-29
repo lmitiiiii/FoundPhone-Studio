@@ -3,7 +3,7 @@
   "id": "markchan-found-phone",
   "title": "Markchan · 捡手机",
   "description": "Coco & Mark 互动捡手机；密码 8266。媒体链接均留空待替换。",
-  "revision": 5,
+  "revision": 6,
   "phone": {
     "owner": "Markchan",
     "date": "2026-10-29",
@@ -167,11 +167,39 @@
       ],
       "messages": [
         {
-          "id": "kakao-dh-placeholder",
+          "id": "dh-1",
           "title": "",
-          "body": "",
+          "body": "到家了吗？",
           "senderId": "donghyuck",
-          "time": "1小时前"
+          "time": "21:02"
+        },
+        {
+          "id": "dh-2",
+          "title": "",
+          "body": "刚到，外面有点冷。",
+          "senderId": "owner",
+          "time": "21:03"
+        },
+        {
+          "id": "dh-3",
+          "title": "",
+          "body": "让你带外套你又不听ㅋㅋ",
+          "senderId": "donghyuck",
+          "time": "21:03"
+        },
+        {
+          "id": "dh-4",
+          "title": "",
+          "body": "那你过来抱我一下就不冷了。",
+          "senderId": "owner",
+          "time": "21:04"
+        },
+        {
+          "id": "dh-5",
+          "title": "",
+          "body": "……门开一下。给你买了热的。",
+          "senderId": "donghyuck",
+          "time": "21:05"
         }
       ]
     },
@@ -185,9 +213,37 @@
       ],
       "messages": [
         {
-          "id": "kakao-mk-placeholder",
+          "id": "mk-1",
           "title": "",
-          "body": "",
+          "body": "明天的行程我看过了，周四晚宴座位记得再跟助理确认。",
+          "senderId": "mk",
+          "time": "20:47"
+        },
+        {
+          "id": "mk-2",
+          "title": "",
+          "body": "知道啦，备忘录里写着呢。",
+          "senderId": "owner",
+          "time": "20:49"
+        },
+        {
+          "id": "mk-3",
+          "title": "",
+          "body": "还有，东赫说想吃的麻糍我记得你答应买。",
+          "senderId": "mk",
+          "time": "20:50"
+        },
+        {
+          "id": "mk-4",
+          "title": "",
+          "body": "已经写进采购清单了。你怎么比我还记得清楚ㅋㅋ",
+          "senderId": "owner",
+          "time": "20:51"
+        },
+        {
+          "id": "mk-5",
+          "title": "",
+          "body": "因为你们两个的事我都记得。",
           "senderId": "mk",
           "time": "刚刚"
         }
@@ -199,8 +255,8 @@
       {
         "id": "photo-1",
         "title": "照片 01",
-        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
-        "kind": "audio",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
         "meta": {
           "album": "🤫",
           "mediaUrl": "",
@@ -212,7 +268,7 @@
       {
         "id": "photo-2",
         "title": "照片 02",
-        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
         "kind": "image",
         "meta": {
           "album": "🤫",
@@ -225,7 +281,7 @@
       {
         "id": "photo-3",
         "title": "照片 03",
-        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
         "kind": "image",
         "meta": {
           "album": "🤫",
@@ -238,8 +294,8 @@
       {
         "id": "photo-4",
         "title": "照片 04",
-        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
-        "kind": "audio",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
         "meta": {
           "album": "🤫",
           "mediaUrl": "",
@@ -251,7 +307,7 @@
       {
         "id": "photo-5",
         "title": "照片 05",
-        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
         "kind": "image",
         "meta": {
           "album": "🤫",
@@ -264,7 +320,7 @@
       {
         "id": "photo-6",
         "title": "照片 06",
-        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
         "kind": "image",
         "meta": {
           "album": "🤫",
@@ -277,8 +333,8 @@
       {
         "id": "photo-7",
         "title": "照片 07",
-        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
-        "kind": "audio",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
         "meta": {
           "album": "🤫",
           "mediaUrl": "",
@@ -290,7 +346,7 @@
       {
         "id": "photo-8",
         "title": "照片 08",
-        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
         "kind": "image",
         "meta": {
           "album": "🤫",
@@ -303,7 +359,7 @@
       {
         "id": "photo-9",
         "title": "照片 09",
-        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
         "kind": "image",
         "meta": {
           "album": "🤫",
@@ -316,8 +372,8 @@
       {
         "id": "photo-10",
         "title": "照片 10",
-        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
-        "kind": "audio",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
         "meta": {
           "album": "🤫",
           "mediaUrl": "",
@@ -329,7 +385,7 @@
       {
         "id": "photo-11",
         "title": "照片 11",
-        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
         "kind": "image",
         "meta": {
           "album": "🤫",
@@ -342,7 +398,7 @@
       {
         "id": "photo-12",
         "title": "照片 12",
-        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
         "kind": "image",
         "meta": {
           "album": "🤫",
@@ -355,8 +411,8 @@
       {
         "id": "photo-13",
         "title": "照片 13",
-        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
-        "kind": "audio",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
         "meta": {
           "album": "🤫",
           "mediaUrl": "",
@@ -368,7 +424,7 @@
       {
         "id": "photo-14",
         "title": "照片 14",
-        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
         "kind": "image",
         "meta": {
           "album": "🤫",
@@ -381,7 +437,7 @@
       {
         "id": "photo-15",
         "title": "照片 15",
-        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
         "kind": "image",
         "meta": {
           "album": "🤫",
@@ -394,8 +450,8 @@
       {
         "id": "photo-16",
         "title": "照片 16",
-        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
-        "kind": "audio",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
         "meta": {
           "album": "🤫",
           "mediaUrl": "",
@@ -407,7 +463,7 @@
       {
         "id": "photo-17",
         "title": "照片 17",
-        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
         "kind": "image",
         "meta": {
           "album": "🤫",
@@ -420,7 +476,7 @@
       {
         "id": "photo-18",
         "title": "照片 18",
-        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
         "kind": "image",
         "meta": {
           "album": "🤫",
@@ -433,8 +489,8 @@
       {
         "id": "photo-19",
         "title": "照片 19",
-        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
-        "kind": "audio",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
         "meta": {
           "album": "🤫",
           "mediaUrl": "",
@@ -446,7 +502,7 @@
       {
         "id": "photo-20",
         "title": "照片 20",
-        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
         "kind": "image",
         "meta": {
           "album": "🤫",
@@ -459,7 +515,7 @@
       {
         "id": "photo-21",
         "title": "照片 21",
-        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
         "kind": "image",
         "meta": {
           "album": "🤫",
@@ -846,7 +902,7 @@
       {
         "id": "ig-main-post-1",
         "title": "主页内容 1",
-        "body": "帖子链接/图片占位",
+        "body": "周末的首尔，和最喜欢的人一起慢慢走。📷",
         "kind": "post",
         "meta": {
           "username": "markcocolove",
@@ -857,7 +913,7 @@
       {
         "id": "ig-main-post-2",
         "title": "主页内容 2",
-        "body": "帖子链接/图片占位",
+        "body": "最近相册里出现频率最高的两个人。",
         "kind": "post",
         "meta": {
           "username": "markcocolove",
@@ -868,7 +924,7 @@
       {
         "id": "ig-main-post-3",
         "title": "主页内容 3",
-        "body": "帖子链接/图片占位",
+        "body": "恋爱日记更新中：今天也有好好吃饭、好好见面。",
         "kind": "post",
         "meta": {
           "username": "markcocolove",
@@ -890,7 +946,7 @@
       {
         "id": "ig-coco-post-1",
         "title": "@coco66_ 内容 1",
-        "body": "帖子链接/图片占位",
+        "body": "今天也要黏着我老公一点点。🤍",
         "kind": "post",
         "meta": {
           "username": "coco66_",
@@ -901,7 +957,7 @@
       {
         "id": "ig-coco-post-2",
         "title": "@coco66_ 内容 2",
-        "body": "帖子链接/图片占位",
+        "body": "他说随便拍，结果每一张都在看镜头外的人。",
         "kind": "post",
         "meta": {
           "username": "coco66_",
@@ -912,7 +968,7 @@
       {
         "id": "ig-coco-post-3",
         "title": "@coco66_ 内容 3",
-        "body": "帖子链接/图片占位",
+        "body": "最喜欢的约会：没有安排，和你一起就好。",
         "kind": "post",
         "meta": {
           "username": "coco66_",
@@ -934,7 +990,7 @@
       {
         "id": "ig-mark-post-1",
         "title": "@mark82_ 内容 1",
-        "body": "帖子链接/图片占位",
+        "body": "有人说只拍一张，最后拍了整整一卷。",
         "kind": "post",
         "meta": {
           "username": "mark82_",
@@ -945,7 +1001,7 @@
       {
         "id": "ig-mark-post-2",
         "title": "@mark82_ 内容 2",
-        "body": "帖子链接/图片占位",
+        "body": "今天的任务：记住她喜欢的每一个小东西。",
         "kind": "post",
         "meta": {
           "username": "mark82_",
@@ -956,7 +1012,7 @@
       {
         "id": "ig-mark-post-3",
         "title": "@mark82_ 内容 3",
-        "body": "帖子链接/图片占位",
+        "body": "回家的路变短了，因为有人在等我。",
         "kind": "post",
         "meta": {
           "username": "mark82_",
@@ -1019,7 +1075,7 @@
       {
         "id": "x-profile-coco",
         "title": "coco66_",
-        "body": "账号简介占位",
+        "body": "恋爱中｜把日常和喜欢的人一起存档。🤍\n@mark82_",
         "kind": "text",
         "meta": {
           "username": "coco66_",
@@ -1029,7 +1085,7 @@
       {
         "id": "x-profile-mark",
         "title": "mark82_",
-        "body": "账号简介占位",
+        "body": "工作和生活都在认真过。最近最常提起的人：@coco66_",
         "kind": "text",
         "meta": {
           "username": "mark82_",
@@ -1038,66 +1094,66 @@
       },
       {
         "id": "x-post-1",
-        "title": "动态 1",
-        "body": "推文正文/配图链接占位",
+        "title": "@coco66_ · 动态",
+        "body": "有人问我最近怎么不更新了。因为比起刷手机，我现在更想把时间留给某个人。🤍",
         "kind": "post",
         "meta": {
           "username": "coco66_",
           "imageUrl": "",
           "postUrl": "",
-          "replies": "",
-          "reposts": "0",
-          "likes": "0",
+          "replies": "128",
+          "reposts": "36",
+          "likes": "2400",
           "shares": "0",
-          "comments": "留言 1（可编辑）\n留言 2（可编辑）\n留言 3（可编辑）\n留言 4（可编辑）\n留言 5（可编辑）\n留言 6（可编辑）\n留言 7（可编辑）\n留言 8（可编辑）\n留言 9（可编辑）\n留言 10（可编辑）"
+          "comments": "coco.and.mark：他刚刚又问我冷不冷……\n网友A：这就是恋爱中的人吗ㅋㅋ\n网友B：怎么感觉在说某个人\n网友C：请一直幸福下去\n网友D：这条好甜\n网友E：细节控本人\n网友F：懂了，今天也是公开秀恩爱\n网友G：想看后续！\n网友H：你们两个都好可爱\n网友I：已收藏这份幸福"
         }
       },
       {
         "id": "x-post-2",
-        "title": "动态 2",
-        "body": "推文正文/配图链接占位",
+        "title": "@mark82_ · 动态",
+        "body": "今日份行程：工作、买麻糍、接某个嘴上说不用来接的人。",
         "kind": "post",
         "meta": {
           "username": "mark82_",
           "imageUrl": "",
           "postUrl": "",
-          "replies": "",
-          "reposts": "0",
-          "likes": "0",
+          "replies": "96",
+          "reposts": "22",
+          "likes": "1800",
           "shares": "0",
-          "comments": "留言 1（可编辑）\n留言 2（可编辑）\n留言 3（可编辑）\n留言 4（可编辑）\n留言 5（可编辑）\n留言 6（可编辑）\n留言 7（可编辑）\n留言 8（可编辑）\n留言 9（可编辑）\n留言 10（可编辑）"
+          "comments": "coco.and.mark：她说不用接，但我还是去了。\n网友A：这就是恋爱中的人吗ㅋㅋ\n网友B：怎么感觉在说某个人\n网友C：请一直幸福下去\n网友D：这条好甜\n网友E：细节控本人\n网友F：懂了，今天也是公开秀恩爱\n网友G：想看后续！\n网友H：你们两个都好可爱\n网友I：已收藏这份幸福"
         }
       },
       {
         "id": "x-post-3",
-        "title": "动态 3",
-        "body": "推文正文/配图链接占位",
+        "title": "@coco66_ · 动态",
+        "body": "恋爱之后才发现，原来被人记住随口说过的小事，会开心很久。",
         "kind": "post",
         "meta": {
           "username": "coco66_",
           "imageUrl": "",
           "postUrl": "",
-          "replies": "",
-          "reposts": "0",
-          "likes": "0",
+          "replies": "153",
+          "reposts": "41",
+          "likes": "3100",
           "shares": "0",
-          "comments": "留言 1（可编辑）\n留言 2（可编辑）\n留言 3（可编辑）\n留言 4（可编辑）\n留言 5（可编辑）\n留言 6（可编辑）\n留言 7（可编辑）\n留言 8（可编辑）\n留言 9（可编辑）\n留言 10（可编辑）"
+          "comments": "coco.and.mark：他居然真的记得我上次说想吃什么。\n网友A：这就是恋爱中的人吗ㅋㅋ\n网友B：怎么感觉在说某个人\n网友C：请一直幸福下去\n网友D：这条好甜\n网友E：细节控本人\n网友F：懂了，今天也是公开秀恩爱\n网友G：想看后续！\n网友H：你们两个都好可爱\n网友I：已收藏这份幸福"
         }
       },
       {
         "id": "x-post-4",
-        "title": "动态 4",
-        "body": "推文正文/配图链接占位",
+        "title": "@mark82_ · 动态",
+        "body": "天气冷了。提醒某人穿外套这件事，看来还要继续每天做。",
         "kind": "post",
         "meta": {
           "username": "mark82_",
           "imageUrl": "",
           "postUrl": "",
-          "replies": "",
-          "reposts": "0",
-          "likes": "0",
+          "replies": "84",
+          "reposts": "19",
+          "likes": "1600",
           "shares": "0",
-          "comments": "留言 1（可编辑）\n留言 2（可编辑）\n留言 3（可编辑）\n留言 4（可编辑）\n留言 5（可编辑）\n留言 6（可编辑）\n留言 7（可编辑）\n留言 8（可编辑）\n留言 9（可编辑）\n留言 10（可编辑）"
+          "comments": "coco.and.mark：她出门前又把外套放回去了ㅋㅋ\n网友A：这就是恋爱中的人吗ㅋㅋ\n网友B：怎么感觉在说某个人\n网友C：请一直幸福下去\n网友D：这条好甜\n网友E：细节控本人\n网友F：懂了，今天也是公开秀恩爱\n网友G：想看后续！\n网友H：你们两个都好可爱\n网友I：已收藏这份幸福"
         }
       }
     ],
