@@ -842,13 +842,8 @@ export function MusicSkin(p: Props) {
       const saved = safeMedia(meta(i, "coverUrl"));
       try {
         const term = terms[i.id] || `${i.title} ${artistFor(i)}`;
-        const endpoint = i.id === "song-1"
-          ? "https://itunes.apple.com/lookup?id=1712718731&entity=song&country=US"
-          : `https://itunes.apple.com/search?term=${encodeURIComponent(term)}&entity=song&limit=25&country=US`;
-        let response = await fetch(endpoint);
-        if (!response.ok && i.id === "song-1") {
-          response = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent("Billionaire Travie McCoy Bruno Mars")}&entity=song&limit=25&country=US`);
-        }
+        const endpoint = `https://itunes.apple.com/search?term=${encodeURIComponent(term)}&entity=song&limit=25&country=US`;
+        const response = await fetch(endpoint);
         if (!response.ok) return { id: i.id, image: saved, preview: "" };
         const data = await response.json() as { results?: Array<{ trackName?: string; artistName?: string; artworkUrl100?: string; previewUrl?: string }> };
         const results = data.results || [];
@@ -876,7 +871,7 @@ export function MusicSkin(p: Props) {
         // Prefer a title-matched preview even when the catalog formats the featured artist differently.
         // Only fall back to a catalog result if its title is still a strong match.
         const matched = exact || (scored[0]?.score >= 65 ? scored[0].r : undefined);
-        const image = matched?.artworkUrl100?.replace(/\d+x\d+bb/, "600x600bb") || "";
+        const image = saved || matched?.artworkUrl100?.replace(/\d+x\d+bb/, "600x600bb") || "";
         return { id: i.id, image, preview: matched?.previewUrl || "" };
       } catch {
         return { id: i.id, image: saved, preview: "" };
