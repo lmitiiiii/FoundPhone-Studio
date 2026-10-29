@@ -3,7 +3,7 @@
   "id": "markchan-found-phone",
   "title": "Markchan · 捡手机",
   "description": "Coco & Mark 互动捡手机；密码 8266。媒体链接均留空待替换。",
-  "revision": 18,
+  "revision": 19,
   "phone": {
     "owner": "Markchan",
     "date": "2026-10-29",
@@ -908,6 +908,48 @@
         "kind": "text",
         "meta": {
           "timezone": "America/New_York"
+        }
+      },
+      {
+        "id": "alarm-weekday",
+        "title": "工作日早起",
+        "body": "每周一至周五 · 闹钟",
+        "kind": "event",
+        "time": "2026-10-30T07:30",
+        "meta": {
+          "type": "alarm",
+          "clock": "07:30",
+          "repeat": "周一、周二、周三、周四、周五",
+          "sound": "雷达",
+          "snooze": "稍后提醒"
+        }
+      },
+      {
+        "id": "alarm-evening",
+        "title": "出门提醒",
+        "body": "每天 · 闹钟",
+        "kind": "event",
+        "time": "2026-10-30T08:15",
+        "meta": {
+          "type": "alarm",
+          "clock": "08:15",
+          "repeat": "每天",
+          "sound": "晨间",
+          "snooze": "稍后提醒"
+        }
+      },
+      {
+        "id": "alarm-weekend",
+        "title": "周末慢慢来",
+        "body": "每周六、周日 · 闹钟",
+        "kind": "event",
+        "time": "2026-10-31T09:30",
+        "meta": {
+          "type": "alarm",
+          "clock": "09:30",
+          "repeat": "周六、周日",
+          "sound": "海潮",
+          "snooze": "稍后提醒"
         }
       }
     ],
