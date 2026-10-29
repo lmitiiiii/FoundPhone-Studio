@@ -3,7 +3,7 @@
   "id": "markchan-found-phone",
   "title": "Markchan · 捡手机",
   "description": "Coco & Mark 互动捡手机；密码 8266。媒体链接均留空待替换。",
-  "revision": 8,
+  "revision": 9,
   "phone": {
     "owner": "Markchan",
     "date": "2026-10-29",
@@ -160,7 +160,7 @@
     {
       "id": "kakao-donghyuck",
       "app": "kakao",
-      "title": "东赫",
+      "title": "ㅁㅋ",
       "participants": [
         "owner",
         "donghyuck"
