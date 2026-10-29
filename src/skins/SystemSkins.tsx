@@ -823,17 +823,18 @@ export function MusicSkin(p: Props) {
       if (saved) return { id: i.id, image: saved, preview: "" };
       try {
         const term = terms[i.id] || `${i.title} ${artistFor(i)}`;
-        const response = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(term)}&entity=song&limit=8&country=US`);
+        const response = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(term)}&entity=song&limit=15&country=US`);
         if (!response.ok) return { id: i.id, image: "", preview: "" };
         const data = await response.json() as { results?: Array<{ trackName?: string; artistName?: string; artworkUrl100?: string; previewUrl?: string }> };
         const results = data.results || [];
-        const clean = (value: string) => value.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
+        const clean = (value: string) => value.toLowerCase().replace(/[^a-z0-9가-힣]/gi, "");
         const target = clean(i.id === "song-6" ? "첫 눈" : i.title.replace(/\s*\(feat\..*?\)/i, ""));
-        const exact = results.find((r) => clean(r.trackName || "") === target)
-          || results.find((r) => clean(r.trackName || "").includes(target) || target.includes(clean(r.trackName || "")))
-          || results[0];
+        const expectedArtist = clean(artistFor(i).split(" feat. ")[0]);
+        const exact = results.find((r) => clean(r.trackName || "") === target && clean(r.artistName || "").includes(expectedArtist))
+          || results.find((r) => clean(r.trackName || "") === target)
+          || results.find((r) => clean(r.trackName || "").includes(target) || target.includes(clean(r.trackName || "")));
         const image = exact?.artworkUrl100?.replace(/\d+x\d+bb/, "600x600bb") || "";
-        return [i.id, image] as const;
+        return { id: i.id, image, preview: exact?.previewUrl || "" };
       } catch {
         return { id: i.id, image: "", preview: "" };
       }
