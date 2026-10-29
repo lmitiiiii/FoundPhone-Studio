@@ -16,7 +16,7 @@ import {
 import { motion } from "motion/react";
 import { AppDock } from "../vendor/ios-web/Launcher";
 import { category } from "../apps";
-import type { Work } from "../schema";
+import { safeMedia, type Work } from "../schema";
 import {
   homeEntries,
   packHome,
@@ -114,11 +114,27 @@ function WidgetFace({
           )}
         </>
       ) : widget.type === "photos" ? (
-        <div className="widget-photo-placeholder">
-          <Images size={30} />
-          <strong>照片</strong>
-          <small>等你发来照片</small>
-        </div>
+        (() => {
+          const photo = (work.data.photos || []).find((item) => {
+            const url = item.meta?.mediaUrl || item.meta?.imageUrl || "";
+            return item.kind === "image" && !!safeMedia(url);
+          });
+          const photoUrl = photo
+            ? safeMedia(photo.meta?.mediaUrl || photo.meta?.imageUrl || "")
+            : "";
+          return photoUrl ? (
+            <div className="widget-photo-image">
+              <img src={photoUrl} alt={photo?.title || "相册照片"} loading="lazy" decoding="async" />
+              <span>照片</span>
+            </div>
+          ) : (
+            <div className="widget-photo-placeholder">
+              <Images size={30} />
+              <strong>照片</strong>
+              <small>相册暂无照片</small>
+            </div>
+          );
+        })()
       ) : widget.type === "music" ? (
         <div className="widget-music-face">
           <span className="widget-music-art">{work.data.music?.[0]?.meta?.coverUrl ? <img src={work.data.music[0].meta.coverUrl} alt="" /> : <Music2 size={30} />}</span>
