@@ -166,6 +166,17 @@ export function PersistentMusicPlayer() {
           manualPauseRef.current = false;
           setBlocked(false);
           setShouldPlay(true);
+          if (audio?.src) {
+            void audio.play().then(() => {
+              setPlaying(true);
+              setBlocked(false);
+              publishStatus(true, false);
+            }).catch(() => {
+              setPlaying(false);
+              setBlocked(true);
+              publishStatus(false, true);
+            });
+          }
         }
       } else if (command.action === "pause") {
         manualPauseRef.current = true;
@@ -177,6 +188,17 @@ export function PersistentMusicPlayer() {
         manualPauseRef.current = false;
         setBlocked(false);
         setShouldPlay(true);
+        if (audio?.src) {
+          void audio.play().then(() => {
+            setPlaying(true);
+            setBlocked(false);
+            publishStatus(true, false);
+          }).catch(() => {
+            setPlaying(false);
+            setBlocked(true);
+            publishStatus(false, true);
+          });
+        }
       } else if (command.action === "next") {
         manualPauseRef.current = false;
         moveTo(indexRef.current + 1, true);
