@@ -324,12 +324,265 @@
     ],
     "photos": [
       {
-        "id": "test-item-photos",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
+        "id": "photo-1",
+        "title": "照片 01",
+        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "kind": "audio",
+        "meta": {
+          "album": "🤫",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "1"
+        }
+      },
+      {
+        "id": "photo-2",
+        "title": "照片 02",
+        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "kind": "image",
+        "meta": {
+          "album": "最近项目",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "2"
+        }
+      },
+      {
+        "id": "photo-3",
+        "title": "照片 03",
+        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "kind": "image",
+        "meta": {
+          "album": "最近项目",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "3"
+        }
+      },
+      {
+        "id": "photo-4",
+        "title": "照片 04",
+        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "kind": "audio",
+        "meta": {
+          "album": "最近项目",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "4"
+        }
+      },
+      {
+        "id": "photo-5",
+        "title": "照片 05",
+        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "kind": "image",
+        "meta": {
+          "album": "最近项目",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "5"
+        }
+      },
+      {
+        "id": "photo-6",
+        "title": "照片 06",
+        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "kind": "image",
+        "meta": {
+          "album": "最近项目",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "6"
+        }
+      },
+      {
+        "id": "photo-7",
+        "title": "照片 07",
+        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "kind": "audio",
+        "meta": {
+          "album": "最近项目",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "7"
+        }
+      },
+      {
+        "id": "photo-8",
+        "title": "照片 08",
+        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "kind": "image",
+        "meta": {
+          "album": "最近项目",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "8"
+        }
+      },
+      {
+        "id": "photo-9",
+        "title": "照片 09",
+        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "kind": "image",
+        "meta": {
+          "album": "最近项目",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "9"
+        }
+      },
+      {
+        "id": "photo-10",
+        "title": "照片 10",
+        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "kind": "audio",
+        "meta": {
+          "album": "最近项目",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "10"
+        }
+      },
+      {
+        "id": "photo-11",
+        "title": "照片 11",
+        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "kind": "image",
+        "meta": {
+          "album": "最近项目",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "11"
+        }
+      },
+      {
+        "id": "photo-12",
+        "title": "照片 12",
+        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "kind": "image",
+        "meta": {
+          "album": "最近项目",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "12"
+        }
+      },
+      {
+        "id": "photo-13",
+        "title": "照片 13",
+        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "kind": "audio",
+        "meta": {
+          "album": "最近项目",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "13"
+        }
+      },
+      {
+        "id": "photo-14",
+        "title": "照片 14",
+        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "kind": "image",
+        "meta": {
+          "album": "最近项目",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "14"
+        }
+      },
+      {
+        "id": "photo-15",
+        "title": "照片 15",
+        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "kind": "image",
+        "meta": {
+          "album": "最近项目",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "15"
+        }
+      },
+      {
+        "id": "photo-16",
+        "title": "照片 16",
+        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "kind": "audio",
+        "meta": {
+          "album": "最近项目",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "16"
+        }
+      },
+      {
+        "id": "photo-17",
+        "title": "照片 17",
+        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "kind": "image",
+        "meta": {
+          "album": "最近项目",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "17"
+        }
+      },
+      {
+        "id": "photo-18",
+        "title": "照片 18",
+        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "kind": "image",
+        "meta": {
+          "album": "最近项目",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "18"
+        }
+      },
+      {
+        "id": "photo-19",
+        "title": "照片 19",
+        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "kind": "audio",
+        "meta": {
+          "album": "最近项目",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "19"
+        }
+      },
+      {
+        "id": "photo-20",
+        "title": "照片 20",
+        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "kind": "image",
+        "meta": {
+          "album": "最近项目",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "20"
+        }
+      },
+      {
+        "id": "photo-21",
+        "title": "照片 21",
+        "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
+        "kind": "image",
+        "meta": {
+          "album": "最近项目",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "21"
+        }
+      },
+      {
+        "id": "secret-album",
+        "title": "🤫",
+        "body": "私密相册入口",
         "kind": "text",
-        "meta": {}
+        "meta": {
+          "album": "🤫"
+        }
       }
     ],
     "camera": [
@@ -468,12 +721,31 @@
     ],
     "clock": [
       {
-        "id": "test-item-clock",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
+        "id": "world-seoul",
+        "title": "首尔",
+        "body": "Asia/Seoul",
         "kind": "text",
-        "meta": {}
+        "meta": {
+          "timezone": "Asia/Seoul"
+        }
+      },
+      {
+        "id": "world-vancouver",
+        "title": "温哥华",
+        "body": "America/Vancouver",
+        "kind": "text",
+        "meta": {
+          "timezone": "America/Vancouver"
+        }
+      },
+      {
+        "id": "world-new-york",
+        "title": "纽约",
+        "body": "America/New_York",
+        "kind": "text",
+        "meta": {
+          "timezone": "America/New_York"
+        }
       }
     ],
     "reminders": [
@@ -691,12 +963,24 @@
     ],
     "settings": [
       {
-        "id": "test-item-settings",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
+        "id": "settings-device",
+        "title": "关于本机",
+        "body": "设备名称：Mark&donghyuck‘s\n机型：iPhone 15 Pro\n系统：iOS 18",
         "kind": "text",
-        "meta": {}
+        "meta": {
+          "deviceName": "Mark&donghyuck‘s",
+          "model": "iPhone 15 Pro",
+          "system": "iOS 18"
+        }
+      },
+      {
+        "id": "settings-wallpaper",
+        "title": "墙纸",
+        "body": "紫色渐变锁屏预览；替换壁纸链接占位",
+        "kind": "text",
+        "meta": {
+          "wallpaperUrl": ""
+        }
       }
     ],
     "weibo": [
@@ -952,6 +1236,38 @@
         "id": "test-appstore",
         "title": "测试内容",
         "body": "这是一条测试内容。"
+      }
+    ],
+    "recorder": [
+      {
+        "id": "recording-1",
+        "title": "未命名录音 1",
+        "body": "音频链接占位，请填写 meta.audioUrl。",
+        "kind": "audio",
+        "meta": {
+          "audioUrl": "",
+          "duration": ""
+        }
+      },
+      {
+        "id": "recording-2",
+        "title": "未命名录音 2",
+        "body": "音频链接占位，请填写 meta.audioUrl。",
+        "kind": "audio",
+        "meta": {
+          "audioUrl": "",
+          "duration": ""
+        }
+      },
+      {
+        "id": "recording-3",
+        "title": "未命名录音 3",
+        "body": "音频链接占位，请填写 meta.audioUrl。",
+        "kind": "audio",
+        "meta": {
+          "audioUrl": "",
+          "duration": ""
+        }
       }
     ]
   },
