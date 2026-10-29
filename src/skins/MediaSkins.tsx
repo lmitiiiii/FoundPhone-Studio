@@ -557,7 +557,7 @@ export function RecorderSkin(p: Props) {
           <p style={{ color: "#8e8e93", fontSize: 13 }}>录音文件可在剧情素材中替换</p>
         </div>
         {items.map((item, index) => {
-          const src = safeMedia(item.media);
+          const src = safeMedia(item.media || meta(item, "audioUrl"));
           return (
             <section
               key={item.id}
