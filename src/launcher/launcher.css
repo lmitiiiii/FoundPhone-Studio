@@ -587,3 +587,75 @@
   font-size: 10px;
   color: #81566f;
 }
+
+
+/* Wide Apple Music widget for Markchan's home screen */
+.ios18 .widget-music {
+  background: linear-gradient(115deg, #f8d5e5, #f4e5ff 58%, #e6e9ff);
+  color: #44233f;
+  padding: 18px 20px;
+  justify-content: center;
+}
+.ios18 .widget-music-face {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 18px;
+}
+.ios18 .widget-music-art {
+  display: grid;
+  place-items: center;
+  flex: 0 0 92px;
+  width: 92px;
+  height: 92px;
+  border-radius: 18px;
+  color: white;
+  background: linear-gradient(145deg, #fa5c9d, #a855f7);
+  box-shadow: 0 8px 20px #a855f733;
+}
+.ios18 .widget-music-details {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+}
+.ios18 .widget-music-details strong {
+  width: 100%;
+  font-size: 19px;
+  line-height: 1.25;
+  font-weight: 650;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ios18 .widget-music-details small {
+  max-width: 100%;
+  color: #81566f;
+  font-size: 11px;
+}
+.ios18 .widget-music-progress {
+  display: block;
+  width: 100%;
+  height: 3px;
+  margin-top: 4px;
+  border-radius: 99px;
+  background: #ffffffb0;
+  overflow: hidden;
+}
+.ios18 .widget-music-progress i {
+  display: block;
+  width: 28%;
+  height: 100%;
+  border-radius: inherit;
+  background: #b84b87;
+}
+.ios18 .widget-preview-medium .widget-music-art {
+  flex-basis: 76px;
+  width: 76px;
+  height: 76px;
+}
