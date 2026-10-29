@@ -756,7 +756,16 @@ export function MusicSkin(p: Props) {
                 setSong(i);
               }}
             >
-              <small>{n + 1}</small>
+              <span
+                aria-hidden="true"
+                style={{ width: 42, height: 42, borderRadius: 7, display: "grid", placeItems: "center", overflow: "hidden", flexShrink: 0, background: "linear-gradient(135deg, #f5b5ca, #b8a8f8, #4c4c68)" }}
+              >
+                {safeMedia(meta(i, "coverUrl")) ? (
+                  <img src={safeMedia(meta(i, "coverUrl"))} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                ) : (
+                  <Music size={20} color="white" />
+                )}
+              </span>
               <span>
                 <strong>{i.title}</strong>
                 <small>
