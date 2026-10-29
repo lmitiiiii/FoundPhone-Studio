@@ -23,7 +23,7 @@ import {
   NativeSettings,
 } from "./DeviceSystem";
 import { AppArtwork, hasNativeArtwork } from "./AppArtwork";
-import { PersistentMusicPlayer } from "./audio";
+import { PersistentMusicPlayer, musicCommand } from "./audio";
 import { getFields } from "./fields";
 import { catalogSkins } from "./skins/catalog";
 import "./skins/skins.css";
@@ -269,6 +269,7 @@ function PhoneRuntime({
   const open = (id: string) => {
     if (!work.apps.some((a) => a.id === id && a.installed)) return;
     setApp(id);
+    if (id === "music") musicCommand({ action: "play" });
     setKeyboard(false);
     setRecent((v) => [id, ...v.filter((a) => a !== id)].slice(0, 8));
     setFolder("");
