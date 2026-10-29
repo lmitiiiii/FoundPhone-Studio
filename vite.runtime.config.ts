@@ -20,6 +20,8 @@ export default defineConfig(({ command }) => ({
       },
       workbox: {
         clientsClaim: true,
+        // Do not let the SPA navigation fallback replace the standalone story phone.
+        navigateFallbackDenylist: [/\/lockscreen\.html$/],
         globPatterns: ["**/*.{js,css,html,svg,json,txt,png,jpg}"],
         maximumFileSizeToCacheInBytes: 4000000,
       },
