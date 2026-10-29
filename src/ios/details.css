@@ -214,3 +214,8 @@
   background: none;
   color: #007aff;
 }
+
+.ios18 .native-photo-stage { touch-action: pan-y; }
+.ios18 .native-photo-arrows { display:flex; align-items:center; justify-content:space-between; padding:4px 22px; background:#000; color:#fff; }
+.ios18 .native-photo-arrows button { border:0; background:transparent; color:#fff; font-size:30px; padding:0 18px; }
+.ios18 .native-photo-arrows button:disabled { opacity:.25; }
