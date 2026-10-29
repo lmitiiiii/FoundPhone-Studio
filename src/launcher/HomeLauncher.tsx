@@ -117,9 +117,13 @@ function WidgetFace({
         </div>
       ) : widget.type === "music" ? (
         <div className="widget-music-face">
-          <span className="widget-music-art"><Music2 size={27} /></span>
-          <strong>Music</strong>
-          <small>Apple Music</small>
+          <span className="widget-music-art"><Music2 size={30} /></span>
+          <div className="widget-music-details">
+            <small>最近播放 · Apple Music</small>
+            <strong>{work.data.music?.[0]?.title || "歌单第一首歌"}</strong>
+            <small>{work.data.music?.[0]?.meta?.artist || work.data.music?.[0]?.sender || "你的歌单"}</small>
+            <span className="widget-music-progress"><i /></span>
+          </div>
         </div>
       ) : (
         <>
