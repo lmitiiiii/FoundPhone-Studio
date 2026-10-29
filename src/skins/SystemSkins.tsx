@@ -304,7 +304,8 @@ export function CameraSkin(p: Props) {
 }
 export function SafariSkin(p: Props) {
   const [q, setQ] = useState(""),
-    [tab, setTab] = useState("书签");
+    [tab, setTab] = useState("书签"),
+    [selectedQuery, setSelectedQuery] = useState("");
   const items = p.items
     .filter((i) =>
       (i.title + i.body + meta(i, "url"))
@@ -316,44 +317,90 @@ export function SafariSkin(p: Props) {
         ? i.favorite || i.folder !== "历史记录"
         : i.folder === "历史记录",
     );
+  const searchResults = (query: string) => {
+    if (query.includes("赏樱")) return [
+      ["首尔春季赏樱路线｜汝矣岛、石村湖、南山", "首尔春天赏花可以从汝矣岛汉江公园开始，沿着樱花步道散步；想拍湖景可以去石村湖，傍晚也很适合约会。", "旅行 · 首尔"],
+      ["汝矣岛汉江公园樱花节出行攻略", "推荐地铁出行，花期人流较多。可以把汉江野餐和夜景安排在同一天。", "游记 · 首尔"],
+      ["首尔樱花拍照地点整理", "南山公园、庆熙大学和首尔林都有适合拍照的步道，出发前记得确认花期。", "攻略 · 韩国"],
+    ];
+    if (query.includes("泡菜汤")) return [
+      ["韩式泡菜汤家常做法：五花肉版", "五花肉先煸出油脂，加入泡菜翻炒，再加水和豆腐炖煮；最后用韩式辣酱调整味道。", "美食 · 家常菜"],
+      ["Kimchi jjigae 泡菜锅做法", "酸泡菜搭配五花肉风味更浓，建议小火煮约 10–15 分钟，让汤底更入味。", "食谱 · 韩国料理"],
+      ["泡菜汤配什么吃？", "搭配米饭、煎蛋或简单小菜，就能做成一顿方便的韩式晚餐。", "生活 · 饮食"],
+    ];
+    if (query.includes("襄阳")) return [
+      ["首尔出发襄阳一日游攻略", "可以安排襄阳海边散步、竹岛海边和当地咖啡馆。提前确认往返交通班次，避免行程太赶。", "旅行 · 江原道"],
+      ["襄阳海边路线与必带物品", "海边风大，建议带防晒、墨镜、薄外套和充电宝；想拍照可以预留日落时间。", "攻略 · 韩国"],
+      ["襄阳美食与咖啡馆推荐", "海边周边有不少咖啡馆和海鲜餐厅，适合安排午餐后慢慢散步。", "探店 · 襄阳"],
+    ];
+    if (query.includes("情侣") || query.includes("江边")) return [
+      ["首尔汉江公园情侣散步路线", "盘浦汉江公园适合看夜景，汝矣岛适合沿江散步，也可以带饮料找一处长椅坐一会儿。", "约会 · 首尔"],
+      ["首尔夜景散步：汉江沿岸", "傍晚出发可以一路散步到日落后，记得查看天气并带一件薄外套。", "生活 · 首尔"],
+      ["适合两个人的首尔周末约会", "汉江野餐、骑行和便利店夜宵都是轻松不赶时间的约会选择。", "推荐 · 情侣"],
+    ];
+    if (query.includes("男朋友") || query.includes("生气")) return [
+      ["惹男朋友生气了怎么哄？先好好沟通", "先听对方为什么不开心，承认自己造成的影响。比起急着解释，真诚地道歉和给对方一点时间更重要。", "情感 · 相处"],
+      ["情侣吵架后如何和好", "等双方情绪平稳后再聊具体发生了什么，尽量说自己的感受和需求，不要用指责的语气。", "关系 · 恋爱"],
+      ["一句真诚的道歉怎么说", "可以从“我知道这件事让你难过了，对不起，我想听听你的感受”开始，再用行动兑现承诺。", "话题 · 沟通"],
+    ];
+    return [
+      [query + "｜相关搜索结果", "这里整理了与“" + query + "”相关的内容，可以继续查看攻略、经验分享和实用建议。", "搜索 · 推荐"],
+      ["关于“" + query + "”的详细指南", "按主题汇总的入门信息与实用小贴士，方便快速了解重点。", "指南 · 文章"],
+      ["更多用户经验与推荐", "看看其他人的经验分享，挑选适合自己的方案。", "社区 · 讨论"],
+    ];
+  };
+  const results = selectedQuery ? searchResults(selectedQuery) : [];
   return (
     <div className="catalog-skin native-safari">
       <Header p={p} />
-      <div className="catalog-scroll">
-        <h1>{tab}</h1>
-        <div className={tab === "历史记录" ? "safari-favorites safari-history" : "safari-favorites"}>
-          {items.map((i) => (
-            <button key={i.id} onClick={() => p.onItem(i)}>
-              <span>
-                <Globe size={tab === "历史记录" ? 18 : 28} />
-              </span>
-              <strong>{i.title}</strong>
-              {tab === "书签" && <small>{meta(i, "url")}</small>}
-              {tab === "历史记录" && <small><ChevronRight size={15} /></small>}
-            </button>
-          ))}
+      {selectedQuery ? (
+        <div className="safari-results-view">
+          <div className="safari-results-top">
+            <button aria-label="返回历史记录" onClick={() => setSelectedQuery("")}><ChevronLeft size={22} /></button>
+            <div className="safari-engine-mark">G</div>
+            <form className="safari-search-form" onSubmit={(e) => { e.preventDefault(); if (q.trim()) setSelectedQuery(q.trim()); }}>
+              <input value={q || selectedQuery} onChange={(e) => setQ(e.target.value)} aria-label="搜索关键词" />
+              <button aria-label="搜索"><Search size={16} /></button>
+            </form>
+          </div>
+          <div className="safari-results-scroll">
+            <small className="safari-results-label">网页 · 图片 · 视频 · 地图</small>
+            <p className="safari-results-count">关于 {selectedQuery} 的搜索结果</p>
+            {results.map(([title, description, source], index) => (
+              <article className="safari-result-card" key={title}>
+                <div className="safari-result-source"><span>{index === 0 ? "🌐" : "🔎"}</span><div><strong>{source}</strong><small>{index === 0 ? "推荐内容" : "相关网页"}</small></div></div>
+                <h3>{title}</h3>
+                <p>{description}</p>
+              </article>
+            ))}
+            <button className="safari-back-history" onClick={() => { setSelectedQuery(""); setTab("历史记录"); }}>返回历史记录</button>
+          </div>
         </div>
-        <Empty items={items} label="没有匹配的虚构网页" />
-      </div>
-      <label className="safari-address">
-        <LockKeyhole size={13} />
-        <input
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          placeholder="搜索或输入虚构网址"
-          aria-label="地址栏"
-          onKeyDown={(e) => {
-            if (e.key === "Enter" && items[0]) p.onItem(items[0]);
-          }}
-        />
-        <Search size={16} />
-      </label>
-      <Tabs
-        tabs={["书签", "历史记录"]}
-        value={tab}
-        set={setTab}
-        icons={[<Globe />, <Clock />]}
-      />
+      ) : (
+        <>
+          <div className="catalog-scroll">
+            <h1>{tab}</h1>
+            <div className={tab === "历史记录" ? "safari-favorites safari-history" : "safari-favorites"}>
+              {items.map((i) => (
+                <button key={i.id} onClick={() => tab === "历史记录" ? (setSelectedQuery(i.title), setQ(i.title)) : p.onItem(i)}>
+                  <span><Globe size={tab === "历史记录" ? 18 : 28} /></span>
+                  <strong>{i.title}</strong>
+                  {tab === "书签" && <small>{meta(i, "url")}</small>}
+                  {tab === "历史记录" && <small><ChevronRight size={15} /></small>}
+                </button>
+              ))}
+            </div>
+            <Empty items={items} label="没有匹配的虚构网页" />
+          </div>
+          <label className="safari-address">
+            <LockKeyhole size={13} />
+            <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="搜索或输入虚构网址" aria-label="地址栏"
+              onKeyDown={(e) => { if (e.key === "Enter" && q.trim()) setSelectedQuery(q.trim()); }} />
+            <Search size={16} />
+          </label>
+          <Tabs tabs={["书签", "历史记录"]} value={tab} set={setTab} icons={[<Globe />, <Clock />]} />
+        </>
+      )}
     </div>
   );
 }
