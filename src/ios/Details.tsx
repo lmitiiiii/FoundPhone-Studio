@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   ChevronLeft,
   MoreHorizontal,
@@ -32,10 +32,15 @@ export function NativeDetail({
   item: Item;
   back: () => void;
 }) {
+  const [photoIndex, setPhotoIndex] = useState(0),
+    touchStart = useRef<number | null>(null);
+  const photoItems = app === "photos" ? (item as Item & { __galleryItems?: Item[] }).__galleryItems ?? [item] : [item];
+  const currentPhoto = photoItems[photoIndex] ?? item;
+  useEffect(() => setPhotoIndex(Math.max(0, photoItems.findIndex((photo) => photo.id === item.id))), [item.id]);
   const [favorite, setFavorite] = useState(item.favorite),
     [copied, setCopied] = useState(false),
     [call, setCall] = useState(false);
-  const media = safeMedia(item.media || item.meta?.mediaUrl || item.meta?.imageUrl || item.meta?.coverUrl),
+  const media = safeMedia(currentPhoto.media || currentPhoto.meta?.mediaUrl || currentPhoto.meta?.imageUrl || currentPhoto.meta?.coverUrl),
     name =
       app === "notes"
         ? "备忘录"
@@ -65,7 +70,7 @@ export function NativeDetail({
           <ChevronLeft size={24} />
           {name}
         </button>
-        <strong>{app === "photos" ? item.time.slice(0, 10) : ""}</strong>
+        <strong>{app === "photos" ? currentPhoto.time.slice(0, 10) : ""}</strong>
         <button aria-label="更多操作" onClick={() => setCopied(!copied)}>
           <MoreHorizontal size={23} />
         </button>
@@ -81,9 +86,9 @@ export function NativeDetail({
       )}
       {app === "photos" ? (
         <>
-          <div className="native-photo-stage">
+          <div className="native-photo-stage" onTouchStart={(e) => { touchStart.current = e.touches[0]?.clientX ?? null; }} onTouchEnd={(e) => { const start = touchStart.current; touchStart.current = null; if (start === null) return; const delta = e.changedTouches[0].clientX - start; if (Math.abs(delta) > 45) setPhotoIndex((index) => Math.max(0, Math.min(photoItems.length - 1, index + (delta < 0 ? 1 : -1)))); }}>
             {media ? (
-              <img src={media} alt={item.title} loading="eager" decoding="async" />
+              <img src={media} alt={currentPhoto.title} loading="eager" decoding="async" />
             ) : (
               <div className="native-photo-caption">
                 <h2>{item.title}</h2>
@@ -91,7 +96,7 @@ export function NativeDetail({
               </div>
             )}
           </div>
-          <footer className="native-detail-toolbar">
+          {photoItems.length > 1 && <div className="native-photo-arrows"><button aria-label="上一张" disabled={photoIndex === 0} onClick={() => setPhotoIndex((index) => Math.max(0, index - 1))}>‹</button><span>{photoIndex + 1} / {photoItems.length}</span><button aria-label="下一张" disabled={photoIndex === photoItems.length - 1} onClick={() => setPhotoIndex((index) => Math.min(photoItems.length - 1, index + 1))}>›</button></div>}\n          <footer className="native-detail-toolbar">
             <button aria-label="分享照片说明" onClick={copy}>
               <Share />
             </button>
@@ -101,7 +106,7 @@ export function NativeDetail({
             >
               <Heart fill={favorite ? "#007aff" : "none"} />
             </button>
-            <span>{copied ? "已复制" : item.title}</span>
+            <span>{copied ? "已复制" : `${currentPhoto.title}${photoItems.length > 1 ? ` · ${photoIndex + 1}/${photoItems.length}` : ""}`}</span>
           </footer>
         </>
       ) : app === "contacts" || app === "phone" ? (
