@@ -799,6 +799,26 @@
         }
       }
     ],
+    "kakao": [
+      {
+        "id": "kakao-mark",
+        "title": "李马克",
+        "body": "",
+        "time": "21:14",
+        "sender": "李马克",
+        "kind": "text",
+        "meta": { "contact": "李马克", "preview": "刚刚" }
+      },
+      {
+        "id": "kakao-donghyuck",
+        "title": "李楷灿",
+        "body": "",
+        "time": "20:14",
+        "sender": "李楷灿",
+        "kind": "text",
+        "meta": { "contact": "李楷灿", "preview": "1小时前" }
+      }
+    ],
     "instagram": [
       {
         "id": "ig-main-profile",
