@@ -856,20 +856,29 @@ export function MusicSkin(p: Props) {
         const clean = (value: string) => value.toLowerCase().replace(/[^a-z0-9가-힣]/gi, "");
         const expectedTitles = (titleAliases[i.id] || [i.title]).map(clean);
         const expectedArtists = (artistAliases[i.id] || [artistFor(i)]).map(clean);
+        const scored = results.map((r) => {
+          const track = clean(r.trackName || "");
+          const artist = clean(r.artistName || "");
+          const titleScore = expectedTitles.reduce((best, title) => {
+            if (track === title) return Math.max(best, 100);
+            if (track.startsWith(title) || title.startsWith(track)) return Math.max(best, 85);
+            if (track.includes(title) || title.includes(track)) return Math.max(best, 65);
+            return best;
+          }, 0);
+          const artistScore = expectedArtists.some((name) => artist === name || artist.startsWith(name) || artist.includes(name)) ? 20 : 0;
+          return { r, score: titleScore + artistScore };
+        }).sort((a, b) => b.score - a.score);
         const exact = results.find((r) => {
           const track = clean(r.trackName || "");
           const artist = clean(r.artistName || "");
-          const titleMatches = expectedTitles.some((title) => title === track);
-          const artistMatches = expectedArtists.some((name) => artist === name || artist.startsWith(name));
-          return titleMatches && artistMatches;
-        }) || (i.id === "song-1" ? results.find((r) => {
-          const track = clean(r.trackName || "");
-          const artist = clean(r.artistName || "");
-          return track.includes("billionaire") && artist.includes("traviemccoy");
-        }) : undefined);
-        // Never borrow a different song's cover or preview just because its title looks similar.
-        const image = exact?.artworkUrl100?.replace(/\d+x\d+bb/, "600x600bb") || "";
-        return { id: i.id, image, preview: exact?.previewUrl || "" };
+          return expectedTitles.some((title) => title === track) &&
+            expectedArtists.some((name) => artist === name || artist.startsWith(name));
+        });
+        // Prefer a title-matched preview even when the catalog formats the featured artist differently.
+        // Only fall back to a catalog result if its title is still a strong match.
+        const matched = exact || (scored[0]?.score >= 65 ? scored[0].r : undefined);
+        const image = matched?.artworkUrl100?.replace(/\d+x\d+bb/, "600x600bb") || "";
+        return { id: i.id, image, preview: matched?.previewUrl || "" };
       } catch {
         return { id: i.id, image: "", preview: "" };
       }
