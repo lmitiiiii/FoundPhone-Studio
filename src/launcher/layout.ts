@@ -54,10 +54,11 @@ export function ensureAppStore(work: Work): Work {
 }
 export function defaultLayout(input: Work): DeviceLayout {
   const w = ensureAppStore(input);
+  const markchan = w.id === "markchan-found-phone";
   return {
     version: 1,
     workId: w.id,
-    previewLayoutRevision: w.id === "ui-test-phone-v2" ? 1 : 0,
+    previewLayoutRevision: markchan ? 1 : w.id === "ui-test-phone-v2" ? 1 : 0,
     apps: structuredClone(w.apps)
       .sort((a, b) => (a.id === "appstore" ? -1 : b.id === "appstore" ? 1 : 0))
       .map((a) =>
@@ -65,10 +66,22 @@ export function defaultLayout(input: Work): DeviceLayout {
           ? { ...a, installed: true, visible: true, folder: "", dock: false }
           : a,
       ),
-    widgets: [],
+    widgets: markchan
+      ? [
+          { id: "widget-markchan-calendar", type: "calendar", size: "medium" },
+          { id: "widget-markchan-clock", type: "clock", size: "small" },
+          { id: "widget-markchan-battery", type: "battery", size: "small" },
+        ]
+      : [],
     order: [],
     cleared: [],
-    positions: {},
+    positions: markchan
+      ? {
+          "widget-markchan-calendar": { page: 0, x: 0, y: 0 },
+          "widget-markchan-clock": { page: 0, x: 0, y: 2 },
+          "widget-markchan-battery": { page: 0, x: 2, y: 2 },
+        }
+      : {},
   };
 }
 export function validateLayout(raw: unknown, input: Work) {
@@ -93,6 +106,23 @@ export function validateLayout(raw: unknown, input: Work) {
     store.installed = true;
     store.visible = true;
     store.folder = "";
+  }
+  if (w.id === "markchan-found-phone" && layout.previewLayoutRevision < 1) {
+    if (layout.widgets.length === 0) {
+      layout.widgets.push(
+        { id: "widget-markchan-calendar", type: "calendar", size: "medium" },
+        { id: "widget-markchan-clock", type: "clock", size: "small" },
+        { id: "widget-markchan-battery", type: "battery", size: "small" },
+      );
+    }
+    if (Object.keys(layout.positions).length === 0) {
+      layout.positions = {
+        "widget-markchan-calendar": { page: 0, x: 0, y: 0 },
+        "widget-markchan-clock": { page: 0, x: 0, y: 2 },
+        "widget-markchan-battery": { page: 0, x: 2, y: 2 },
+      };
+    }
+    layout.previewLayoutRevision = 1;
   }
   if (w.id === "ui-test-phone-v2" && layout.previewLayoutRevision < 1) {
     const visibleApps = ["wechat", "douyin"];
