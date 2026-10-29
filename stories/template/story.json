@@ -801,7 +801,7 @@
     ],
     "kakao": [
       {
-        "id": "kakao-mark",
+        "id": "kakao-contact-mark",
         "title": "李马克",
         "body": "",
         "time": "21:14",
@@ -810,7 +810,7 @@
         "meta": { "contact": "李马克", "preview": "刚刚" }
       },
       {
-        "id": "kakao-donghyuck",
+        "id": "kakao-contact-donghyuck",
         "title": "李楷灿",
         "body": "",
         "time": "20:14",
