@@ -775,8 +775,8 @@ export function MusicSkin(p: Props) {
             <Music size={20} />
             {song.title}
           </button>
-          {song.kind === "audio" && safeMedia(song.media) ? (
-            <AudioPlayer p={p} item={song} />
+          {song.kind === "audio" && safeMedia(song.media || meta(song, "audioUrl")) ? (
+            <AudioPlayer p={p} item={{ ...song, media: song.media || meta(song, "audioUrl") }} />
           ) : (
             <button onClick={() => p.onItem(song)}>查看歌曲内容</button>
           )}
