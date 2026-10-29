@@ -90,22 +90,16 @@ function WidgetFace({
           <small>时钟</small>
         </>
       ) : widget.type === "weather" ? (
-        <div className="widget-weather-content">
+        <div className="widget-weather-content widget-weather-compact">
           <div className="widget-weather-heading">
             <div>
-              <small>{weather?.title || "未添加城市"}</small>
-              <b>{weather?.meta.temperature ? `${weather.meta.temperature}°C` : "—"}</b>
-              <small>{weather?.meta.condition || "暂无天气数据"} · 体感 {weather?.meta.feelsLike || "—"}</small>
+              <small>{weather?.title || "首尔"}</small>
+              <b>{weather?.meta.temperature ? `${weather.meta.temperature}°` : "—"}</b>
+              <small>{weather?.meta.condition || "多云"}</small>
             </div>
-            <CloudSun size={29} />
+            <CloudSun size={32} />
           </div>
-          <div className="widget-weather-details">
-            <span>降水 {weather?.meta.precipitation || "—"}</span>
-            <span>湿度 {weather?.meta.humidity || "—"}</span>
-            <span>风速 {weather?.meta.wind || "—"}</span>
-            <span>紫外线 {weather?.meta.uvIndex || "—"}</span>
-          </div>
-          <small className="widget-weather-range">最高 {weather?.meta.high || "—"} · 最低 {weather?.meta.low || "—"}</small>
+          <small className="widget-weather-range">最高 {weather?.meta.high || "11"}° · 最低 {weather?.meta.low || "6"}°</small>
         </div>
       ) : widget.type === "notes" ? (
         <>
