@@ -3,7 +3,7 @@
   "id": "markchan-found-phone",
   "title": "Markchan · 捡手机",
   "description": "Coco & Mark 互动捡手机；密码 8266。媒体链接均留空待替换。",
-  "revision": 19,
+  "revision": 20,
   "phone": {
     "owner": "Markchan",
     "date": "2026-10-29",
@@ -971,6 +971,32 @@
         "meta": {
           "days": "182",
           "nextDate": "2027-04-29"
+        }
+      },
+      {
+        "id": "days-birthday-donghyuck",
+        "title": "东赫生日",
+        "body": "6 月 6 日 · 给东赫准备生日惊喜",
+        "kind": "text",
+        "meta": {
+          "nextDate": "2027-06-06",
+          "month": "6",
+          "day": "6",
+          "person": "东赫",
+          "category": "birthday"
+        }
+      },
+      {
+        "id": "days-birthday-mark",
+        "title": "马克生日",
+        "body": "8 月 2 日 · 记得对马克说生日快乐",
+        "kind": "text",
+        "meta": {
+          "nextDate": "2027-08-02",
+          "month": "8",
+          "day": "2",
+          "person": "马克",
+          "category": "birthday"
         }
       }
     ],
