@@ -1019,7 +1019,7 @@ function AppContent({
             />
           ) : nativeDetailApps.has(app.id) &&
             (!detail.password || unlocks.includes(detail.id)) ? (
-            <NativeDetail app={app.id} item={detail} back={back} />
+            <NativeDetail app={app.id} item={detail} items={items} back={back} />
           ) : (
             <>
               <div className="app-nav">
