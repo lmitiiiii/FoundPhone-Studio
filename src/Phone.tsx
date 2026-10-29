@@ -23,6 +23,7 @@ import {
   NativeSettings,
 } from "./DeviceSystem";
 import { AppArtwork, hasNativeArtwork } from "./AppArtwork";
+import { PersistentMusicPlayer } from "./audio";
 import { getFields } from "./fields";
 import { catalogSkins } from "./skins/catalog";
 import "./skins/skins.css";
@@ -794,6 +795,7 @@ function PhoneRuntime({
           <div className="hardware-reflection" />
         </div>
       </KeyboardContext.Provider>
+      <PersistentMusicPlayer />
     </div>
   );
 }
