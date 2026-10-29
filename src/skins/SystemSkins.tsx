@@ -794,6 +794,7 @@ export function MusicSkin(p: Props) {
   const [song, setSong] = useTrack(p, items);
   const [isPlaying, setIsPlaying] = useState(false);
   const [artwork, setArtwork] = useState<Record<string, string>>({});
+  const [previewUrls, setPreviewUrls] = useState<Record<string, string>>({});
   const artistFor = (i: Item) => ({
     "song-1": "Travie McCoy feat. Bruno Mars",
     "song-2": "Justin Bieber",
@@ -819,12 +820,12 @@ export function MusicSkin(p: Props) {
     };
     Promise.all(items.filter((i) => i.kind === "audio").map(async (i) => {
       const saved = safeMedia(meta(i, "coverUrl"));
-      if (saved) return [i.id, saved] as const;
+      if (saved) return { id: i.id, image: saved, preview: "" };
       try {
         const term = terms[i.id] || `${i.title} ${artistFor(i)}`;
         const response = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(term)}&entity=song&limit=8&country=US`);
-        if (!response.ok) return [i.id, ""] as const;
-        const data = await response.json() as { results?: Array<{ trackName?: string; artistName?: string; artworkUrl100?: string }> };
+        if (!response.ok) return { id: i.id, image: "", preview: "" };
+        const data = await response.json() as { results?: Array<{ trackName?: string; artistName?: string; artworkUrl100?: string; previewUrl?: string }> };
         const results = data.results || [];
         const clean = (value: string) => value.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
         const target = clean(i.id === "song-6" ? "첫 눈" : i.title.replace(/\s*\(feat\..*?\)/i, ""));
@@ -834,15 +835,19 @@ export function MusicSkin(p: Props) {
         const image = exact?.artworkUrl100?.replace(/\d+x\d+bb/, "600x600bb") || "";
         return [i.id, image] as const;
       } catch {
-        return [i.id, ""] as const;
+        return { id: i.id, image: "", preview: "" };
       }
     })).then((pairs) => {
-      if (active) setArtwork(Object.fromEntries(pairs.filter((pair) => pair[1])));
+      if (active) {
+        setArtwork(Object.fromEntries(pairs.filter((pair) => pair.image).map((pair) => [pair.id, pair.image])));
+        setPreviewUrls(Object.fromEntries(pairs.filter((pair) => pair.preview).map((pair) => [pair.id, pair.preview])));
+      }
     });
     return () => { active = false; };
   }, [artworkLookupKey]);
 
   const coverFor = (i: Item) => artwork[i.id] || safeMedia(meta(i, "coverUrl"));
+  const audioFor = (i: Item) => safeMedia(i.media || meta(i, "audioUrl")) || previewUrls[i.id] || "";
   const songs = items.filter((i) => i.kind === "audio");
   const shown = songs;
   const nextSong = () => {
@@ -915,8 +920,8 @@ export function MusicSkin(p: Props) {
             <button aria-label="下一首" onClick={nextSong}><SkipForward size={21} fill="currentColor" /></button>
           </div>
           <div className="music-progress"><span /></div>
-          {song.kind === "audio" && safeMedia(song.media || meta(song, "audioUrl")) && (
-            <div className="music-real-audio"><AudioPlayer p={p} item={{ ...song, media: song.media || meta(song, "audioUrl") }} /></div>
+          {song.kind === "audio" && audioFor(song) && (
+            <div className="music-real-audio"><audio controls preload="none" src={audioFor(song)} aria-label={`播放 ${song.title}`} /></div>
           )}
         </div>
       )}
