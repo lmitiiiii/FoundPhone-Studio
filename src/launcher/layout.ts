@@ -58,7 +58,7 @@ export function defaultLayout(input: Work): DeviceLayout {
   return {
     version: 1,
     workId: w.id,
-    previewLayoutRevision: markchan ? 3 : w.id === "ui-test-phone-v2" ? 1 : 0,
+    previewLayoutRevision: markchan ? 4 : w.id === "ui-test-phone-v2" ? 1 : 0,
     apps: structuredClone(w.apps)
       .sort((a, b) => (a.id === "appstore" ? -1 : b.id === "appstore" ? 1 : 0))
       .map((a) =>
@@ -69,7 +69,7 @@ export function defaultLayout(input: Work): DeviceLayout {
     widgets: markchan
       ? [
           { id: "widget-markchan-photos", type: "photos", size: "small" },
-          { id: "widget-markchan-music", type: "music", size: "small" },
+          { id: "widget-markchan-music", type: "music", size: "medium" },
           { id: "widget-markchan-weather", type: "weather", size: "small" },
         ]
       : [],
@@ -77,9 +77,9 @@ export function defaultLayout(input: Work): DeviceLayout {
     cleared: [],
     positions: markchan
       ? {
-          "widget-markchan-photos": { page: 0, x: 0, y: 0 },
-          "widget-markchan-music": { page: 0, x: 2, y: 0 },
-          "widget-markchan-weather": { page: 0, x: 0, y: 2 },
+          "widget-markchan-music": { page: 0, x: 0, y: 0 },
+          "widget-markchan-photos": { page: 0, x: 0, y: 2 },
+          "widget-markchan-weather": { page: 0, x: 2, y: 2 },
         }
       : {},
   };
@@ -107,7 +107,7 @@ export function validateLayout(raw: unknown, input: Work) {
     store.visible = true;
     store.folder = "";
   }
-  if (w.id === "markchan-found-phone" && layout.previewLayoutRevision < 3) {
+  if (w.id === "markchan-found-phone" && layout.previewLayoutRevision < 4) {
     layout.widgets = layout.widgets.filter(
       (widget) =>
         ![
@@ -121,21 +121,21 @@ export function validateLayout(raw: unknown, input: Work) {
     );
     layout.widgets.push(
       { id: "widget-markchan-photos", type: "photos", size: "small" },
-      { id: "widget-markchan-music", type: "music", size: "small" },
+      { id: "widget-markchan-music", type: "music", size: "medium" },
       { id: "widget-markchan-weather", type: "weather", size: "small" },
     );
     layout.positions = {
       ...layout.positions,
-      "widget-markchan-photos": { page: 0, x: 0, y: 0 },
-      "widget-markchan-music": { page: 0, x: 2, y: 0 },
-      "widget-markchan-weather": { page: 0, x: 0, y: 2 },
+      "widget-markchan-music": { page: 0, x: 0, y: 0 },
+      "widget-markchan-photos": { page: 0, x: 0, y: 2 },
+      "widget-markchan-weather": { page: 0, x: 2, y: 2 },
     };
     for (const id of [
       "widget-markchan-calendar",
       "widget-markchan-clock",
       "widget-markchan-battery",
     ]) delete layout.positions[id];
-    layout.previewLayoutRevision = 3;
+    layout.previewLayoutRevision = 4;
   }
   if (w.id === "ui-test-phone-v2" && layout.previewLayoutRevision < 1) {
     const visibleApps = ["wechat", "douyin"];
