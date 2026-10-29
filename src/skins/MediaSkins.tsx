@@ -543,3 +543,75 @@ export function NetflixSkin(p: Props) {
   );
 }
 
+
+
+export function RecorderSkin(p: Props) {
+  const { items } = useContent(p, "所有录音");
+  return (
+    <div className="catalog-skin recorder-ui">
+      <Header p={p} />
+      <div className="catalog-scroll">
+        <div style={{ padding: "22px 18px 12px" }}>
+          <small style={{ color: "#8e8e93" }}>录音机</small>
+          <h1 style={{ margin: "6px 0 18px", fontSize: 30 }}>所有录音</h1>
+          <p style={{ color: "#8e8e93", fontSize: 13 }}>录音文件可在剧情素材中替换</p>
+        </div>
+        {items.map((item, index) => {
+          const src = safeMedia(item.media || meta(item, "audioUrl"));
+          return (
+            <section
+              key={item.id}
+              style={{
+                margin: "0 14px 12px",
+                padding: "16px",
+                borderRadius: 16,
+                background: "var(--skin-card, #f2f2f7)",
+              }}
+            >
+              <div
+                aria-hidden="true"
+                style={{
+                  height: 44,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  gap: 3,
+                  overflow: "hidden",
+                  marginBottom: 12,
+                }}
+              >
+                {Array.from({ length: 38 }, (_, n) => (
+                  <span
+                    key={n}
+                    style={{
+                      display: "block",
+                      flex: 1,
+                      minWidth: 2,
+                      height: `${12 + ((n * 17 + index * 11) % 30)}px`,
+                      borderRadius: 4,
+                      background: src ? "#e15b64" : "#aeb0b8",
+                      opacity: 0.55 + ((n % 4) * 0.12),
+                    }}
+                  />
+                ))}
+              </div>
+              <strong style={{ display: "block", fontSize: 16 }}>{item.title || `未命名录音 ${index + 1}`}</strong>
+              <small style={{ display: "block", color: "#8e8e93", margin: "5px 0 12px" }}>
+                {item.time || "今天"}{item.meta?.duration ? ` · ${String(item.meta.duration)}` : ""}
+              </small>
+              {src ? (
+                <audio controls preload="none" src={src} style={{ width: "100%" }} />
+              ) : (
+                <div style={{ color: "#8e8e93", fontSize: 13, padding: "8px 0 2px" }}>
+                  音频链接待补充
+                </div>
+              )}
+            </section>
+          );
+        })}
+        <Empty items={items} />
+      </div>
+      <Tabs tabs={["所有录音"]} value="所有录音" set={() => {}} icons={[<Music />]} />
+    </div>
+  );
+}

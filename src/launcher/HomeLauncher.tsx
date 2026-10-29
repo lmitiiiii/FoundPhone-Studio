@@ -8,6 +8,8 @@ import {
   Clock,
   CloudSun,
   Battery,
+  Images,
+  Music2,
   Download,
   Upload,
 } from "lucide-react";
@@ -45,6 +47,8 @@ const widgetLabels = {
   weather: "天气",
   notes: "备忘录",
   battery: "电池",
+  photos: "照片",
+  music: "音乐",
 };
 const widgetApp = {
   calendar: "calendar",
@@ -52,6 +56,8 @@ const widgetApp = {
   weather: "weather",
   notes: "notes",
   battery: "settings",
+  photos: "photos",
+  music: "music",
 };
 function WidgetFace({
   widget,
@@ -84,12 +90,16 @@ function WidgetFace({
           <small>时钟</small>
         </>
       ) : widget.type === "weather" ? (
-        <>
-          <small>{weather?.title || "未添加城市"}</small>
-          <b>{weather?.meta.temperature || "—"}°</b>
-          <CloudSun size={27} />
-          <small>{weather?.meta.condition || "暂无天气数据"}</small>
-        </>
+        <div className="widget-weather-content widget-weather-compact">
+          <div className="widget-weather-heading">
+            <div>
+              <small>{weather?.title || "首尔"}</small>
+              <b>{weather?.meta.temperature ? `${weather.meta.temperature}°` : "—"}</b>
+              <small>{weather?.meta.condition || "多云"}</small>
+            </div>
+            <CloudSun size={32} />
+          </div>
+        </div>
       ) : widget.type === "notes" ? (
         <>
           <strong>备忘录</strong>
@@ -103,6 +113,22 @@ function WidgetFace({
             <small>无备忘录</small>
           )}
         </>
+      ) : widget.type === "photos" ? (
+        <div className="widget-photo-placeholder">
+          <Images size={30} />
+          <strong>照片</strong>
+          <small>等你发来照片</small>
+        </div>
+      ) : widget.type === "music" ? (
+        <div className="widget-music-face">
+          <span className="widget-music-art">{work.data.music?.[0]?.meta?.coverUrl ? <img src={work.data.music[0].meta.coverUrl} alt="" /> : <Music2 size={30} />}</span>
+          <div className="widget-music-details">
+            <small>最近播放 · Apple Music</small>
+            <strong>{work.data.music?.[0]?.title || "歌单第一首歌"}</strong>
+            <small>{work.data.music?.[0]?.meta?.artist || work.data.music?.[0]?.sender || "你的歌单"}</small>
+            <span className="widget-music-progress"><i /></span>
+          </div>
+        </div>
       ) : (
         <>
           <Battery size={44} />

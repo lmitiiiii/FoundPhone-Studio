@@ -1,695 +1,1690 @@
 {
   "scriptVersion": 1,
-  "id": "ui-test-phone-v2",
-  "title": "捡手机",
-  "description": "仅用于界面测试，不含剧情",
-  "revision": 2,
+  "id": "markchan-found-phone",
+  "title": "Markchan · 捡手机",
+  "description": "Coco & Mark 互动捡手机；密码 8266。媒体链接均留空待替换。",
+  "revision": 20,
   "phone": {
-    "owner": "机主",
-    "date": "2026-10-25",
-    "time": "09:41",
-    "battery": 94,
+    "owner": "Markchan",
+    "date": "2026-10-29",
+    "time": "21:14",
+    "battery": 86,
     "network": "5G",
-    "wallpaper": "apple-wwdc26"
+    "wallpaper": "purple-gradient",
+    "passcode": "8266",
+    "theme": "light"
   },
   "installedApps": [
-    "appstore",
     {
-      "id": "wechat",
-      "name": "微信",
-      "installed": true,
-      "visible": true,
-      "dock": false,
-      "folder": "",
-      "icon": ""
-    },
-    {
-      "id": "douyin",
-      "name": "抖音",
-      "installed": true,
-      "visible": true,
-      "dock": false,
-      "folder": "",
-      "icon": ""
-    },
-    "phone",
-    "messages",
-    "contacts",
-    "photos",
-    {
-      "id": "camera",
-      "name": "相机",
+      "id": "photos",
+      "name": "照片",
       "installed": true,
       "visible": true,
       "dock": true,
       "folder": "",
-      "icon": ""
+      "icon": "🖼️"
     },
-    "safari",
-    "notes",
-    "calendar",
-    "mail",
-    "clock",
-    "reminders",
-    "files",
-    "music",
-    "maps",
-    "weather",
-    "wallet",
-    "health",
-    "find",
-    "calculator",
-    "settings",
-    "qq",
-    "weibo",
-    "redbook",
-    "bilibili",
-    "alipay",
-    "taobao",
-    "netease",
-    "delivery",
-    "forum",
-    "whatsapp",
-    "instagram",
-    "tiktok",
-    "twitter",
-    "telegram",
-    "discord",
-    "youtube",
-    "line",
-    "snapchat",
-    "facebook",
-    "messenger",
-    "reddit",
-    "spotify",
-    "netflix",
-    "pinterest",
-    "threads",
-    "kakao"
+    {
+      "id": "weather",
+      "name": "天气",
+      "installed": true,
+      "visible": true,
+      "dock": false,
+      "folder": "",
+      "icon": "🌤️"
+    },
+    {
+      "id": "maps",
+      "name": "地图",
+      "installed": true,
+      "visible": true,
+      "dock": false,
+      "folder": "",
+      "icon": "🗺️"
+    },
+    {
+      "id": "reminders",
+      "name": "倒数日",
+      "installed": true,
+      "visible": true,
+      "dock": false,
+      "folder": "",
+      "icon": "❤️"
+    },
+    {
+      "id": "calendar",
+      "name": "日历",
+      "installed": true,
+      "visible": true,
+      "dock": false,
+      "folder": "",
+      "icon": "📅"
+    },
+    {
+      "id": "music",
+      "name": "Music",
+      "installed": true,
+      "visible": true,
+      "dock": true,
+      "folder": "",
+      "icon": "🎵"
+    },
+    {
+      "id": "notes",
+      "name": "备忘录",
+      "installed": true,
+      "visible": true,
+      "dock": false,
+      "folder": "",
+      "icon": "📝"
+    },
+    {
+      "id": "safari",
+      "name": "Safari",
+      "installed": true,
+      "visible": true,
+      "dock": true,
+      "folder": "",
+      "icon": "🧭"
+    },
+    {
+      "id": "recorder",
+      "name": "录音机",
+      "installed": true,
+      "visible": true,
+      "dock": false,
+      "folder": "",
+      "icon": "🎙️"
+    },
+    {
+      "id": "kakao",
+      "name": "KakaoTalk",
+      "installed": true,
+      "visible": true,
+      "dock": true,
+      "folder": "",
+      "icon": "💬"
+    },
+    {
+      "id": "instagram",
+      "name": "Instagram",
+      "installed": true,
+      "visible": true,
+      "dock": false,
+      "folder": "",
+      "icon": "📸"
+    },
+    {
+      "id": "twitter",
+      "name": "X",
+      "installed": true,
+      "visible": true,
+      "dock": false,
+      "folder": "",
+      "icon": "𝕏"
+    },
+    {
+      "id": "clock",
+      "name": "时间",
+      "installed": true,
+      "visible": true,
+      "dock": false,
+      "folder": "",
+      "icon": "🕒"
+    },
+    {
+      "id": "settings",
+      "name": "设置",
+      "installed": true,
+      "visible": true,
+      "dock": false,
+      "folder": "",
+      "icon": "⚙️"
+    },
+    {
+      "id": "phone",
+      "name": "电话",
+      "installed": true,
+      "visible": true,
+      "dock": false,
+      "folder": "",
+      "icon": "📞"
+    },
+    {
+      "id": "messages",
+      "name": "信息",
+      "installed": true,
+      "visible": true,
+      "dock": false,
+      "folder": "",
+      "icon": "💬"
+    }
   ],
   "contacts": [
     {
-      "id": "test-contact",
-      "name": "测试联系人",
+      "id": "donghyuck",
+      "name": "东赫",
       "phone": "",
-      "bio": "这是一条测试内容。"
+      "bio": "KakaoTalk 联系人"
+    },
+    {
+      "id": "mk",
+      "name": "李马克",
+      "phone": "",
+      "bio": "KakaoTalk 联系人"
     }
   ],
   "chats": [
     {
-      "id": "test-chat-messages",
-      "app": "messages",
-      "title": "测试会话",
-      "participants": [
-        "owner",
-        "test-contact"
-      ],
-      "messages": [
-        {
-          "id": "test-message-messages",
-          "body": "这是一条测试消息。",
-          "senderId": "test-contact"
-        }
-      ]
-    },
-    {
-      "id": "test-chat-wechat",
-      "app": "wechat",
-      "title": "测试会话",
-      "participants": [
-        "owner",
-        "test-contact"
-      ],
-      "messages": [
-        {
-          "id": "test-message-wechat",
-          "body": "这是一条测试消息。",
-          "senderId": "test-contact"
-        }
-      ]
-    },
-    {
-      "id": "test-chat-qq",
-      "app": "qq",
-      "title": "测试会话",
-      "participants": [
-        "owner",
-        "test-contact"
-      ],
-      "messages": [
-        {
-          "id": "test-message-qq",
-          "body": "这是一条测试消息。",
-          "senderId": "test-contact"
-        }
-      ]
-    },
-    {
-      "id": "test-chat-whatsapp",
-      "app": "whatsapp",
-      "title": "测试会话",
-      "participants": [
-        "owner",
-        "test-contact"
-      ],
-      "messages": [
-        {
-          "id": "test-message-whatsapp",
-          "body": "这是一条测试消息。",
-          "senderId": "test-contact"
-        }
-      ]
-    },
-    {
-      "id": "test-chat-telegram",
-      "app": "telegram",
-      "title": "测试会话",
-      "participants": [
-        "owner",
-        "test-contact"
-      ],
-      "messages": [
-        {
-          "id": "test-message-telegram",
-          "body": "这是一条测试消息。",
-          "senderId": "test-contact"
-        }
-      ]
-    },
-    {
-      "id": "test-chat-discord",
-      "app": "discord",
-      "title": "测试会话",
-      "participants": [
-        "owner",
-        "test-contact"
-      ],
-      "messages": [
-        {
-          "id": "test-message-discord",
-          "body": "这是一条测试消息。",
-          "senderId": "test-contact"
-        }
-      ]
-    },
-    {
-      "id": "test-chat-line",
-      "app": "line",
-      "title": "测试会话",
-      "participants": [
-        "owner",
-        "test-contact"
-      ],
-      "messages": [
-        {
-          "id": "test-message-line",
-          "body": "这是一条测试消息。",
-          "senderId": "test-contact"
-        }
-      ]
-    },
-    {
-      "id": "test-chat-messenger",
-      "app": "messenger",
-      "title": "测试会话",
-      "participants": [
-        "owner",
-        "test-contact"
-      ],
-      "messages": [
-        {
-          "id": "test-message-messenger",
-          "body": "这是一条测试消息。",
-          "senderId": "test-contact"
-        }
-      ]
-    },
-    {
-      "id": "test-chat-kakao",
+      "id": "kakao-donghyuck",
       "app": "kakao",
-      "title": "测试会话",
+      "title": "ㅁㅋ",
       "participants": [
         "owner",
-        "test-contact"
+        "donghyuck"
       ],
       "messages": [
         {
-          "id": "test-message-kakao",
-          "body": "这是一条测试消息。",
-          "senderId": "test-contact"
+          "id": "kakao-dh-01",
+          "title": "",
+          "body": "我好想你 你怎么还不回来",
+          "kind": "text",
+          "time": "2026-10-29 21:00",
+          "senderId": "owner"
         },
         {
-          "id": "test-reply-kakao",
-          "body": "这是一条测试回复。",
+          "id": "kakao-dh-02",
+          "title": "",
+          "body": "马上到家了",
+          "kind": "text",
+          "time": "2026-10-29 21:01",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-03",
+          "title": "",
+          "body": "有没有想吃的东西",
+          "kind": "text",
+          "time": "2026-10-29 21:02",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-04",
+          "title": "",
+          "body": "我带回来",
+          "kind": "text",
+          "time": "2026-10-29 21:03",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-05",
+          "title": "",
+          "body": "想吃甜的",
+          "kind": "text",
+          "time": "2026-10-29 21:04",
           "senderId": "owner"
+        },
+        {
+          "id": "kakao-dh-06",
+          "title": "",
+          "body": "你决定吧",
+          "kind": "text",
+          "time": "2026-10-29 21:05",
+          "senderId": "owner"
+        },
+        {
+          "id": "kakao-dh-07",
+          "title": "",
+          "body": "好",
+          "kind": "text",
+          "time": "2026-10-29 21:06",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-08",
+          "title": "",
+          "body": "老公 直播的那个手机在你那吗？",
+          "kind": "text",
+          "time": "2026-10-29 21:07",
+          "senderId": "owner"
+        },
+        {
+          "id": "kakao-dh-09",
+          "title": "",
+          "body": "我在家找了好久都没找到",
+          "kind": "text",
+          "time": "2026-10-29 21:08",
+          "senderId": "owner"
+        },
+        {
+          "id": "kakao-dh-10",
+          "title": "",
+          "body": "😔",
+          "kind": "text",
+          "time": "2026-10-29 21:09",
+          "senderId": "owner"
+        },
+        {
+          "id": "kakao-dh-11",
+          "title": "",
+          "body": "不在我这呀",
+          "kind": "text",
+          "time": "2026-10-29 21:10",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-12",
+          "title": "",
+          "body": "找不到就不找了",
+          "kind": "text",
+          "time": "2026-10-29 21:11",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-13",
+          "title": "",
+          "body": "先休息一会儿吧东赫🤌",
+          "kind": "text",
+          "time": "2026-10-29 21:12",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-14",
+          "title": "",
+          "body": "回家我来找吧",
+          "kind": "text",
+          "time": "2026-10-29 21:13",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-15",
+          "title": "",
+          "body": "直播的事情晚点再说",
+          "kind": "text",
+          "time": "2026-10-29 21:14",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-16",
+          "title": "",
+          "body": "好><♡♡♡♡",
+          "kind": "text",
+          "time": "2026-10-29 21:15",
+          "senderId": "owner"
+        }
+      ]
+    },
+    {
+      "id": "kakao-donghyuck-heart",
+      "app": "kakao",
+      "title": "东赫💗",
+      "participants": [
+        "owner",
+        "donghyuck"
+      ],
+      "messages": [
+        {
+          "id": "kakao-dh-heart-01",
+          "title": "",
+          "body": "少喝点",
+          "kind": "text",
+          "time": "2026-10-29 19:30",
+          "senderId": "owner"
+        },
+        {
+          "id": "kakao-dh-heart-02",
+          "title": "",
+          "body": "结束了给我打电话知道吗",
+          "kind": "text",
+          "time": "2026-10-29 19:31",
+          "senderId": "owner"
+        },
+        {
+          "id": "kakao-dh-heart-03",
+          "title": "",
+          "body": "我来接你",
+          "kind": "text",
+          "time": "2026-10-29 19:32",
+          "senderId": "owner"
+        },
+        {
+          "id": "kakao-dh-heart-04",
+          "title": "",
+          "body": "我知道了嘛",
+          "kind": "text",
+          "time": "2026-10-29 19:33",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-heart-05",
+          "title": "",
+          "body": "哥哥怎么总是话那么多",
+          "kind": "text",
+          "time": "2026-10-29 19:34",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-heart-06",
+          "title": "",
+          "body": "小没良心的",
+          "kind": "text",
+          "time": "2026-10-29 19:35",
+          "senderId": "owner"
+        },
+        {
+          "id": "kakao-dh-heart-07",
+          "title": "",
+          "body": "马克呀",
+          "kind": "text",
+          "time": "2026-10-29 19:36",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-heart-08",
+          "title": "",
+          "body": "marrrrr",
+          "kind": "text",
+          "time": "2026-10-29 19:37",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-heart-09",
+          "title": "",
+          "body": "老公",
+          "kind": "text",
+          "time": "2026-10-29 19:38",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-heart-10",
+          "title": "",
+          "body": "马克哥哥",
+          "kind": "text",
+          "time": "2026-10-29 19:39",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-heart-11",
+          "title": "",
+          "body": "怎么了",
+          "kind": "text",
+          "time": "2026-10-29 19:40",
+          "senderId": "owner"
+        },
+        {
+          "id": "kakao-dh-heart-12",
+          "title": "",
+          "body": "我爱你",
+          "kind": "text",
+          "time": "2026-10-29 19:41",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-heart-13",
+          "title": "",
+          "body": "知道了…",
+          "kind": "text",
+          "time": "2026-10-29 19:42",
+          "senderId": "owner"
+        },
+        {
+          "id": "kakao-dh-heart-14",
+          "title": "",
+          "body": "只是这样嘛😔",
+          "kind": "text",
+          "time": "2026-10-29 19:43",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-heart-15",
+          "title": "",
+          "body": "…",
+          "kind": "text",
+          "time": "2026-10-29 19:44",
+          "senderId": "owner"
+        },
+        {
+          "id": "kakao-dh-heart-16",
+          "title": "",
+          "body": "我也爱你",
+          "kind": "text",
+          "time": "2026-10-29 19:45",
+          "senderId": "owner"
+        },
+        {
+          "id": "kakao-dh-heart-17",
+          "title": "",
+          "body": "这就对了",
+          "kind": "text",
+          "time": "2026-10-29 19:46",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-heart-18",
+          "title": "",
+          "body": "😈",
+          "kind": "text",
+          "time": "2026-10-29 19:47",
+          "senderId": "donghyuck"
         }
       ]
     }
   ],
   "content": {
-    "phone": [
-      {
-        "id": "test-item-phone",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
-      }
-    ],
-    "contacts": [
-      {
-        "id": "test-item-contacts",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
-      }
-    ],
     "photos": [
       {
-        "id": "test-item-photos",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
-      }
-    ],
-    "camera": [
+        "id": "photo-1",
+        "title": "照片 01",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
+        "meta": {
+          "album": "🤫",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "1"
+        },
+        "folder": "🤫"
+      },
       {
-        "id": "test-item-camera",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
+        "id": "photo-2",
+        "title": "照片 02",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
+        "meta": {
+          "album": "🤫",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "2"
+        },
+        "folder": "🤫"
+      },
+      {
+        "id": "photo-3",
+        "title": "照片 03",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
+        "meta": {
+          "album": "🤫",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "3"
+        },
+        "folder": "🤫"
+      },
+      {
+        "id": "photo-4",
+        "title": "照片 04",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
+        "meta": {
+          "album": "🤫",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "4"
+        },
+        "folder": "🤫"
+      },
+      {
+        "id": "photo-5",
+        "title": "照片 05",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
+        "meta": {
+          "album": "🤫",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "5"
+        },
+        "folder": "🤫"
+      },
+      {
+        "id": "photo-6",
+        "title": "照片 06",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
+        "meta": {
+          "album": "🤫",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "6"
+        },
+        "folder": "🤫"
+      },
+      {
+        "id": "photo-7",
+        "title": "照片 07",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
+        "meta": {
+          "album": "🤫",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "7"
+        },
+        "folder": "🤫"
+      },
+      {
+        "id": "photo-8",
+        "title": "照片 08",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
+        "meta": {
+          "album": "🤫",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "8"
+        },
+        "folder": "🤫"
+      },
+      {
+        "id": "photo-9",
+        "title": "照片 09",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
+        "meta": {
+          "album": "🤫",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "9"
+        },
+        "folder": "🤫"
+      },
+      {
+        "id": "photo-10",
+        "title": "照片 10",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
+        "meta": {
+          "album": "🤫",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "10"
+        },
+        "folder": "🤫"
+      },
+      {
+        "id": "photo-11",
+        "title": "照片 11",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
+        "meta": {
+          "album": "🤫",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "11"
+        },
+        "folder": "🤫"
+      },
+      {
+        "id": "photo-12",
+        "title": "照片 12",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
+        "meta": {
+          "album": "🤫",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "12"
+        },
+        "folder": "🤫"
+      },
+      {
+        "id": "photo-13",
+        "title": "照片 13",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
+        "meta": {
+          "album": "🤫",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "13"
+        },
+        "folder": "🤫"
+      },
+      {
+        "id": "photo-14",
+        "title": "照片 14",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
+        "meta": {
+          "album": "🤫",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "14"
+        },
+        "folder": "🤫"
+      },
+      {
+        "id": "photo-15",
+        "title": "照片 15",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
+        "meta": {
+          "album": "🤫",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "15"
+        },
+        "folder": "🤫"
+      },
+      {
+        "id": "photo-16",
+        "title": "照片 16",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
+        "meta": {
+          "album": "🤫",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "16"
+        },
+        "folder": "🤫"
+      },
+      {
+        "id": "photo-17",
+        "title": "照片 17",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
+        "meta": {
+          "album": "🤫",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "17"
+        },
+        "folder": "🤫"
+      },
+      {
+        "id": "photo-18",
+        "title": "照片 18",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
+        "meta": {
+          "album": "🤫",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "18"
+        },
+        "folder": "🤫"
+      },
+      {
+        "id": "photo-19",
+        "title": "照片 19",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
+        "meta": {
+          "album": "🤫",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "19"
+        },
+        "folder": "🤫"
+      },
+      {
+        "id": "photo-20",
+        "title": "照片 20",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
+        "meta": {
+          "album": "🤫",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "20"
+        },
+        "folder": "🤫"
+      },
+      {
+        "id": "photo-21",
+        "title": "照片 21",
+        "body": "照片占位：替换 meta.mediaUrl 即可显示原图。",
+        "kind": "image",
+        "meta": {
+          "album": "🤫",
+          "mediaUrl": "",
+          "audioUrl": "",
+          "index": "21"
+        },
+        "folder": "🤫"
       }
     ],
     "safari": [
       {
-        "id": "test-item-safari",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
+        "id": "history-1",
+        "title": "首尔赏樱最佳点",
+        "body": "首尔赏樱最佳点",
         "kind": "text",
-        "meta": {}
+        "meta": {
+          "url": "",
+          "historyIndex": "1"
+        },
+        "folder": "历史记录"
+      },
+      {
+        "id": "history-2",
+        "title": "泡菜汤做法步骤",
+        "body": "泡菜汤做法步骤",
+        "kind": "text",
+        "meta": {
+          "url": "",
+          "historyIndex": "2"
+        },
+        "folder": "历史记录"
+      },
+      {
+        "id": "history-3",
+        "title": "襄阳一日游攻略 首尔出发",
+        "body": "襄阳一日游攻略 首尔出发",
+        "kind": "text",
+        "meta": {
+          "url": "",
+          "historyIndex": "3"
+        },
+        "folder": "历史记录"
+      },
+      {
+        "id": "history-4",
+        "title": "适合情侣散步的首尔江边路线",
+        "body": "适合情侣散步的首尔江边路线",
+        "kind": "text",
+        "meta": {
+          "url": "",
+          "historyIndex": "4"
+        },
+        "folder": "历史记录"
+      },
+      {
+        "id": "history-5",
+        "title": "惹男朋友生气了怎么哄？",
+        "body": "惹男朋友生气了怎么哄？",
+        "kind": "text",
+        "meta": {
+          "url": "",
+          "historyIndex": "5"
+        },
+        "folder": "历史记录"
       }
     ],
     "notes": [
       {
-        "id": "test-item-notes",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
+        "id": "note-shopping",
+        "title": "采购清单",
+        "body": "牛奶、五花肉、嫩豆腐、小葱、泡菜\n\n东赫想吃的麻糍\n📍강원 속초시 청학로 13 1층 육구방앗간\n（要红豆馅的）",
         "kind": "text",
-        "meta": {}
+        "meta": {
+          "folder": "个人"
+        }
+      },
+      {
+        "id": "note-kimchi",
+        "title": "泡菜汤做法",
+        "body": "1. 五花肉下锅煸出油\n2. 放泡菜翻炒 2 分钟\n3. 加水、放豆腐、韩式辣酱\n4. 小火煮 10 分钟",
+        "kind": "text",
+        "meta": {
+          "folder": "食谱"
+        }
+      },
+      {
+        "id": "note-yangyang",
+        "title": "襄阳一日游行李清单",
+        "body": "防晒、墨镜、遮阳帽\n充电宝+充电线\n薄外套、舒服的鞋子\n相机、小零食、雨伞",
+        "kind": "text",
+        "meta": {
+          "folder": "旅行"
+        }
+      },
+      {
+        "id": "note-business",
+        "title": "商务排期",
+        "body": "周一：双人出镜品牌推广，时长不少于 30 秒，报价后续发邮箱。\n\n周三：情侣一日店长见面会，穿同品牌配套情侣装，结束后拍宣传照。\n\n周四：品牌大秀+商务晚宴，座位表找助理核对。\n\n周五：情侣戒宣传视频排档，提前和摄影师沟通档期。",
+        "kind": "text",
+        "meta": {
+          "folder": "工作"
+        }
       }
     ],
     "calendar": [
       {
-        "id": "test-item-calendar",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
-      }
-    ],
-    "mail": [
+        "id": "anniversary-apr-29",
+        "title": "我们的纪念日",
+        "body": "4 月 29 日 · 纪念日",
+        "kind": "event",
+        "meta": {
+          "eventType": "anniversary",
+          "month": "4",
+          "day": "29",
+          "year": "2027",
+          "recurring": "yearly"
+        },
+        "time": "2027-04-29T09:00"
+      },
       {
-        "id": "test-item-mail",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
+        "id": "birthday-mark",
+        "title": "马克生日",
+        "body": "8 月 2 日",
+        "kind": "event",
+        "meta": {
+          "person": "马克",
+          "month": "8",
+          "day": "2",
+          "recurring": "yearly"
+        },
+        "time": "2027-08-02T09:00"
+      },
+      {
+        "id": "birthday-donghyuck",
+        "title": "东赫生日",
+        "body": "6 月 6 日",
+        "kind": "event",
+        "meta": {
+          "person": "东赫",
+          "month": "6",
+          "day": "6",
+          "recurring": "yearly"
+        },
+        "time": "2027-06-06T09:00"
       }
     ],
     "clock": [
       {
-        "id": "test-item-clock",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
+        "id": "world-seoul",
+        "title": "首尔",
+        "body": "Asia/Seoul",
         "kind": "text",
-        "meta": {}
+        "meta": {
+          "timezone": "Asia/Seoul"
+        }
+      },
+      {
+        "id": "world-vancouver",
+        "title": "温哥华",
+        "body": "America/Vancouver",
+        "kind": "text",
+        "meta": {
+          "timezone": "America/Vancouver"
+        }
+      },
+      {
+        "id": "world-new-york",
+        "title": "纽约",
+        "body": "America/New_York",
+        "kind": "text",
+        "meta": {
+          "timezone": "America/New_York"
+        }
+      },
+      {
+        "id": "alarm-weekday",
+        "title": "工作日早起",
+        "body": "每周一至周五 · 闹钟",
+        "kind": "event",
+        "time": "2026-10-30T07:30",
+        "meta": {
+          "type": "alarm",
+          "clock": "07:30",
+          "repeat": "周一、周二、周三、周四、周五",
+          "sound": "雷达",
+          "snooze": "稍后提醒"
+        }
+      },
+      {
+        "id": "alarm-evening",
+        "title": "出门提醒",
+        "body": "每天 · 闹钟",
+        "kind": "event",
+        "time": "2026-10-30T08:15",
+        "meta": {
+          "type": "alarm",
+          "clock": "08:15",
+          "repeat": "每天",
+          "sound": "晨间",
+          "snooze": "稍后提醒"
+        }
+      },
+      {
+        "id": "alarm-weekend",
+        "title": "周末慢慢来",
+        "body": "每周六、周日 · 闹钟",
+        "kind": "event",
+        "time": "2026-10-31T09:30",
+        "meta": {
+          "type": "alarm",
+          "clock": "09:30",
+          "repeat": "周六、周日",
+          "sound": "海潮",
+          "snooze": "稍后提醒"
+        }
       }
     ],
     "reminders": [
       {
-        "id": "test-item-reminders",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
+        "id": "days-love",
+        "title": "恋爱已经",
+        "body": "826 天",
         "kind": "text",
-        "meta": {}
-      }
-    ],
-    "files": [
+        "meta": {
+          "days": "826"
+        }
+      },
       {
-        "id": "test-item-files",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
+        "id": "days-anniversary",
+        "title": "距离纪念日",
+        "body": "还有 182 天",
         "kind": "text",
-        "meta": {}
+        "meta": {
+          "days": "182",
+          "nextDate": "2027-04-29"
+        }
+      },
+      {
+        "id": "days-birthday-donghyuck",
+        "title": "东赫生日",
+        "body": "6 月 6 日 · 给东赫准备生日惊喜",
+        "kind": "text",
+        "meta": {
+          "nextDate": "2027-06-06",
+          "month": "6",
+          "day": "6",
+          "person": "东赫",
+          "category": "birthday"
+        }
+      },
+      {
+        "id": "days-birthday-mark",
+        "title": "马克生日",
+        "body": "8 月 2 日 · 记得对马克说生日快乐",
+        "kind": "text",
+        "meta": {
+          "nextDate": "2027-08-02",
+          "month": "8",
+          "day": "2",
+          "person": "马克",
+          "category": "birthday"
+        }
       }
     ],
     "music": [
       {
-        "id": "test-item-music",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
+        "id": "song-1",
+        "title": "Billionaire (feat. Bruno Mars)",
+        "body": "Travie McCoy, Bruno Mars",
+        "kind": "audio",
+        "meta": {
+          "artist": "Travie McCoy, Bruno Mars",
+          "audioUrl": "",
+          "coverUrl": "https://i.scdn.co/image/ab67616d0000b27337ce3dd20c2318e13c6608ed",
+          "track": "1",
+          "album": "Lazarus"
+        }
+      },
+      {
+        "id": "song-2",
+        "title": "E.T.A.",
+        "body": "Justin Bieber",
+        "kind": "audio",
+        "meta": {
+          "artist": "Justin Bieber",
+          "audioUrl": "",
+          "coverUrl": "",
+          "track": "2",
+          "album": "Changes"
+        }
+      },
+      {
+        "id": "song-3",
+        "title": "Intentions (feat. Quavo)",
+        "body": "Justin Bieber, Quavo",
+        "kind": "audio",
+        "meta": {
+          "artist": "Justin Bieber, Quavo",
+          "audioUrl": "",
+          "coverUrl": "",
+          "track": "3",
+          "album": "Changes"
+        }
+      },
+      {
+        "id": "song-4",
+        "title": "Love Never Felt So Good",
+        "body": "Michael Jackson",
+        "kind": "audio",
+        "meta": {
+          "artist": "Michael Jackson",
+          "audioUrl": "",
+          "coverUrl": "",
+          "track": "4",
+          "album": "Xscape"
+        }
+      },
+      {
+        "id": "song-5",
+        "title": "Goodbye Summer (feat. D.O.)",
+        "body": "f(x), D.O.",
+        "kind": "audio",
+        "meta": {
+          "artist": "f(x), D.O.",
+          "audioUrl": "",
+          "coverUrl": "",
+          "track": "5",
+          "album": "Pink Tape"
+        }
+      },
+      {
+        "id": "song-6",
+        "title": "첫 눈 (The First Snow)",
+        "body": "EXO",
+        "kind": "audio",
+        "meta": {
+          "artist": "EXO",
+          "audioUrl": "",
+          "coverUrl": "",
+          "track": "6",
+          "album": "Miracles in December"
+        }
+      },
+      {
+        "id": "song-7",
+        "title": "PLAYBOY",
+        "body": "EXO",
+        "kind": "audio",
+        "meta": {
+          "artist": "EXO",
+          "audioUrl": "",
+          "coverUrl": "",
+          "track": "7",
+          "album": "EXODUS"
+        }
+      },
+      {
+        "id": "song-8",
+        "title": "Thriller",
+        "body": "Michael Jackson",
+        "kind": "audio",
+        "meta": {
+          "artist": "Michael Jackson",
+          "audioUrl": "",
+          "coverUrl": "",
+          "track": "8",
+          "album": "Thriller"
+        }
       }
     ],
     "maps": [
       {
-        "id": "test-item-maps",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
+        "id": "map-mochi",
+        "title": "육구방앗간",
+        "body": "강원 속초시 청학로 13 1층 육구방앗간",
         "kind": "text",
-        "meta": {}
+        "meta": {
+          "address": "강원 속초시 청학로 13 1층 육구방앗간",
+          "mapUrl": ""
+        }
+      },
+      {
+        "id": "map-hangang",
+        "title": "汉江公园",
+        "body": "首尔汉江公园",
+        "kind": "text",
+        "meta": {
+          "address": "한강공원, Seoul",
+          "mapUrl": ""
+        }
+      },
+      {
+        "id": "map-hongdae",
+        "title": "弘大烤肉店",
+        "body": "弘大附近收藏地点",
+        "kind": "text",
+        "meta": {
+          "address": "Hongdae, Seoul",
+          "mapUrl": ""
+        }
       }
     ],
     "weather": [
       {
-        "id": "test-item-weather",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
+        "id": "seoul-weather",
+        "title": "首尔",
+        "body": "多云 · 10°C · 降水量 0 mm",
         "kind": "text",
-        "meta": {}
-      }
-    ],
-    "wallet": [
-      {
-        "id": "test-item-wallet",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
-      }
-    ],
-    "health": [
-      {
-        "id": "test-item-health",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
-      }
-    ],
-    "find": [
-      {
-        "id": "test-item-find",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
-      }
-    ],
-    "calculator": [
-      {
-        "id": "test-item-calculator",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
+        "meta": {
+          "city": "Seoul",
+          "temperature": "10",
+          "condition": "多云",
+          "high": "11",
+          "low": "6",
+          "updatedAt": "2026-10-29 15:00 KST",
+          "feelsLike": "8",
+          "precipitation": "0 mm",
+          "humidity": "48%",
+          "wind": "12 km/h",
+          "uvIndex": "2（偏低）",
+          "visibility": "10 km",
+          "locationLabel": "韩国 · 首尔",
+          "rain": "10%",
+          "sunrise": "06:48",
+          "sunset": "17:38",
+          "aqi": "32",
+          "aqiLabel": "空气质量优",
+          "hourly": "[{\"time\":\"现在\",\"temperature\":\"10\",\"condition\":\"多云\",\"rain\":\"10%\",\"wind\":\"12 km/h\"},{\"time\":\"16时\",\"temperature\":\"10\",\"condition\":\"多云\",\"rain\":\"10%\",\"wind\":\"11 km/h\"},{\"time\":\"17时\",\"temperature\":\"9\",\"condition\":\"晴间多云\",\"rain\":\"5%\",\"wind\":\"10 km/h\"},{\"time\":\"18时\",\"temperature\":\"8\",\"condition\":\"晴\",\"rain\":\"0%\",\"wind\":\"8 km/h\"},{\"time\":\"19时\",\"temperature\":\"7\",\"condition\":\"晴\",\"rain\":\"0%\",\"wind\":\"7 km/h\"},{\"time\":\"日出\",\"temperature\":\"6\",\"condition\":\"晴\",\"rain\":\"0%\",\"wind\":\"6 km/h\"}]",
+          "daily": "[{\"label\":\"今天\",\"low\":\"6\",\"high\":\"11\",\"condition\":\"多云\",\"rain\":\"10%\"},{\"label\":\"周五\",\"low\":\"5\",\"high\":\"12\",\"condition\":\"晴\",\"rain\":\"0%\"},{\"label\":\"周六\",\"low\":\"7\",\"high\":\"14\",\"condition\":\"多云\",\"rain\":\"10%\"},{\"label\":\"周日\",\"low\":\"8\",\"high\":\"15\",\"condition\":\"小雨\",\"rain\":\"35%\"},{\"label\":\"周一\",\"low\":\"6\",\"high\":\"13\",\"condition\":\"晴\",\"rain\":\"0%\"}]"
+        }
       }
     ],
     "settings": [
       {
-        "id": "test-item-settings",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
+        "id": "settings-device",
+        "title": "关于本机",
+        "body": "设备名称：Mark&donghyuck‘s\n机型：iPhone 15 Pro\n系统：iOS 18",
         "kind": "text",
-        "meta": {}
-      }
-    ],
-    "weibo": [
+        "meta": {
+          "deviceName": "Mark&donghyuck‘s",
+          "model": "iPhone 15 Pro",
+          "system": "iOS 18"
+        }
+      },
       {
-        "id": "test-item-weibo",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
+        "id": "settings-wallpaper",
+        "title": "墙纸",
+        "body": "紫色渐变锁屏预览；替换壁纸链接占位",
         "kind": "text",
-        "meta": {}
+        "meta": {
+          "wallpaperUrl": ""
+        }
       }
     ],
-    "redbook": [
-      {
-        "id": "test-item-redbook",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
-      }
-    ],
-    "douyin": [
-      {
-        "id": "test-item-douyin",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
-      }
-    ],
-    "bilibili": [
-      {
-        "id": "test-item-bilibili",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
-      }
-    ],
-    "alipay": [
-      {
-        "id": "test-item-alipay",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
-      }
-    ],
-    "taobao": [
-      {
-        "id": "test-item-taobao",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
-      }
-    ],
-    "netease": [
-      {
-        "id": "test-item-netease",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
-      }
-    ],
-    "delivery": [
-      {
-        "id": "test-item-delivery",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
-      }
-    ],
-    "forum": [
-      {
-        "id": "test-item-forum",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
-      }
-    ],
+    "kakao": [],
     "instagram": [
       {
-        "id": "test-item-instagram",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
+        "id": "ig-main-profile",
+        "title": "markcocolove",
+        "body": "恋爱日记本📔\n合作📮826699520@gmail.com\n最萌的达人 @coco66_\n最酷的达人 @mark82_",
         "kind": "text",
-        "meta": {}
-      }
-    ],
-    "tiktok": [
+        "meta": {
+          "username": "markcocolove",
+          "profileType": "main",
+          "avatarUrl": "",
+          "followerCount": "56.8万",
+          "followingCount": "2"
+        }
+      },
       {
-        "id": "test-item-tiktok",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
+        "id": "ig-main-post-1",
+        "title": "主页内容 1",
+        "body": "周末的首尔，和最喜欢的人一起慢慢走。📷",
+        "kind": "post",
+        "meta": {
+          "username": "markcocolove",
+          "postUrl": "",
+          "imageUrl": ""
+        }
+      },
+      {
+        "id": "ig-main-post-2",
+        "title": "主页内容 2",
+        "body": "最近相册里出现频率最高的两个人。",
+        "kind": "post",
+        "meta": {
+          "username": "markcocolove",
+          "postUrl": "",
+          "imageUrl": ""
+        }
+      },
+      {
+        "id": "ig-main-post-3",
+        "title": "主页内容 3",
+        "body": "恋爱日记更新中：今天也有好好吃饭、好好见面。",
+        "kind": "post",
+        "meta": {
+          "username": "markcocolove",
+          "postUrl": "",
+          "imageUrl": ""
+        }
+      },
+      {
+        "id": "ig-coco-profile",
+        "title": "@coco66_",
+        "body": "我现在恋爱了知道吗\n我要专心陪我老公\n我不会再更新社交软件了\n你们已经失去我了\n不要太想我 @mark82_",
         "kind": "text",
-        "meta": {}
+        "meta": {
+          "username": "coco66_",
+          "profileType": "linked",
+          "avatarUrl": "",
+          "followerCount": "52.6万",
+          "followingCount": "2"
+        }
+      },
+      {
+        "id": "ig-coco-post-1",
+        "title": "@coco66_ 内容 1",
+        "body": "今天也要黏着我老公一点点。🤍",
+        "kind": "post",
+        "meta": {
+          "username": "coco66_",
+          "postUrl": "",
+          "imageUrl": ""
+        }
+      },
+      {
+        "id": "ig-coco-post-2",
+        "title": "@coco66_ 内容 2",
+        "body": "他说随便拍，结果每一张都在看镜头外的人。",
+        "kind": "post",
+        "meta": {
+          "username": "coco66_",
+          "postUrl": "",
+          "imageUrl": ""
+        }
+      },
+      {
+        "id": "ig-coco-post-3",
+        "title": "@coco66_ 内容 3",
+        "body": "最喜欢的约会：没有安排，和你一起就好。",
+        "kind": "post",
+        "meta": {
+          "username": "coco66_",
+          "postUrl": "",
+          "imageUrl": ""
+        }
+      },
+      {
+        "id": "ig-mark-profile",
+        "title": "@mark82_",
+        "body": "我现在恋爱了知道吗\n我要专心陪我老婆\n我不会再更新社交软件了\n你们已经失去我了\n不要太想我 @coco66_",
+        "kind": "text",
+        "meta": {
+          "username": "mark82_",
+          "profileType": "linked",
+          "avatarUrl": "",
+          "followerCount": "58.3万",
+          "followingCount": "2"
+        }
+      },
+      {
+        "id": "ig-mark-post-1",
+        "title": "@mark82_ 内容 1",
+        "body": "有人说只拍一张，最后拍了整整一卷。",
+        "kind": "post",
+        "meta": {
+          "username": "mark82_",
+          "postUrl": "",
+          "imageUrl": ""
+        }
+      },
+      {
+        "id": "ig-mark-post-2",
+        "title": "@mark82_ 内容 2",
+        "body": "今天的任务：记住她喜欢的每一个小东西。",
+        "kind": "post",
+        "meta": {
+          "username": "mark82_",
+          "postUrl": "",
+          "imageUrl": ""
+        }
+      },
+      {
+        "id": "ig-mark-post-3",
+        "title": "@mark82_ 内容 3",
+        "body": "回家的路变短了，因为有人在等我。",
+        "kind": "post",
+        "meta": {
+          "username": "mark82_",
+          "postUrl": "",
+          "imageUrl": ""
+        }
+      },
+      {
+        "id": "ig-question-1",
+        "title": "提问箱 1",
+        "body": "你们第一次约会去了哪里？",
+        "kind": "post",
+        "meta": {
+          "questionUrl": "",
+          "answerUrl": ""
+        }
+      },
+      {
+        "id": "ig-question-2",
+        "title": "提问箱 2",
+        "body": "谁先告白的？",
+        "kind": "post",
+        "meta": {
+          "questionUrl": "",
+          "answerUrl": ""
+        }
+      },
+      {
+        "id": "ig-question-3",
+        "title": "提问箱 3",
+        "body": "平时是谁更黏人？",
+        "kind": "post",
+        "meta": {
+          "questionUrl": "",
+          "answerUrl": ""
+        }
+      },
+      {
+        "id": "ig-question-4",
+        "title": "提问箱 4",
+        "body": "最喜欢对方的哪个小习惯？",
+        "kind": "post",
+        "meta": {
+          "questionUrl": "",
+          "answerUrl": ""
+        }
+      },
+      {
+        "id": "ig-question-5",
+        "title": "提问箱 5",
+        "body": "下一次想一起去哪里旅行？",
+        "kind": "post",
+        "meta": {
+          "questionUrl": "",
+          "answerUrl": ""
+        }
       }
     ],
     "twitter": [
       {
-        "id": "test-item-twitter",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
+        "id": "x-profile-coco",
+        "title": "coco66_",
+        "body": "恋爱中｜把日常和喜欢的人一起存档。🤍\n@mark82_",
         "kind": "text",
-        "meta": {}
-      }
-    ],
-    "youtube": [
-      {
-        "id": "test-item-youtube",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
-      }
-    ],
-    "snapchat": [
-      {
-        "id": "test-item-snapchat",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
-      }
-    ],
-    "facebook": [
-      {
-        "id": "test-item-facebook",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
-      }
-    ],
-    "reddit": [
-      {
-        "id": "test-item-reddit",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
-      }
-    ],
-    "spotify": [
-      {
-        "id": "test-item-spotify",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
-      }
-    ],
-    "netflix": [
-      {
-        "id": "test-item-netflix",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
-      }
-    ],
-    "pinterest": [
-      {
-        "id": "test-item-pinterest",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
-      }
-    ],
-    "threads": [
-      {
-        "id": "test-item-threads",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
-      },
-      {
-        "id": "test-threads-message-1",
-        "title": "测试会话1",
-        "body": "这是一条测试消息。",
-        "sender": "测试联系人1",
-        "folder": "私信"
-      },
-      {
-        "id": "test-threads-activity-1",
-        "title": "测试动态1",
-        "body": "这是一条测试回复动态。",
-        "sender": "测试用户1",
         "meta": {
-          "activityType": "reply"
+          "username": "coco66_",
+          "avatarUrl": ""
         }
       },
       {
-        "id": "test-threads-message-2",
-        "title": "测试会话2",
-        "body": "这是一条测试消息。",
-        "sender": "测试联系人2",
-        "folder": "私信"
-      },
-      {
-        "id": "test-threads-activity-2",
-        "title": "测试动态2",
-        "body": "这是一条测试回复动态。",
-        "sender": "测试用户2",
+        "id": "x-profile-mark",
+        "title": "mark82_",
+        "body": "工作和生活都在认真过。最近最常提起的人：@coco66_",
+        "kind": "text",
         "meta": {
-          "activityType": "reply"
+          "username": "mark82_",
+          "avatarUrl": ""
         }
       },
       {
-        "id": "test-threads-message-3",
-        "title": "测试会话3",
-        "body": "这是一条测试消息。",
-        "sender": "测试联系人3",
-        "folder": "私信"
+        "id": "x-post-1",
+        "title": "@coco66_ · 动态",
+        "body": "有人问我最近怎么不更新了。因为比起刷手机，我现在更想把时间留给某个人。🤍",
+        "kind": "post",
+        "meta": {
+          "username": "coco66_",
+          "imageUrl": "",
+          "postUrl": "",
+          "replies": "128",
+          "reposts": "36",
+          "likes": "2400",
+          "shares": "0",
+          "comments": "coco.and.mark：他刚刚又问我冷不冷……\n网友A：这就是恋爱中的人吗ㅋㅋ\n网友B：怎么感觉在说某个人\n网友C：请一直幸福下去\n网友D：这条好甜\n网友E：细节控本人\n网友F：懂了，今天也是公开秀恩爱\n网友G：想看后续！\n网友H：你们两个都好可爱\n网友I：已收藏这份幸福"
+        }
       },
       {
-        "id": "test-threads-activity-3",
-        "title": "测试动态3",
-        "body": "这是一条测试回复动态。",
-        "sender": "测试用户3",
+        "id": "x-post-2",
+        "title": "@mark82_ · 动态",
+        "body": "今日份行程：工作、买麻糍、接某个嘴上说不用来接的人。",
+        "kind": "post",
         "meta": {
-          "activityType": "reply"
+          "username": "mark82_",
+          "imageUrl": "",
+          "postUrl": "",
+          "replies": "96",
+          "reposts": "22",
+          "likes": "1800",
+          "shares": "0",
+          "comments": "coco.and.mark：她说不用接，但我还是去了。\n网友A：这就是恋爱中的人吗ㅋㅋ\n网友B：怎么感觉在说某个人\n网友C：请一直幸福下去\n网友D：这条好甜\n网友E：细节控本人\n网友F：懂了，今天也是公开秀恩爱\n网友G：想看后续！\n网友H：你们两个都好可爱\n网友I：已收藏这份幸福"
+        }
+      },
+      {
+        "id": "x-post-3",
+        "title": "@coco66_ · 动态",
+        "body": "恋爱之后才发现，原来被人记住随口说过的小事，会开心很久。",
+        "kind": "post",
+        "meta": {
+          "username": "coco66_",
+          "imageUrl": "",
+          "postUrl": "",
+          "replies": "153",
+          "reposts": "41",
+          "likes": "3100",
+          "shares": "0",
+          "comments": "coco.and.mark：他居然真的记得我上次说想吃什么。\n网友A：这就是恋爱中的人吗ㅋㅋ\n网友B：怎么感觉在说某个人\n网友C：请一直幸福下去\n网友D：这条好甜\n网友E：细节控本人\n网友F：懂了，今天也是公开秀恩爱\n网友G：想看后续！\n网友H：你们两个都好可爱\n网友I：已收藏这份幸福"
+        }
+      },
+      {
+        "id": "x-post-4",
+        "title": "@mark82_ · 动态",
+        "body": "天气冷了。提醒某人穿外套这件事，看来还要继续每天做。",
+        "kind": "post",
+        "meta": {
+          "username": "mark82_",
+          "imageUrl": "",
+          "postUrl": "",
+          "replies": "84",
+          "reposts": "19",
+          "likes": "1600",
+          "shares": "0",
+          "comments": "coco.and.mark：她出门前又把外套放回去了ㅋㅋ\n网友A：这就是恋爱中的人吗ㅋㅋ\n网友B：怎么感觉在说某个人\n网友C：请一直幸福下去\n网友D：这条好甜\n网友E：细节控本人\n网友F：懂了，今天也是公开秀恩爱\n网友G：想看后续！\n网友H：你们两个都好可爱\n网友I：已收藏这份幸福"
         }
       }
     ],
-    "appstore": [
+    "recorder": [
       {
-        "id": "test-appstore",
-        "title": "测试内容",
-        "body": "这是一条测试内容。"
+        "id": "recording-1",
+        "title": "未命名录音 1",
+        "body": "音频链接占位，请填写 meta.audioUrl。",
+        "kind": "audio",
+        "meta": {
+          "audioUrl": "",
+          "duration": ""
+        }
+      },
+      {
+        "id": "recording-2",
+        "title": "未命名录音 2",
+        "body": "音频链接占位，请填写 meta.audioUrl。",
+        "kind": "audio",
+        "meta": {
+          "audioUrl": "",
+          "duration": ""
+        }
+      },
+      {
+        "id": "recording-3",
+        "title": "未命名录音 3",
+        "body": "音频链接占位，请填写 meta.audioUrl。",
+        "kind": "audio",
+        "meta": {
+          "audioUrl": "",
+          "duration": ""
+        }
+      }
+    ],
+    "phone": [
+      {
+        "id": "call-mark-01",
+        "title": "Mark",
+        "body": "来电 · 已接听 · 8 分钟",
+        "sender": "Mark",
+        "time": "2026-10-28T21:14",
+        "kind": "call",
+        "meta": {
+          "number": "010-****-8266",
+          "status": "已接听",
+          "duration": "08:12",
+          "direction": "来电"
+        },
+        "folder": "最近通话"
+      },
+      {
+        "id": "call-donghyuck-01",
+        "title": "东赫",
+        "body": "去吃饭吗？",
+        "sender": "东赫",
+        "time": "2026-10-28T18:42",
+        "kind": "call",
+        "meta": {
+          "number": "010-****-0606",
+          "status": "已接听",
+          "duration": "03:26",
+          "direction": "去电"
+        },
+        "folder": "最近通话"
+      },
+      {
+        "id": "call-unknown-01",
+        "title": "未知来电",
+        "body": "未接来电",
+        "sender": "未知来电",
+        "time": "2026-10-27T23:08",
+        "kind": "call",
+        "meta": {
+          "number": "未知号码",
+          "status": "未接",
+          "direction": "来电"
+        },
+        "folder": "最近通话"
+      },
+      {
+        "id": "call-mark-02",
+        "title": "Mark",
+        "body": "未接来电",
+        "sender": "Mark",
+        "time": "2026-10-27T16:30",
+        "kind": "call",
+        "meta": {
+          "number": "010-****-8266",
+          "status": "未接",
+          "direction": "来电"
+        },
+        "folder": "最近通话"
+      },
+      {
+        "id": "call-friend-01",
+        "title": "朋友",
+        "body": "来电 · 已接听 · 2 分钟",
+        "sender": "朋友",
+        "time": "2026-10-26T14:06",
+        "kind": "call",
+        "meta": {
+          "number": "010-****-2048",
+          "status": "已接听",
+          "duration": "02:41",
+          "direction": "来电"
+        },
+        "folder": "最近通话"
+      },
+      {
+        "id": "call-unknown-02",
+        "title": "未知来电",
+        "body": "已拒接",
+        "sender": "未知来电",
+        "time": "2026-10-25T11:53",
+        "kind": "call",
+        "meta": {
+          "number": "070-****-1190",
+          "status": "已拒接",
+          "direction": "来电"
+        },
+        "folder": "最近通话"
+      },
+      {
+        "id": "call-donghyuck-02",
+        "title": "东赫",
+        "body": "去电 · 已接听 · 5 分钟",
+        "sender": "东赫",
+        "time": "2026-10-23T20:17",
+        "kind": "call",
+        "meta": {
+          "number": "010-****-0606",
+          "status": "已接听",
+          "duration": "05:03",
+          "direction": "去电"
+        },
+        "folder": "最近通话"
+      }
+    ],
+    "messages": [
+      {
+        "id": "sms-shop-01",
+        "title": "Coupang 优惠通知",
+        "body": "【Coupang】今晚 23:59 前，精选好物限时特惠。打开 App 查看本周折扣。退订请回复 STOP。",
+        "sender": "Coupang",
+        "time": "2026-10-29T10:24",
+        "kind": "text",
+        "meta": {
+          "category": "广告",
+          "brand": "Coupang"
+        },
+        "folder": "促销",
+        "read": false
+      },
+      {
+        "id": "sms-cafe-01",
+        "title": "星巴克 Korea",
+        "body": "【STARBUCKS】秋日限定饮品正在贩售中，使用会员券可享特别优惠。数量有限，欢迎到店体验。",
+        "sender": "STARBUCKS",
+        "time": "2026-10-28T13:08",
+        "kind": "text",
+        "meta": {
+          "category": "广告",
+          "brand": "STARBUCKS"
+        },
+        "folder": "促销",
+        "read": true
+      },
+      {
+        "id": "sms-delivery-01",
+        "title": "外卖优惠",
+        "body": "【外卖优惠】今天下单立减 ₩5,000，适用部分餐厅。点击应用内优惠券查看详情。",
+        "sender": "外卖优惠",
+        "time": "2026-10-27T18:21",
+        "kind": "text",
+        "meta": {
+          "category": "广告"
+        },
+        "folder": "促销",
+        "read": true
+      },
+      {
+        "id": "sms-beauty-01",
+        "title": "Olive Young",
+        "body": "【OLIVE YOUNG】会员专属周末活动开启！精选护肤品最高 30% OFF，活动截止至周日。",
+        "sender": "OLIVE YOUNG",
+        "time": "2026-10-26T09:15",
+        "kind": "text",
+        "meta": {
+          "category": "广告",
+          "brand": "OLIVE YOUNG"
+        },
+        "folder": "促销",
+        "read": true
+      },
+      {
+        "id": "sms-carrier-01",
+        "title": "运营商通知",
+        "body": "【移动通信】本月流量使用提醒：当前套餐剩余流量充足。查看官方 App 可了解套餐详情。",
+        "sender": "运营商通知",
+        "time": "2026-10-25T08:40",
+        "kind": "text",
+        "meta": {
+          "category": "服务通知"
+        },
+        "folder": "通知",
+        "read": true
+      },
+      {
+        "id": "sms-lottery-01",
+        "title": "活动中奖通知",
+        "body": "【会员活动】您获得一张限时折扣券，请在官方应用内查看活动详情。请勿向任何人提供验证码或支付信息。",
+        "sender": "会员活动",
+        "time": "2026-10-24T15:32",
+        "kind": "text",
+        "meta": {
+          "category": "推广提醒"
+        },
+        "folder": "促销",
+        "read": true
       }
     ]
   },

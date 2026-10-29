@@ -1,5 +1,5 @@
 export { WeatherSkin, HealthSkin } from "./CalibratedSystemApps";
-import { AudioPlayer, useTrack } from "../audio";
+import { musicCommand, useTrack } from "../audio";
 import { useSkinState } from "../skinState";
 import {
   Calendar,
@@ -17,10 +17,17 @@ import {
   Image,
   LockKeyhole,
   MapPin,
+  MoreHorizontal,
+  Bookmark,
+  Share,
   Music,
   Phone,
   Search,
   SkipForward,
+  Play,
+  Pause,
+  Radio,
+  Compass,
   Star,
   Users,
   Wallet,
@@ -304,55 +311,113 @@ export function CameraSkin(p: Props) {
 }
 export function SafariSkin(p: Props) {
   const [q, setQ] = useState(""),
-    [tab, setTab] = useState("书签");
+    [tab, setTab] = useState("书签"),
+    [selectedQuery, setSelectedQuery] = useState(""),
+    [selectedResult, setSelectedResult] = useState<number | null>(null);
   const items = p.items
-    .filter((i) =>
-      (i.title + i.body + meta(i, "url"))
-        .toLowerCase()
-        .includes(q.toLowerCase()),
-    )
-    .filter((i) =>
-      tab === "书签"
-        ? i.favorite || i.folder !== "历史记录"
-        : i.folder === "历史记录",
-    );
+    .filter((i) => (i.title + i.body + meta(i, "url")).toLowerCase().includes(q.toLowerCase()))
+    .filter((i) => tab === "书签" ? i.favorite || i.folder !== "历史记录" : i.folder === "历史记录");
+  const searchResults = (query: string): {title:string; description:string; site:string; domain:string; body:string[]}[] => {
+    if (query.includes("赏樱")) return [
+      {title:"首尔赏樱路线：汝矣岛、石村湖和南山",description:"整理首尔春季赏樱地点、交通方式与散步路线。想看樱花和汉江景色，可以从汝矣岛一带开始。",site:"首尔旅行笔记",domain:"seoul-guide.kr",body:["汝矣岛汉江公园：沿着汉江步道散步，花期时可以看到成排樱花。","石村湖：环湖步道适合拍照，傍晚湖面和城市灯光很漂亮。","南山公园：适合安排一段轻松的登山散步，出发前可以查看花期和天气。"]},
+      {title:"汝矣岛汉江公园樱花散步攻略",description:"交通、赏花路线和野餐建议，适合安排半天的春日行程。",site:"周末去哪儿",domain:"weekend-note.kr",body:["建议搭乘地铁前往，花期周末人流较多。","可以准备野餐垫和饮料，傍晚留下来看汉江夜景。"]},
+      {title:"首尔适合拍樱花照片的地方",description:"从首尔林到南山步道，收集适合散步和拍照的赏花地点。",site:"城市散步指南",domain:"walk-in-seoul.com",body:["首尔林适合慢慢散步，也有不少可以取景的林荫路。","花期每年略有不同，出门前最好确认当地最新花况。"]}
+    ];
+    if (query.includes("泡菜汤")) return [
+      {title:"韩式泡菜汤做法：五花肉豆腐版",description:"用熟成泡菜、五花肉和嫩豆腐煮出浓郁汤底，做法简单，适合配米饭。",site:"韩国家常食谱",domain:"k-food-table.kr",body:["1. 五花肉切片，下锅煸炒至出油。","2. 加入泡菜翻炒约两分钟，让香味出来。","3. 加水，放入豆腐和适量韩式辣酱。","4. 转小火煮约十分钟，尝味后即可上桌。"]},
+      {title:"Kimchi jjigae｜经典韩式泡菜锅",description:"泡菜的酸香搭配五花肉，炖煮后汤汁更浓郁。",site:"今天吃什么",domain:"today-meal.kr",body:["使用偏酸的熟成泡菜风味更好。","可以依口味加入洋葱、葱花或金枪鱼。"]},
+      {title:"泡菜汤配什么吃？",description:"米饭、煎蛋和简单小菜就能组成一顿舒服的韩式晚餐。",site:"餐桌日记",domain:"table-diary.kr",body:["热腾腾的泡菜汤适合搭配白米饭。","如果泡菜本身很咸，调味时可以少放酱料。"]}
+    ];
+    if (query.includes("襄阳")) return [
+      {title:"首尔出发：襄阳一日游路线",description:"海边散步、当地咖啡馆和海岸风景，安排一日轻旅行。",site:"韩国周末旅行",domain:"weekend-korea.kr",body:["上午从首尔出发，先确认巴士或火车班次。","抵达后可以安排海边散步、竹岛一带和咖啡馆。","回程前预留交通时间，避免把行程排得太紧。"]},
+      {title:"襄阳海边旅行准备清单",description:"防晒、墨镜、薄外套和充电宝是海边出行的实用物品。",site:"轻旅行手册",domain:"trip-note.kr",body:["海边风比较大，带一件薄外套会更舒服。","如果计划拍照，可以把日落时间留在行程里。"]},
+      {title:"襄阳咖啡馆与海岸散步",description:"沿着海边慢慢走，找一家咖啡馆休息，适合不赶时间的旅行。",site:"沿海慢生活",domain:"coast-life.kr",body:["可以把午餐和咖啡安排在海边附近。","周末出行建议提前确认店铺营业时间。"]}
+    ];
+    if (query.includes("情侣") || query.includes("江边")) return [
+      {title:"首尔汉江公园情侣散步路线",description:"盘浦适合看夜景，汝矣岛适合沿江散步和野餐，选一段路线慢慢走就很好。",site:"首尔约会地图",domain:"date-map.kr",body:["盘浦汉江公园：适合傍晚散步，天气好时可以看城市夜景。","汝矣岛汉江公园：沿江步道比较开阔，适合带饮料散步。","出发前查看天气，晚上记得带一件薄外套。"]},
+      {title:"首尔夜景散步：汉江沿岸",description:"日落前出发，沿着江边走到天色变暗，安排一场轻松的夜间约会。",site:"城市夜游指南",domain:"nightwalk.kr",body:["建议选交通方便的公园入口。","可以在散步后去便利店买饮料和小零食。"]},
+      {title:"适合两个人的首尔周末约会",description:"汉江野餐、沿江骑行和便利店夜宵，都是轻松又不赶时间的选择。",site:"两个人的周末",domain:"two-weekend.kr",body:["根据天气选择野餐或散步。","如果准备骑行，记得确认租车点和归还时间。"]}
+    ];
+    if (query.includes("男朋友") || query.includes("生气")) return [
+      {title:"惹男朋友生气了怎么哄？先认真沟通",description:"先听听对方为什么不开心，承认自己造成的影响。比起急着解释，真诚道歉并给彼此一点时间更重要。",site:"恋爱关系小指南",domain:"love-note.kr",body:["等双方情绪平稳后再谈发生了什么。","说清楚自己理解到的问题，避免用“但是”把道歉变成辩解。","如果对方需要一点空间，可以约定晚些时候再继续聊。"]},
+      {title:"情侣吵架后怎么和好",description:"从自己的感受和需求出发，具体说清楚问题，避免把讨论变成指责。",site:"亲密关系笔记",domain:"relationship-note.kr",body:["先确认对方是否愿意现在沟通。","讨论具体行为，而不是给对方贴标签。","和好之后，也可以一起商量下次遇到类似情况怎么处理。"]},
+      {title:"一句真诚的道歉可以怎么说",description:"认真承认影响、表达歉意，并用行动兑现承诺。",site:"好好说话",domain:"say-it-well.kr",body:["可以说：“我知道这件事让你难过了，对不起。我想听听你的感受。”","道歉之后留出时间，让对方回应，不要要求对方马上原谅。"]}
+    ];
+    return [
+      {title:query+"｜相关内容与实用指南",description:"围绕“"+query+"”整理的相关信息、经验分享与实用建议。",site:"搜索精选",domain:"search-notes.kr",body:["先明确自己最想解决的问题，再查看对应的步骤和建议。","不同情况可能需要不同做法，可以结合实际情况判断。"]},
+      {title:"关于“"+query+"”的详细指南",description:"从基础信息到实用小贴士，快速了解重点。",site:"生活指南",domain:"daily-guide.kr",body:["这里汇总了相关主题的重点信息。","可以继续修改搜索词，查找更具体的内容。"]},
+      {title:"更多经验分享与推荐",description:"看看不同人的经验，挑选适合自己的方案。",site:"经验分享",domain:"community-note.kr",body:["参考不同观点，结合自己的需求选择。"]}
+    ];
+  };
+  const results = selectedQuery ? searchResults(selectedQuery) : [];
+  const backToResults = () => setSelectedResult(null);
+  const backToHistory = () => { setSelectedQuery(""); setSelectedResult(null); setQ(""); setTab("历史记录"); };
   return (
     <div className="catalog-skin native-safari">
       <Header p={p} />
-      <div className="catalog-scroll">
-        <h1>{tab}</h1>
-        <div className="safari-favorites">
-          {items.map((i) => (
-            <button key={i.id} onClick={() => p.onItem(i)}>
-              <span>
-                <Globe size={28} />
-              </span>
-              <strong>{i.title}</strong>
-              <small>{meta(i, "url")}</small>
-            </button>
-          ))}
+      {selectedQuery ? (
+        <div className="safari-browser-page">
+          <div className="safari-browser-toolbar">
+            <button aria-label="返回" onClick={() => selectedResult !== null ? backToResults() : backToHistory()}><ChevronLeft size={23}/></button>
+            <form className="safari-browser-address" onSubmit={(e) => {e.preventDefault(); if(q.trim()){setSelectedQuery(q.trim());setSelectedResult(null);}}}>
+              <LockKeyhole size={12}/><input value={q || selectedQuery} onChange={(e)=>setQ(e.target.value)} aria-label="地址或搜索词"/><Search size={15}/>
+            </form>
+            <button aria-label="更多" onClick={backToHistory}><MoreHorizontal size={21}/></button>
+          </div>
+          {selectedResult === null ? (
+            <>
+              <div className="safari-search-tabs"><span className="active">全部</span><span>图片</span><span>视频</span><span>地图</span><span>新闻</span></div>
+              <div className="safari-google-results">
+                <div className="safari-results-count">找到与“{selectedQuery}”相关的结果</div>
+                {results.map((result,index)=>(
+                  <button className="safari-google-result" key={result.title} onClick={()=>setSelectedResult(index)}>
+                    <div className="safari-site-line"><span className="safari-favicon">{result.site.slice(0,1)}</span><span><strong>{result.site}</strong><small>{result.domain}</small></span><MoreHorizontal size={15}/></div>
+                    <h3>{result.title}</h3><p>{result.description}</p>
+                  </button>
+                ))}
+                <button className="safari-more-results" onClick={()=>setSelectedQuery(selectedQuery+" 推荐")}>查看更多相关结果 <ChevronRight size={15}/></button>
+              </div>
+            </>
+          ) : (
+            <div className="safari-article-scroll">
+              <div className="safari-article-source"><span className="safari-favicon">{results[selectedResult].site.slice(0,1)}</span><div><strong>{results[selectedResult].site}</strong><small>{results[selectedResult].domain} › 文章</small></div></div>
+              <article className="safari-article">
+                <h1>{results[selectedResult].title}</h1>
+                <div className="safari-article-meta">阅读时间约 3 分钟 · 编辑整理</div>
+                <p className="safari-article-intro">{results[selectedResult].description}</p>
+                {results[selectedResult].body.map((paragraph,index)=><section key={index}><h2>{index===0?"出行与准备":index===1?"路线与建议":"实用小贴士"}</h2><p>{paragraph}</p></section>)}
+                <div className="safari-article-footer">本文为手机剧情中的模拟网页内容</div>
+              </article>
+              <button className="safari-back-search" onClick={backToResults}><ChevronLeft size={16}/> 返回搜索结果</button>
+            </div>
+          )}
+          <div className="safari-bottom-bar">
+            <button aria-label="后退" onClick={() => selectedResult !== null ? backToResults() : backToHistory()}><ChevronLeft size={21}/></button>
+            <button aria-label="前进" onClick={() => {if(selectedResult===null && results.length) setSelectedResult(0);}}><ChevronRight size={21}/></button>
+            <button aria-label="分享"><Share size={18}/></button>
+            <button aria-label="书签" onClick={() => {setSelectedQuery("");setSelectedResult(null);setTab("书签");}}><Bookmark size={18}/></button>
+            <button aria-label="标签页" onClick={backToHistory}><Grid size={18}/></button>
+          </div>
         </div>
-        <Empty items={items} label="没有匹配的虚构网页" />
-      </div>
-      <label className="safari-address">
-        <LockKeyhole size={13} />
-        <input
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          placeholder="搜索或输入虚构网址"
-          aria-label="地址栏"
-          onKeyDown={(e) => {
-            if (e.key === "Enter" && items[0]) p.onItem(items[0]);
-          }}
-        />
-        <Search size={16} />
-      </label>
-      <Tabs
-        tabs={["书签", "历史记录"]}
-        value={tab}
-        set={setTab}
-        icons={[<Globe />, <Clock />]}
-      />
+      ) : (
+        <>
+          <div className="catalog-scroll">
+            <h1>{tab}</h1>
+            <div className={tab === "历史记录" ? "safari-favorites safari-history" : "safari-favorites"}>
+              {items.map((i) => (
+                <button key={i.id} onClick={() => tab === "历史记录" ? (setSelectedQuery(i.title), setQ(i.title), setSelectedResult(null)) : p.onItem(i)}>
+                  <span><Globe size={tab === "历史记录" ? 18 : 28}/></span><strong>{i.title}</strong>
+                  {tab === "书签" && <small>{meta(i,"url")}</small>}
+                  {tab === "历史记录" && <small><ChevronRight size={15}/></small>}
+                </button>
+              ))}
+            </div>
+            <Empty items={items} label="没有匹配的虚构网页"/>
+          </div>
+          <label className="safari-address"><LockKeyhole size={13}/><input value={q} onChange={(e)=>setQ(e.target.value)} placeholder="搜索或输入虚构网址" aria-label="地址栏" onKeyDown={(e)=>{if(e.key==="Enter"&&q.trim()){setSelectedQuery(q.trim());setSelectedResult(null);}}}/><Search size={16}/></label>
+          <Tabs tabs={["书签","历史记录"]} value={tab} set={setTab} icons={[<Globe/>,<Clock/>]}/>
+        </>
+      )}
     </div>
   );
 }
@@ -409,12 +474,22 @@ export function NotesSkin(p: Props) {
   );
 }
 export function CalendarSkin(p: Props) {
-  const [month, setMonth] = useState(8),
-    [year, setYear] = useState(2026),
-    [day, setDay] = useState(1);
-  const prefix = `${year}-${String(month + 1).padStart(2, "0")}`;
+  const now = new Date();
+  const [month, setMonth] = useState(now.getMonth()),
+    [year, setYear] = useState(now.getFullYear()),
+    [day, setDay] = useState(now.getDate());
+  const prefix = String(year) + "-" + String(month + 1).padStart(2, "0");
+  const dateParts = (i: Item) => ({
+    month: Number(meta(i, "month", i.time.slice(5, 7))),
+    day: Number(meta(i, "day", i.time.slice(8, 10))),
+  });
+  const isOnDate = (i: Item, m: number, d: number) => {
+    const parts = dateParts(i);
+    return parts.month === m + 1 && parts.day === d;
+  };
   const list = p.items.filter((i) =>
-    i.time.startsWith(`${prefix}-${String(day).padStart(2, "0")}`),
+    isOnDate(i, month, day) &&
+    (meta(i, "recurring") === "yearly" || i.time.startsWith(prefix + "-" + String(day).padStart(2, "0"))),
   );
   const move = (d: number) => {
     const date = new Date(Date.UTC(year, month + d, 1));
@@ -424,61 +499,67 @@ export function CalendarSkin(p: Props) {
   };
   const first = new Date(Date.UTC(year, month, 1)).getUTCDay(),
     days = new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
+  const eventItems = p.items.filter((i) => meta(i, "month") && meta(i, "day"));
+  const specialDates = [...eventItems].sort((x, y) =>
+    dateParts(x).month - dateParts(y).month || dateParts(x).day - dateParts(y).day,
+  );
+  const reminderNames: Record<string, string> = {
+    "anniversary-apr-29": "我们的纪念日",
+    "birthday-mark": "马克生日",
+    "birthday-donghyuck": "东赫生日",
+  };
   return (
     <div className="catalog-skin native-calendar">
       <Header p={p} />
       <div className="catalog-scroll">
         <div className="month-title">
-          <button aria-label="上个月" onClick={() => move(-1)}>
-            <ChevronLeft />
-          </button>
-          <h2>
-            {year} 年 {month + 1} 月
-          </h2>
-          <button aria-label="下个月" onClick={() => move(1)}>
-            <ChevronRight />
-          </button>
+          <button aria-label="上个月" onClick={() => move(-1)}><ChevronLeft /></button>
+          <h2>{year} 年 {month + 1} 月</h2>
+          <button aria-label="下个月" onClick={() => move(1)}><ChevronRight /></button>
         </div>
         <div className="calendar-grid">
-          {["日", "一", "二", "三", "四", "五", "六"].map((t) => (
-            <small key={t}>{t}</small>
-          ))}
-          {Array.from({ length: first }, (_, i) => (
-            <span key={"blank" + i} />
-          ))}
-          {Array.from({ length: days }, (_, i) => (
-            <button
-              className={day === i + 1 ? "selected" : ""}
-              key={i}
-              onClick={() => setDay(i + 1)}
-            >
-              {i + 1}
-              {p.items.some((x) =>
-                x.time.startsWith(
-                  `${prefix}-${String(i + 1).padStart(2, "0")}`,
-                ),
-              ) && <i />}
-            </button>
-          ))}
+          {["日", "一", "二", "三", "四", "五", "六"].map((t) => <small key={t}>{t}</small>)}
+          {Array.from({ length: first }, (_, i) => <span key={"blank" + i} />)}
+          {Array.from({ length: days }, (_, i) => {
+            const dateDay = i + 1;
+            const marked = p.items.some((x) =>
+              isOnDate(x, month, dateDay) &&
+              (meta(x, "recurring") === "yearly" || x.time.startsWith(prefix + "-" + String(dateDay).padStart(2, "0"))),
+            );
+            return (
+              <button className={(day === dateDay ? "selected " : "") + (marked ? "special-date" : "")}
+                key={dateDay} onClick={() => setDay(dateDay)}
+                aria-label={(month + 1) + "月" + dateDay + "日" + (marked ? "有重要日子" : "")}>
+                {dateDay}
+                {marked && <i style={{ background: "#e879a6", display: "block", width: 5, height: 5, borderRadius: 99, margin: "2px auto 0" }} />}
+              </button>
+            );
+          })}
         </div>
-        <h4 className="native-section">
-          {month + 1} 月 {day} 日
-        </h4>
+        <h4 className="native-section">{month + 1} 月 {day} 日</h4>
         {list.map((i) => (
-          <button
-            className="calendar-event"
-            key={i.id}
-            onClick={() => p.onItem(i)}
-          >
-            <time>{i.time.slice(-5)}</time>
-            <div>
-              <strong>{i.title}</strong>
-              <p>{meta(i, "location", i.body)}</p>
-            </div>
+          <button className="calendar-event" key={i.id} onClick={() => p.onItem(i)}>
+            <time>{i.time.slice(-5) || "全天"}</time>
+            <div><strong>{i.title}</strong><p>{meta(i, "location", i.body)}</p></div>
+            <Heart size={16} color="#e879a6" />
           </button>
         ))}
         <Empty items={list} label="当天没有日程" />
         <Add p={p} label="添加日程" />
+        <section style={{ margin: "22px 12px 18px", padding: 16, borderRadius: 20, background: "linear-gradient(145deg, #fff0f5, #fff8f3)", border: "1px solid #f8dce7" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4, color: "#b84f79" }}>
+            <Heart size={18} fill="#e879a6" /><strong style={{ fontSize: 16 }}>特别的日子 · 记得提醒</strong>
+          </div>
+          <p style={{ margin: "4px 0 12px", fontSize: 12, color: "#a66d83" }}>把重要的人和日子，好好放在心上。</p>
+          {specialDates.map((i) => (
+            <button key={i.id} onClick={() => p.onItem(i)} style={{ width: "100%", display: "flex", alignItems: "center", gap: 12, textAlign: "left", border: 0, borderRadius: 14, padding: "10px 8px", marginTop: 5, background: "rgba(255,255,255,.78)", color: "#714454" }}>
+              <span style={{ minWidth: 43, textAlign: "center", padding: "7px 3px", borderRadius: 11, background: "#ffe0eb", color: "#bd5c83", fontWeight: 700 }}>{dateParts(i).month}/{dateParts(i).day}</span>
+              <span style={{ flex: 1 }}><strong style={{ display: "block", fontSize: 13 }}>{reminderNames[i.id] || i.title}</strong><small style={{ color: "#a66d83" }}>{i.body}</small></span>
+              <span style={{ color: "#e879a6" }}>♡</span>
+            </button>
+          ))}
+          <p style={{ margin: "12px 2px 0", color: "#a66d83", fontSize: 11 }}>♡ 马克生日 · 8 月 2 日　♡ 东赫生日 · 6 月 6 日　♡ 纪念日 · 4 月 29 日</p>
+        </section>
       </div>
     </div>
   );
@@ -535,9 +616,12 @@ export function MailSkin(p: Props) {
 }
 export function ClockSkin(p: Props) {
   const { tab, setTab, items } = useContent(p, "闹钟");
-  const [enabled, setEnabled] = useSkinState<string[]>(p, "alarms", []),
+  const [enabled, setEnabled] = useSkinState<string[]>(p, "alarms", ["alarm-weekday", "alarm-evening"]),
     [seconds, setSeconds] = useState(0),
     [running, setRunning] = useState(false);
+  const visibleItems = tab === "闹钟"
+    ? items.filter((i) => meta(i, "type", "") === "alarm")
+    : items.filter((i) => meta(i, "type", "") !== "alarm");
   useEffect(() => {
     if (!running) return;
     const timer = setInterval(() => setSeconds((s) => s + 1), 1000);
@@ -569,7 +653,7 @@ export function ClockSkin(p: Props) {
             </div>
           </div>
         ) : (
-          items.map((i) => (
+          visibleItems.map((i) => (
             <div className="alarm-row" key={i.id}>
               <button onClick={() => p.onItem(i)}>
                 <time>{meta(i, "clock", i.time.slice(-5))}</time>
@@ -612,52 +696,62 @@ export function ClockSkin(p: Props) {
 export function RemindersSkin(p: Props) {
   const { tab, setTab, q, setQ, items } = useContent(p, "全部");
   const [checked, setChecked] = useSkinState<string[]>(p, "checked", []);
-  const list =
-    tab === "已完成"
-      ? items.filter((i) => checked.includes(i.id))
-      : items.filter((i) => !checked.includes(i.id));
+  const list = tab === "已完成"
+    ? items.filter((i) => checked.includes(i.id))
+    : items.filter((i) => !checked.includes(i.id));
+  const countdown = (i: Item) => {
+    const nextDate = meta(i, "nextDate");
+    if (!nextDate) return meta(i, "days", "");
+    const target = new Date(nextDate + "T00:00:00");
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return String(Math.max(0, Math.ceil((target.getTime() - today.getTime()) / 86400000)));
+  };
+  const isLove = (i: Item) => i.id === "days-love";
   return (
-    <div className="catalog-skin native-reminders">
+    <div className="catalog-skin native-reminders" style={{ background: "linear-gradient(180deg, #fff1f6 0%, #fff8f5 48%, #fff 100%)" }}>
       <Header p={p} />
-      <div className="catalog-scroll">
+      <div className="catalog-scroll" style={{ paddingBottom: 22 }}>
+        <div style={{ margin: "12px 14px 18px", padding: "22px 18px 20px", borderRadius: 26, background: "linear-gradient(140deg, #f9b8d0 0%, #f7c9d9 48%, #fce4eb 100%)", color: "#773d56", boxShadow: "0 8px 24px rgba(209,112,151,.14)", position: "relative", overflow: "hidden" }}>
+          <div style={{ position: "absolute", right: 18, top: 14, fontSize: 42, opacity: .55 }}>♡</div>
+          <div style={{ fontSize: 12, letterSpacing: 2, color: "#95546e" }}>OUR LITTLE CALENDAR</div>
+          <h1 style={{ margin: "8px 0 5px", fontSize: 25, color: "#773d56" }}>把喜欢的日子，慢慢过</h1>
+          <p style={{ margin: 0, fontSize: 13, color: "#95546e" }}>每一个倒数，都在靠近一份喜欢。</p>
+          <div style={{ marginTop: 17, display: "flex", alignItems: "center", gap: 7, fontSize: 12 }}><Heart size={15} fill="#d86f9c" color="#d86f9c" /> Mark ♡ Donghyuck</div>
+        </div>
         <SearchBox value={q} set={setQ} />
-        <div className="reminder-categories">
+        <div className="reminder-categories" style={{ margin: "0 14px 16px" }}>
           {["全部", "已完成"].map((t) => (
-            <button key={t} onClick={() => setTab(t)}>
-              <Calendar size={22} />
-              <strong>
-                {t === "全部" ? items.length - checked.length : checked.length}
-              </strong>
-              <span>{t}</span>
+            <button key={t} onClick={() => setTab(t)} style={{ borderRadius: 18, background: tab === t ? "#f8d5e2" : "rgba(255,255,255,.85)", color: "#a45376", border: "1px solid #f5dce6" }}>
+              <Calendar size={22} color="#d8759e" /><strong>{t === "全部" ? items.length - checked.length : checked.length}</strong><span>{t}</span>
             </button>
           ))}
         </div>
-        <h1>{tab}</h1>
-        {list.map((i) => (
-          <div className="reminder-row" key={i.id}>
-            <button
-              aria-label={`完成${i.title}`}
-              role="checkbox"
-              aria-checked={checked.includes(i.id)}
-              onClick={() =>
-                setChecked(
-                  checked.includes(i.id)
-                    ? checked.filter((x) => x !== i.id)
-                    : [...checked, i.id],
-                )
-              }
-            >
-              <CheckCircle size={21} />
-            </button>
-            <button onClick={() => p.onItem(i)}>
-              <strong>{i.title}</strong>
-              <small>
-                {i.time} · {i.folder}
-              </small>
-            </button>
-          </div>
-        ))}
-        <Add p={p} label="新提醒事项" />
+        <h1 style={{ margin: "0 16px 12px", fontSize: 20, color: "#81445e" }}>{tab === "已完成" ? "已经珍藏的日子" : "我们的倒数日"}</h1>
+        {list.map((i) => {
+          const done = checked.includes(i.id), days = countdown(i);
+          return (
+            <div key={i.id} style={{ display: "flex", alignItems: "center", gap: 10, margin: "0 14px 12px", padding: 14, borderRadius: 21, background: "rgba(255,255,255,.9)", border: "1px solid #f5dce6", boxShadow: "0 4px 14px rgba(180,101,133,.06)", opacity: done ? .66 : 1 }}>
+              <button aria-label={(done ? "取消完成" : "完成") + i.title} role="checkbox" aria-checked={done} onClick={() => setChecked(done ? checked.filter((x) => x !== i.id) : [...checked, i.id])} style={{ border: 0, background: "transparent", color: done ? "#c4a5b3" : "#df7fa5", padding: 2 }}>
+                <CheckCircle size={22} fill={done ? "#f5dce6" : "transparent"} />
+              </button>
+              <button onClick={() => p.onItem(i)} style={{ flex: 1, minWidth: 0, textAlign: "left", border: 0, background: "transparent", color: "#754258" }}>
+                <strong style={{ display: "block", fontSize: 15 }}>{i.title}</strong>
+                <small style={{ display: "block", marginTop: 4, color: "#b17b91", lineHeight: 1.45 }}>{i.body}</small>
+                {meta(i, "nextDate") && <small style={{ display: "block", marginTop: 3, color: "#bd8299" }}>{meta(i, "nextDate")}</small>}
+              </button>
+              <div style={{ minWidth: 62, textAlign: "center", padding: "9px 7px", borderRadius: 15, background: isLove(i) ? "#ffe6ef" : "#fff0f5", color: "#c45f88" }}>
+                <strong style={{ display: "block", fontSize: 25, lineHeight: 1.1 }}>{isLove(i) ? meta(i, "days", "826") : days}</strong>
+                <small style={{ fontSize: 10 }}>{isLove(i) ? "天的喜欢" : "天后见"}</small>
+              </div>
+            </div>
+          );
+        })}
+        <div style={{ margin: "18px 14px 12px", padding: 17, borderRadius: 22, background: "#fff0f5", border: "1px solid #f7dce7", color: "#9b5a75" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, fontWeight: 700, marginBottom: 6 }}><Heart size={17} fill="#e58caf" color="#e58caf" /> 温柔提醒</div>
+          <p style={{ margin: 0, fontSize: 12, lineHeight: 1.7 }}>生日要记得说快乐，纪念日要记得拥抱。普通的每一天，也值得被认真收藏。</p>
+        </div>
+        <Add p={p} label="添加新的倒数日" />
       </div>
     </div>
   );
@@ -727,82 +821,216 @@ export function FilesSkin(p: Props) {
 export function MusicSkin(p: Props) {
   const { tab, setTab, items } = useContent(p, "资料库");
   const [song, setSong] = useTrack(p, items);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [artwork, setArtwork] = useState<Record<string, string>>({});
+  const artistFor = (i: Item) => ({
+    "song-1": "Travie McCoy feat. Bruno Mars",
+    "song-2": "Justin Bieber",
+    "song-3": "Justin Bieber feat. Quavo",
+    "song-4": "Michael Jackson",
+    "song-5": "f(x) feat. D.O.",
+    "song-6": "EXO",
+    "song-7": "EXO",
+    "song-8": "Michael Jackson",
+  } as Record<string, string>)[i.id] || meta(i, "artist", "");
+  const artworkLookupKey = items.filter((i) => i.kind === "audio").map((i) => `${i.id}:${i.title}:${artistFor(i)}:${meta(i, "coverUrl")}`).join("|");
+  useEffect(() => {
+    let active = true;
+    const terms: Record<string, string> = {
+      "song-1": "Billionaire Travie McCoy",
+      "song-2": "E.T.A. Justin Bieber Changes",
+      "song-3": "Intentions Justin Bieber Quavo",
+      "song-4": "Love Never Felt So Good Michael Jackson",
+      "song-5": "Goodbye Summer f(x) D.O.",
+      "song-6": "EXO 첫 눈 The First Snow",
+      "song-7": "PLAYBOY EXO",
+      "song-8": "Thriller Michael Jackson",
+    };
+    const titleAliases: Record<string, string[]> = {
+      "song-1": ["Billionaire (feat. Bruno Mars)", "Billionaire"],
+      "song-2": ["E.T.A."],
+      "song-3": ["Intentions (feat. Quavo)", "Intentions"],
+      "song-4": ["Love Never Felt So Good"],
+      "song-5": ["Goodbye Summer (feat. D.O.)", "Goodbye Summer"],
+      "song-6": ["첫 눈 (The First Snow)", "첫 눈", "The First Snow"],
+      "song-7": ["PLAYBOY", "Playboy"],
+      "song-8": ["Thriller"],
+    };
+    const artistAliases: Record<string, string[]> = {
+      "song-1": ["Travie McCoy"],
+      "song-2": ["Justin Bieber"],
+      "song-3": ["Justin Bieber"],
+      "song-4": ["Michael Jackson"],
+      "song-5": ["f(x)", "fx"],
+      "song-6": ["EXO"],
+      "song-7": ["EXO"],
+      "song-8": ["Michael Jackson"],
+    };
+    Promise.all(items.filter((i) => i.kind === "audio").map(async (i) => {
+      const saved = safeMedia(meta(i, "coverUrl"));
+      try {
+        const term = terms[i.id] || `${i.title} ${artistFor(i)}`;
+        const endpoint = `https://itunes.apple.com/search?term=${encodeURIComponent(term)}&entity=song&limit=25&country=US`;
+        const response = await fetch(endpoint);
+        if (!response.ok) return { id: i.id, image: saved, preview: "" };
+        const data = await response.json() as { results?: Array<{ trackName?: string; artistName?: string; artworkUrl100?: string; previewUrl?: string }> };
+        const results = data.results || [];
+        const clean = (value: string) => value.toLowerCase().replace(/[^a-z0-9가-힣]/gi, "");
+        const expectedTitles = (titleAliases[i.id] || [i.title]).map(clean);
+        const expectedArtists = (artistAliases[i.id] || [artistFor(i)]).map(clean);
+        const scored = results.map((r) => {
+          const track = clean(r.trackName || "");
+          const artist = clean(r.artistName || "");
+          const titleScore = expectedTitles.reduce((best, title) => {
+            if (track === title) return Math.max(best, 100);
+            if (track.startsWith(title) || title.startsWith(track)) return Math.max(best, 85);
+            if (track.includes(title) || title.includes(track)) return Math.max(best, 65);
+            return best;
+          }, 0);
+          const artistScore = expectedArtists.some((name) => artist === name || artist.startsWith(name) || artist.includes(name)) ? 20 : 0;
+          return { r, score: titleScore + artistScore };
+        }).sort((a, b) => b.score - a.score);
+        const exact = results.find((r) => {
+          const track = clean(r.trackName || "");
+          const artist = clean(r.artistName || "");
+          return expectedTitles.some((title) => title === track) &&
+            expectedArtists.some((name) => artist === name || artist.startsWith(name));
+        });
+        // Prefer a title-matched preview even when the catalog formats the featured artist differently.
+        // Only fall back to a catalog result if its title is still a strong match.
+        const matched = exact || (scored[0]?.score >= 65 ? scored[0].r : undefined);
+        const image = saved || matched?.artworkUrl100?.replace(/\d+x\d+bb/, "600x600bb") || "";
+        return { id: i.id, image, preview: matched?.previewUrl || "" };
+      } catch {
+        return { id: i.id, image: saved, preview: "" };
+      }
+    })).then((pairs) => {
+      if (active) {
+        setArtwork(Object.fromEntries(pairs.filter((pair) => pair.image).map((pair) => [pair.id, pair.image])));
+        const previews = new Map(pairs.map((pair) => [pair.id, pair.preview]));
+        const tracks = items.filter((item) => item.kind === "audio").map((item) => ({
+          id: item.id,
+          title: item.title,
+          artist: artistFor(item),
+          src: safeMedia(item.media || meta(item, "audioUrl")) || previews.get(item.id) || "",
+        })).filter((track) => !!track.src);
+        if (tracks.length) {
+          window.dispatchEvent(new CustomEvent("foundphone:music:playlist", {
+            detail: { tracks, startId: tracks[0].id, autoplay: !p.creator },
+          }));
+        }
+      }
+    });
+    return () => { active = false; };
+  }, [artworkLookupKey]);
+
+  useEffect(() => {
+    const onStatus = (event: Event) => {
+      const detail = (event as CustomEvent<{ playing: boolean; id: string }>).detail;
+      setIsPlaying(!!detail?.playing);
+      if (detail?.id) {
+        const current = items.find((item) => item.id === detail.id);
+        if (current && current.id !== song?.id) setSong(current);
+      }
+    };
+    window.addEventListener("foundphone:music:status", onStatus);
+    window.dispatchEvent(new Event("foundphone:music:request-status"));
+    return () => window.removeEventListener("foundphone:music:status", onStatus);
+  }, [items, song?.id]);
+
+  const coverFor = (i: Item) => artwork[i.id] || safeMedia(meta(i, "coverUrl"));
+  const songs = items.filter((i) => i.kind === "audio");
+  const shown = songs;
+  const nextSong = () => {
+    if (!songs.length) return;
+    const index = songs.findIndex((i) => i.id === song?.id);
+    setSong(songs[(index + 1 + songs.length) % songs.length]);
+    setIsPlaying(true);
+  };
   return (
     <div className="catalog-skin native-music">
       <Header p={p} />
-      <div className="catalog-scroll">
-        <h1>{tab}</h1>
-        {tab === "歌单" ? (
-          <div className="music-albums">
-            {groupItems(items, "我的音乐").map((g) => (
-              <button
-                key={g}
-                onClick={() => {
-                  const i = items.find((i) => (i.folder || "我的音乐") === g);
-                  if (i) setSong(i);
-                }}
-              >
-                <Music size={51} />
-                <strong>{g}</strong>
+      <div className="catalog-scroll music-library-scroll">
+        <div className="music-library-heading">
+          <h1>{tab === "歌单" ? "播放列表" : "歌曲"}</h1>
+          <button aria-label="搜索音乐" onClick={() => setTab("搜索")}><Search size={21} /></button>
+        </div>
+        {tab === "搜索" ? (
+          <div className="music-search-panel">
+            <div className="music-search-input"><Search size={17} /><span>搜索歌曲、艺人或专辑</span></div>
+            <p>你的音乐</p>
+            {songs.map((i) => (
+              <button className="music-track" key={i.id} onClick={() => { setSong(i); setIsPlaying(true); musicCommand({ action: "select", id: i.id }); }}>
+                <span className="music-cover">{coverFor(i) ? <img src={coverFor(i)} alt="" loading="lazy" /> : <Music size={20} />}</span>
+                <span className="music-track-copy"><strong>{i.title}</strong><small>{artistFor(i)}</small></span>
               </button>
             ))}
           </div>
         ) : (
-          items.map((i, n) => (
-            <button
-              className="music-track"
-              key={i.id}
-              onClick={() => {
-                setSong(i);
-              }}
-            >
-              <small>{n + 1}</small>
-              <span>
-                <strong>{i.title}</strong>
-                <small>
-                  {i.sender} · {meta(i, "album")}
-                </small>
-              </span>
-              <span>{meta(i, "duration")}</span>
-            </button>
-          ))
+          <>
+            {tab === "歌单" && (
+              <div className="music-playlist-banner">
+                <div className="music-playlist-art">
+                  {songs.slice(0, 4).map((i) => coverFor(i) ? <img key={i.id} src={coverFor(i)} alt="" /> : <span key={i.id}><Music size={17} /></span>)}
+                </div>
+                <div><small>个人歌单</small><strong>我的音乐</strong><span>{songs.length} 首歌曲</span></div>
+              </div>
+            )}
+            <div className="music-list-tools">
+              <button onClick={() => { if (songs[0]) { setSong(songs[0]); setIsPlaying(true); musicCommand({ action: "select", id: songs[0].id }); } }}><Play size={15} fill="currentColor" /> 随机播放</button>
+              <span>{shown.length} 首歌曲</span>
+            </div>
+            <div className="music-track-list">
+              {shown.map((i) => (
+                <div className={`music-track-row ${song?.id === i.id ? "current" : ""}`} key={i.id}>
+                  <button className="music-track-main" onClick={() => { setSong(i); setIsPlaying(true); musicCommand({ action: "select", id: i.id }); }}>
+                    <span className="music-cover">
+                      {coverFor(i) ? <img src={coverFor(i)} alt="" loading="lazy" /> : <Music size={20} />}
+                    </span>
+                    <span className="music-track-copy">
+                      <strong>{i.title}</strong>
+                      <small>{artistFor(i)}</small>
+                    </span>
+                  </button>
+                  <button className="music-track-more" aria-label={`${i.title} 更多选项`} onClick={() => { setSong(i); setIsPlaying(true); musicCommand({ action: "select", id: i.id }); }}><MoreHorizontal size={21} /></button>
+                </div>
+              ))}
+            </div>
+            <Empty items={shown} label="资料库中还没有歌曲" />
+          </>
         )}
-        <Empty items={items} />
       </div>
       {song && (
-        <div className="native-now-playing">
-          <button onClick={() => p.onItem(song)}>
-            <Music size={20} />
-            {song.title}
+        <div className="music-mini-player">
+          <button className="music-mini-info" onClick={() => p.onItem(song)}>
+            <span className="music-mini-cover">{coverFor(song) ? <img src={coverFor(song)} alt="" /> : <Music size={18} />}</span>
+            <span className="music-mini-copy"><strong>{song.title}</strong><small>{artistFor(song)}</small></span>
           </button>
-          {song.kind === "audio" && safeMedia(song.media) ? (
-            <AudioPlayer p={p} item={song} />
-          ) : (
-            <button onClick={() => p.onItem(song)}>查看歌曲内容</button>
-          )}
-          <button
-            aria-label="下一首"
-            onClick={() =>
-              setSong(
-                items[
-                  (items.findIndex((i) => i.id === song.id) + 1) % items.length
-                ],
-              )
-            }
-          >
-            <SkipForward size={18} />
-          </button>
+          <div className="music-mini-controls">
+            <button aria-label={isPlaying ? "暂停" : "播放"} onClick={() => { setIsPlaying((v) => !v); musicCommand({ action: "toggle" }); }}>{isPlaying ? <Pause size={22} fill="currentColor" /> : <Play size={22} fill="currentColor" />}</button>
+            <button aria-label="下一首" onClick={() => { nextSong(); musicCommand({ action: "next" }); }}><SkipForward size={21} fill="currentColor" /></button>
+          </div>
+          <div className="music-progress"><span /></div>
+
         </div>
       )}
-      <Tabs
-        tabs={["资料库", "歌单"]}
-        value={tab}
-        set={setTab}
-        icons={[<Music />, <Folder />]}
-      />
+      <nav className="music-bottom-tabs">
+        {[
+          { label: "立即聆听", icon: <Heart size={20} /> },
+          { label: "浏览", icon: <Compass size={20} /> },
+          { label: "电台", icon: <Radio size={20} /> },
+          { label: "资料库", icon: <Music size={20} /> },
+          { label: "搜索", icon: <Search size={20} /> },
+        ].map((t) => (
+          <button key={t.label} className={tab === t.label || (tab === "歌单" && t.label === "资料库") ? "selected" : ""} onClick={() => setTab(t.label === "资料库" ? "资料库" : t.label)}>
+            {t.icon}<span>{t.label}</span>
+          </button>
+        ))}
+      </nav>
     </div>
   );
 }
+
 function LocationMap({
   items,
   onItem,

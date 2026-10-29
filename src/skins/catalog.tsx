@@ -26,6 +26,7 @@ export const catalogSkins = {
   reminders: skin(system, "RemindersSkin"),
   files: skin(system, "FilesSkin"),
   music: skin(system, "MusicSkin"),
+  recorder: skin(media, "RecorderSkin"),
   maps: skin(system, "MapsSkin"),
   weather: skin(system, "WeatherSkin"),
   wallet: skin(system, "WalletSkin"),
