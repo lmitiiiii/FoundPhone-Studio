@@ -3,7 +3,7 @@
   "id": "markchan-found-phone",
   "title": "Markchan · 捡手机",
   "description": "Coco & Mark 互动捡手机；密码 8266。媒体链接均留空待替换。",
-  "revision": 13,
+  "revision": 14,
   "phone": {
     "owner": "Markchan",
     "date": "2026-10-29",
@@ -923,7 +923,7 @@
         "meta": {
           "artist": "Travie McCoy, Bruno Mars",
           "audioUrl": "",
-          "coverUrl": "",
+          "coverUrl": "https://coverartarchive.org/release/9e75153b-4aab-3cdf-aac1-c6f785525150/front-500",
           "track": "1",
           "album": "Lazarus"
         }
@@ -1055,7 +1055,7 @@
     "weather": [
       {
         "id": "seoul-weather",
-        "title": "首尔",
+        "title": "首尔 Seoul",
         "body": "多云 · 当前约 10°C",
         "kind": "text",
         "meta": {
