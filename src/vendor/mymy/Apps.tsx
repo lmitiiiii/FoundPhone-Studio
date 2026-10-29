@@ -509,11 +509,11 @@ export function MymyInstagram(p: SkinProps) {
                     <small>帖子</small>
                   </div>
                   <div>
-                    <b>—</b>
+                    <b>{profile?.meta.followerCount || "56.8万"}</b>
                     <small>粉丝</small>
                   </div>
                   <div>
-                    <b>—</b>
+                    <b>{profile?.meta.followingCount || "2"}</b>
                     <small>关注</small>
                   </div>
                 </div>
