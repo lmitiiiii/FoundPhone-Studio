@@ -748,7 +748,7 @@ export function MusicSkin(p: Props) {
             ))}
           </div>
         ) : (
-          items.map((i, n) => (
+          items.map((i) => (
             <button
               className="music-track"
               key={i.id}
