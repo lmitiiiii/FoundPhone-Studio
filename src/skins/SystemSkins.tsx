@@ -843,7 +843,13 @@ export function MusicSkin(p: Props) {
       if (saved) return { id: i.id, image: saved, preview: "" };
       try {
         const term = terms[i.id] || `${i.title} ${artistFor(i)}`;
-        const response = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(term)}&entity=song&limit=15&country=US`);
+        const endpoint = i.id === "song-1"
+          ? "https://itunes.apple.com/lookup?id=1712718731&entity=song&country=US"
+          : `https://itunes.apple.com/search?term=${encodeURIComponent(term)}&entity=song&limit=25&country=US`;
+        let response = await fetch(endpoint);
+        if (!response.ok && i.id === "song-1") {
+          response = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent("Billionaire Travie McCoy Bruno Mars")}&entity=song&limit=25&country=US`);
+        }
         if (!response.ok) return { id: i.id, image: "", preview: "" };
         const data = await response.json() as { results?: Array<{ trackName?: string; artistName?: string; artworkUrl100?: string; previewUrl?: string }> };
         const results = data.results || [];
@@ -856,7 +862,11 @@ export function MusicSkin(p: Props) {
           const titleMatches = expectedTitles.some((title) => title === track);
           const artistMatches = expectedArtists.some((name) => artist === name || artist.startsWith(name));
           return titleMatches && artistMatches;
-        });
+        }) || (i.id === "song-1" ? results.find((r) => {
+          const track = clean(r.trackName || "");
+          const artist = clean(r.artistName || "");
+          return track.includes("billionaire") && artist.includes("traviemccoy");
+        }) : undefined);
         // Never borrow a different song's cover or preview just because its title looks similar.
         const image = exact?.artworkUrl100?.replace(/\d+x\d+bb/, "600x600bb") || "";
         return { id: i.id, image, preview: exact?.previewUrl || "" };
