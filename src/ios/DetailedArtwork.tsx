@@ -13,6 +13,13 @@ export const detailedIcons = new Set([
   "wallet",
   "qq",
   "threads",
+  "music",
+  "recorder",
+  "maps",
+  "safari",
+  "instagram",
+  "twitter",
+  "kakao",
 ]);
 /** Independently drawn SVG materials; no extracted bitmap, font or brand resource. */
 export function DetailedArtwork({ id }: { id: string }) {
@@ -20,7 +27,71 @@ export function DetailedArtwork({ id }: { id: string }) {
     g = (n: string) => `url(#${key + n})`;
   let bg = g("paper"),
     art: ReactNode;
-  if (id === "appstore") {
+  if (id === "music") {
+    bg = g("music");
+    art = (
+      <path d="M40 10v32.2a8.2 8.2 0 1 1-5-7.5V19l-14 3v24.2a8.2 8.2 0 1 1-5-7.5V17z" fill="#fff" />
+    );
+  } else if (id === "recorder") {
+    bg = g("recorder");
+    art = (
+      <>
+        <rect x="25" y="8" width="14" height="31" rx="7" fill="#fff" />
+        <path d="M17 29a15 15 0 0 0 30 0M32 44v8M24 53h16" fill="none" stroke="#fff" strokeWidth="3.5" strokeLinecap="round" />
+        <path d="M28 13v17" stroke="#d9d9df" strokeWidth="1.5" strokeLinecap="round" />
+      </>
+    );
+  } else if (id === "maps") {
+    bg = g("maps");
+    art = (
+      <>
+        <path d="M0 7 17 1l15 7 16-6 16 6v48l-17 6-15-7-15 6L0 55z" fill="#f8f8f5" />
+        <path d="M-2 16 18 8l13 7 18-7 18 8M-2 45l20-9 13 8 18-8 18 8" fill="none" stroke="#8bc6a0" strokeWidth="6" />
+        <path d="M-2 27 16 20l15 7 18-7 18 7" fill="none" stroke="#f1c94b" strokeWidth="4" />
+        <path d="M15 64 24 43 31 34 40 24 52 1" fill="none" stroke="#fff" strokeWidth="5" />
+        <path d="M15 64 24 43 31 34 40 24 52 1" fill="none" stroke="#ed6464" strokeWidth="2.2" />
+        <path d="M32 15c-7 0-12 5-12 12 0 9 12 22 12 22s12-13 12-22c0-7-5-12-12-12z" fill="#3389f5" stroke="#fff" strokeWidth="1.5" />
+        <circle cx="32" cy="27" r="4" fill="#fff" />
+      </>
+    );
+  } else if (id === "safari") {
+    bg = g("safari");
+    art = (
+      <>
+        <circle cx="32" cy="32" r="27" fill="#f7fbff" />
+        <circle cx="32" cy="32" r="24" fill="#1689ef" />
+        <circle cx="32" cy="32" r="21" fill="none" stroke="#bfeaff" strokeWidth="1" />
+        {Array.from({ length: 12 }, (_, n) => (
+          <path key={n} d="M32 9v4" stroke="#fff" strokeWidth="1.2" transform={`rotate(${n * 30} 32 32)`} />
+        ))}
+        <path d="M18 47 28 29 46 17 36 35z" fill="#fff" />
+        <path d="m28 29 18-12-10 18z" fill="#f33b4d" />
+        <circle cx="32" cy="32" r="2" fill="#fff" />
+      </>
+    );
+  } else if (id === "instagram") {
+    bg = g("instagram");
+    art = (
+      <>
+        <rect x="9" y="9" width="46" height="46" rx="14" fill="none" stroke="#fff" strokeWidth="4.5" />
+        <circle cx="32" cy="32" r="11" fill="none" stroke="#fff" strokeWidth="4.5" />
+        <circle cx="45.5" cy="18.5" r="3.2" fill="#fff" />
+      </>
+    );
+  } else if (id === "twitter") {
+    bg = g("black");
+    art = (
+      <path d="M46.5 11H55L36.4 32.3 58 53H41.1L27.8 37.2 14 53H5.5l19.9-22.8L7 11h17.3l12 14.2zM43.5 48.8h4.7L21.7 15h-5z" fill="#fff" />
+    );
+  } else if (id === "kakao") {
+    bg = g("kakao");
+    art = (
+      <>
+        <path d="M32 12C18 12 8 21 8 32c0 7 5 13 12 16l-3 8 12-6c14 1 27-7 27-18S44 12 32 12z" fill="#3c1e1e" />
+        <path d="m20 26 4-2 3 3 3-3 3 3 4-2 3 3 4-1-4 6-7 3-8-3z" fill="#ffe812" opacity=".9" />
+      </>
+    );
+  } else if (id === "appstore") {
     bg = g("blue");
     art = (
       <g fill="none" stroke="#ebfaff" strokeWidth="4.6" strokeLinecap="round">
@@ -304,6 +375,12 @@ export function DetailedArtwork({ id }: { id: string }) {
           ["cloud", "#fff", "#a5d9ff"],
           ["black", "#262628", "#020203"],
           ["wallet", "#ffe2d3", "#bfa59b"],
+          ["music", "#fa365c", "#c91644"],
+          ["recorder", "#a5a6ae", "#53545d"],
+          ["maps", "#f6f8f5", "#dce9df"],
+          ["safari", "#55d3ff", "#0665d9"],
+          ["instagram", "#ffd776", "#b52db8"],
+          ["kakao", "#ffe812", "#f8d900"],
         ].map(([n, a, b]) => (
           <linearGradient id={key + n} key={n} x2="0" y2="1">
             <stop stopColor={a} />
