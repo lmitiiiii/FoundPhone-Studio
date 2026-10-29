@@ -3,7 +3,7 @@
   "id": "markchan-found-phone",
   "title": "Markchan · 捡手机",
   "description": "Coco & Mark 互动捡手机；密码 8266。媒体链接均留空待替换。",
-  "revision": 3,
+  "revision": 4,
   "phone": {
     "owner": "Markchan",
     "date": "2026-10-29",
@@ -20,7 +20,7 @@
       "name": "照片",
       "installed": true,
       "visible": true,
-      "dock": false,
+      "dock": true,
       "folder": "",
       "icon": "🖼️"
     },
@@ -65,7 +65,7 @@
       "name": "Music",
       "installed": true,
       "visible": true,
-      "dock": false,
+      "dock": true,
       "folder": "",
       "icon": "🎵"
     },
@@ -83,7 +83,7 @@
       "name": "Safari",
       "installed": true,
       "visible": true,
-      "dock": false,
+      "dock": true,
       "folder": "",
       "icon": "🧭"
     },
@@ -101,7 +101,7 @@
       "name": "KakaoTalk",
       "installed": true,
       "visible": true,
-      "dock": false,
+      "dock": true,
       "folder": "",
       "icon": "💬"
     },
