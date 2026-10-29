@@ -99,7 +99,6 @@ function WidgetFace({
             </div>
             <CloudSun size={32} />
           </div>
-          <small className="widget-weather-range">最高 {weather?.meta.high || "11"}° · 最低 {weather?.meta.low || "6"}°</small>
         </div>
       ) : widget.type === "notes" ? (
         <>
