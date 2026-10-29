@@ -2,6 +2,66 @@
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#7665b8"><title>Markchan · 捡手机</title>
 <style>
 :root{--blue:#07f;--bg:#f2f2f7;--line:#e5e5ea}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;color:#fff}body{background:#111;display:grid;place-items:center}.phone{position:relative;width:min(100vw,393px);height:min(100dvh,852px);min-height:560px;overflow:hidden;border-radius:40px;background:linear-gradient(160deg,#d6c6f2,#8b80c9 54%,#424365);box-shadow:0 20px 70px #0008}.wall{position:absolute;inset:0;background:radial-gradient(ellipse at 18% 25%,#f7e9ff9c,transparent 34%),linear-gradient(160deg,#c7b7ef,#8b80c9 54%,#424365)}.status{position:absolute;top:14px;left:25px;right:25px;display:flex;justify-content:space-between;font-size:13px;font-weight:650;z-index:9}.island{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:112px;height:31px;border-radius:22px;background:#101014;z-index:10}.change{position:absolute;top:53px;right:17px;color:#fff;border:1px solid #ffffff55;border-radius:18px;padding:7px 10px;background:#ffffff18;z-index:11;font-size:11px}.lock,.pin,.home,.screen{position:absolute;inset:0}.lock{text-align:center}.lockmark{margin-top:91px;font-size:22px}.date{font-size:18px;margin-top:10px}.time{font-size:clamp(78px,24vw,100px);font-weight:650;letter-spacing:-5px;line-height:1.1}.hint{position:absolute;bottom:92px;left:0;right:0;font-size:14px}.tools{position:absolute;bottom:38px;left:44px;right:44px;display:flex;justify-content:space-between}.tool{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:#17162955;font-size:22px}.pin{display:none;text-align:center;background:#29283c55;backdrop-filter:blur(22px);padding:76px 24px 28px;z-index:5}.pin h2{font-size:22px;font-weight:500;margin:14px 0 22px}.dots{display:flex;justify-content:center;gap:17px;margin-bottom:28px}.dots i{width:12px;height:12px;border:1.5px solid white;border-radius:50%}.dots .on{background:white}.keys{width:260px;max-width:100%;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:12px 15px}.key{height:62px;border-radius:50%;background:#ffffff2d;border:0;color:#fff;font-size:28px}.err{height:24px;margin-top:12px;font-size:13px;color:#fff3b0}.cancel{position:absolute;bottom:32px;left:25px;background:none;border:0;color:white;font-size:15px}.home{display:none;padding:65px 16px 25px;background:linear-gradient(155deg,#b7a5df,#5d5d89);z-index:4}.home h2{font-size:23px;margin:20px 0 24px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px 7px}.app{font-size:11px;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer}.ico{width:52px;height:52px;border-radius:15px;background:#ffffffdf;color:#514c70;display:grid;place-items:center;font-size:26px;box-shadow:0 3px 12px #2222}.dock{position:absolute;bottom:18px;left:12px;right:12px;border-radius:24px;background:#ffffff40;display:flex;justify-content:space-around;padding:9px}.screen{display:none;background:var(--bg);color:#17171b;z-index:7;overflow:hidden}.bar{height:84px;padding:43px 15px 10px;display:flex;align-items:center;justify-content:space-between;background:#f2f2f7;border-bottom:1px solid var(--line);font-size:17px;font-weight:650}.back{border:0;background:none;color:var(--blue);font-size:16px;padding:0}.body{height:calc(100% - 84px);overflow:auto;padding:15px 13px 25px}.group{background:#fff;border-radius:13px;overflow:hidden}.item{padding:13px;border-bottom:1px solid var(--line);display:flex;gap:11px;align-items:center;cursor:pointer;font-size:14px}.item:last-child{border-bottom:0}.muted{font-size:12px;color:#888;margin-top:4px}.note{white-space:pre-wrap;font-size:16px;line-height:1.75;padding:8px}.cover{width:49px;height:49px;border-radius:7px;background:linear-gradient(135deg,#e9d8ff,#8b78ba);display:grid;place-items:center;font-size:23px;flex-shrink:0}.photoGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}.tile{aspect-ratio:1;background:linear-gradient(135deg,#e5d8f3,#b8b4df,#777ba5);display:grid;place-items:center;font-size:24px;cursor:pointer;overflow:hidden}.tile img{width:100%;height:100%;object-fit:cover}.input{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px;font-size:14px}.btn{background:var(--blue);color:white;border:0;border-radius:9px;padding:10px 14px;margin-top:9px}.mini{position:absolute;bottom:0;left:0;right:0;padding:9px;background:#fff;border-top:1px solid var(--line);display:flex;align-items:center;gap:9px}.player{padding:25px;text-align:center}.bigcover{width:230px;height:230px;margin:25px auto;background:linear-gradient(135deg,#d9bde8,#8979bc);border-radius:14px;display:grid;place-items:center;font-size:70px}.range{width:100%;accent-color:#6c5ce7}
+
+/* iOS-native visual pass */
+:root{--blue:#007aff;--bg:#f2f2f7;--line:#d1d1d6}
+html,body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+body{background:#0b0b0d}
+.phone{background:#8e84bd;isolation:isolate}
+.wall{background:radial-gradient(ellipse at 25% 18%,#f5eaff 0,transparent 30%),radial-gradient(ellipse at 80% 65%,#a9a1d9 0,transparent 36%),linear-gradient(150deg,#d9c9ed 0%,#a69acb 40%,#65698f 100%);transition:filter .25s}
+.island{width:126px;height:36px;top:11px;border-radius:24px;background:#050505}
+.status{top:17px;font-size:15px;letter-spacing:-.2px}
+.change{top:58px;background:#ffffff22;border:1px solid #ffffff40;backdrop-filter:blur(18px);font-size:12px;padding:8px 12px}
+.lockmark{margin-top:108px;font-size:19px;opacity:.88}
+.date{font-size:20px;font-weight:500;letter-spacing:-.4px}
+.time{font-size:clamp(84px,24vw,102px);font-weight:600;letter-spacing:-5px;font-variant-numeric:tabular-nums}
+.hint{bottom:95px;font-size:15px;font-weight:500;text-shadow:0 1px 4px #0002}
+.tool{background:#17172355;border:1px solid #ffffff30;backdrop-filter:blur(18px);font-size:21px}
+.pin{background:#26253662;backdrop-filter:blur(35px) saturate(1.4)}
+.pin h2{font-weight:600;font-size:23px}
+.key{background:#ffffff30;border:1px solid #ffffff14;font-weight:400;font-size:28px;backdrop-filter:blur(12px)}
+.key:active{background:#ffffff70}
+.home{background:linear-gradient(155deg,#b8a6df 0%,#8d83b8 46%,#5c5d84 100%);padding:65px 21px 110px}
+.home h2{font-size:25px;font-weight:700;letter-spacing:-.5px;margin:25px 0 25px;text-shadow:0 1px 6px #0001}
+.grid{gap:22px 8px}
+.app{font-size:11px;font-weight:500;text-shadow:0 1px 4px #0003;gap:7px}
+.ico{width:57px;height:57px;border-radius:13px;background:linear-gradient(145deg,#fff,#e8e8ed);color:#24242a;font-size:28px;box-shadow:0 2px 5px #0002,0 8px 16px #0001;overflow:hidden}
+.dock{bottom:17px;left:13px;right:13px;border-radius:27px;background:#ffffff48;border:1px solid #ffffff30;backdrop-filter:blur(28px) saturate(1.5);padding:10px 8px;justify-content:space-evenly}
+.dock .ico{width:53px;height:53px;border-radius:13px}
+.screen{background:#f2f2f7;color:#1c1c1e}
+.bar{height:94px;padding:47px 16px 12px;background:#f2f2f7f2;backdrop-filter:blur(24px);border-bottom:1px solid #d1d1d655;font-size:17px;font-weight:600;position:relative}
+.bar>span:nth-child(2){position:absolute;left:50%;transform:translateX(-50%);max-width:60%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.back{font-size:17px;font-weight:400;letter-spacing:-.3px;white-space:nowrap}
+.body{height:calc(100% - 94px);padding:17px 16px 30px;overscroll-behavior:contain}
+.group{border-radius:13px;box-shadow:0 0 0 .5px #00000006}
+.item{padding:14px 13px;min-height:58px;font-size:16px;letter-spacing:-.2px}
+.item .muted{font-size:13px;color:#8e8e93}
+.muted{font-size:13px;color:#8e8e93}
+.note{font-size:17px;line-height:1.65;letter-spacing:-.15px;padding:7px 2px}
+.note h2{font-size:30px;line-height:1.15;letter-spacing:-.7px;font-weight:700}
+.cover{border-radius:10px;background:linear-gradient(145deg,#f1e4fa,#b4a5d7);color:#695b8b}
+.bigcover{border-radius:4px;box-shadow:0 8px 28px #0002}
+.input{border:1px solid #c6c6cc;border-radius:10px;background:#fff;font:16px -apple-system,BlinkMacSystemFont,sans-serif;padding:12px}
+.btn{background:#007aff;border-radius:11px;font-size:16px;font-weight:600;padding:11px 16px}
+.tile{background:linear-gradient(135deg,#eee5f6,#c5c5df,#8588ad)}
+.mini{padding:10px 14px calc(10px + env(safe-area-inset-bottom));box-shadow:0 -1px 5px #0000000a}
+@media(max-width:600px){
+ html,body{height:100%;height:100dvh;overflow:hidden}
+ body{display:block;background:#000}
+ .phone{width:100vw;height:100dvh;min-height:0;border-radius:0;box-shadow:none}
+ .status{top:max(14px,env(safe-area-inset-top));left:27px;right:25px}
+ .island{top:max(9px,env(safe-area-inset-top))}
+ .lockmark{margin-top:calc(env(safe-area-inset-top) + 91px)}
+ .change{top:calc(env(safe-area-inset-top) + 48px)}
+ .home{padding-top:calc(env(safe-area-inset-top) + 63px);padding-bottom:calc(env(safe-area-inset-bottom) + 108px)}
+ .screen .bar{padding-top:calc(env(safe-area-inset-top) + 30px);height:calc(env(safe-area-inset-top) + 82px)}
+ .screen .body{height:calc(100% - env(safe-area-inset-top) - 82px);padding-bottom:calc(env(safe-area-inset-bottom) + 24px)}
+ .pin{padding-top:calc(env(safe-area-inset-top) + 76px)}
+ .tools{bottom:calc(env(safe-area-inset-bottom) + 34px)}
+ .hint{bottom:calc(env(safe-area-inset-bottom) + 89px)}
+ .cancel{bottom:calc(env(safe-area-inset-bottom) + 28px)}
+}
+
 </style></head><body><div class="phone" id="phone"><div class="wall" id="wall"></div><div class="island"></div><div class="status"><span>21:14</span><span>▂▄▆　Wi-Fi　▰</span></div><button class="change" id="change">更换壁纸</button>
 <section class="lock" id="lock"><div class="lockmark">♙</div><div class="date">10月29日 星期四</div><div class="time">21:14</div><div class="hint" id="hint">⌃　上滑以解锁</div><div class="tools"><div class="tool">◉</div><div class="tool">📷</div></div></section>
 <section class="pin" id="pin"><div style="font-size:24px">🔒</div><h2>输入密码</h2><div class="dots" id="dots"><i></i><i></i><i></i><i></i></div><div class="keys" id="keys"></div><div class="err" id="err"></div><button class="cancel" id="cancel">取消</button></section>
