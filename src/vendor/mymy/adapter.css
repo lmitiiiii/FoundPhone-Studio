@@ -628,3 +628,18 @@
   width: 25px;
   height: 25px;
 }
+
+
+.mymy-ui .ig-bio {
+  display: block;
+  margin-top: 5px;
+  white-space: pre-wrap;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.mymy-ui .ig-mention {
+  display: inline;
+  color: #245bdb;
+  font-weight: 500;
+  vertical-align: baseline;
+}
