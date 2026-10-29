@@ -3,7 +3,7 @@
   "id": "markchan-found-phone",
   "title": "Markchan · 捡手机",
   "description": "Coco & Mark 互动捡手机；密码 8266。媒体链接均留空待替换。",
-  "revision": 4,
+  "revision": 5,
   "phone": {
     "owner": "Markchan",
     "date": "2026-10-29",
@@ -220,7 +220,8 @@
           "mediaUrl": "",
           "audioUrl": "",
           "index": "1"
-        }
+        },
+        "folder": "🤫"
       },
       {
         "id": "photo-2",
@@ -228,11 +229,12 @@
         "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
         "kind": "image",
         "meta": {
-          "album": "最近项目",
+          "album": "🤫",
           "mediaUrl": "",
           "audioUrl": "",
           "index": "2"
-        }
+        },
+        "folder": "🤫"
       },
       {
         "id": "photo-3",
@@ -240,11 +242,12 @@
         "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
         "kind": "image",
         "meta": {
-          "album": "最近项目",
+          "album": "🤫",
           "mediaUrl": "",
           "audioUrl": "",
           "index": "3"
-        }
+        },
+        "folder": "🤫"
       },
       {
         "id": "photo-4",
@@ -252,11 +255,12 @@
         "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
         "kind": "audio",
         "meta": {
-          "album": "最近项目",
+          "album": "🤫",
           "mediaUrl": "",
           "audioUrl": "",
           "index": "4"
-        }
+        },
+        "folder": "🤫"
       },
       {
         "id": "photo-5",
@@ -264,11 +268,12 @@
         "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
         "kind": "image",
         "meta": {
-          "album": "最近项目",
+          "album": "🤫",
           "mediaUrl": "",
           "audioUrl": "",
           "index": "5"
-        }
+        },
+        "folder": "🤫"
       },
       {
         "id": "photo-6",
@@ -276,11 +281,12 @@
         "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
         "kind": "image",
         "meta": {
-          "album": "最近项目",
+          "album": "🤫",
           "mediaUrl": "",
           "audioUrl": "",
           "index": "6"
-        }
+        },
+        "folder": "🤫"
       },
       {
         "id": "photo-7",
@@ -288,11 +294,12 @@
         "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
         "kind": "audio",
         "meta": {
-          "album": "最近项目",
+          "album": "🤫",
           "mediaUrl": "",
           "audioUrl": "",
           "index": "7"
-        }
+        },
+        "folder": "🤫"
       },
       {
         "id": "photo-8",
@@ -300,11 +307,12 @@
         "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
         "kind": "image",
         "meta": {
-          "album": "最近项目",
+          "album": "🤫",
           "mediaUrl": "",
           "audioUrl": "",
           "index": "8"
-        }
+        },
+        "folder": "🤫"
       },
       {
         "id": "photo-9",
@@ -312,11 +320,12 @@
         "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
         "kind": "image",
         "meta": {
-          "album": "最近项目",
+          "album": "🤫",
           "mediaUrl": "",
           "audioUrl": "",
           "index": "9"
-        }
+        },
+        "folder": "🤫"
       },
       {
         "id": "photo-10",
@@ -324,11 +333,12 @@
         "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
         "kind": "audio",
         "meta": {
-          "album": "最近项目",
+          "album": "🤫",
           "mediaUrl": "",
           "audioUrl": "",
           "index": "10"
-        }
+        },
+        "folder": "🤫"
       },
       {
         "id": "photo-11",
@@ -336,11 +346,12 @@
         "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
         "kind": "image",
         "meta": {
-          "album": "最近项目",
+          "album": "🤫",
           "mediaUrl": "",
           "audioUrl": "",
           "index": "11"
-        }
+        },
+        "folder": "🤫"
       },
       {
         "id": "photo-12",
@@ -348,11 +359,12 @@
         "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
         "kind": "image",
         "meta": {
-          "album": "最近项目",
+          "album": "🤫",
           "mediaUrl": "",
           "audioUrl": "",
           "index": "12"
-        }
+        },
+        "folder": "🤫"
       },
       {
         "id": "photo-13",
@@ -360,11 +372,12 @@
         "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
         "kind": "audio",
         "meta": {
-          "album": "最近项目",
+          "album": "🤫",
           "mediaUrl": "",
           "audioUrl": "",
           "index": "13"
-        }
+        },
+        "folder": "🤫"
       },
       {
         "id": "photo-14",
@@ -372,11 +385,12 @@
         "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
         "kind": "image",
         "meta": {
-          "album": "最近项目",
+          "album": "🤫",
           "mediaUrl": "",
           "audioUrl": "",
           "index": "14"
-        }
+        },
+        "folder": "🤫"
       },
       {
         "id": "photo-15",
@@ -384,11 +398,12 @@
         "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
         "kind": "image",
         "meta": {
-          "album": "最近项目",
+          "album": "🤫",
           "mediaUrl": "",
           "audioUrl": "",
           "index": "15"
-        }
+        },
+        "folder": "🤫"
       },
       {
         "id": "photo-16",
@@ -396,11 +411,12 @@
         "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
         "kind": "audio",
         "meta": {
-          "album": "最近项目",
+          "album": "🤫",
           "mediaUrl": "",
           "audioUrl": "",
           "index": "16"
-        }
+        },
+        "folder": "🤫"
       },
       {
         "id": "photo-17",
@@ -408,11 +424,12 @@
         "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
         "kind": "image",
         "meta": {
-          "album": "最近项目",
+          "album": "🤫",
           "mediaUrl": "",
           "audioUrl": "",
           "index": "17"
-        }
+        },
+        "folder": "🤫"
       },
       {
         "id": "photo-18",
@@ -420,11 +437,12 @@
         "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
         "kind": "image",
         "meta": {
-          "album": "最近项目",
+          "album": "🤫",
           "mediaUrl": "",
           "audioUrl": "",
           "index": "18"
-        }
+        },
+        "folder": "🤫"
       },
       {
         "id": "photo-19",
@@ -432,11 +450,12 @@
         "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
         "kind": "audio",
         "meta": {
-          "album": "最近项目",
+          "album": "🤫",
           "mediaUrl": "",
           "audioUrl": "",
           "index": "19"
-        }
+        },
+        "folder": "🤫"
       },
       {
         "id": "photo-20",
@@ -444,11 +463,12 @@
         "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
         "kind": "image",
         "meta": {
-          "album": "最近项目",
+          "album": "🤫",
           "mediaUrl": "",
           "audioUrl": "",
           "index": "20"
-        }
+        },
+        "folder": "🤫"
       },
       {
         "id": "photo-21",
@@ -456,20 +476,12 @@
         "body": "图片/音频占位；填写 meta.mediaUrl 或 meta.audioUrl。",
         "kind": "image",
         "meta": {
-          "album": "最近项目",
+          "album": "🤫",
           "mediaUrl": "",
           "audioUrl": "",
           "index": "21"
-        }
-      },
-      {
-        "id": "secret-album",
-        "title": "🤫",
-        "body": "私密相册入口",
-        "kind": "text",
-        "meta": {
-          "album": "🤫"
-        }
+        },
+        "folder": "🤫"
       }
     ],
     "camera": [
@@ -491,7 +503,8 @@
         "meta": {
           "url": "",
           "historyIndex": "1"
-        }
+        },
+        "folder": "历史记录"
       },
       {
         "id": "history-2",
@@ -501,7 +514,8 @@
         "meta": {
           "url": "",
           "historyIndex": "2"
-        }
+        },
+        "folder": "历史记录"
       },
       {
         "id": "history-3",
@@ -511,7 +525,8 @@
         "meta": {
           "url": "",
           "historyIndex": "3"
-        }
+        },
+        "folder": "历史记录"
       },
       {
         "id": "history-4",
@@ -521,7 +536,8 @@
         "meta": {
           "url": "",
           "historyIndex": "4"
-        }
+        },
+        "folder": "历史记录"
       },
       {
         "id": "history-5",
@@ -531,7 +547,8 @@
         "meta": {
           "url": "",
           "historyIndex": "5"
-        }
+        },
+        "folder": "历史记录"
       }
     ],
     "notes": [
@@ -582,7 +599,8 @@
           "person": "马克",
           "month": "8",
           "day": "2"
-        }
+        },
+        "time": "2026-08-02T09:00"
       },
       {
         "id": "birthday-donghyuck",
@@ -593,7 +611,8 @@
           "person": "东赫",
           "month": "6",
           "day": "6"
-        }
+        },
+        "time": "2026-06-06T09:00"
       }
     ],
     "mail": [
