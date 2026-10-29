@@ -115,7 +115,7 @@ function WidgetFace({
         </>
       ) : widget.type === "photos" ? (
         (() => {
-          const photo = (work.data.photos || []).find((item) => {
+          const photo = [...(work.data.photos || [])].reverse().find((item) => {
             const url = item.meta?.mediaUrl || item.meta?.imageUrl || "";
             return item.kind === "image" && !!safeMedia(url);
           });
