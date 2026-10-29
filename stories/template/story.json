@@ -3,7 +3,7 @@
   "id": "markchan-found-phone",
   "title": "Markchan · 捡手机",
   "description": "Coco & Mark 互动捡手机；密码 8266。媒体链接均留空待替换。",
-  "revision": 10,
+  "revision": 11,
   "phone": {
     "owner": "Markchan",
     "date": "2026-10-29",
@@ -1073,7 +1073,9 @@
         "meta": {
           "username": "markcocolove",
           "profileType": "main",
-          "avatarUrl": ""
+          "avatarUrl": "",
+          "followerCount": "56.8万",
+          "followingCount": "2"
         }
       },
       {
@@ -1117,7 +1119,9 @@
         "meta": {
           "username": "coco66_",
           "profileType": "linked",
-          "avatarUrl": ""
+          "avatarUrl": "",
+          "followerCount": "52.6万",
+          "followingCount": "2"
         }
       },
       {
@@ -1161,7 +1165,9 @@
         "meta": {
           "username": "mark82_",
           "profileType": "linked",
-          "avatarUrl": ""
+          "avatarUrl": "",
+          "followerCount": "58.3万",
+          "followingCount": "2"
         }
       },
       {
