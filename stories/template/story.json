@@ -3,7 +3,7 @@
   "id": "markchan-found-phone",
   "title": "Markchan · 捡手机",
   "description": "Coco & Mark 互动捡手机；密码 8266。媒体链接均留空待替换。",
-  "revision": 9,
+  "revision": 10,
   "phone": {
     "owner": "Markchan",
     "date": "2026-10-29",
@@ -1112,7 +1112,7 @@
       {
         "id": "ig-coco-profile",
         "title": "@coco66_",
-        "body": "我现在恋爱了知道吗 我要专心陪我老公 我不会再更新社交软件了 你们已经失去我了 不要太想我 @mark82_",
+        "body": "我现在恋爱了知道吗\n我要专心陪我老公\n我不会再更新社交软件了\n你们已经失去我了\n不要太想我 @mark82_",
         "kind": "text",
         "meta": {
           "username": "coco66_",
@@ -1156,7 +1156,7 @@
       {
         "id": "ig-mark-profile",
         "title": "@mark82_",
-        "body": "我现在恋爱了知道吗 我要专心陪我老婆 我不会再更新社交软件了 你们已经失去我了 不要太想我 @coco66_",
+        "body": "我现在恋爱了知道吗\n我要专心陪我老婆\n我不会再更新社交软件了\n你们已经失去我了\n不要太想我 @coco66_",
         "kind": "text",
         "meta": {
           "username": "mark82_",
