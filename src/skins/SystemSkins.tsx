@@ -500,8 +500,9 @@ export function CalendarSkin(p: Props) {
   const first = new Date(Date.UTC(year, month, 1)).getUTCDay(),
     days = new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
   const eventItems = p.items.filter((i) => meta(i, "month") && meta(i, "day"));
-  const monthEvents = eventItems.filter((i) => dateParts(i).month === month + 1)
-    .sort((x, y) => dateParts(x).day - dateParts(y).day);
+  const specialDates = [...eventItems].sort((x, y) =>
+    dateParts(x).month - dateParts(y).month || dateParts(x).day - dateParts(y).day,
+  );
   const reminderNames: Record<string, string> = {
     "anniversary-apr-29": "我们的纪念日",
     "birthday-mark": "马克生日",
@@ -550,7 +551,7 @@ export function CalendarSkin(p: Props) {
             <Heart size={18} fill="#e879a6" /><strong style={{ fontSize: 16 }}>特别的日子 · 记得提醒</strong>
           </div>
           <p style={{ margin: "4px 0 12px", fontSize: 12, color: "#a66d83" }}>把重要的人和日子，好好放在心上。</p>
-          {monthEvents.map((i) => (
+          {specialDates.map((i) => (
             <button key={i.id} onClick={() => p.onItem(i)} style={{ width: "100%", display: "flex", alignItems: "center", gap: 12, textAlign: "left", border: 0, borderRadius: 14, padding: "10px 8px", marginTop: 5, background: "rgba(255,255,255,.78)", color: "#714454" }}>
               <span style={{ minWidth: 43, textAlign: "center", padding: "7px 3px", borderRadius: 11, background: "#ffe0eb", color: "#bd5c83", fontWeight: 700 }}>{dateParts(i).month}/{dateParts(i).day}</span>
               <span style={{ flex: 1 }}><strong style={{ display: "block", fontSize: 13 }}>{reminderNames[i.id] || i.title}</strong><small style={{ color: "#a66d83" }}>{i.body}</small></span>
