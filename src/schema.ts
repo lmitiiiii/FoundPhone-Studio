@@ -200,8 +200,10 @@ export function safeMedia(value: string) {
     /^data:(image\/(png|jpeg|webp|gif)|audio\/(mpeg|mp3|wav|ogg|webm|mp4)|video\/(mp4|webm));base64,[a-zA-Z0-9+/=\s]+$/.test(
       value,
     );
-  // Story media may be hosted remotely (for example, images in a repository).
-  // Restrict remote media to HTTPS so arbitrary executable protocols are rejected.
-  const remoteMedia = /^https:\/\/[^\s]+$/i.test(value);
-  return inlineMedia || remoteMedia ? value : "";
+  // Permit only this project's raw GitHub assets; reject arbitrary remote media.
+  const projectAsset =
+    /^https:\/\/raw\.githubusercontent\.com\/lmitiiiii\/FoundPhone-Studio\/main\/[A-Za-z0-9._%()-]+\.(?:jpe?g|png|webp|gif)$/i.test(
+      value,
+    );
+  return inlineMedia || projectAsset ? value : "";
 }
