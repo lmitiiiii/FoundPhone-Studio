@@ -3,7 +3,7 @@
   "id": "markchan-found-phone",
   "title": "Markchan · 捡手机",
   "description": "Coco & Mark 互动捡手机；密码 8266。媒体链接均留空待替换。",
-  "revision": 14,
+  "revision": 15,
   "phone": {
     "owner": "Markchan",
     "date": "2026-10-29",
@@ -923,7 +923,7 @@
         "meta": {
           "artist": "Travie McCoy, Bruno Mars",
           "audioUrl": "",
-          "coverUrl": "https://coverartarchive.org/release/9e75153b-4aab-3cdf-aac1-c6f785525150/front-500",
+          "coverUrl": "https://i.scdn.co/image/ab67616d0000b27337ce3dd20c2318e13c6608ed",
           "track": "1",
           "album": "Lazarus"
         }
@@ -1056,15 +1056,21 @@
       {
         "id": "seoul-weather",
         "title": "首尔 Seoul",
-        "body": "多云 · 当前约 10°C",
+        "body": "多云 · 10°C · 降水量 0 mm",
         "kind": "text",
         "meta": {
           "city": "Seoul",
           "temperature": "10",
           "condition": "多云",
-          "high": "11",
-          "low": "6",
-          "updatedAt": "2026-10-29 15:00 KST"
+          "high": "11°C",
+          "low": "6°C",
+          "updatedAt": "2026-10-29 15:00 KST",
+          "feelsLike": "8°C",
+          "precipitation": "0 mm",
+          "humidity": "48%",
+          "wind": "12 km/h",
+          "uvIndex": "2（偏低）",
+          "visibility": "10 km"
         }
       }
     ],
