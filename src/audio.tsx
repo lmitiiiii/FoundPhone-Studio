@@ -257,6 +257,7 @@ export function PersistentMusicPlayer() {
     <audio
       ref={audioRef}
       className="persistent-music-audio"
+      style={{ position: "fixed", width: 1, height: 1, opacity: 0, pointerEvents: "none", left: -10, bottom: -10 }}
       preload="auto"
       playsInline
       aria-label="后台音乐播放列表"
