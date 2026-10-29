@@ -841,7 +841,8 @@ function DrawnArtwork({ id, date }: { id: string; date?: string }) {
 
 // The repository ships the icon assets and the Vite plugin publishes them under /icon-assets.
 // Prefer those real app icon images; DrawnArtwork remains the onError fallback.
-const originalsEnabled = true;
+// This branch does not ship the ignored local icon bitmaps; render the in-repo SVG artwork directly.
+const originalsEnabled = false;
 export function AppArtwork({
   id,
   date,
