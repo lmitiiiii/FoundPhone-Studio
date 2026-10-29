@@ -110,7 +110,12 @@ export function Media({
   item: Item;
   className?: string;
 }) {
-  const src = safeMedia(item.media);
+  const src = safeMedia(
+    item.media ||
+      (item.kind === "audio"
+        ? meta(item, "audioUrl")
+        : meta(item, "mediaUrl") || meta(item, "imageUrl") || meta(item, "coverUrl")),
+  );
   return src ? (
     item.kind === "audio" ? (
       <audio className={className} controls src={src} />
