@@ -8,6 +8,8 @@ import {
   Clock,
   CloudSun,
   Battery,
+  Images,
+  Music2,
   Download,
   Upload,
 } from "lucide-react";
@@ -45,6 +47,8 @@ const widgetLabels = {
   weather: "天气",
   notes: "备忘录",
   battery: "电池",
+  photos: "照片",
+  music: "音乐",
 };
 const widgetApp = {
   calendar: "calendar",
@@ -52,6 +56,8 @@ const widgetApp = {
   weather: "weather",
   notes: "notes",
   battery: "settings",
+  photos: "photos",
+  music: "music",
 };
 function WidgetFace({
   widget,
@@ -103,6 +109,18 @@ function WidgetFace({
             <small>无备忘录</small>
           )}
         </>
+      ) : widget.type === "photos" ? (
+        <div className="widget-photo-placeholder">
+          <Images size={30} />
+          <strong>照片</strong>
+          <small>等你发来照片</small>
+        </div>
+      ) : widget.type === "music" ? (
+        <div className="widget-music-face">
+          <span className="widget-music-art"><Music2 size={27} /></span>
+          <strong>Music</strong>
+          <small>Apple Music</small>
+        </div>
       ) : (
         <>
           <Battery size={44} />
