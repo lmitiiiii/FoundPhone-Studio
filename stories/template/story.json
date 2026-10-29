@@ -3,7 +3,7 @@
   "id": "markchan-found-phone",
   "title": "Markchan · 捡手机",
   "description": "Coco & Mark 互动捡手机；密码 8266。媒体链接均留空待替换。",
-  "revision": 15,
+  "revision": 16,
   "phone": {
     "owner": "Markchan",
     "date": "2026-10-29",
@@ -1055,22 +1055,109 @@
     "weather": [
       {
         "id": "seoul-weather",
-        "title": "首尔 Seoul",
+        "title": "首尔",
         "body": "多云 · 10°C · 降水量 0 mm",
         "kind": "text",
         "meta": {
           "city": "Seoul",
           "temperature": "10",
           "condition": "多云",
-          "high": "11°C",
-          "low": "6°C",
+          "high": "11",
+          "low": "6",
           "updatedAt": "2026-10-29 15:00 KST",
-          "feelsLike": "8°C",
+          "feelsLike": "8",
           "precipitation": "0 mm",
           "humidity": "48%",
           "wind": "12 km/h",
           "uvIndex": "2（偏低）",
-          "visibility": "10 km"
+          "visibility": "10 km",
+          "locationLabel": "韩国 · 首尔",
+          "rain": "10%",
+          "sunrise": "06:48",
+          "sunset": "17:38",
+          "aqi": "32",
+          "aqiLabel": "空气质量优",
+          "hourly": [
+            {
+              "time": "现在",
+              "temperature": "10",
+              "condition": "多云",
+              "rain": "10%",
+              "wind": "12 km/h"
+            },
+            {
+              "time": "16时",
+              "temperature": "10",
+              "condition": "多云",
+              "rain": "10%",
+              "wind": "11 km/h"
+            },
+            {
+              "time": "17时",
+              "temperature": "9",
+              "condition": "晴间多云",
+              "rain": "5%",
+              "wind": "10 km/h"
+            },
+            {
+              "time": "18时",
+              "temperature": "8",
+              "condition": "晴",
+              "rain": "0%",
+              "wind": "8 km/h"
+            },
+            {
+              "time": "19时",
+              "temperature": "7",
+              "condition": "晴",
+              "rain": "0%",
+              "wind": "7 km/h"
+            },
+            {
+              "time": "日出",
+              "temperature": "6",
+              "condition": "晴",
+              "rain": "0%",
+              "wind": "6 km/h"
+            }
+          ],
+          "daily": [
+            {
+              "label": "今天",
+              "low": "6",
+              "high": "11",
+              "condition": "多云",
+              "rain": "10%"
+            },
+            {
+              "label": "周五",
+              "low": "5",
+              "high": "12",
+              "condition": "晴",
+              "rain": "0%"
+            },
+            {
+              "label": "周六",
+              "low": "7",
+              "high": "14",
+              "condition": "多云",
+              "rain": "10%"
+            },
+            {
+              "label": "周日",
+              "low": "8",
+              "high": "15",
+              "condition": "小雨",
+              "rain": "35%"
+            },
+            {
+              "label": "周一",
+              "low": "6",
+              "high": "13",
+              "condition": "晴",
+              "rain": "0%"
+            }
+          ]
         }
       }
     ],
