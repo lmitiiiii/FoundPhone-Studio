@@ -58,7 +58,7 @@ export function defaultLayout(input: Work): DeviceLayout {
   return {
     version: 1,
     workId: w.id,
-    previewLayoutRevision: markchan ? 4 : w.id === "ui-test-phone-v2" ? 1 : 0,
+    previewLayoutRevision: markchan ? 5 : w.id === "ui-test-phone-v2" ? 1 : 0,
     apps: structuredClone(w.apps)
       .sort((a, b) => (a.id === "appstore" ? -1 : b.id === "appstore" ? 1 : 0))
       .map((a) =>
@@ -107,7 +107,7 @@ export function validateLayout(raw: unknown, input: Work) {
     store.visible = true;
     store.folder = "";
   }
-  if (w.id === "markchan-found-phone" && layout.previewLayoutRevision < 4) {
+  if (w.id === "markchan-found-phone" && layout.previewLayoutRevision < 5) {
     layout.widgets = layout.widgets.filter(
       (widget) =>
         ![
@@ -120,8 +120,8 @@ export function validateLayout(raw: unknown, input: Work) {
         ].includes(widget.id),
     );
     layout.widgets.push(
-      { id: "widget-markchan-photos", type: "photos", size: "small" },
       { id: "widget-markchan-music", type: "music", size: "medium" },
+      { id: "widget-markchan-photos", type: "photos", size: "small" },
       { id: "widget-markchan-weather", type: "weather", size: "small" },
     );
     layout.positions = {
@@ -135,7 +135,7 @@ export function validateLayout(raw: unknown, input: Work) {
       "widget-markchan-clock",
       "widget-markchan-battery",
     ]) delete layout.positions[id];
-    layout.previewLayoutRevision = 4;
+    layout.previewLayoutRevision = 5;
   }
   if (w.id === "ui-test-phone-v2" && layout.previewLayoutRevision < 1) {
     const visibleApps = ["wechat", "douyin"];
