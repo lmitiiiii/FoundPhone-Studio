@@ -9,17 +9,9 @@ export const detailedIcons = new Set([
   "weather",
   "notes",
   "reminders",
-  "recorder",
   "wallet",
   "qq",
   "threads",
-  "music",
-  "recorder",
-  "maps",
-  "safari",
-  "instagram",
-  "twitter",
-  "kakao",
 ]);
 /** Independently drawn SVG materials; no extracted bitmap, font or brand resource. */
 export function DetailedArtwork({ id }: { id: string }) {
@@ -27,71 +19,7 @@ export function DetailedArtwork({ id }: { id: string }) {
     g = (n: string) => `url(#${key + n})`;
   let bg = g("paper"),
     art: ReactNode;
-  if (id === "music") {
-    bg = g("music");
-    art = (
-      <path d="M43 8v34a9 9 0 1 1-5.5-8.3V17l-15 3.5v25a9 9 0 1 1-5.5-8.3V14z" fill="#fff" />
-    );
-  } else if (id === "recorder") {
-    bg = g("recorder");
-    art = (
-      <>
-        <path d="M5 32h4l3-6 4 12 4-22 4 32 4-23 4 17 4-25 4 21 4-13 4 7h7" fill="none" stroke="#ff453a" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M5 32h5l3-3 4 8 4-18 4 28 4-20 4 12 4-17 4 15 4-9 4 4h7" fill="none" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      </>
-    );
-  } else if (id === "maps") {
-    bg = g("maps");
-    art = (
-      <>
-        <path d="M0 7 17 1l15 7 16-6 16 6v48l-17 6-15-7-15 6L0 55z" fill="#f8f8f5" />
-        <path d="M-2 16 18 8l13 7 18-7 18 8M-2 45l20-9 13 8 18-8 18 8" fill="none" stroke="#8bc6a0" strokeWidth="6" />
-        <path d="M-2 27 16 20l15 7 18-7 18 7" fill="none" stroke="#f1c94b" strokeWidth="4" />
-        <path d="M15 64 24 43 31 34 40 24 52 1" fill="none" stroke="#fff" strokeWidth="5" />
-        <path d="M15 64 24 43 31 34 40 24 52 1" fill="none" stroke="#ed6464" strokeWidth="2.2" />
-        <path d="M32 15c-7 0-12 5-12 12 0 9 12 22 12 22s12-13 12-22c0-7-5-12-12-12z" fill="#3389f5" stroke="#fff" strokeWidth="1.5" />
-        <circle cx="32" cy="27" r="4" fill="#fff" />
-      </>
-    );
-  } else if (id === "safari") {
-    bg = g("safari");
-    art = (
-      <>
-        <circle cx="32" cy="32" r="29" fill="#f7fbff" />
-        <circle cx="32" cy="32" r="26" fill="#078cf0" />
-        <circle cx="32" cy="32" r="22.5" fill="none" stroke="#d9f4ff" strokeWidth="1.2" />
-        {Array.from({ length: 32 }, (_, n) => (
-          <path key={n} d="M32 7.5v3.5" stroke="#fff" strokeWidth={n % 4 === 0 ? "1.4" : ".65"} transform={`rotate(${n * 11.25} 32 32)`} />
-        ))}
-        <path d="M16 49 28 29 48 14 36 35z" fill="#fff" />
-        <path d="m28 29 20-15-12 21z" fill="#f43d4d" />
-        <circle cx="32" cy="32" r="2" fill="#fff" />
-      </>
-    );
-  } else if (id === "instagram") {
-    bg = g("instagram");
-    art = (
-      <>
-        <rect x="9" y="9" width="46" height="46" rx="13" fill="none" stroke="#fff" strokeWidth="4.3" />
-        <circle cx="32" cy="32" r="11" fill="none" stroke="#fff" strokeWidth="4.3" />
-        <circle cx="45" cy="19" r="3.1" fill="#fff" />
-        <path d="M15 44c6 7 14 10 22 8" fill="none" stroke="#ffb45c" strokeWidth="1.5" opacity=".65" />
-      </>
-    );
-  } else if (id === "twitter") {
-    bg = g("black");
-    art = (
-      <path d="M46.5 11H55L36.4 32.3 58 53H41.1L27.8 37.2 14 53H5.5l19.9-22.8L7 11h17.3l12 14.2zM43.5 48.8h4.7L21.7 15h-5z" fill="#fff" />
-    );
-  } else if (id === "kakao") {
-    bg = g("kakao");
-    art = (
-      <>
-        <path d="M32 10C17.5 10 6 19.2 6 31.2c0 8.3 5.6 15.4 14.1 18.9l-3 7.4 11-5.8C44 52.5 58 43.4 58 31.2 58 19.2 46.5 10 32 10z" fill="#3c1e1e" />
-        <path d="M17 28.5c0-2.3 2-4.1 4.4-4.1 1.6 0 3 .8 3.8 2.1 1.2-1.5 3-2.4 5-2.4s3.8.9 5 2.4c.9-1.3 2.3-2.1 3.9-2.1 2.5 0 4.4 1.8 4.4 4.1 0 4.2-6.1 8.6-13.2 8.6S17 32.7 17 28.5z" fill="#ffe812" />
-      </>
-    );
-  } else if (id === "appstore") {
+  if (id === "appstore") {
     bg = g("blue");
     art = (
       <g fill="none" stroke="#ebfaff" strokeWidth="4.6" strokeLinecap="round">
@@ -272,11 +200,10 @@ export function DetailedArtwork({ id }: { id: string }) {
   } else if (id === "notes") {
     art = (
       <>
-        <path d="M0 0h64v22H0z" fill="#ffd84a" />
-        <path d="M0 22h64" stroke="#f1f1f1" strokeWidth="1.5" />
-        <path d="M0 24h64v40H0z" fill="#fff" />
-        {[31, 42, 53].map((y) => (
-          <path key={y} d={`M10 ${y}h44`} stroke="#c9c9c9" strokeWidth="1" />
+        <path d="M0 0h64v21H0z" fill={g("sun")} />
+        <path d="M0 22h64" stroke="#ddd" strokeDasharray="1 2" />
+        {[31, 43, 55].map((y) => (
+          <path key={y} d={`M12 ${y}h40`} stroke="#bbb" strokeWidth="1" />
         ))}
       </>
     );
@@ -352,12 +279,6 @@ export function DetailedArtwork({ id }: { id: string }) {
           ["cloud", "#fff", "#a5d9ff"],
           ["black", "#262628", "#020203"],
           ["wallet", "#ffe2d3", "#bfa59b"],
-          ["music", "#fa365c", "#c91644"],
-          ["recorder", "#a5a6ae", "#53545d"],
-          ["maps", "#f6f8f5", "#dce9df"],
-          ["safari", "#55d3ff", "#0665d9"],
-          ["instagram", "#ffd776", "#b52db8"],
-          ["kakao", "#ffe812", "#f8d900"],
         ].map(([n, a, b]) => (
           <linearGradient id={key + n} key={n} x2="0" y2="1">
             <stop stopColor={a} />
