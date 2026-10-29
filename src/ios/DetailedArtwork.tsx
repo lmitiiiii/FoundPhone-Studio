@@ -9,6 +9,7 @@ export const detailedIcons = new Set([
   "weather",
   "notes",
   "reminders",
+  "recorder",
   "wallet",
   "qq",
   "threads",
@@ -205,6 +206,30 @@ export function DetailedArtwork({ id }: { id: string }) {
         {[31, 43, 55].map((y) => (
           <path key={y} d={`M12 ${y}h40`} stroke="#bbb" strokeWidth="1" />
         ))}
+      </>
+    );
+  } else if (id === "recorder") {
+    bg = g("black");
+    art = (
+      <>
+        <rect x="0" y="0" width="64" height="64" rx="14" fill={g("black")} />
+        <path
+          d="M7 32h4l3-8 4 18 4-27 4 34 4-24 4 15 4-22 4 20 4-12 4 6h7"
+          fill="none"
+          stroke="#ff453a"
+          strokeWidth="2.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M7 32h5l3-5 4 11 4-20 4 29 4-21 4 13 4-18 4 16 4-10 4 5h7"
+          fill="none"
+          stroke="#f4f4f7"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          opacity=".96"
+        />
       </>
     );
   } else if (id === "reminders") {
