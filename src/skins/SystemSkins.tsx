@@ -821,7 +821,7 @@ export function MusicSkin(p: Props) {
         const exact = results.find((r) => clean(r.trackName || "") === target)
           || results.find((r) => clean(r.trackName || "").includes(target) || target.includes(clean(r.trackName || "")))
           || results[0];
-        const image = exact?.artworkUrl100?.replace(/\\d+x\\d+bb/, "600x600bb") || "";
+        const image = exact?.artworkUrl100?.replace(/\d+x\d+bb/, "600x600bb") || "";
         return [i.id, image] as const;
       } catch {
         return [i.id, ""] as const;
@@ -834,7 +834,7 @@ export function MusicSkin(p: Props) {
 
   const coverFor = (i: Item) => artwork[i.id] || safeMedia(meta(i, "coverUrl"));
   const songs = items.filter((i) => i.kind === "audio");
-  const shown = tab === "歌单" ? songs.filter((i) => i.folder) : songs;
+  const shown = songs;
   const nextSong = () => {
     if (!songs.length) return;
     const index = songs.findIndex((i) => i.id === song?.id);
