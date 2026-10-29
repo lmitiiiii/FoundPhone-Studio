@@ -552,6 +552,32 @@
 .ios18 .widget-photo-placeholder strong {
   font-size: 15px;
 }
+.ios18 .widget-photo-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+  background: #eee5f4;
+}
+.ios18 .widget-photo-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ios18 .widget-photo-image span {
+  position: absolute;
+  left: 9px;
+  bottom: 8px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  color: #fff;
+  background: #24172b88;
+  font-size: 11px;
+  line-height: 1.2;
+  backdrop-filter: blur(8px);
+}
 .ios18 .widget-photo-placeholder small {
   color: #796b86;
 }
