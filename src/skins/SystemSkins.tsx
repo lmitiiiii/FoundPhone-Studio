@@ -321,14 +321,15 @@ export function SafariSkin(p: Props) {
       <Header p={p} />
       <div className="catalog-scroll">
         <h1>{tab}</h1>
-        <div className="safari-favorites">
+        <div className={tab === "历史记录" ? "safari-favorites safari-history" : "safari-favorites"}>
           {items.map((i) => (
             <button key={i.id} onClick={() => p.onItem(i)}>
               <span>
-                <Globe size={28} />
+                <Globe size={tab === "历史记录" ? 18 : 28} />
               </span>
               <strong>{i.title}</strong>
-              <small>{meta(i, "url")}</small>
+              {tab === "书签" && <small>{meta(i, "url")}</small>}
+              {tab === "历史记录" && <small><ChevronRight size={15} /></small>}
             </button>
           ))}
         </div>
