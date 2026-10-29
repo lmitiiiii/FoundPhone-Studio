@@ -474,12 +474,22 @@ export function NotesSkin(p: Props) {
   );
 }
 export function CalendarSkin(p: Props) {
-  const [month, setMonth] = useState(8),
-    [year, setYear] = useState(2026),
-    [day, setDay] = useState(1);
-  const prefix = `${year}-${String(month + 1).padStart(2, "0")}`;
+  const now = new Date();
+  const [month, setMonth] = useState(now.getMonth()),
+    [year, setYear] = useState(now.getFullYear()),
+    [day, setDay] = useState(now.getDate());
+  const prefix = String(year) + "-" + String(month + 1).padStart(2, "0");
+  const dateParts = (i: Item) => ({
+    month: Number(meta(i, "month", i.time.slice(5, 7))),
+    day: Number(meta(i, "day", i.time.slice(8, 10))),
+  });
+  const isOnDate = (i: Item, m: number, d: number) => {
+    const parts = dateParts(i);
+    return parts.month === m + 1 && parts.day === d;
+  };
   const list = p.items.filter((i) =>
-    i.time.startsWith(`${prefix}-${String(day).padStart(2, "0")}`),
+    isOnDate(i, month, day) &&
+    (meta(i, "recurring") === "yearly" || i.time.startsWith(prefix + "-" + String(day).padStart(2, "0"))),
   );
   const move = (d: number) => {
     const date = new Date(Date.UTC(year, month + d, 1));
@@ -489,61 +499,66 @@ export function CalendarSkin(p: Props) {
   };
   const first = new Date(Date.UTC(year, month, 1)).getUTCDay(),
     days = new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
+  const eventItems = p.items.filter((i) => meta(i, "month") && meta(i, "day"));
+  const monthEvents = eventItems.filter((i) => dateParts(i).month === month + 1)
+    .sort((x, y) => dateParts(x).day - dateParts(y).day);
+  const reminderNames: Record<string, string> = {
+    "anniversary-apr-29": "我们的纪念日",
+    "birthday-mark": "马克生日",
+    "birthday-donghyuck": "东赫生日",
+  };
   return (
     <div className="catalog-skin native-calendar">
       <Header p={p} />
       <div className="catalog-scroll">
         <div className="month-title">
-          <button aria-label="上个月" onClick={() => move(-1)}>
-            <ChevronLeft />
-          </button>
-          <h2>
-            {year} 年 {month + 1} 月
-          </h2>
-          <button aria-label="下个月" onClick={() => move(1)}>
-            <ChevronRight />
-          </button>
+          <button aria-label="上个月" onClick={() => move(-1)}><ChevronLeft /></button>
+          <h2>{year} 年 {month + 1} 月</h2>
+          <button aria-label="下个月" onClick={() => move(1)}><ChevronRight /></button>
         </div>
         <div className="calendar-grid">
-          {["日", "一", "二", "三", "四", "五", "六"].map((t) => (
-            <small key={t}>{t}</small>
-          ))}
-          {Array.from({ length: first }, (_, i) => (
-            <span key={"blank" + i} />
-          ))}
-          {Array.from({ length: days }, (_, i) => (
-            <button
-              className={day === i + 1 ? "selected" : ""}
-              key={i}
-              onClick={() => setDay(i + 1)}
-            >
-              {i + 1}
-              {p.items.some((x) =>
-                x.time.startsWith(
-                  `${prefix}-${String(i + 1).padStart(2, "0")}`,
-                ),
-              ) && <i />}
-            </button>
-          ))}
+          {["日", "一", "二", "三", "四", "五", "六"].map((t) => <small key={t}>{t}</small>)}
+          {Array.from({ length: first }, (_, i) => <span key={"blank" + i} />)}
+          {Array.from({ length: days }, (_, i) => {
+            const dateDay = i + 1;
+            const marked = p.items.some((x) =>
+              isOnDate(x, month, dateDay) &&
+              (meta(x, "recurring") === "yearly" || x.time.startsWith(prefix + "-" + String(dateDay).padStart(2, "0"))),
+            );
+            return (
+              <button className={(day === dateDay ? "selected " : "") + (marked ? "special-date" : "")}
+                key={dateDay} onClick={() => setDay(dateDay)}
+                aria-label={(month + 1) + "月" + dateDay + "日" + (marked ? "有重要日子" : "")}>
+                {dateDay}
+                {marked && <i style={{ background: "#e879a6", display: "block", width: 5, height: 5, borderRadius: 99, margin: "2px auto 0" }} />}
+              </button>
+            );
+          })}
         </div>
-        <h4 className="native-section">
-          {month + 1} 月 {day} 日
-        </h4>
+        <h4 className="native-section">{month + 1} 月 {day} 日</h4>
         {list.map((i) => (
-          <button
-            className="calendar-event"
-            key={i.id}
-            onClick={() => p.onItem(i)}
-          >
-            <time>{i.time.slice(-5)}</time>
-            <div>
-              <strong>{i.title}</strong>
-              <p>{meta(i, "location", i.body)}</p>
-            </div>
+          <button className="calendar-event" key={i.id} onClick={() => p.onItem(i)}>
+            <time>{i.time.slice(-5) || "全天"}</time>
+            <div><strong>{i.title}</strong><p>{meta(i, "location", i.body)}</p></div>
+            <Heart size={16} color="#e879a6" />
           </button>
         ))}
         <Empty items={list} label="当天没有日程" />
         <Add p={p} label="添加日程" />
+        <section style={{ margin: "22px 12px 18px", padding: 16, borderRadius: 20, background: "linear-gradient(145deg, #fff0f5, #fff8f3)", border: "1px solid #f8dce7" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4, color: "#b84f79" }}>
+            <Heart size={18} fill="#e879a6" /><strong style={{ fontSize: 16 }}>特别的日子 · 记得提醒</strong>
+          </div>
+          <p style={{ margin: "4px 0 12px", fontSize: 12, color: "#a66d83" }}>把重要的人和日子，好好放在心上。</p>
+          {monthEvents.map((i) => (
+            <button key={i.id} onClick={() => p.onItem(i)} style={{ width: "100%", display: "flex", alignItems: "center", gap: 12, textAlign: "left", border: 0, borderRadius: 14, padding: "10px 8px", marginTop: 5, background: "rgba(255,255,255,.78)", color: "#714454" }}>
+              <span style={{ minWidth: 43, textAlign: "center", padding: "7px 3px", borderRadius: 11, background: "#ffe0eb", color: "#bd5c83", fontWeight: 700 }}>{dateParts(i).month}/{dateParts(i).day}</span>
+              <span style={{ flex: 1 }}><strong style={{ display: "block", fontSize: 13 }}>{reminderNames[i.id] || i.title}</strong><small style={{ color: "#a66d83" }}>{i.body}</small></span>
+              <span style={{ color: "#e879a6" }}>♡</span>
+            </button>
+          ))}
+          <p style={{ margin: "12px 2px 0", color: "#a66d83", fontSize: 11 }}>♡ 马克生日 · 8 月 2 日　♡ 东赫生日 · 6 月 6 日　♡ 纪念日 · 4 月 29 日</p>
+        </section>
       </div>
     </div>
   );
@@ -680,52 +695,62 @@ export function ClockSkin(p: Props) {
 export function RemindersSkin(p: Props) {
   const { tab, setTab, q, setQ, items } = useContent(p, "全部");
   const [checked, setChecked] = useSkinState<string[]>(p, "checked", []);
-  const list =
-    tab === "已完成"
-      ? items.filter((i) => checked.includes(i.id))
-      : items.filter((i) => !checked.includes(i.id));
+  const list = tab === "已完成"
+    ? items.filter((i) => checked.includes(i.id))
+    : items.filter((i) => !checked.includes(i.id));
+  const countdown = (i: Item) => {
+    const nextDate = meta(i, "nextDate");
+    if (!nextDate) return meta(i, "days", "");
+    const target = new Date(nextDate + "T00:00:00");
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return String(Math.max(0, Math.ceil((target.getTime() - today.getTime()) / 86400000)));
+  };
+  const isLove = (i: Item) => i.id === "days-love";
   return (
-    <div className="catalog-skin native-reminders">
+    <div className="catalog-skin native-reminders" style={{ background: "linear-gradient(180deg, #fff1f6 0%, #fff8f5 48%, #fff 100%)" }}>
       <Header p={p} />
-      <div className="catalog-scroll">
+      <div className="catalog-scroll" style={{ paddingBottom: 22 }}>
+        <div style={{ margin: "12px 14px 18px", padding: "22px 18px 20px", borderRadius: 26, background: "linear-gradient(140deg, #f9b8d0 0%, #f7c9d9 48%, #fce4eb 100%)", color: "#773d56", boxShadow: "0 8px 24px rgba(209,112,151,.14)", position: "relative", overflow: "hidden" }}>
+          <div style={{ position: "absolute", right: 18, top: 14, fontSize: 42, opacity: .55 }}>♡</div>
+          <div style={{ fontSize: 12, letterSpacing: 2, color: "#95546e" }}>OUR LITTLE CALENDAR</div>
+          <h1 style={{ margin: "8px 0 5px", fontSize: 25, color: "#773d56" }}>把喜欢的日子，慢慢过</h1>
+          <p style={{ margin: 0, fontSize: 13, color: "#95546e" }}>每一个倒数，都在靠近一份喜欢。</p>
+          <div style={{ marginTop: 17, display: "flex", alignItems: "center", gap: 7, fontSize: 12 }}><Heart size={15} fill="#d86f9c" color="#d86f9c" /> Mark ♡ Donghyuck</div>
+        </div>
         <SearchBox value={q} set={setQ} />
-        <div className="reminder-categories">
+        <div className="reminder-categories" style={{ margin: "0 14px 16px" }}>
           {["全部", "已完成"].map((t) => (
-            <button key={t} onClick={() => setTab(t)}>
-              <Calendar size={22} />
-              <strong>
-                {t === "全部" ? items.length - checked.length : checked.length}
-              </strong>
-              <span>{t}</span>
+            <button key={t} onClick={() => setTab(t)} style={{ borderRadius: 18, background: tab === t ? "#f8d5e2" : "rgba(255,255,255,.85)", color: "#a45376", border: "1px solid #f5dce6" }}>
+              <Calendar size={22} color="#d8759e" /><strong>{t === "全部" ? items.length - checked.length : checked.length}</strong><span>{t}</span>
             </button>
           ))}
         </div>
-        <h1>{tab}</h1>
-        {list.map((i) => (
-          <div className="reminder-row" key={i.id}>
-            <button
-              aria-label={`完成${i.title}`}
-              role="checkbox"
-              aria-checked={checked.includes(i.id)}
-              onClick={() =>
-                setChecked(
-                  checked.includes(i.id)
-                    ? checked.filter((x) => x !== i.id)
-                    : [...checked, i.id],
-                )
-              }
-            >
-              <CheckCircle size={21} />
-            </button>
-            <button onClick={() => p.onItem(i)}>
-              <strong>{i.title}</strong>
-              <small>
-                {i.time} · {i.folder}
-              </small>
-            </button>
-          </div>
-        ))}
-        <Add p={p} label="新提醒事项" />
+        <h1 style={{ margin: "0 16px 12px", fontSize: 20, color: "#81445e" }}>{tab === "已完成" ? "已经珍藏的日子" : "我们的倒数日"}</h1>
+        {list.map((i) => {
+          const done = checked.includes(i.id), days = countdown(i);
+          return (
+            <div key={i.id} style={{ display: "flex", alignItems: "center", gap: 10, margin: "0 14px 12px", padding: 14, borderRadius: 21, background: "rgba(255,255,255,.9)", border: "1px solid #f5dce6", boxShadow: "0 4px 14px rgba(180,101,133,.06)", opacity: done ? .66 : 1 }}>
+              <button aria-label={(done ? "取消完成" : "完成") + i.title} role="checkbox" aria-checked={done} onClick={() => setChecked(done ? checked.filter((x) => x !== i.id) : [...checked, i.id])} style={{ border: 0, background: "transparent", color: done ? "#c4a5b3" : "#df7fa5", padding: 2 }}>
+                <CheckCircle size={22} fill={done ? "#f5dce6" : "transparent"} />
+              </button>
+              <button onClick={() => p.onItem(i)} style={{ flex: 1, minWidth: 0, textAlign: "left", border: 0, background: "transparent", color: "#754258" }}>
+                <strong style={{ display: "block", fontSize: 15 }}>{i.title}</strong>
+                <small style={{ display: "block", marginTop: 4, color: "#b17b91", lineHeight: 1.45 }}>{i.body}</small>
+                {meta(i, "nextDate") && <small style={{ display: "block", marginTop: 3, color: "#bd8299" }}>{meta(i, "nextDate")}</small>}
+              </button>
+              <div style={{ minWidth: 62, textAlign: "center", padding: "9px 7px", borderRadius: 15, background: isLove(i) ? "#ffe6ef" : "#fff0f5", color: "#c45f88" }}>
+                <strong style={{ display: "block", fontSize: 25, lineHeight: 1.1 }}>{isLove(i) ? meta(i, "days", "826") : days}</strong>
+                <small style={{ fontSize: 10 }}>{isLove(i) ? "天的喜欢" : "天后见"}</small>
+              </div>
+            </div>
+          );
+        })}
+        <div style={{ margin: "18px 14px 12px", padding: 17, borderRadius: 22, background: "#fff0f5", border: "1px solid #f7dce7", color: "#9b5a75" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, fontWeight: 700, marginBottom: 6 }}><Heart size={17} fill="#e58caf" color="#e58caf" /> 温柔提醒</div>
+          <p style={{ margin: 0, fontSize: 12, lineHeight: 1.7 }}>生日要记得说快乐，纪念日要记得拥抱。普通的每一天，也值得被认真收藏。</p>
+        </div>
+        <Add p={p} label="添加新的倒数日" />
       </div>
     </div>
   );
