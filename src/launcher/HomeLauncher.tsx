@@ -124,7 +124,7 @@ function WidgetFace({
             : "";
           return photoUrl ? (
             <div className="widget-photo-image">
-              <img src={photoUrl} alt={photo?.title || "相册照片"} loading="lazy" decoding="async" />
+              <img src={photoUrl} alt={photo?.title || "相册照片"} loading="eager" decoding="async" fetchPriority="high" />
               <span>照片</span>
             </div>
           ) : (
