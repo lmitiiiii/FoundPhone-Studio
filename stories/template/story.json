@@ -3,7 +3,7 @@
   "id": "markchan-found-phone",
   "title": "Markchan · 捡手机",
   "description": "Coco & Mark 互动捡手机；密码 8266。媒体链接均留空待替换。",
-  "revision": 17,
+  "revision": 18,
   "phone": {
     "owner": "Markchan",
     "date": "2026-10-29",
@@ -140,6 +140,24 @@
       "dock": false,
       "folder": "",
       "icon": "⚙️"
+    },
+    {
+      "id": "phone",
+      "name": "电话",
+      "installed": true,
+      "visible": true,
+      "dock": false,
+      "folder": "",
+      "icon": "📞"
+    },
+    {
+      "id": "messages",
+      "name": "信息",
+      "installed": true,
+      "visible": true,
+      "dock": false,
+      "folder": "",
+      "icon": "💬"
     }
   ],
   "contacts": [
@@ -1411,6 +1429,193 @@
           "audioUrl": "",
           "duration": ""
         }
+      }
+    ],
+    "phone": [
+      {
+        "id": "call-mark-01",
+        "title": "Mark",
+        "body": "来电 · 已接听 · 8 分钟",
+        "sender": "Mark",
+        "time": "2026-10-28T21:14",
+        "kind": "call",
+        "meta": {
+          "number": "010-****-8266",
+          "status": "已接听",
+          "duration": "08:12",
+          "direction": "来电"
+        },
+        "folder": "最近通话"
+      },
+      {
+        "id": "call-donghyuck-01",
+        "title": "东赫",
+        "body": "去吃饭吗？",
+        "sender": "东赫",
+        "time": "2026-10-28T18:42",
+        "kind": "call",
+        "meta": {
+          "number": "010-****-0606",
+          "status": "已接听",
+          "duration": "03:26",
+          "direction": "去电"
+        },
+        "folder": "最近通话"
+      },
+      {
+        "id": "call-unknown-01",
+        "title": "未知来电",
+        "body": "未接来电",
+        "sender": "未知来电",
+        "time": "2026-10-27T23:08",
+        "kind": "call",
+        "meta": {
+          "number": "未知号码",
+          "status": "未接",
+          "direction": "来电"
+        },
+        "folder": "最近通话"
+      },
+      {
+        "id": "call-mark-02",
+        "title": "Mark",
+        "body": "未接来电",
+        "sender": "Mark",
+        "time": "2026-10-27T16:30",
+        "kind": "call",
+        "meta": {
+          "number": "010-****-8266",
+          "status": "未接",
+          "direction": "来电"
+        },
+        "folder": "最近通话"
+      },
+      {
+        "id": "call-friend-01",
+        "title": "朋友",
+        "body": "来电 · 已接听 · 2 分钟",
+        "sender": "朋友",
+        "time": "2026-10-26T14:06",
+        "kind": "call",
+        "meta": {
+          "number": "010-****-2048",
+          "status": "已接听",
+          "duration": "02:41",
+          "direction": "来电"
+        },
+        "folder": "最近通话"
+      },
+      {
+        "id": "call-unknown-02",
+        "title": "未知来电",
+        "body": "已拒接",
+        "sender": "未知来电",
+        "time": "2026-10-25T11:53",
+        "kind": "call",
+        "meta": {
+          "number": "070-****-1190",
+          "status": "已拒接",
+          "direction": "来电"
+        },
+        "folder": "最近通话"
+      },
+      {
+        "id": "call-donghyuck-02",
+        "title": "东赫",
+        "body": "去电 · 已接听 · 5 分钟",
+        "sender": "东赫",
+        "time": "2026-10-23T20:17",
+        "kind": "call",
+        "meta": {
+          "number": "010-****-0606",
+          "status": "已接听",
+          "duration": "05:03",
+          "direction": "去电"
+        },
+        "folder": "最近通话"
+      }
+    ],
+    "messages": [
+      {
+        "id": "sms-shop-01",
+        "title": "Coupang 优惠通知",
+        "body": "【Coupang】今晚 23:59 前，精选好物限时特惠。打开 App 查看本周折扣。退订请回复 STOP。",
+        "sender": "Coupang",
+        "time": "2026-10-29T10:24",
+        "kind": "text",
+        "meta": {
+          "category": "广告",
+          "brand": "Coupang"
+        },
+        "folder": "促销",
+        "read": false
+      },
+      {
+        "id": "sms-cafe-01",
+        "title": "星巴克 Korea",
+        "body": "【STARBUCKS】秋日限定饮品正在贩售中，使用会员券可享特别优惠。数量有限，欢迎到店体验。",
+        "sender": "STARBUCKS",
+        "time": "2026-10-28T13:08",
+        "kind": "text",
+        "meta": {
+          "category": "广告",
+          "brand": "STARBUCKS"
+        },
+        "folder": "促销",
+        "read": true
+      },
+      {
+        "id": "sms-delivery-01",
+        "title": "外卖优惠",
+        "body": "【外卖优惠】今天下单立减 ₩5,000，适用部分餐厅。点击应用内优惠券查看详情。",
+        "sender": "外卖优惠",
+        "time": "2026-10-27T18:21",
+        "kind": "text",
+        "meta": {
+          "category": "广告"
+        },
+        "folder": "促销",
+        "read": true
+      },
+      {
+        "id": "sms-beauty-01",
+        "title": "Olive Young",
+        "body": "【OLIVE YOUNG】会员专属周末活动开启！精选护肤品最高 30% OFF，活动截止至周日。",
+        "sender": "OLIVE YOUNG",
+        "time": "2026-10-26T09:15",
+        "kind": "text",
+        "meta": {
+          "category": "广告",
+          "brand": "OLIVE YOUNG"
+        },
+        "folder": "促销",
+        "read": true
+      },
+      {
+        "id": "sms-carrier-01",
+        "title": "运营商通知",
+        "body": "【移动通信】本月流量使用提醒：当前套餐剩余流量充足。查看官方 App 可了解套餐详情。",
+        "sender": "运营商通知",
+        "time": "2026-10-25T08:40",
+        "kind": "text",
+        "meta": {
+          "category": "服务通知"
+        },
+        "folder": "通知",
+        "read": true
+      },
+      {
+        "id": "sms-lottery-01",
+        "title": "活动中奖通知",
+        "body": "【会员活动】您获得一张限时折扣券，请在官方应用内查看活动详情。请勿向任何人提供验证码或支付信息。",
+        "sender": "会员活动",
+        "time": "2026-10-24T15:32",
+        "kind": "text",
+        "meta": {
+          "category": "推广提醒"
+        },
+        "folder": "促销",
+        "read": true
       }
     ]
   },
