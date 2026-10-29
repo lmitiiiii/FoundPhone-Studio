@@ -522,6 +522,45 @@
   gap: 8px;
   text-align: center;
 }
+.safari-history {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0 16px 12px;
+}
+.safari-history > button {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) 20px;
+  align-items: center;
+  gap: 10px;
+  min-height: 49px;
+  padding: 0 2px;
+  border-bottom: 1px solid rgba(60, 60, 67, 0.14);
+  text-align: left;
+}
+.safari-history > button > span {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  color: #7d8792;
+}
+.safari-history strong {
+  min-width: 0;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.safari-history small {
+  display: flex;
+  justify-content: flex-end;
+  color: #8e8e93;
+}
+
 .safari-favorites > button > span {
   width: 54px;
   height: 54px;
