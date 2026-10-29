@@ -344,32 +344,116 @@
     ],
     "safari": [
       {
-        "id": "test-item-safari",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
+        "id": "history-1",
+        "title": "首尔赏樱最佳点",
+        "body": "首尔赏樱最佳点",
         "kind": "text",
-        "meta": {}
+        "meta": {
+          "url": "",
+          "historyIndex": "1"
+        }
+      },
+      {
+        "id": "history-2",
+        "title": "泡菜汤做法步骤",
+        "body": "泡菜汤做法步骤",
+        "kind": "text",
+        "meta": {
+          "url": "",
+          "historyIndex": "2"
+        }
+      },
+      {
+        "id": "history-3",
+        "title": "襄阳一日游攻略 首尔出发",
+        "body": "襄阳一日游攻略 首尔出发",
+        "kind": "text",
+        "meta": {
+          "url": "",
+          "historyIndex": "3"
+        }
+      },
+      {
+        "id": "history-4",
+        "title": "适合情侣散步的首尔江边路线",
+        "body": "适合情侣散步的首尔江边路线",
+        "kind": "text",
+        "meta": {
+          "url": "",
+          "historyIndex": "4"
+        }
+      },
+      {
+        "id": "history-5",
+        "title": "惹男朋友生气了怎么哄？",
+        "body": "惹男朋友生气了怎么哄？",
+        "kind": "text",
+        "meta": {
+          "url": "",
+          "historyIndex": "5"
+        }
       }
     ],
     "notes": [
       {
-        "id": "test-item-notes",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
+        "id": "note-shopping",
+        "title": "采购清单",
+        "body": "牛奶、五花肉、嫩豆腐、小葱、泡菜\n\n东赫想吃的麻糍\n📍강원 속초시 청학로 13 1층 육구방앗간\n（要红豆馅的）",
         "kind": "text",
-        "meta": {}
+        "meta": {
+          "folder": "个人"
+        }
+      },
+      {
+        "id": "note-kimchi",
+        "title": "泡菜汤做法",
+        "body": "1. 五花肉下锅煸出油\n2. 放泡菜翻炒 2 分钟\n3. 加水、放豆腐、韩式辣酱\n4. 小火煮 10 分钟",
+        "kind": "text",
+        "meta": {
+          "folder": "食谱"
+        }
+      },
+      {
+        "id": "note-yangyang",
+        "title": "襄阳一日游行李清单",
+        "body": "防晒、墨镜、遮阳帽\n充电宝+充电线\n薄外套、舒服的鞋子\n相机、小零食、雨伞",
+        "kind": "text",
+        "meta": {
+          "folder": "旅行"
+        }
+      },
+      {
+        "id": "note-business",
+        "title": "商务排期",
+        "body": "周一：双人出镜品牌推广，时长不少于 30 秒，报价后续发邮箱。\n\n周三：情侣一日店长见面会，穿同品牌配套情侣装，结束后拍宣传照。\n\n周四：品牌大秀+商务晚宴，座位表找助理核对。\n\n周五：情侣戒宣传视频排档，提前和摄影师沟通档期。",
+        "kind": "text",
+        "meta": {
+          "folder": "工作"
+        }
       }
     ],
     "calendar": [
       {
-        "id": "test-item-calendar",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
+        "id": "birthday-mark",
+        "title": "马克生日",
+        "body": "8 月 2 日",
         "kind": "text",
-        "meta": {}
+        "meta": {
+          "person": "马克",
+          "month": "8",
+          "day": "2"
+        }
+      },
+      {
+        "id": "birthday-donghyuck",
+        "title": "东赫生日",
+        "body": "6 月 6 日",
+        "kind": "text",
+        "meta": {
+          "person": "东赫",
+          "month": "6",
+          "day": "6"
+        }
       }
     ],
     "mail": [
@@ -394,12 +478,22 @@
     ],
     "reminders": [
       {
-        "id": "test-item-reminders",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
+        "id": "days-love",
+        "title": "恋爱已经",
+        "body": "826 天",
         "kind": "text",
-        "meta": {}
+        "meta": {
+          "days": "826"
+        }
+      },
+      {
+        "id": "days-anniversary",
+        "title": "距离纪念日",
+        "body": "还有 52 天",
+        "kind": "text",
+        "meta": {
+          "days": "52"
+        }
       }
     ],
     "files": [
@@ -414,32 +508,145 @@
     ],
     "music": [
       {
-        "id": "test-item-music",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
-        "kind": "text",
-        "meta": {}
+        "id": "song-1",
+        "title": "Billionaire (feat. Bruno Mars)",
+        "body": "Travie McCoy",
+        "kind": "audio",
+        "meta": {
+          "artist": "Travie McCoy",
+          "audioUrl": "",
+          "coverUrl": "",
+          "track": "1"
+        }
+      },
+      {
+        "id": "song-2",
+        "title": "E.T.A.",
+        "body": "Justin Bieber",
+        "kind": "audio",
+        "meta": {
+          "artist": "Justin Bieber",
+          "audioUrl": "",
+          "coverUrl": "",
+          "track": "2"
+        }
+      },
+      {
+        "id": "song-3",
+        "title": "Intentions (feat. Quavo)",
+        "body": "Justin Bieber",
+        "kind": "audio",
+        "meta": {
+          "artist": "Justin Bieber",
+          "audioUrl": "",
+          "coverUrl": "",
+          "track": "3"
+        }
+      },
+      {
+        "id": "song-4",
+        "title": "Love Never Felt So Good",
+        "body": "Michael Jackson",
+        "kind": "audio",
+        "meta": {
+          "artist": "Michael Jackson",
+          "audioUrl": "",
+          "coverUrl": "",
+          "track": "4"
+        }
+      },
+      {
+        "id": "song-5",
+        "title": "Goodbye Summer (feat. D.O.)",
+        "body": "f(x)",
+        "kind": "audio",
+        "meta": {
+          "artist": "f(x)",
+          "audioUrl": "",
+          "coverUrl": "",
+          "track": "5"
+        }
+      },
+      {
+        "id": "song-6",
+        "title": "첫 눈 (The First Snow)",
+        "body": "EXO",
+        "kind": "audio",
+        "meta": {
+          "artist": "EXO",
+          "audioUrl": "",
+          "coverUrl": "",
+          "track": "6"
+        }
+      },
+      {
+        "id": "song-7",
+        "title": "PLAYBOY",
+        "body": "EXO",
+        "kind": "audio",
+        "meta": {
+          "artist": "EXO",
+          "audioUrl": "",
+          "coverUrl": "",
+          "track": "7"
+        }
+      },
+      {
+        "id": "song-8",
+        "title": "Thriller",
+        "body": "Michael Jackson",
+        "kind": "audio",
+        "meta": {
+          "artist": "Michael Jackson",
+          "audioUrl": "",
+          "coverUrl": "",
+          "track": "8"
+        }
       }
     ],
     "maps": [
       {
-        "id": "test-item-maps",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
+        "id": "map-mochi",
+        "title": "육구방앗간",
+        "body": "강원 속초시 청학로 13 1층 육구방앗간",
         "kind": "text",
-        "meta": {}
+        "meta": {
+          "address": "강원 속초시 청학로 13 1층 육구방앗간",
+          "mapUrl": ""
+        }
+      },
+      {
+        "id": "map-hangang",
+        "title": "汉江公园",
+        "body": "首尔汉江公园",
+        "kind": "text",
+        "meta": {
+          "address": "한강공원, Seoul",
+          "mapUrl": ""
+        }
+      },
+      {
+        "id": "map-hongdae",
+        "title": "弘大烤肉店",
+        "body": "弘大附近收藏地点",
+        "kind": "text",
+        "meta": {
+          "address": "Hongdae, Seoul",
+          "mapUrl": ""
+        }
       }
     ],
     "weather": [
       {
-        "id": "test-item-weather",
-        "title": "测试内容",
-        "body": "这是一条测试内容。",
-        "sender": "测试用户",
+        "id": "seoul-weather",
+        "title": "首尔",
+        "body": "天气数据占位；接入实时天气后展示当前温度与预报。",
         "kind": "text",
-        "meta": {}
+        "meta": {
+          "city": "Seoul",
+          "temperature": "",
+          "condition": ""
+        }
       }
     ],
     "wallet": [
