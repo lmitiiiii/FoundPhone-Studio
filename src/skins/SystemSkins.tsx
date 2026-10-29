@@ -826,8 +826,8 @@ export function MusicSkin(p: Props) {
         if (!response.ok) return [i.id, ""] as const;
         const data = await response.json() as { results?: Array<{ trackName?: string; artistName?: string; artworkUrl100?: string }> };
         const results = data.results || [];
-        const clean = (value: string) => value.toLowerCase().replace(/[^\\p{L}\\p{N}]/gu, "");
-        const target = clean(i.id === "song-6" ? "첫 눈" : i.title.replace(/\\s*\\(feat\\..*?\\)/i, ""));
+        const clean = (value: string) => value.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
+        const target = clean(i.id === "song-6" ? "첫 눈" : i.title.replace(/\s*\(feat\..*?\)/i, ""));
         const exact = results.find((r) => clean(r.trackName || "") === target)
           || results.find((r) => clean(r.trackName || "").includes(target) || target.includes(clean(r.trackName || "")))
           || results[0];
