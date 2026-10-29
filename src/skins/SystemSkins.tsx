@@ -788,6 +788,50 @@ export function FilesSkin(p: Props) {
 export function MusicSkin(p: Props) {
   const { tab, setTab, items } = useContent(p, "资料库");
   const [song, setSong] = useTrack(p, items);
+  const [artwork, setArtwork] = useState<Record<string, string>>({});
+  useEffect(() => {
+    let active = true;
+    const terms: Record<string, string> = {
+      "song-1": "Billionaire Travie McCoy Bruno Mars",
+      "song-2": "E.T.A. Justin Bieber",
+      "song-3": "Intentions Justin Bieber Quavo",
+      "song-4": "Love Never Felt So Good Michael Jackson",
+      "song-5": "Goodbye Summer f(x) D.O.",
+      "song-6": "첫 눈 EXO",
+      "song-7": "PLAYBOY EXO",
+      "song-8": "Thriller Michael Jackson",
+    };
+    Promise.all(items.filter((i) => i.kind === "audio").map(async (i) => {
+      if (safeMedia(meta(i, "coverUrl"))) {
+        return [i.id, safeMedia(meta(i, "coverUrl"))] as const;
+      }
+      try {
+        const term = terms[i.id] || `${i.title} ${meta(i, "artist", i.sender)}`;
+        const response = await fetch(
+          `https://itunes.apple.com/search?term=${encodeURIComponent(term)}&entity=song&limit=8&country=US`,
+        );
+        if (!response.ok) return [i.id, ""] as const;
+        const data = await response.json() as {
+          results?: Array<{ trackName?: string; artistName?: string; artworkUrl100?: string }>;
+        };
+        const results = data.results || [];
+        const clean = (value: string) => value.toLowerCase().replace(/[^\\p{L}\\p{N}]/gu, "");
+        const target = clean(i.id === "song-6" ? "첫 눈" : i.title.replace(/\\s*\\(feat\\..*?\\)/i, ""));
+        const exact = results.find((r) => clean(r.trackName || "") === target)
+          || results.find((r) => clean(r.trackName || "").includes(target) || target.includes(clean(r.trackName || "")))
+          || results[0];
+        const image = exact?.artworkUrl100?.replace(/\\d+x\\d+bb/, "600x600bb") || "";
+        return [i.id, image] as const;
+      } catch {
+        return [i.id, ""] as const;
+      }
+    })).then((pairs) => {
+      if (active) setArtwork(Object.fromEntries(pairs.filter((pair) => pair[1])));
+    });
+    return () => { active = false; };
+  }, [items]);
+
+  const coverFor = (i: Item) => artwork[i.id] || safeMedia(meta(i, "coverUrl"));
   return (
     <div className="catalog-skin native-music">
       <Header p={p} />
@@ -813,16 +857,14 @@ export function MusicSkin(p: Props) {
             <button
               className="music-track"
               key={i.id}
-              onClick={() => {
-                setSong(i);
-              }}
+              onClick={() => setSong(i)}
             >
               <span
                 aria-hidden="true"
-                style={{ width: 42, height: 42, borderRadius: 7, display: "grid", placeItems: "center", overflow: "hidden", flexShrink: 0, background: "linear-gradient(135deg, #f5b5ca, #b8a8f8, #4c4c68)" }}
+                style={{ width: 48, height: 48, borderRadius: 7, display: "grid", placeItems: "center", overflow: "hidden", flexShrink: 0, background: "linear-gradient(135deg, #f5b5ca, #b8a8f8, #4c4c68)" }}
               >
-                {safeMedia(meta(i, "coverUrl")) ? (
-                  <img src={safeMedia(meta(i, "coverUrl"))} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                {coverFor(i) ? (
+                  <img src={coverFor(i)} alt="" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 ) : (
                   <Music size={20} color="white" />
                 )}
@@ -830,7 +872,7 @@ export function MusicSkin(p: Props) {
               <span>
                 <strong>{i.title}</strong>
                 <small>
-                  {i.sender} · {meta(i, "album")}
+                  {meta(i, "artist", i.sender)}{meta(i, "album") ? ` · ${meta(i, "album")}` : ""}
                 </small>
               </span>
               <span>{meta(i, "duration")}</span>
@@ -842,8 +884,13 @@ export function MusicSkin(p: Props) {
       {song && (
         <div className="native-now-playing">
           <button onClick={() => p.onItem(song)}>
-            <Music size={20} />
-            {song.title}
+            {coverFor(song) ? (
+              <img src={coverFor(song)} alt="" style={{ width: 34, height: 34, objectFit: "cover", borderRadius: 5, flexShrink: 0 }} />
+            ) : <Music size={20} />}
+            <span style={{ display: "grid", textAlign: "left" }}>
+              <strong>{song.title}</strong>
+              <small>{meta(song, "artist", song.sender)}</small>
+            </span>
           </button>
           {song.kind === "audio" && safeMedia(song.media || meta(song, "audioUrl")) ? (
             <AudioPlayer p={p} item={{ ...song, media: song.media || meta(song, "audioUrl") }} />
