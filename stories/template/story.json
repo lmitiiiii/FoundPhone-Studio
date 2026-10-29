@@ -3,7 +3,7 @@
   "id": "markchan-found-phone",
   "title": "Markchan · 捡手机",
   "description": "Coco & Mark 互动捡手机；密码 8266。媒体链接均留空待替换。",
-  "revision": 11,
+  "revision": 12,
   "phone": {
     "owner": "Markchan",
     "date": "2026-10-29",
@@ -902,13 +902,14 @@
       {
         "id": "song-1",
         "title": "Billionaire (feat. Bruno Mars)",
-        "body": "Travie McCoy",
+        "body": "Travie McCoy, Bruno Mars",
         "kind": "audio",
         "meta": {
-          "artist": "Travie McCoy",
+          "artist": "Travie McCoy, Bruno Mars",
           "audioUrl": "",
           "coverUrl": "",
-          "track": "1"
+          "track": "1",
+          "album": "Lazarus"
         }
       },
       {
@@ -920,19 +921,21 @@
           "artist": "Justin Bieber",
           "audioUrl": "",
           "coverUrl": "",
-          "track": "2"
+          "track": "2",
+          "album": "Changes"
         }
       },
       {
         "id": "song-3",
         "title": "Intentions (feat. Quavo)",
-        "body": "Justin Bieber",
+        "body": "Justin Bieber, Quavo",
         "kind": "audio",
         "meta": {
-          "artist": "Justin Bieber",
+          "artist": "Justin Bieber, Quavo",
           "audioUrl": "",
           "coverUrl": "",
-          "track": "3"
+          "track": "3",
+          "album": "Changes"
         }
       },
       {
@@ -944,19 +947,21 @@
           "artist": "Michael Jackson",
           "audioUrl": "",
           "coverUrl": "",
-          "track": "4"
+          "track": "4",
+          "album": "Xscape"
         }
       },
       {
         "id": "song-5",
         "title": "Goodbye Summer (feat. D.O.)",
-        "body": "f(x)",
+        "body": "f(x), D.O.",
         "kind": "audio",
         "meta": {
-          "artist": "f(x)",
+          "artist": "f(x), D.O.",
           "audioUrl": "",
           "coverUrl": "",
-          "track": "5"
+          "track": "5",
+          "album": "Pink Tape"
         }
       },
       {
@@ -968,7 +973,8 @@
           "artist": "EXO",
           "audioUrl": "",
           "coverUrl": "",
-          "track": "6"
+          "track": "6",
+          "album": "Miracles in December"
         }
       },
       {
@@ -980,7 +986,8 @@
           "artist": "EXO",
           "audioUrl": "",
           "coverUrl": "",
-          "track": "7"
+          "track": "7",
+          "album": "EXODUS"
         }
       },
       {
@@ -992,7 +999,8 @@
           "artist": "Michael Jackson",
           "audioUrl": "",
           "coverUrl": "",
-          "track": "8"
+          "track": "8",
+          "album": "Thriller"
         }
       }
     ],
