@@ -702,9 +702,21 @@ export function RemindersSkin(p: Props) {
   const countdown = (i: Item) => {
     const nextDate = meta(i, "nextDate");
     if (!nextDate) return meta(i, "days", "");
-    const target = new Date(nextDate + "T00:00:00");
     const today = new Date();
     today.setHours(0, 0, 0, 0);
+    let target = new Date(nextDate + "T00:00:00");
+    // Birthdays and anniversaries recur every year: always count down to the next occurrence.
+    const recurring = meta(i, "recurring") === "yearly" ||
+      (meta(i, "month") && meta(i, "day")) ||
+      i.id === "days-anniversary" ||
+      i.id.startsWith("days-birthday-");
+    if (recurring && !Number.isNaN(target.getTime())) {
+      const month = Number(meta(i, "month", String(target.getMonth() + 1)));
+      const day = Number(meta(i, "day", String(target.getDate())));
+      target = new Date(today.getFullYear(), month - 1, day);
+      target.setHours(0, 0, 0, 0);
+      if (target < today) target = new Date(today.getFullYear() + 1, month - 1, day);
+    }
     return String(Math.max(0, Math.ceil((target.getTime() - today.getTime()) / 86400000)));
   };
   const isLove = (i: Item) => i.id === "days-love";
