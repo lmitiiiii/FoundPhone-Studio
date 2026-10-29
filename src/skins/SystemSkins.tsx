@@ -794,7 +794,17 @@ export function MusicSkin(p: Props) {
   const [song, setSong] = useTrack(p, items);
   const [isPlaying, setIsPlaying] = useState(false);
   const [artwork, setArtwork] = useState<Record<string, string>>({});
-  const artworkLookupKey = items.filter((i) => i.kind === "audio").map((i) => `${i.id}:${i.title}:${meta(i, "artist", i.sender)}:${meta(i, "coverUrl")}`).join("|");
+  const artistFor = (i: Item) => ({
+    "song-1": "Travie McCoy feat. Bruno Mars",
+    "song-2": "Justin Bieber",
+    "song-3": "Justin Bieber feat. Quavo",
+    "song-4": "Michael Jackson",
+    "song-5": "f(x) feat. D.O.",
+    "song-6": "EXO",
+    "song-7": "EXO",
+    "song-8": "Michael Jackson",
+  } as Record<string, string>)[i.id] || meta(i, "artist", "");
+  const artworkLookupKey = items.filter((i) => i.kind === "audio").map((i) => `${i.id}:${i.title}:${artistFor(i)}:${meta(i, "coverUrl")}`).join("|");
   useEffect(() => {
     let active = true;
     const terms: Record<string, string> = {
@@ -811,7 +821,7 @@ export function MusicSkin(p: Props) {
       const saved = safeMedia(meta(i, "coverUrl"));
       if (saved) return [i.id, saved] as const;
       try {
-        const term = terms[i.id] || `${i.title} ${meta(i, "artist", i.sender)}`;
+        const term = terms[i.id] || `${i.title} ${artistFor(i)}`;
         const response = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(term)}&entity=song&limit=8&country=US`);
         if (!response.ok) return [i.id, ""] as const;
         const data = await response.json() as { results?: Array<{ trackName?: string; artistName?: string; artworkUrl100?: string }> };
@@ -856,7 +866,7 @@ export function MusicSkin(p: Props) {
             {songs.map((i) => (
               <button className="music-track" key={i.id} onClick={() => { setSong(i); setIsPlaying(true); }}>
                 <span className="music-cover">{coverFor(i) ? <img src={coverFor(i)} alt="" loading="lazy" /> : <Music size={20} />}</span>
-                <span className="music-track-copy"><strong>{i.title}</strong><small>{meta(i, "artist", i.sender)}</small></span>
+                <span className="music-track-copy"><strong>{i.title}</strong><small>{artistFor(i)}</small></span>
               </button>
             ))}
           </div>
@@ -883,7 +893,7 @@ export function MusicSkin(p: Props) {
                     </span>
                     <span className="music-track-copy">
                       <strong>{i.title}</strong>
-                      <small>{meta(i, "artist", i.sender)}</small>
+                      <small>{artistFor(i)}</small>
                     </span>
                   </button>
                   <button className="music-track-more" aria-label={`${i.title} 更多选项`} onClick={() => { setSong(i); setIsPlaying(true); }}><MoreHorizontal size={21} /></button>
@@ -898,7 +908,7 @@ export function MusicSkin(p: Props) {
         <div className="music-mini-player">
           <button className="music-mini-info" onClick={() => p.onItem(song)}>
             <span className="music-mini-cover">{coverFor(song) ? <img src={coverFor(song)} alt="" /> : <Music size={18} />}</span>
-            <span className="music-mini-copy"><strong>{song.title}</strong><small>{meta(song, "artist", song.sender)}</small></span>
+            <span className="music-mini-copy"><strong>{song.title}</strong><small>{artistFor(song)}</small></span>
           </button>
           <div className="music-mini-controls">
             <button aria-label={isPlaying ? "暂停" : "播放"} onClick={() => setIsPlaying((v) => !v)}>{isPlaying ? <Pause size={22} fill="currentColor" /> : <Play size={22} fill="currentColor" />}</button>
