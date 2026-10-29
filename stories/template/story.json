@@ -1115,7 +1115,7 @@
       {
         "id": "ig-question-1",
         "title": "提问箱 1",
-        "body": "提问箱内容占位，请替换",
+        "body": "你们第一次约会去了哪里？",
         "kind": "post",
         "meta": {
           "questionUrl": "",
@@ -1125,7 +1125,7 @@
       {
         "id": "ig-question-2",
         "title": "提问箱 2",
-        "body": "提问箱内容占位，请替换",
+        "body": "谁先告白的？",
         "kind": "post",
         "meta": {
           "questionUrl": "",
@@ -1135,7 +1135,7 @@
       {
         "id": "ig-question-3",
         "title": "提问箱 3",
-        "body": "提问箱内容占位，请替换",
+        "body": "平时是谁更黏人？",
         "kind": "post",
         "meta": {
           "questionUrl": "",
@@ -1145,7 +1145,7 @@
       {
         "id": "ig-question-4",
         "title": "提问箱 4",
-        "body": "提问箱内容占位，请替换",
+        "body": "最喜欢对方的哪个小习惯？",
         "kind": "post",
         "meta": {
           "questionUrl": "",
@@ -1155,7 +1155,7 @@
       {
         "id": "ig-question-5",
         "title": "提问箱 5",
-        "body": "提问箱内容占位，请替换",
+        "body": "下一次想一起去哪里旅行？",
         "kind": "post",
         "meta": {
           "questionUrl": "",
