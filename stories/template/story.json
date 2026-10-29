@@ -144,17 +144,23 @@
   ],
   "contacts": [
     {
-      "id": "test-contact",
-      "name": "测试联系人",
+      "id": "donghyuck",
+      "name": "李楷灿",
       "phone": "",
-      "bio": "这是一条测试内容。"
+      "bio": "KakaoTalk 联系人"
+    },
+    {
+      "id": "mk",
+      "name": "李马克",
+      "phone": "",
+      "bio": "KakaoTalk 联系人"
     }
   ],
   "chats": [
     {
       "id": "kakao-donghyuck",
       "app": "kakao",
-      "title": "东赫",
+      "title": "李楷灿",
       "participants": [
         "owner",
         "donghyuck"
@@ -163,16 +169,16 @@
         {
           "id": "kakao-dh-placeholder",
           "title": "",
-          "body": "聊天内容占位：请补充对话剧本。",
+          "body": "",
           "senderId": "donghyuck",
-          "time": "刚刚"
+          "time": "1小时前"
         }
       ]
     },
     {
       "id": "kakao-mk",
       "app": "kakao",
-      "title": "ㅁㅋ",
+      "title": "李马克",
       "participants": [
         "owner",
         "mk"
@@ -181,9 +187,9 @@
         {
           "id": "kakao-mk-placeholder",
           "title": "",
-          "body": "聊天内容占位：请补充对话剧本。",
+          "body": "",
           "senderId": "mk",
-          "time": "1小时前"
+          "time": "刚刚"
         }
       ]
     }
@@ -807,7 +813,10 @@
         "time": "21:14",
         "sender": "李马克",
         "kind": "text",
-        "meta": { "contact": "李马克", "preview": "刚刚" }
+        "meta": {
+          "contact": "李马克",
+          "preview": "刚刚"
+        }
       },
       {
         "id": "kakao-contact-donghyuck",
@@ -816,7 +825,10 @@
         "time": "20:14",
         "sender": "李楷灿",
         "kind": "text",
-        "meta": { "contact": "李楷灿", "preview": "1小时前" }
+        "meta": {
+          "contact": "李楷灿",
+          "preview": "1小时前"
+        }
       }
     ],
     "instagram": [
