@@ -35,7 +35,7 @@ export function NativeDetail({
   const [favorite, setFavorite] = useState(item.favorite),
     [copied, setCopied] = useState(false),
     [call, setCall] = useState(false);
-  const media = safeMedia(item.media),
+  const media = safeMedia(item.media || item.meta?.mediaUrl || item.meta?.imageUrl || item.meta?.coverUrl),
     name =
       app === "notes"
         ? "备忘录"
@@ -83,7 +83,7 @@ export function NativeDetail({
         <>
           <div className="native-photo-stage">
             {media ? (
-              <img src={media} alt={item.title} />
+              <img src={media} alt={item.title} loading="eager" decoding="async" />
             ) : (
               <div className="native-photo-caption">
                 <h2>{item.title}</h2>
