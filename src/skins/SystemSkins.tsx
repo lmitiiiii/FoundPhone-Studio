@@ -305,75 +305,90 @@ export function CameraSkin(p: Props) {
 export function SafariSkin(p: Props) {
   const [q, setQ] = useState(""),
     [tab, setTab] = useState("书签"),
-    [selectedQuery, setSelectedQuery] = useState("");
+    [selectedQuery, setSelectedQuery] = useState(""),
+    [selectedResult, setSelectedResult] = useState<number | null>(null);
   const items = p.items
-    .filter((i) =>
-      (i.title + i.body + meta(i, "url"))
-        .toLowerCase()
-        .includes(q.toLowerCase()),
-    )
-    .filter((i) =>
-      tab === "书签"
-        ? i.favorite || i.folder !== "历史记录"
-        : i.folder === "历史记录",
-    );
-  const searchResults = (query: string) => {
+    .filter((i) => (i.title + i.body + meta(i, "url")).toLowerCase().includes(q.toLowerCase()))
+    .filter((i) => tab === "书签" ? i.favorite || i.folder !== "历史记录" : i.folder === "历史记录");
+  const searchResults = (query: string): {title:string; description:string; site:string; domain:string; body:string[]}[] => {
     if (query.includes("赏樱")) return [
-      ["首尔春季赏樱路线｜汝矣岛、石村湖、南山", "首尔春天赏花可以从汝矣岛汉江公园开始，沿着樱花步道散步；想拍湖景可以去石村湖，傍晚也很适合约会。", "旅行 · 首尔"],
-      ["汝矣岛汉江公园樱花节出行攻略", "推荐地铁出行，花期人流较多。可以把汉江野餐和夜景安排在同一天。", "游记 · 首尔"],
-      ["首尔樱花拍照地点整理", "南山公园、庆熙大学和首尔林都有适合拍照的步道，出发前记得确认花期。", "攻略 · 韩国"],
+      {title:"首尔赏樱路线：汝矣岛、石村湖和南山",description:"整理首尔春季赏樱地点、交通方式与散步路线。想看樱花和汉江景色，可以从汝矣岛一带开始。",site:"首尔旅行笔记",domain:"seoul-guide.kr",body:["汝矣岛汉江公园：沿着汉江步道散步，花期时可以看到成排樱花。","石村湖：环湖步道适合拍照，傍晚湖面和城市灯光很漂亮。","南山公园：适合安排一段轻松的登山散步，出发前可以查看花期和天气。"]},
+      {title:"汝矣岛汉江公园樱花散步攻略",description:"交通、赏花路线和野餐建议，适合安排半天的春日行程。",site:"周末去哪儿",domain:"weekend-note.kr",body:["建议搭乘地铁前往，花期周末人流较多。","可以准备野餐垫和饮料，傍晚留下来看汉江夜景。"]},
+      {title:"首尔适合拍樱花照片的地方",description:"从首尔林到南山步道，收集适合散步和拍照的赏花地点。",site:"城市散步指南",domain:"walk-in-seoul.com",body:["首尔林适合慢慢散步，也有不少可以取景的林荫路。","花期每年略有不同，出门前最好确认当地最新花况。"]}
     ];
     if (query.includes("泡菜汤")) return [
-      ["韩式泡菜汤家常做法：五花肉版", "五花肉先煸出油脂，加入泡菜翻炒，再加水和豆腐炖煮；最后用韩式辣酱调整味道。", "美食 · 家常菜"],
-      ["Kimchi jjigae 泡菜锅做法", "酸泡菜搭配五花肉风味更浓，建议小火煮约 10–15 分钟，让汤底更入味。", "食谱 · 韩国料理"],
-      ["泡菜汤配什么吃？", "搭配米饭、煎蛋或简单小菜，就能做成一顿方便的韩式晚餐。", "生活 · 饮食"],
+      {title:"韩式泡菜汤做法：五花肉豆腐版",description:"用熟成泡菜、五花肉和嫩豆腐煮出浓郁汤底，做法简单，适合配米饭。",site:"韩国家常食谱",domain:"k-food-table.kr",body:["1. 五花肉切片，下锅煸炒至出油。","2. 加入泡菜翻炒约两分钟，让香味出来。","3. 加水，放入豆腐和适量韩式辣酱。","4. 转小火煮约十分钟，尝味后即可上桌。"]},
+      {title:"Kimchi jjigae｜经典韩式泡菜锅",description:"泡菜的酸香搭配五花肉，炖煮后汤汁更浓郁。",site:"今天吃什么",domain:"today-meal.kr",body:["使用偏酸的熟成泡菜风味更好。","可以依口味加入洋葱、葱花或金枪鱼。"]},
+      {title:"泡菜汤配什么吃？",description:"米饭、煎蛋和简单小菜就能组成一顿舒服的韩式晚餐。",site:"餐桌日记",domain:"table-diary.kr",body:["热腾腾的泡菜汤适合搭配白米饭。","如果泡菜本身很咸，调味时可以少放酱料。"]}
     ];
     if (query.includes("襄阳")) return [
-      ["首尔出发襄阳一日游攻略", "可以安排襄阳海边散步、竹岛海边和当地咖啡馆。提前确认往返交通班次，避免行程太赶。", "旅行 · 江原道"],
-      ["襄阳海边路线与必带物品", "海边风大，建议带防晒、墨镜、薄外套和充电宝；想拍照可以预留日落时间。", "攻略 · 韩国"],
-      ["襄阳美食与咖啡馆推荐", "海边周边有不少咖啡馆和海鲜餐厅，适合安排午餐后慢慢散步。", "探店 · 襄阳"],
+      {title:"首尔出发：襄阳一日游路线",description:"海边散步、当地咖啡馆和海岸风景，安排一日轻旅行。",site:"韩国周末旅行",domain:"weekend-korea.kr",body:["上午从首尔出发，先确认巴士或火车班次。","抵达后可以安排海边散步、竹岛一带和咖啡馆。","回程前预留交通时间，避免把行程排得太紧。"]},
+      {title:"襄阳海边旅行准备清单",description:"防晒、墨镜、薄外套和充电宝是海边出行的实用物品。",site:"轻旅行手册",domain:"trip-note.kr",body:["海边风比较大，带一件薄外套会更舒服。","如果计划拍照，可以把日落时间留在行程里。"]},
+      {title:"襄阳咖啡馆与海岸散步",description:"沿着海边慢慢走，找一家咖啡馆休息，适合不赶时间的旅行。",site:"沿海慢生活",domain:"coast-life.kr",body:["可以把午餐和咖啡安排在海边附近。","周末出行建议提前确认店铺营业时间。"]}
     ];
     if (query.includes("情侣") || query.includes("江边")) return [
-      ["首尔汉江公园情侣散步路线", "盘浦汉江公园适合看夜景，汝矣岛适合沿江散步，也可以带饮料找一处长椅坐一会儿。", "约会 · 首尔"],
-      ["首尔夜景散步：汉江沿岸", "傍晚出发可以一路散步到日落后，记得查看天气并带一件薄外套。", "生活 · 首尔"],
-      ["适合两个人的首尔周末约会", "汉江野餐、骑行和便利店夜宵都是轻松不赶时间的约会选择。", "推荐 · 情侣"],
+      {title:"首尔汉江公园情侣散步路线",description:"盘浦适合看夜景，汝矣岛适合沿江散步和野餐，选一段路线慢慢走就很好。",site:"首尔约会地图",domain:"date-map.kr",body:["盘浦汉江公园：适合傍晚散步，天气好时可以看城市夜景。","汝矣岛汉江公园：沿江步道比较开阔，适合带饮料散步。","出发前查看天气，晚上记得带一件薄外套。"]},
+      {title:"首尔夜景散步：汉江沿岸",description:"日落前出发，沿着江边走到天色变暗，安排一场轻松的夜间约会。",site:"城市夜游指南",domain:"nightwalk.kr",body:["建议选交通方便的公园入口。","可以在散步后去便利店买饮料和小零食。"]},
+      {title:"适合两个人的首尔周末约会",description:"汉江野餐、沿江骑行和便利店夜宵，都是轻松又不赶时间的选择。",site:"两个人的周末",domain:"two-weekend.kr",body:["根据天气选择野餐或散步。","如果准备骑行，记得确认租车点和归还时间。"]}
     ];
     if (query.includes("男朋友") || query.includes("生气")) return [
-      ["惹男朋友生气了怎么哄？先好好沟通", "先听对方为什么不开心，承认自己造成的影响。比起急着解释，真诚地道歉和给对方一点时间更重要。", "情感 · 相处"],
-      ["情侣吵架后如何和好", "等双方情绪平稳后再聊具体发生了什么，尽量说自己的感受和需求，不要用指责的语气。", "关系 · 恋爱"],
-      ["一句真诚的道歉怎么说", "可以从“我知道这件事让你难过了，对不起，我想听听你的感受”开始，再用行动兑现承诺。", "话题 · 沟通"],
+      {title:"惹男朋友生气了怎么哄？先认真沟通",description:"先听听对方为什么不开心，承认自己造成的影响。比起急着解释，真诚道歉并给彼此一点时间更重要。",site:"恋爱关系小指南",domain:"love-note.kr",body:["等双方情绪平稳后再谈发生了什么。","说清楚自己理解到的问题，避免用“但是”把道歉变成辩解。","如果对方需要一点空间，可以约定晚些时候再继续聊。"]},
+      {title:"情侣吵架后怎么和好",description:"从自己的感受和需求出发，具体说清楚问题，避免把讨论变成指责。",site:"亲密关系笔记",domain:"relationship-note.kr",body:["先确认对方是否愿意现在沟通。","讨论具体行为，而不是给对方贴标签。","和好之后，也可以一起商量下次遇到类似情况怎么处理。"]},
+      {title:"一句真诚的道歉可以怎么说",description:"认真承认影响、表达歉意，并用行动兑现承诺。",site:"好好说话",domain:"say-it-well.kr",body:["可以说：“我知道这件事让你难过了，对不起。我想听听你的感受。”","道歉之后留出时间，让对方回应，不要要求对方马上原谅。"]}
     ];
     return [
-      [query + "｜相关搜索结果", "这里整理了与“" + query + "”相关的内容，可以继续查看攻略、经验分享和实用建议。", "搜索 · 推荐"],
-      ["关于“" + query + "”的详细指南", "按主题汇总的入门信息与实用小贴士，方便快速了解重点。", "指南 · 文章"],
-      ["更多用户经验与推荐", "看看其他人的经验分享，挑选适合自己的方案。", "社区 · 讨论"],
+      {title:query+"｜相关内容与实用指南",description:"围绕“"+query+"”整理的相关信息、经验分享与实用建议。",site:"搜索精选",domain:"search-notes.kr",body:["先明确自己最想解决的问题，再查看对应的步骤和建议。","不同情况可能需要不同做法，可以结合实际情况判断。"]},
+      {title:"关于“"+query+"”的详细指南",description:"从基础信息到实用小贴士，快速了解重点。",site:"生活指南",domain:"daily-guide.kr",body:["这里汇总了相关主题的重点信息。","可以继续修改搜索词，查找更具体的内容。"]},
+      {title:"更多经验分享与推荐",description:"看看不同人的经验，挑选适合自己的方案。",site:"经验分享",domain:"community-note.kr",body:["参考不同观点，结合自己的需求选择。"]}
     ];
   };
   const results = selectedQuery ? searchResults(selectedQuery) : [];
+  const backToResults = () => setSelectedResult(null);
   return (
     <div className="catalog-skin native-safari">
       <Header p={p} />
       {selectedQuery ? (
-        <div className="safari-results-view">
-          <div className="safari-results-top">
-            <button aria-label="返回历史记录" onClick={() => setSelectedQuery("")}><ChevronLeft size={22} /></button>
-            <div className="safari-engine-mark">G</div>
-            <form className="safari-search-form" onSubmit={(e) => { e.preventDefault(); if (q.trim()) setSelectedQuery(q.trim()); }}>
-              <input value={q || selectedQuery} onChange={(e) => setQ(e.target.value)} aria-label="搜索关键词" />
-              <button aria-label="搜索"><Search size={16} /></button>
+        <div className="safari-browser-page">
+          <div className="safari-browser-toolbar">
+            <button aria-label="返回" onClick={() => selectedResult !== null ? backToResults() : setSelectedQuery("")}><ChevronLeft size={23}/></button>
+            <form className="safari-browser-address" onSubmit={(e) => {e.preventDefault(); if(q.trim()){setSelectedQuery(q.trim());setSelectedResult(null);}}}>
+              <LockKeyhole size={12}/><input value={q || selectedQuery} onChange={(e)=>setQ(e.target.value)} aria-label="地址或搜索词"/><Search size={15}/>
             </form>
+            <button aria-label="更多" onClick={() => {setSelectedQuery("");setSelectedResult(null);setTab("历史记录");}}><MoreHorizontal size={21}/></button>
           </div>
-          <div className="safari-results-scroll">
-            <small className="safari-results-label">网页 · 图片 · 视频 · 地图</small>
-            <p className="safari-results-count">关于 {selectedQuery} 的搜索结果</p>
-            {results.map(([title, description, source], index) => (
-              <article className="safari-result-card" key={title}>
-                <div className="safari-result-source"><span>{index === 0 ? "🌐" : "🔎"}</span><div><strong>{source}</strong><small>{index === 0 ? "推荐内容" : "相关网页"}</small></div></div>
-                <h3>{title}</h3>
-                <p>{description}</p>
+          {selectedResult === null ? (
+            <>
+              <div className="safari-search-tabs"><span className="active">全部</span><span>图片</span><span>视频</span><span>地图</span><span>新闻</span></div>
+              <div className="safari-google-results">
+                <div className="safari-results-count">找到与“{selectedQuery}”相关的结果</div>
+                {results.map((result,index)=>(
+                  <button className="safari-google-result" key={result.title} onClick={()=>setSelectedResult(index)}>
+                    <div className="safari-site-line"><span className="safari-favicon">{result.site.slice(0,1)}</span><span><strong>{result.site}</strong><small>{result.domain}</small></span><MoreHorizontal size={15}/></div>
+                    <h3>{result.title}</h3><p>{result.description}</p>
+                  </button>
+                ))}
+                <button className="safari-more-results" onClick={()=>setSelectedQuery(selectedQuery+" 推荐")}>查看更多相关结果 <ChevronRight size={15}/></button>
+              </div>
+            </>
+          ) : (
+            <div className="safari-article-scroll">
+              <div className="safari-article-source"><span className="safari-favicon">{results[selectedResult].site.slice(0,1)}</span><div><strong>{results[selectedResult].site}</strong><small>{results[selectedResult].domain} › 文章</small></div></div>
+              <article className="safari-article">
+                <h1>{results[selectedResult].title}</h1>
+                <div className="safari-article-meta">阅读时间约 3 分钟 · 编辑整理</div>
+                <p className="safari-article-intro">{results[selectedResult].description}</p>
+                {results[selectedResult].body.map((paragraph,index)=><section key={index}><h2>{index===0?"出行与准备":index===1?"路线与建议":"实用小贴士"}</h2><p>{paragraph}</p></section>)}
+                <div className="safari-article-footer">本文为手机剧情中的模拟网页内容</div>
               </article>
-            ))}
-            <button className="safari-back-history" onClick={() => { setSelectedQuery(""); setTab("历史记录"); }}>返回历史记录</button>
+              <button className="safari-back-search" onClick={backToResults}><ChevronLeft size={16}/> 返回搜索结果</button>
+            </div>
+          )}
+          <div className="safari-bottom-bar">
+            <button aria-label="后退" onClick={() => selectedResult !== null ? backToResults() : setSelectedQuery("")}><ChevronLeft size={21}/></button>
+            <button aria-label="前进" onClick={() => {if(selectedResult===null && results.length) setSelectedResult(0);}}><ChevronRight size={21}/></button>
+            <button aria-label="分享"><Share size={18}/></button>
+            <button aria-label="书签" onClick={() => {setSelectedQuery("");setSelectedResult(null);setTab("书签");}}><Bookmark size={18}/></button>
+            <button aria-label="标签页" onClick={() => {setSelectedQuery("");setSelectedResult(null);setTab("历史记录");}}><Grid size={18}/></button>
           </div>
         </div>
       ) : (
@@ -382,23 +397,17 @@ export function SafariSkin(p: Props) {
             <h1>{tab}</h1>
             <div className={tab === "历史记录" ? "safari-favorites safari-history" : "safari-favorites"}>
               {items.map((i) => (
-                <button key={i.id} onClick={() => tab === "历史记录" ? (setSelectedQuery(i.title), setQ(i.title)) : p.onItem(i)}>
-                  <span><Globe size={tab === "历史记录" ? 18 : 28} /></span>
-                  <strong>{i.title}</strong>
-                  {tab === "书签" && <small>{meta(i, "url")}</small>}
-                  {tab === "历史记录" && <small><ChevronRight size={15} /></small>}
+                <button key={i.id} onClick={() => tab === "历史记录" ? (setSelectedQuery(i.title), setQ(i.title), setSelectedResult(null)) : p.onItem(i)}>
+                  <span><Globe size={tab === "历史记录" ? 18 : 28}/></span><strong>{i.title}</strong>
+                  {tab === "书签" && <small>{meta(i,"url")}</small>}
+                  {tab === "历史记录" && <small><ChevronRight size={15}/></small>}
                 </button>
               ))}
             </div>
-            <Empty items={items} label="没有匹配的虚构网页" />
+            <Empty items={items} label="没有匹配的虚构网页"/>
           </div>
-          <label className="safari-address">
-            <LockKeyhole size={13} />
-            <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="搜索或输入虚构网址" aria-label="地址栏"
-              onKeyDown={(e) => { if (e.key === "Enter" && q.trim()) setSelectedQuery(q.trim()); }} />
-            <Search size={16} />
-          </label>
-          <Tabs tabs={["书签", "历史记录"]} value={tab} set={setTab} icons={[<Globe />, <Clock />]} />
+          <label className="safari-address"><LockKeyhole size={13}/><input value={q} onChange={(e)=>setQ(e.target.value)} placeholder="搜索或输入虚构网址" aria-label="地址栏" onKeyDown={(e)=>{if(e.key==="Enter"&&q.trim()){setSelectedQuery(q.trim());setSelectedResult(null);}}}/><Search size={16}/></label>
+          <Tabs tabs={["书签","历史记录"]} value={tab} set={setTab} icons={[<Globe/>,<Clock/>]}/>
         </>
       )}
     </div>
