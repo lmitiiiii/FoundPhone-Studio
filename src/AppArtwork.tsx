@@ -839,7 +839,9 @@ function DrawnArtwork({ id, date }: { id: string; date?: string }) {
   );
 }
 
-const originalsEnabled = import.meta.env.VITE_ORIGINAL_ICONS === "true";
+// The repository ships the icon assets and the Vite plugin publishes them under /icon-assets.
+// Prefer those real app icon images; DrawnArtwork remains the onError fallback.
+const originalsEnabled = true;
 export function AppArtwork({
   id,
   date,
