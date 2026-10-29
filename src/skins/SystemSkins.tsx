@@ -347,17 +347,18 @@ export function SafariSkin(p: Props) {
   };
   const results = selectedQuery ? searchResults(selectedQuery) : [];
   const backToResults = () => setSelectedResult(null);
+  const backToHistory = () => { setSelectedQuery(""); setSelectedResult(null); setQ(""); setTab("历史记录"); };
   return (
     <div className="catalog-skin native-safari">
       <Header p={p} />
       {selectedQuery ? (
         <div className="safari-browser-page">
           <div className="safari-browser-toolbar">
-            <button aria-label="返回" onClick={() => selectedResult !== null ? backToResults() : setSelectedQuery("")}><ChevronLeft size={23}/></button>
+            <button aria-label="返回" onClick={() => selectedResult !== null ? backToResults() : backToHistory()}><ChevronLeft size={23}/></button>
             <form className="safari-browser-address" onSubmit={(e) => {e.preventDefault(); if(q.trim()){setSelectedQuery(q.trim());setSelectedResult(null);}}}>
               <LockKeyhole size={12}/><input value={q || selectedQuery} onChange={(e)=>setQ(e.target.value)} aria-label="地址或搜索词"/><Search size={15}/>
             </form>
-            <button aria-label="更多" onClick={() => {setSelectedQuery("");setSelectedResult(null);setTab("历史记录");}}><MoreHorizontal size={21}/></button>
+            <button aria-label="更多" onClick={backToHistory}><MoreHorizontal size={21}/></button>
           </div>
           {selectedResult === null ? (
             <>
@@ -387,11 +388,11 @@ export function SafariSkin(p: Props) {
             </div>
           )}
           <div className="safari-bottom-bar">
-            <button aria-label="后退" onClick={() => selectedResult !== null ? backToResults() : setSelectedQuery("")}><ChevronLeft size={21}/></button>
+            <button aria-label="后退" onClick={() => selectedResult !== null ? backToResults() : backToHistory()}><ChevronLeft size={21}/></button>
             <button aria-label="前进" onClick={() => {if(selectedResult===null && results.length) setSelectedResult(0);}}><ChevronRight size={21}/></button>
             <button aria-label="分享"><Share size={18}/></button>
             <button aria-label="书签" onClick={() => {setSelectedQuery("");setSelectedResult(null);setTab("书签");}}><Bookmark size={18}/></button>
-            <button aria-label="标签页" onClick={() => {setSelectedQuery("");setSelectedResult(null);setTab("历史记录");}}><Grid size={18}/></button>
+            <button aria-label="标签页" onClick={backToHistory}><Grid size={18}/></button>
           </div>
         </div>
       ) : (
