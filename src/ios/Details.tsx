@@ -34,7 +34,7 @@ export function NativeDetail({
 }) {
   const [photoIndex, setPhotoIndex] = useState(0),
     touchStart = useRef<number | null>(null);
-  const photoItems = app === "photos" ? (item as Item & { __galleryItems?: Item[] }).__galleryItems ?? [item] : [item];
+  const photoItems = app === "photos" ? items : [item];
   const currentPhoto = photoItems[photoIndex] ?? item;
   useEffect(() => setPhotoIndex(Math.max(0, photoItems.findIndex((photo) => photo.id === item.id))), [item.id]);
   const [favorite, setFavorite] = useState(item.favorite),
