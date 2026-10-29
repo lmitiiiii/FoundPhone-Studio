@@ -794,7 +794,6 @@ export function MusicSkin(p: Props) {
   const [song, setSong] = useTrack(p, items);
   const [isPlaying, setIsPlaying] = useState(false);
   const [artwork, setArtwork] = useState<Record<string, string>>({});
-  const [previewUrls, setPreviewUrls] = useState<Record<string, string>>({});
   const artistFor = (i: Item) => ({
     "song-1": "Travie McCoy feat. Bruno Mars",
     "song-2": "Justin Bieber",
@@ -879,7 +878,6 @@ export function MusicSkin(p: Props) {
     })).then((pairs) => {
       if (active) {
         setArtwork(Object.fromEntries(pairs.filter((pair) => pair.image).map((pair) => [pair.id, pair.image])));
-        setPreviewUrls(Object.fromEntries(pairs.filter((pair) => pair.preview).map((pair) => [pair.id, pair.preview])));
         const previews = new Map(pairs.map((pair) => [pair.id, pair.preview]));
         const tracks = items.filter((item) => item.kind === "audio").map((item) => ({
           id: item.id,
