@@ -90,12 +90,23 @@ function WidgetFace({
           <small>时钟</small>
         </>
       ) : widget.type === "weather" ? (
-        <>
-          <small>{weather?.title || "未添加城市"}</small>
-          <b>{weather?.meta.temperature ? `${weather.meta.temperature}°C` : "—"}</b>
-          <CloudSun size={27} />
-          <small>{weather?.meta.condition || "暂无天气数据"}</small>
-        </>
+        <div className="widget-weather-content">
+          <div className="widget-weather-heading">
+            <div>
+              <small>{weather?.title || "未添加城市"}</small>
+              <b>{weather?.meta.temperature ? `${weather.meta.temperature}°C` : "—"}</b>
+              <small>{weather?.meta.condition || "暂无天气数据"} · 体感 {weather?.meta.feelsLike || "—"}</small>
+            </div>
+            <CloudSun size={29} />
+          </div>
+          <div className="widget-weather-details">
+            <span>降水 {weather?.meta.precipitation || "—"}</span>
+            <span>湿度 {weather?.meta.humidity || "—"}</span>
+            <span>风速 {weather?.meta.wind || "—"}</span>
+            <span>紫外线 {weather?.meta.uvIndex || "—"}</span>
+          </div>
+          <small className="widget-weather-range">最高 {weather?.meta.high || "—"} · 最低 {weather?.meta.low || "—"}</small>
+        </div>
       ) : widget.type === "notes" ? (
         <>
           <strong>备忘录</strong>
