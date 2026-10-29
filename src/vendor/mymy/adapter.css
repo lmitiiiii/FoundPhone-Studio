@@ -643,3 +643,60 @@
   font-weight: 500;
   vertical-align: baseline;
 }
+
+.mymy-ui .ig-stat-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+.mymy-ui .ig-stat-button b { font-weight: 700; }
+.mymy-ui .ig-following-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: flex-end;
+  background: rgba(0,0,0,.42);
+}
+.mymy-ui .ig-following-sheet {
+  width: 100%;
+  padding: 18px 16px 26px;
+  border-radius: 18px 18px 0 0;
+  background: var(--mymy-card, #fff);
+  color: var(--mymy-text, #111);
+}
+.mymy-ui .ig-following-sheet > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(128,128,128,.22);
+}
+.mymy-ui .ig-following-sheet button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+.mymy-ui .ig-following-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+  padding: 12px 0;
+  text-align: left;
+}
+.mymy-ui .ig-following-row > span:nth-child(2) {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 3px;
+}
+.mymy-ui .ig-following-row small { opacity: .65; }
+.mymy-ui .ig-following-arrow { font-size: 24px; opacity: .6; }
