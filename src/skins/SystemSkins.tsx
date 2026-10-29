@@ -1,5 +1,5 @@
 export { WeatherSkin, HealthSkin } from "./CalibratedSystemApps";
-import { useTrack } from "../audio";
+import { musicCommand, useTrack } from "../audio";
 import { useSkinState } from "../skinState";
 import {
   Calendar,
@@ -840,7 +840,6 @@ export function MusicSkin(p: Props) {
     };
     Promise.all(items.filter((i) => i.kind === "audio").map(async (i) => {
       const saved = safeMedia(meta(i, "coverUrl"));
-      if (saved) return { id: i.id, image: saved, preview: "" };
       try {
         const term = terms[i.id] || `${i.title} ${artistFor(i)}`;
         const endpoint = i.id === "song-1"
@@ -850,7 +849,7 @@ export function MusicSkin(p: Props) {
         if (!response.ok && i.id === "song-1") {
           response = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent("Billionaire Travie McCoy Bruno Mars")}&entity=song&limit=25&country=US`);
         }
-        if (!response.ok) return { id: i.id, image: "", preview: "" };
+        if (!response.ok) return { id: i.id, image: saved, preview: "" };
         const data = await response.json() as { results?: Array<{ trackName?: string; artistName?: string; artworkUrl100?: string; previewUrl?: string }> };
         const results = data.results || [];
         const clean = (value: string) => value.toLowerCase().replace(/[^a-z0-9가-힣]/gi, "");
@@ -880,16 +879,42 @@ export function MusicSkin(p: Props) {
         const image = matched?.artworkUrl100?.replace(/\d+x\d+bb/, "600x600bb") || "";
         return { id: i.id, image, preview: matched?.previewUrl || "" };
       } catch {
-        return { id: i.id, image: "", preview: "" };
+        return { id: i.id, image: saved, preview: "" };
       }
     })).then((pairs) => {
       if (active) {
         setArtwork(Object.fromEntries(pairs.filter((pair) => pair.image).map((pair) => [pair.id, pair.image])));
         setPreviewUrls(Object.fromEntries(pairs.filter((pair) => pair.preview).map((pair) => [pair.id, pair.preview])));
+        const previews = new Map(pairs.map((pair) => [pair.id, pair.preview]));
+        const tracks = items.filter((item) => item.kind === "audio").map((item) => ({
+          id: item.id,
+          title: item.title,
+          artist: artistFor(item),
+          src: safeMedia(item.media || meta(item, "audioUrl")) || previews.get(item.id) || "",
+        })).filter((track) => !!track.src);
+        if (tracks.length) {
+          window.dispatchEvent(new CustomEvent("foundphone:music:playlist", {
+            detail: { tracks, startId: tracks[0].id, autoplay: !p.creator },
+          }));
+        }
       }
     });
     return () => { active = false; };
   }, [artworkLookupKey]);
+
+  useEffect(() => {
+    const onStatus = (event: Event) => {
+      const detail = (event as CustomEvent<{ playing: boolean; id: string }>).detail;
+      setIsPlaying(!!detail?.playing);
+      if (detail?.id) {
+        const current = items.find((item) => item.id === detail.id);
+        if (current && current.id !== song?.id) setSong(current);
+      }
+    };
+    window.addEventListener("foundphone:music:status", onStatus);
+    window.dispatchEvent(new Event("foundphone:music:request-status"));
+    return () => window.removeEventListener("foundphone:music:status", onStatus);
+  }, [items, song?.id]);
 
   const coverFor = (i: Item) => artwork[i.id] || safeMedia(meta(i, "coverUrl"));
   const audioFor = (i: Item) => safeMedia(i.media || meta(i, "audioUrl")) || previewUrls[i.id] || "";
@@ -914,7 +939,7 @@ export function MusicSkin(p: Props) {
             <div className="music-search-input"><Search size={17} /><span>搜索歌曲、艺人或专辑</span></div>
             <p>你的音乐</p>
             {songs.map((i) => (
-              <button className="music-track" key={i.id} onClick={() => { setSong(i); setIsPlaying(true); }}>
+              <button className="music-track" key={i.id} onClick={() => { setSong(i); setIsPlaying(true); musicCommand({ action: "select", id: i.id }); }}>
                 <span className="music-cover">{coverFor(i) ? <img src={coverFor(i)} alt="" loading="lazy" /> : <Music size={20} />}</span>
                 <span className="music-track-copy"><strong>{i.title}</strong><small>{artistFor(i)}</small></span>
               </button>
@@ -931,7 +956,7 @@ export function MusicSkin(p: Props) {
               </div>
             )}
             <div className="music-list-tools">
-              <button onClick={() => { if (songs[0]) { setSong(songs[0]); setIsPlaying(true); } }}><Play size={15} fill="currentColor" /> 随机播放</button>
+              <button onClick={() => { if (songs[0]) { setSong(songs[0]); setIsPlaying(true); musicCommand({ action: "select", id: songs[0].id }); } }}><Play size={15} fill="currentColor" /> 随机播放</button>
               <span>{shown.length} 首歌曲</span>
             </div>
             <div className="music-track-list">
@@ -961,13 +986,11 @@ export function MusicSkin(p: Props) {
             <span className="music-mini-copy"><strong>{song.title}</strong><small>{artistFor(song)}</small></span>
           </button>
           <div className="music-mini-controls">
-            <button aria-label={isPlaying ? "暂停" : "播放"} onClick={() => setIsPlaying((v) => !v)}>{isPlaying ? <Pause size={22} fill="currentColor" /> : <Play size={22} fill="currentColor" />}</button>
-            <button aria-label="下一首" onClick={nextSong}><SkipForward size={21} fill="currentColor" /></button>
+            <button aria-label={isPlaying ? "暂停" : "播放"} onClick={() => { setIsPlaying((v) => !v); musicCommand({ action: "toggle" }); }}>{isPlaying ? <Pause size={22} fill="currentColor" /> : <Play size={22} fill="currentColor" />}</button>
+            <button aria-label="下一首" onClick={() => { nextSong(); musicCommand({ action: "next" }); }}><SkipForward size={21} fill="currentColor" /></button>
           </div>
           <div className="music-progress"><span /></div>
-          {song.kind === "audio" && audioFor(song) && (
-            <div className="music-real-audio"><audio controls preload="none" src={audioFor(song)} aria-label={`播放 ${song.title}`} /></div>
-          )}
+
         </div>
       )}
       <nav className="music-bottom-tabs">
