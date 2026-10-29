@@ -528,3 +528,62 @@
   opacity: 0.4;
   cursor: default;
 }
+
+
+/* Markchan photo and music widgets */
+.ios18 .widget-photos {
+  padding: 0;
+  background: linear-gradient(145deg, #f3e8ff, #fdf2f8 55%, #e0f2fe);
+  color: #4b365f;
+}
+.ios18 .widget-photo-placeholder {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px dashed #b9a4cb;
+  border-radius: 23px;
+  background: #ffffff55;
+}
+.ios18 .widget-photo-placeholder strong {
+  font-size: 15px;
+}
+.ios18 .widget-photo-placeholder small {
+  color: #796b86;
+}
+.ios18 .widget-music {
+  background: linear-gradient(145deg, #f8d5e5, #f4e5ff);
+  color: #5d2448;
+  padding: 10px;
+  justify-content: center;
+  gap: 4px;
+}
+.ios18 .widget-music-face {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+}
+.ios18 .widget-music-art {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  color: white;
+  background: linear-gradient(145deg, #fa5c9d, #a855f7);
+}
+.ios18 .widget-music strong {
+  font-size: 13px;
+}
+.ios18 .widget-music small {
+  font-size: 10px;
+  color: #81566f;
+}
