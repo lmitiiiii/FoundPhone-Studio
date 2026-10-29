@@ -206,11 +206,11 @@ export function NativeSettings({
             {!query && (
               <button
                 className="settings-account"
-                onClick={() => nav.push("mark&donghyuck")}
+                onClick={() => nav.push("mark♡donghyuck")}
               >
                 <span>{work.phone.owner.slice(0, 1)}</span>
                 <div>
-                  <strong>mark&donghyuck</strong>
+                  <strong>mark♡donghyuck</strong>
                   <small>Apple 账户、iCloud 与更多</small>
                 </div>
                 <ChevronRight size={17} />
