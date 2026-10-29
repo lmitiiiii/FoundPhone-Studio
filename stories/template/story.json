@@ -3,7 +3,7 @@
   "id": "markchan-found-phone",
   "title": "Markchan · 捡手机",
   "description": "Coco & Mark 互动捡手机；密码 8266。媒体链接均留空待替换。",
-  "revision": 21,
+  "revision": 22,
   "phone": {
     "owner": "Markchan",
     "date": "2026-10-29",
@@ -1248,7 +1248,7 @@
       {
         "id": "ig-main-profile",
         "title": "markcocolove",
-        "body": "恋爱日记本📔\n合作📮826699520@gmail.com\n最萌的达人 @coco66_\n最酷的达人 @mark82_",
+        "body": "恋爱日记本📔\n情侣日常｜偶尔营业｜认真生活\n最萌的小太阳 @coco66_\n最酷的男朋友 @mark82_",
         "kind": "text",
         "meta": {
           "username": "markcocolove",
@@ -1272,7 +1272,14 @@
         },
         "sender": "markcocolove",
         "time": "2026-10-28 20:16",
-        "likes": 56800
+        "likes": 56800,
+        "comments": [
+          "coco66_：谁懂！今天出门说只拍一张，最后相册多了三十张ㅋㅋ",
+          "dreamy.zip：马克看镜头的时候，眼睛一直在看东赫吧🥹",
+          "fullsun_daily：情侣博主营业了！！我宣布今天是纪念日",
+          "m00nlight：Mark嘴上说不爱拍照，手机里全是Coco📸",
+          "haechanahceah：这张可以设成你们的情侣头像吗😭"
+        ]
       },
       {
         "id": "ig-main-post-2",
@@ -1288,7 +1295,14 @@
         },
         "sender": "markcocolove",
         "time": "2026-10-26 19:42",
-        "likes": 62400
+        "likes": 62400,
+        "comments": [
+          "coco66_：这几张不许删！尤其最后一张！",
+          "mintchoco：马克的相册是不是有一个专门叫“东赫”的文件夹ㅋㅋ",
+          "luvmarkhyuck：温柔男友和小太阳的日常……我先哭",
+          "sunnycoco：东赫笑起来真的像太阳☀️",
+          "peachy.zip：请继续更新，我的精神食粮"
+        ]
       },
       {
         "id": "ig-main-post-3",
@@ -1304,12 +1318,19 @@
         },
         "sender": "markcocolove",
         "time": "2026-10-24 22:08",
-        "likes": 73100
+        "likes": 73100,
+        "comments": [
+          "coco66_：说好一起回家的人要说到做到哦💗",
+          "nightowl：Mark：我没在等。也是Mark：提前半小时到楼下",
+          "hyuckieeee：这个氛围感真的像韩剧最后一集",
+          "tinycloud：哥哥的傲娇藏不住了哈哈哈",
+          "dear.mark：平平淡淡的陪伴就是最浪漫的"
+        ]
       },
       {
         "id": "ig-coco-profile",
         "title": "@coco66_",
-        "body": "我现在恋爱了知道吗\n我要专心陪我老公\n我不会再更新社交软件了\n你们已经失去我了\n不要太想我 @mark82_",
+        "body": "小太阳的恋爱日记☀️🎀\n今天也要开心！也要黏着我老公！\n我的专属摄影师 @mark82_\n最喜欢的人：@mark82_",
         "kind": "text",
         "meta": {
           "username": "coco66_",
@@ -1333,7 +1354,14 @@
         },
         "sender": "coco66_",
         "time": "2026-10-28 17:23",
-        "likes": 48200
+        "likes": 48200,
+        "comments": [
+          "mark82_：帽子戴好，外面风大。",
+          "coco66_：知道啦知道啦！你怎么比天气预报还准ㅋㅋ",
+          "sunshine.zip：小太阳本人发帖了☀️🩷",
+          "haehae_luv：Coco每张照片都像在说“快来夸我”",
+          "markchanarchive：Mark秒评速度能不能不要这么快"
+        ]
       },
       {
         "id": "ig-coco-post-2",
@@ -1349,7 +1377,14 @@
         },
         "sender": "coco66_",
         "time": "2026-10-25 14:06",
-        "likes": 51600
+        "likes": 51600,
+        "comments": [
+          "mark82_：可爱。发我原图。",
+          "coco66_：你不是已经存了吗？😼",
+          "mochi_hyuck：啊啊啊这就是被宠的小朋友吗",
+          "moonlight_lee：他俩私下肯定一个负责闹一个负责笑",
+          "dailyfullsun：评论区又被Mark承包了ㅋㅋ"
+        ]
       },
       {
         "id": "ig-coco-post-3",
@@ -1365,12 +1400,19 @@
         },
         "sender": "coco66_",
         "time": "2026-10-22 21:19",
-        "likes": 60300
+        "likes": 60300,
+        "comments": [
+          "mark82_：喜欢粉色？下次给你买。",
+          "coco66_：那我要一大束！🌷",
+          "pinkcloud：救命，Mark讲话好淡定但好会宠",
+          "hyuckie_sun：东赫的幸福真的会溢出屏幕",
+          "markhyuckluv：求你们把日常vlog安排上！"
+        ]
       },
       {
         "id": "ig-mark-profile",
         "title": "@mark82_",
-        "body": "我现在恋爱了知道吗\n我要专心陪我老婆\n我不会再更新社交软件了\n你们已经失去我了\n不要太想我 @coco66_",
+        "body": "不太会说情话，但会一直在。🖤\n日常记录｜摄影｜偶尔被迫营业\n我的小太阳 @coco66_\n不许一个人走夜路。",
         "kind": "text",
         "meta": {
           "username": "mark82_",
@@ -1394,7 +1436,14 @@
         },
         "sender": "mark82_",
         "time": "2026-10-28 23:11",
-        "likes": 58300
+        "likes": 58300,
+        "comments": [
+          "coco66_：谁允许你这么帅的？请问可以亲一下吗😚",
+          "mark82_：回家再说。",
+          "markhyuckdaily：温柔傲娇攻×活泼小太阳受，设定本人了吧",
+          "jeno.zip：Mark：低调。Mark的评论区：一点也不低调ㅋㅋ",
+          "sunnyhyuck：Coco来查岗了哈哈哈哈"
+        ]
       },
       {
         "id": "ig-mark-post-2",
@@ -1410,7 +1459,14 @@
         },
         "sender": "mark82_",
         "time": "2026-10-25 20:32",
-        "likes": 64700
+        "likes": 64700,
+        "comments": [
+          "coco66_：这张好帅！不准删！",
+          "mark82_：嗯。",
+          "hyuckieee：这个“嗯”我能脑补出语气了救命",
+          "m00narchive：表面冷静，实际对东赫有求必应",
+          "dreamcouple：拜托多发点双人照吧🥹"
+        ]
       },
       {
         "id": "ig-mark-post-3",
@@ -1426,7 +1482,14 @@
         },
         "sender": "mark82_",
         "time": "2026-10-21 22:40",
-        "likes": 71200
+        "likes": 71200,
+        "comments": [
+          "coco66_：下次不许自己走夜路，等我一起！🌙",
+          "mark82_：知道了，小太阳。",
+          "softmark：他叫他小太阳！！我没了",
+          "cocoandmark：两个人的夜晚也要一起回家",
+          "hyuckcloud：这对情侣博主真的很会给人幸福感"
+        ]
       },
       {
         "id": "ig-question-1",
