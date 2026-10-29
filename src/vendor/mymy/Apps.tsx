@@ -322,6 +322,7 @@ export function MymyInstagram(p: SkinProps) {
   const [sheet, setSheet] = useState<Item | null>(null),
     [selected, setSelected] = useState<Item | null>(null),
     [profileUser, setProfileUser] = useState("markcocolove"),
+    [followingOpen, setFollowingOpen] = useState(false),
     [story, setStory] = useState(0),
     [draft, setDraft] = useState(""),
     [pop, setPop] = useState("");
@@ -512,10 +513,10 @@ export function MymyInstagram(p: SkinProps) {
                     <b>{profile?.meta.followerCount || "56.8万"}</b>
                     <small>粉丝</small>
                   </div>
-                  <div>
+                  <button className="ig-stat-button" onClick={() => setFollowingOpen(true)}>
                     <b>{profile?.meta.followingCount || "2"}</b>
                     <small>关注</small>
-                  </div>
+                  </button>
                 </div>
               </div>
               <p className="pn">
@@ -538,6 +539,23 @@ export function MymyInstagram(p: SkinProps) {
                   </button>
                 ))}
               </div>
+              {followingOpen && (
+                <div className="ig-following-overlay" onClick={() => setFollowingOpen(false)}>
+                  <section className="ig-following-sheet" onClick={(e) => e.stopPropagation()}>
+                    <header>
+                      <b>正在关注</b>
+                      <button onClick={() => setFollowingOpen(false)}>完成</button>
+                    </header>
+                    {p.items.filter((i) => i.meta.profileType && i.meta.username !== profileUser).map((i) => (
+                      <button className="ig-following-row" key={i.meta.username} onClick={() => { setFollowingOpen(false); openProfile(i.meta.username); }}>
+                        <Avatar name={i.meta.username} src={i.avatar} />
+                        <span><b>{i.meta.username}</b><small>{i.meta.username === "coco66_" ? "最萌的达人" : i.meta.username === "mark82_" ? "最酷的达人" : "恋爱日记本"}</small></span>
+                        <span className="ig-following-arrow">›</span>
+                      </button>
+                    ))}
+                  </section>
+                </div>
+              )}
               {!profilePosts.length && <Blank />}
             </>
           )}
