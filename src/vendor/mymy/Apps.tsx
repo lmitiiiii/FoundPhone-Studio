@@ -321,6 +321,7 @@ export function MymyInstagram(p: SkinProps) {
     [seen, setSeen] = useSkinState<string[]>(p, "mymySeen", []);
   const [sheet, setSheet] = useState<Item | null>(null),
     [selected, setSelected] = useState<Item | null>(null),
+    [profileUser, setProfileUser] = useState("markcocolove"),
     [story, setStory] = useState(0),
     [draft, setDraft] = useState(""),
     [pop, setPop] = useState("");
@@ -330,6 +331,31 @@ export function MymyInstagram(p: SkinProps) {
     stories = p.items.filter((i) => i.meta.story === "true"),
     dms = p.items.filter((i) => i.folder === "私信"),
     active = stories[story - 1];
+  const profile = p.items.find(
+    (i) => i.meta.profileType && i.meta.username === profileUser,
+  );
+  const profilePosts = posts.filter(
+    (i) => i.kind === "post" && i.meta.username === profileUser && !i.id.startsWith("ig-question-"),
+  );
+  const openProfile = (username: string) => {
+    setProfileUser(username);
+    setSelected(null);
+    setTab("个人主页");
+  };
+  const renderBio = (bio: string) =>
+    bio.split(/(@coco66_|@mark82_)/g).map((part, index) =>
+      part === "@coco66_" || part === "@mark82_" ? (
+        <button
+          className="ig-mention"
+          key={index}
+          onClick={() => openProfile(part.slice(1))}
+        >
+          {part}
+        </button>
+      ) : (
+        <span key={index}>{part}</span>
+      ),
+    );
   const toggle = (id: string, values: string[], set: (v: string[]) => void) =>
     set(values.includes(id) ? values.filter((v) => v !== id) : [...values, id]);
   useEffect(() => {
@@ -443,7 +469,7 @@ export function MymyInstagram(p: SkinProps) {
             <ArrowLeft />
           </button>
           <span className="igl2">
-            {selected ? "帖子" : tab === "主页" ? "Instagram" : tab}
+            {selected ? "帖子" : tab === "个人主页" ? profileUser : tab === "主页" ? "Instagram" : tab}
           </span>
           <button aria-label="打开私信" onClick={() => setTab("私信")}>
             <Send />
@@ -476,10 +502,10 @@ export function MymyInstagram(p: SkinProps) {
           {!selected && tab === "个人主页" && (
             <>
               <div className="pf">
-                <Avatar name={p.owner || "机主"} />
+                <Avatar name={profileUser} src={profile?.avatar} />
                 <div className="ps">
                   <div>
-                    <b>{posts.length}</b>
+                    <b>{profilePosts.length}</b>
                     <small>帖子</small>
                   </div>
                   <div>
@@ -492,19 +518,27 @@ export function MymyInstagram(p: SkinProps) {
                   </div>
                 </div>
               </div>
-              <p className="pn">{p.owner}</p>
+              <p className="pn">
+                <b>{profileUser}</b>
+                {profile && (
+                  <span className="ig-bio">
+                    {renderBio(profile.body)}
+                  </span>
+                )}
+              </p>
               <div className="ptab">
                 <div className="on">
                   <Grid />
                 </div>
               </div>
               <div className="pg2">
-                {posts.map((i) => (
+                {profilePosts.map((i) => (
                   <button key={i.id} onClick={() => openPost(i)}>
                     <Media item={i} />
                   </button>
                 ))}
               </div>
+              {!profilePosts.length && <Blank />}
             </>
           )}
           {!selected && tab === "私信" && (
