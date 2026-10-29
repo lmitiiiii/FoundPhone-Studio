@@ -917,7 +917,6 @@ export function MusicSkin(p: Props) {
   }, [items, song?.id]);
 
   const coverFor = (i: Item) => artwork[i.id] || safeMedia(meta(i, "coverUrl"));
-  const audioFor = (i: Item) => safeMedia(i.media || meta(i, "audioUrl")) || previewUrls[i.id] || "";
   const songs = items.filter((i) => i.kind === "audio");
   const shown = songs;
   const nextSong = () => {
