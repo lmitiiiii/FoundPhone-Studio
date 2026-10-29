@@ -92,7 +92,7 @@ function WidgetFace({
       ) : widget.type === "weather" ? (
         <>
           <small>{weather?.title || "未添加城市"}</small>
-          <b>{weather?.meta.temperature || "—"}°</b>
+          <b>{weather?.meta.temperature ? `${weather.meta.temperature}°C` : "—"}</b>
           <CloudSun size={27} />
           <small>{weather?.meta.condition || "暂无天气数据"}</small>
         </>
@@ -117,7 +117,7 @@ function WidgetFace({
         </div>
       ) : widget.type === "music" ? (
         <div className="widget-music-face">
-          <span className="widget-music-art"><Music2 size={30} /></span>
+          <span className="widget-music-art">{work.data.music?.[0]?.meta?.coverUrl ? <img src={work.data.music[0].meta.coverUrl} alt="" /> : <Music2 size={30} />}</span>
           <div className="widget-music-details">
             <small>最近播放 · Apple Music</small>
             <strong>{work.data.music?.[0]?.title || "歌单第一首歌"}</strong>
