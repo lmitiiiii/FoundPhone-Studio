@@ -3,7 +3,7 @@
   "id": "markchan-found-phone",
   "title": "Markchan · 捡手机",
   "description": "Coco & Mark 互动捡手机；密码 8266。媒体链接均留空待替换。",
-  "revision": 6,
+  "revision": 7,
   "phone": {
     "owner": "Markchan",
     "date": "2026-10-29",
@@ -160,92 +160,294 @@
     {
       "id": "kakao-donghyuck",
       "app": "kakao",
-      "title": "李楷灿",
+      "title": "东赫",
       "participants": [
         "owner",
         "donghyuck"
       ],
       "messages": [
         {
-          "id": "dh-1",
+          "id": "kakao-dh-01",
           "title": "",
-          "body": "到家了吗？",
-          "senderId": "donghyuck",
-          "time": "21:02"
+          "body": "我好想你 你怎么还不回来",
+          "kind": "text",
+          "time": "2026-10-29 21:00",
+          "senderId": "owner"
         },
         {
-          "id": "dh-2",
+          "id": "kakao-dh-02",
           "title": "",
-          "body": "刚到，外面有点冷。",
-          "senderId": "owner",
-          "time": "21:03"
+          "body": "马上到家了",
+          "kind": "text",
+          "time": "2026-10-29 21:01",
+          "senderId": "donghyuck"
         },
         {
-          "id": "dh-3",
+          "id": "kakao-dh-03",
           "title": "",
-          "body": "让你带外套你又不听ㅋㅋ",
-          "senderId": "donghyuck",
-          "time": "21:03"
+          "body": "有没有想吃的东西",
+          "kind": "text",
+          "time": "2026-10-29 21:02",
+          "senderId": "donghyuck"
         },
         {
-          "id": "dh-4",
+          "id": "kakao-dh-04",
           "title": "",
-          "body": "那你过来抱我一下就不冷了。",
-          "senderId": "owner",
-          "time": "21:04"
+          "body": "我带回来",
+          "kind": "text",
+          "time": "2026-10-29 21:03",
+          "senderId": "donghyuck"
         },
         {
-          "id": "dh-5",
+          "id": "kakao-dh-05",
           "title": "",
-          "body": "……门开一下。给你买了热的。",
-          "senderId": "donghyuck",
-          "time": "21:05"
+          "body": "想吃甜的",
+          "kind": "text",
+          "time": "2026-10-29 21:04",
+          "senderId": "owner"
+        },
+        {
+          "id": "kakao-dh-06",
+          "title": "",
+          "body": "你决定吧",
+          "kind": "text",
+          "time": "2026-10-29 21:05",
+          "senderId": "owner"
+        },
+        {
+          "id": "kakao-dh-07",
+          "title": "",
+          "body": "好",
+          "kind": "text",
+          "time": "2026-10-29 21:06",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-08",
+          "title": "",
+          "body": "老公 直播的那个手机在你那吗？",
+          "kind": "text",
+          "time": "2026-10-29 21:07",
+          "senderId": "owner"
+        },
+        {
+          "id": "kakao-dh-09",
+          "title": "",
+          "body": "我在家找了好久都没找到",
+          "kind": "text",
+          "time": "2026-10-29 21:08",
+          "senderId": "owner"
+        },
+        {
+          "id": "kakao-dh-10",
+          "title": "",
+          "body": "😔",
+          "kind": "text",
+          "time": "2026-10-29 21:09",
+          "senderId": "owner"
+        },
+        {
+          "id": "kakao-dh-11",
+          "title": "",
+          "body": "不在我这呀",
+          "kind": "text",
+          "time": "2026-10-29 21:10",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-12",
+          "title": "",
+          "body": "找不到就不找了",
+          "kind": "text",
+          "time": "2026-10-29 21:11",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-13",
+          "title": "",
+          "body": "先休息一会儿吧东赫🤌",
+          "kind": "text",
+          "time": "2026-10-29 21:12",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-14",
+          "title": "",
+          "body": "回家我来找吧",
+          "kind": "text",
+          "time": "2026-10-29 21:13",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-15",
+          "title": "",
+          "body": "直播的事情晚点再说",
+          "kind": "text",
+          "time": "2026-10-29 21:14",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-16",
+          "title": "",
+          "body": "好><♡♡♡♡",
+          "kind": "text",
+          "time": "2026-10-29 21:15",
+          "senderId": "owner"
         }
       ]
     },
     {
-      "id": "kakao-mk",
+      "id": "kakao-donghyuck-heart",
       "app": "kakao",
-      "title": "李马克",
+      "title": "东赫💗",
       "participants": [
         "owner",
-        "mk"
+        "donghyuck"
       ],
       "messages": [
         {
-          "id": "mk-1",
+          "id": "kakao-dh-heart-01",
           "title": "",
-          "body": "明天的行程我看过了，周四晚宴座位记得再跟助理确认。",
-          "senderId": "mk",
-          "time": "20:47"
+          "body": "少喝点",
+          "kind": "text",
+          "time": "2026-10-29 19:30",
+          "senderId": "owner"
         },
         {
-          "id": "mk-2",
+          "id": "kakao-dh-heart-02",
           "title": "",
-          "body": "知道啦，备忘录里写着呢。",
-          "senderId": "owner",
-          "time": "20:49"
+          "body": "结束了给我打电话知道吗",
+          "kind": "text",
+          "time": "2026-10-29 19:31",
+          "senderId": "owner"
         },
         {
-          "id": "mk-3",
+          "id": "kakao-dh-heart-03",
           "title": "",
-          "body": "还有，东赫说想吃的麻糍我记得你答应买。",
-          "senderId": "mk",
-          "time": "20:50"
+          "body": "我来接你",
+          "kind": "text",
+          "time": "2026-10-29 19:32",
+          "senderId": "owner"
         },
         {
-          "id": "mk-4",
+          "id": "kakao-dh-heart-04",
           "title": "",
-          "body": "已经写进采购清单了。你怎么比我还记得清楚ㅋㅋ",
-          "senderId": "owner",
-          "time": "20:51"
+          "body": "我知道了嘛",
+          "kind": "text",
+          "time": "2026-10-29 19:33",
+          "senderId": "donghyuck"
         },
         {
-          "id": "mk-5",
+          "id": "kakao-dh-heart-05",
           "title": "",
-          "body": "因为你们两个的事我都记得。",
-          "senderId": "mk",
-          "time": "刚刚"
+          "body": "哥哥怎么总是话那么多",
+          "kind": "text",
+          "time": "2026-10-29 19:34",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-heart-06",
+          "title": "",
+          "body": "小没良心的",
+          "kind": "text",
+          "time": "2026-10-29 19:35",
+          "senderId": "owner"
+        },
+        {
+          "id": "kakao-dh-heart-07",
+          "title": "",
+          "body": "马克呀",
+          "kind": "text",
+          "time": "2026-10-29 19:36",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-heart-08",
+          "title": "",
+          "body": "marrrrr",
+          "kind": "text",
+          "time": "2026-10-29 19:37",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-heart-09",
+          "title": "",
+          "body": "老公",
+          "kind": "text",
+          "time": "2026-10-29 19:38",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-heart-10",
+          "title": "",
+          "body": "马克哥哥",
+          "kind": "text",
+          "time": "2026-10-29 19:39",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-heart-11",
+          "title": "",
+          "body": "怎么了",
+          "kind": "text",
+          "time": "2026-10-29 19:40",
+          "senderId": "owner"
+        },
+        {
+          "id": "kakao-dh-heart-12",
+          "title": "",
+          "body": "我爱你",
+          "kind": "text",
+          "time": "2026-10-29 19:41",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-heart-13",
+          "title": "",
+          "body": "知道了…",
+          "kind": "text",
+          "time": "2026-10-29 19:42",
+          "senderId": "owner"
+        },
+        {
+          "id": "kakao-dh-heart-14",
+          "title": "",
+          "body": "只是这样嘛😔",
+          "kind": "text",
+          "time": "2026-10-29 19:43",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-heart-15",
+          "title": "",
+          "body": "…",
+          "kind": "text",
+          "time": "2026-10-29 19:44",
+          "senderId": "owner"
+        },
+        {
+          "id": "kakao-dh-heart-16",
+          "title": "",
+          "body": "我也爱你",
+          "kind": "text",
+          "time": "2026-10-29 19:45",
+          "senderId": "owner"
+        },
+        {
+          "id": "kakao-dh-heart-17",
+          "title": "",
+          "body": "这就对了",
+          "kind": "text",
+          "time": "2026-10-29 19:46",
+          "senderId": "donghyuck"
+        },
+        {
+          "id": "kakao-dh-heart-18",
+          "title": "",
+          "body": "😈",
+          "kind": "text",
+          "time": "2026-10-29 19:47",
+          "senderId": "donghyuck"
         }
       ]
     }
@@ -861,32 +1063,7 @@
         }
       }
     ],
-    "kakao": [
-      {
-        "id": "kakao-contact-mark",
-        "title": "李马克",
-        "body": "",
-        "time": "21:14",
-        "sender": "李马克",
-        "kind": "text",
-        "meta": {
-          "contact": "李马克",
-          "preview": "刚刚"
-        }
-      },
-      {
-        "id": "kakao-contact-donghyuck",
-        "title": "李楷灿",
-        "body": "",
-        "time": "20:14",
-        "sender": "李楷灿",
-        "kind": "text",
-        "meta": {
-          "contact": "李楷灿",
-          "preview": "1小时前"
-        }
-      }
-    ],
+    "kakao": [],
     "instagram": [
       {
         "id": "ig-main-profile",
