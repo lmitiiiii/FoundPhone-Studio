@@ -954,7 +954,7 @@ export function MusicSkin(p: Props) {
             <div className="music-track-list">
               {shown.map((i) => (
                 <div className={`music-track-row ${song?.id === i.id ? "current" : ""}`} key={i.id}>
-                  <button className="music-track-main" onClick={() => { setSong(i); setIsPlaying(true); }}>
+                  <button className="music-track-main" onClick={() => { setSong(i); setIsPlaying(true); musicCommand({ action: "select", id: i.id }); }}>
                     <span className="music-cover">
                       {coverFor(i) ? <img src={coverFor(i)} alt="" loading="lazy" /> : <Music size={20} />}
                     </span>
@@ -963,7 +963,7 @@ export function MusicSkin(p: Props) {
                       <small>{artistFor(i)}</small>
                     </span>
                   </button>
-                  <button className="music-track-more" aria-label={`${i.title} 更多选项`} onClick={() => { setSong(i); setIsPlaying(true); }}><MoreHorizontal size={21} /></button>
+                  <button className="music-track-more" aria-label={`${i.title} 更多选项`} onClick={() => { setSong(i); setIsPlaying(true); musicCommand({ action: "select", id: i.id }); }}><MoreHorizontal size={21} /></button>
                 </div>
               ))}
             </div>
