@@ -851,7 +851,8 @@
           "eventType": "anniversary",
           "month": "4",
           "day": "29",
-          "year": "2027"
+          "year": "2027",
+          "recurring": "yearly"
         },
         "time": "2027-04-29T09:00"
       },
