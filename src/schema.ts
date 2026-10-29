@@ -196,9 +196,12 @@ export function validateWork(input: unknown): Work {
   return workSchema.parse(input);
 }
 export function safeMedia(value: string) {
-  return /^data:(image\/(png|jpeg|webp|gif)|audio\/(mpeg|mp3|wav|ogg|webm|mp4)|video\/(mp4|webm));base64,[a-zA-Z0-9+/=\s]+$/.test(
-    value,
-  )
-    ? value
-    : "";
+  const inlineMedia =
+    /^data:(image\/(png|jpeg|webp|gif)|audio\/(mpeg|mp3|wav|ogg|webm|mp4)|video\/(mp4|webm));base64,[a-zA-Z0-9+/=\s]+$/.test(
+      value,
+    );
+  // Story media may be hosted remotely (for example, images in a repository).
+  // Restrict remote media to HTTPS so arbitrary executable protocols are rejected.
+  const remoteMedia = /^https:\/\/[^\s]+$/i.test(value);
+  return inlineMedia || remoteMedia ? value : "";
 }
