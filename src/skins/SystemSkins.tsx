@@ -24,6 +24,10 @@ import {
   Phone,
   Search,
   SkipForward,
+  Play,
+  Pause,
+  Radio,
+  Compass,
   Star,
   Users,
   Wallet,
@@ -788,6 +792,7 @@ export function FilesSkin(p: Props) {
 export function MusicSkin(p: Props) {
   const { tab, setTab, items } = useContent(p, "资料库");
   const [song, setSong] = useTrack(p, items);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [artwork, setArtwork] = useState<Record<string, string>>({});
   const artworkLookupKey = items.filter((i) => i.kind === "audio").map((i) => `${i.id}:${i.title}:${meta(i, "artist", i.sender)}:${meta(i, "coverUrl")}`).join("|");
   useEffect(() => {
@@ -803,21 +808,16 @@ export function MusicSkin(p: Props) {
       "song-8": "Thriller Michael Jackson",
     };
     Promise.all(items.filter((i) => i.kind === "audio").map(async (i) => {
-      if (safeMedia(meta(i, "coverUrl"))) {
-        return [i.id, safeMedia(meta(i, "coverUrl"))] as const;
-      }
+      const saved = safeMedia(meta(i, "coverUrl"));
+      if (saved) return [i.id, saved] as const;
       try {
         const term = terms[i.id] || `${i.title} ${meta(i, "artist", i.sender)}`;
-        const response = await fetch(
-          `https://itunes.apple.com/search?term=${encodeURIComponent(term)}&entity=song&limit=8&country=US`,
-        );
+        const response = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(term)}&entity=song&limit=8&country=US`);
         if (!response.ok) return [i.id, ""] as const;
-        const data = await response.json() as {
-          results?: Array<{ trackName?: string; artistName?: string; artworkUrl100?: string }>;
-        };
+        const data = await response.json() as { results?: Array<{ trackName?: string; artistName?: string; artworkUrl100?: string }> };
         const results = data.results || [];
-        const clean = (value: string) => value.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");
-        const target = clean(i.id === "song-6" ? "첫 눈" : i.title.replace(/\s*\(feat\..*?\)/i, ""));
+        const clean = (value: string) => value.toLowerCase().replace(/[^\\p{L}\\p{N}]/gu, "");
+        const target = clean(i.id === "song-6" ? "첫 눈" : i.title.replace(/\\s*\\(feat\\..*?\\)/i, ""));
         const exact = results.find((r) => clean(r.trackName || "") === target)
           || results.find((r) => clean(r.trackName || "").includes(target) || target.includes(clean(r.trackName || "")))
           || results[0];
@@ -833,94 +833,100 @@ export function MusicSkin(p: Props) {
   }, [artworkLookupKey]);
 
   const coverFor = (i: Item) => artwork[i.id] || safeMedia(meta(i, "coverUrl"));
+  const songs = items.filter((i) => i.kind === "audio");
+  const shown = tab === "歌单" ? songs.filter((i) => i.folder) : songs;
+  const nextSong = () => {
+    if (!songs.length) return;
+    const index = songs.findIndex((i) => i.id === song?.id);
+    setSong(songs[(index + 1 + songs.length) % songs.length]);
+    setIsPlaying(true);
+  };
   return (
     <div className="catalog-skin native-music">
       <Header p={p} />
-      <div className="catalog-scroll">
-        <h1>{tab}</h1>
-        {tab === "歌单" ? (
-          <div className="music-albums">
-            {groupItems(items, "我的音乐").map((g) => (
-              <button
-                key={g}
-                onClick={() => {
-                  const i = items.find((i) => (i.folder || "我的音乐") === g);
-                  if (i) setSong(i);
-                }}
-              >
-                <Music size={51} />
-                <strong>{g}</strong>
+      <div className="catalog-scroll music-library-scroll">
+        <div className="music-library-heading">
+          <h1>{tab === "歌单" ? "播放列表" : "歌曲"}</h1>
+          <button aria-label="搜索音乐" onClick={() => setTab("搜索")}><Search size={21} /></button>
+        </div>
+        {tab === "搜索" ? (
+          <div className="music-search-panel">
+            <div className="music-search-input"><Search size={17} /><span>搜索歌曲、艺人或专辑</span></div>
+            <p>你的音乐</p>
+            {songs.map((i) => (
+              <button className="music-track" key={i.id} onClick={() => { setSong(i); setIsPlaying(true); }}>
+                <span className="music-cover">{coverFor(i) ? <img src={coverFor(i)} alt="" loading="lazy" /> : <Music size={20} />}</span>
+                <span className="music-track-copy"><strong>{i.title}</strong><small>{meta(i, "artist", i.sender)}</small></span>
               </button>
             ))}
           </div>
         ) : (
-          items.map((i) => (
-            <button
-              className="music-track"
-              key={i.id}
-              onClick={() => setSong(i)}
-            >
-              <span
-                aria-hidden="true"
-                style={{ width: 48, height: 48, borderRadius: 7, display: "grid", placeItems: "center", overflow: "hidden", flexShrink: 0, background: "linear-gradient(135deg, #f5b5ca, #b8a8f8, #4c4c68)" }}
-              >
-                {coverFor(i) ? (
-                  <img src={coverFor(i)} alt="" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                ) : (
-                  <Music size={20} color="white" />
-                )}
-              </span>
-              <span>
-                <strong>{i.title}</strong>
-                <small>
-                  {meta(i, "artist", i.sender)}{meta(i, "album") ? ` · ${meta(i, "album")}` : ""}
-                </small>
-              </span>
-              <span>{meta(i, "duration")}</span>
-            </button>
-          ))
+          <>
+            {tab === "歌单" && (
+              <div className="music-playlist-banner">
+                <div className="music-playlist-art">
+                  {songs.slice(0, 4).map((i) => coverFor(i) ? <img key={i.id} src={coverFor(i)} alt="" /> : <span key={i.id}><Music size={17} /></span>)}
+                </div>
+                <div><small>个人歌单</small><strong>我的音乐</strong><span>{songs.length} 首歌曲</span></div>
+              </div>
+            )}
+            <div className="music-list-tools">
+              <button onClick={() => { if (songs[0]) { setSong(songs[0]); setIsPlaying(true); } }}><Play size={15} fill="currentColor" /> 随机播放</button>
+              <span>{shown.length} 首歌曲</span>
+            </div>
+            <div className="music-track-list">
+              {shown.map((i) => (
+                <div className={`music-track-row ${song?.id === i.id ? "current" : ""}`} key={i.id}>
+                  <button className="music-track-main" onClick={() => { setSong(i); setIsPlaying(true); }}>
+                    <span className="music-cover">
+                      {coverFor(i) ? <img src={coverFor(i)} alt="" loading="lazy" /> : <Music size={20} />}
+                    </span>
+                    <span className="music-track-copy">
+                      <strong>{i.title}</strong>
+                      <small>{meta(i, "artist", i.sender)}</small>
+                    </span>
+                  </button>
+                  <button className="music-track-more" aria-label={`${i.title} 更多选项`} onClick={() => { setSong(i); setIsPlaying(true); }}><MoreHorizontal size={21} /></button>
+                </div>
+              ))}
+            </div>
+            <Empty items={shown} label="资料库中还没有歌曲" />
+          </>
         )}
-        <Empty items={items} />
       </div>
       {song && (
-        <div className="native-now-playing">
-          <button onClick={() => p.onItem(song)}>
-            {coverFor(song) ? (
-              <img src={coverFor(song)} alt="" style={{ width: 34, height: 34, objectFit: "cover", borderRadius: 5, flexShrink: 0 }} />
-            ) : <Music size={20} />}
-            <span style={{ display: "grid", textAlign: "left" }}>
-              <strong>{song.title}</strong>
-              <small>{meta(song, "artist", song.sender)}</small>
-            </span>
+        <div className="music-mini-player">
+          <button className="music-mini-info" onClick={() => p.onItem(song)}>
+            <span className="music-mini-cover">{coverFor(song) ? <img src={coverFor(song)} alt="" /> : <Music size={18} />}</span>
+            <span className="music-mini-copy"><strong>{song.title}</strong><small>{meta(song, "artist", song.sender)}</small></span>
           </button>
-          {song.kind === "audio" && safeMedia(song.media || meta(song, "audioUrl")) ? (
-            <AudioPlayer p={p} item={{ ...song, media: song.media || meta(song, "audioUrl") }} />
-          ) : (
-            <button onClick={() => p.onItem(song)}>查看歌曲内容</button>
+          <div className="music-mini-controls">
+            <button aria-label={isPlaying ? "暂停" : "播放"} onClick={() => setIsPlaying((v) => !v)}>{isPlaying ? <Pause size={22} fill="currentColor" /> : <Play size={22} fill="currentColor" />}</button>
+            <button aria-label="下一首" onClick={nextSong}><SkipForward size={21} fill="currentColor" /></button>
+          </div>
+          <div className="music-progress"><span /></div>
+          {song.kind === "audio" && safeMedia(song.media || meta(song, "audioUrl")) && (
+            <div className="music-real-audio"><AudioPlayer p={p} item={{ ...song, media: song.media || meta(song, "audioUrl") }} /></div>
           )}
-          <button
-            aria-label="下一首"
-            onClick={() =>
-              setSong(
-                items[
-                  (items.findIndex((i) => i.id === song.id) + 1) % items.length
-                ],
-              )
-            }
-          >
-            <SkipForward size={18} />
-          </button>
         </div>
       )}
-      <Tabs
-        tabs={["资料库", "歌单"]}
-        value={tab}
-        set={setTab}
-        icons={[<Music />, <Folder />]}
-      />
+      <nav className="music-bottom-tabs">
+        {[
+          { label: "立即聆听", icon: <Heart size={20} /> },
+          { label: "浏览", icon: <Compass size={20} /> },
+          { label: "电台", icon: <Radio size={20} /> },
+          { label: "资料库", icon: <Music size={20} /> },
+          { label: "搜索", icon: <Search size={20} /> },
+        ].map((t) => (
+          <button key={t.label} className={tab === t.label || (tab === "歌单" && t.label === "资料库") ? "selected" : ""} onClick={() => setTab(t.label === "资料库" ? "资料库" : t.label)}>
+            {t.icon}<span>{t.label}</span>
+          </button>
+        ))}
+      </nav>
     </div>
   );
 }
+
 function LocationMap({
   items,
   onItem,
