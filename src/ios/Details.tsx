@@ -26,10 +26,12 @@ export const nativeDetailApps = new Set([
 export function NativeDetail({
   app,
   item,
+  items = [item],
   back,
 }: {
   app: string;
   item: Item;
+  items?: Item[];
   back: () => void;
 }) {
   const [photoIndex, setPhotoIndex] = useState(0),
