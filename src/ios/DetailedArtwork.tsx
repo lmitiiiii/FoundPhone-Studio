@@ -30,7 +30,7 @@ export function DetailedArtwork({ id }: { id: string }) {
   if (id === "music") {
     bg = g("music");
     art = (
-      <path d="M40 10v32.2a8.2 8.2 0 1 1-5-7.5V19l-14 3v24.2a8.2 8.2 0 1 1-5-7.5V17z" fill="#fff" />
+      <path d="M43 8v34a9 9 0 1 1-5.5-8.3V17l-15 3.5v25a9 9 0 1 1-5.5-8.3V14z" fill="#fff" />
     );
   } else if (id === "recorder") {
     bg = g("recorder");
@@ -58,14 +58,14 @@ export function DetailedArtwork({ id }: { id: string }) {
     bg = g("safari");
     art = (
       <>
-        <circle cx="32" cy="32" r="27" fill="#f7fbff" />
-        <circle cx="32" cy="32" r="24" fill="#1689ef" />
-        <circle cx="32" cy="32" r="21" fill="none" stroke="#bfeaff" strokeWidth="1" />
-        {Array.from({ length: 12 }, (_, n) => (
-          <path key={n} d="M32 9v4" stroke="#fff" strokeWidth="1.2" transform={`rotate(${n * 30} 32 32)`} />
+        <circle cx="32" cy="32" r="29" fill="#f7fbff" />
+        <circle cx="32" cy="32" r="26" fill="#078cf0" />
+        <circle cx="32" cy="32" r="22.5" fill="none" stroke="#d9f4ff" strokeWidth="1.2" />
+        {Array.from({ length: 32 }, (_, n) => (
+          <path key={n} d="M32 7.5v3.5" stroke="#fff" strokeWidth={n % 4 === 0 ? "1.4" : ".65"} transform={`rotate(${n * 11.25} 32 32)`} />
         ))}
-        <path d="M18 47 28 29 46 17 36 35z" fill="#fff" />
-        <path d="m28 29 18-12-10 18z" fill="#f33b4d" />
+        <path d="M16 49 28 29 48 14 36 35z" fill="#fff" />
+        <path d="m28 29 20-15-12 21z" fill="#f43d4d" />
         <circle cx="32" cy="32" r="2" fill="#fff" />
       </>
     );
@@ -73,9 +73,10 @@ export function DetailedArtwork({ id }: { id: string }) {
     bg = g("instagram");
     art = (
       <>
-        <rect x="9" y="9" width="46" height="46" rx="14" fill="none" stroke="#fff" strokeWidth="4.5" />
-        <circle cx="32" cy="32" r="11" fill="none" stroke="#fff" strokeWidth="4.5" />
-        <circle cx="45.5" cy="18.5" r="3.2" fill="#fff" />
+        <rect x="9" y="9" width="46" height="46" rx="13" fill="none" stroke="#fff" strokeWidth="4.3" />
+        <circle cx="32" cy="32" r="11" fill="none" stroke="#fff" strokeWidth="4.3" />
+        <circle cx="45" cy="19" r="3.1" fill="#fff" />
+        <path d="M15 44c6 7 14 10 22 8" fill="none" stroke="#ffb45c" strokeWidth="1.5" opacity=".65" />
       </>
     );
   } else if (id === "twitter") {
@@ -87,8 +88,8 @@ export function DetailedArtwork({ id }: { id: string }) {
     bg = g("kakao");
     art = (
       <>
-        <path d="M32 12C18 12 8 21 8 32c0 7 5 13 12 16l-3 8 12-6c14 1 27-7 27-18S44 12 32 12z" fill="#3c1e1e" />
-        <path d="m20 26 4-2 3 3 3-3 3 3 4-2 3 3 4-1-4 6-7 3-8-3z" fill="#ffe812" opacity=".9" />
+        <path d="M32 10C17.5 10 6 19.2 6 31.2c0 8.3 5.6 15.4 14.1 18.9l-3 7.4 11-5.8C44 52.5 58 43.4 58 31.2 58 19.2 46.5 10 32 10z" fill="#3c1e1e" />
+        <path d="M17 28.5c0-2.3 2-4.1 4.4-4.1 1.6 0 3 .8 3.8 2.1 1.2-1.5 3-2.4 5-2.4s3.8.9 5 2.4c.9-1.3 2.3-2.1 3.9-2.1 2.5 0 4.4 1.8 4.4 4.1 0 4.2-6.1 8.6-13.2 8.6S17 32.7 17 28.5z" fill="#ffe812" />
       </>
     );
   } else if (id === "appstore") {
@@ -272,10 +273,11 @@ export function DetailedArtwork({ id }: { id: string }) {
   } else if (id === "notes") {
     art = (
       <>
-        <path d="M0 0h64v21H0z" fill={g("sun")} />
-        <path d="M0 22h64" stroke="#ddd" strokeDasharray="1 2" />
-        {[31, 43, 55].map((y) => (
-          <path key={y} d={`M12 ${y}h40`} stroke="#bbb" strokeWidth="1" />
+        <path d="M0 0h64v22H0z" fill="#ffd84a" />
+        <path d="M0 22h64" stroke="#f1f1f1" strokeWidth="1.5" />
+        <path d="M0 24h64v40H0z" fill="#fff" />
+        {[31, 42, 53].map((y) => (
+          <path key={y} d={`M10 ${y}h44`} stroke="#c9c9c9" strokeWidth="1" />
         ))}
       </>
     );
