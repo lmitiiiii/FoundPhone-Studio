@@ -4913,3 +4913,11 @@
 .native-music .catalog-tabs {
   display: none;
 }
+
+/* Keep Music track rows aligned and make preview audio usable */
+.native-music .music-track-row { box-sizing: border-box; width: 100%; margin: 0; }
+.native-music .music-track-main { align-self: stretch; }
+.native-music .music-track-copy { text-align: left; }
+.native-music .music-real-audio { position: static; display: block; flex: 0 0 100%; width: 100%; height: 34px; margin-top: 3px; opacity: 1; pointer-events: auto; overflow: visible; }
+.native-music .music-real-audio audio { display: block; width: 100%; height: 34px; }
+.native-music .music-mini-player { flex-wrap: wrap; }
