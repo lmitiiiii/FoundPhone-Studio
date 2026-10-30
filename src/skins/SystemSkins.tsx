@@ -558,7 +558,7 @@ export function CalendarSkin(p: Props) {
               <span style={{ color: "#e879a6" }}>♡</span>
             </button>
           ))}
-          <p style={{ margin: "12px 2px 0", color: "#a66d83", fontSize: 11 }}>♡ 马克生日 · 8 月 2 日　♡ 东赫生日 · 6 月 6 日　♡ 纪念日 · 4 月 29 日</p>
+          <p style={{ margin: "12px 2px 0", color: "#a66d83", fontSize: 11 }}>♡ 马克生日 · 8 月 2 日 ♡ 东赫生日 · 6 月 6 日 ♡ 纪念日 · 4 月 29 日</p>
         </section>
       </div>
     </div>
