@@ -3,7 +3,7 @@
   "id": "markchan-found-phone",
   "title": "Markchan · 捡手机",
   "description": "Coco & Mark 互动捡手机；密码 8266。媒体链接均留空待替换。",
-  "revision": 29,
+  "revision": 30,
   "phone": {
     "owner": "Markchan",
     "date": "2026-10-29",
@@ -1561,11 +1561,11 @@
         "kind": "post",
         "body": "一不小心又把相册塞满了。♡",
         "meta": {
-          "username": "mark82_",
+          "username": "coco66_",
           "postUrl": "",
-          "imageUrl": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/128.jpeg",
-          "mediaUrl": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/128.jpeg",
-          "photoId": "photo-5"
+          "imageUrl": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/655e93b8973f81723251e345b748f103.jpeg",
+          "mediaUrl": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/655e93b8973f81723251e345b748f103.jpeg",
+          "photoId": "photo-13"
         },
         "comments": []
       },
@@ -1575,11 +1575,11 @@
         "kind": "post",
         "body": "平常的一天，也想留个纪念。",
         "meta": {
-          "username": "coco66_",
+          "username": "mark82_",
           "postUrl": "",
-          "imageUrl": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/655e93b8973f81723251e345b748f103.jpeg",
-          "mediaUrl": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/655e93b8973f81723251e345b748f103.jpeg",
-          "photoId": "photo-13"
+          "imageUrl": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/128.jpeg",
+          "mediaUrl": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/128.jpeg",
+          "photoId": "photo-5"
         },
         "comments": []
       },
