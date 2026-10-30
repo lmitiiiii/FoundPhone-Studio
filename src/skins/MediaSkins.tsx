@@ -600,7 +600,7 @@ export function RecorderSkin(p: Props) {
                 {item.time || "今天"}{item.meta?.duration ? ` · ${String(item.meta.duration)}` : ""}
               </small>
               {src ? (
-                <audio controls preload="none" src={src} style={{ width: "100%" }} />
+                <AudioPlayer p={p} item={item} />
               ) : (
                 <div style={{ color: "#8e8e93", fontSize: 13, padding: "8px 0 2px" }}>
                   音频链接待补充
