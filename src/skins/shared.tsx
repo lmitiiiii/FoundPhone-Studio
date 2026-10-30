@@ -113,13 +113,32 @@ export function Media({
 }) {
   const audioRef = useRef<HTMLAudioElement>(null);
   useExclusiveAudio(audioRef);
+  const gallery = [
+    meta(item, "galleryUrl1"),
+    meta(item, "galleryUrl2"),
+    meta(item, "galleryUrl3"),
+  ]
+    .map(safeMedia)
+    .filter(Boolean);
   const src = safeMedia(
     item.media ||
       (item.kind === "audio"
         ? meta(item, "audioUrl")
         : meta(item, "mediaUrl") || meta(item, "imageUrl") || meta(item, "coverUrl")),
   );
-  return src ? (
+  return gallery.length > 0 ? (
+    <div className={`catalog-gallery ${className}`}>
+      {gallery.map((image, index) => (
+        <img
+          key={image}
+          loading="lazy"
+          decoding="async"
+          alt={`${item.title} ${index + 1}`}
+          src={image}
+        />
+      ))}
+    </div>
+  ) : src ? (
     item.kind === "audio" ? (
       <audio ref={audioRef} className={className} controls src={src} />
     ) : item.kind === "video" ? (
