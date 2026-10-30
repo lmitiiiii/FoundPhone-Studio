@@ -67,7 +67,13 @@ export function defaultLayout(input: Work): DeviceLayout {
           : a.id === "appstore"
             ? { ...a, installed: true, visible: true, folder: "", dock: false }
             : a,
-      ),
+      )
+      .sort((a, b) => {
+        if (!markchan) return 0;
+        const dockOrder = ["phone", "mail", "appstore", "settings"];
+        const x = dockOrder.indexOf(a.id), y = dockOrder.indexOf(b.id);
+        return (x < 0 ? 99 : x) - (y < 0 ? 99 : y);
+      }),
     widgets: markchan
       ? [
           { id: "widget-markchan-photos", type: "photos", size: "small" },
@@ -223,6 +229,11 @@ export function validateLayout(raw: unknown, input: Work) {
         delete layout.positions[id];
       }
     }
+    layout.apps.sort((a, b) => {
+      const dockOrder = ["phone", "mail", "appstore", "settings"];
+      const x = dockOrder.indexOf(a.id), y = dockOrder.indexOf(b.id);
+      return (x < 0 ? 99 : x) - (y < 0 ? 99 : y);
+    });
     layout.order = homeEntries(layout).map((entry) => entry.key);
     layout.previewLayoutRevision = 10;
   }
