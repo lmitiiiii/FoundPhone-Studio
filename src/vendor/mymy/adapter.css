@@ -711,3 +711,33 @@
 }
 .mymy-ui .ig-following-row small { opacity: .65; }
 .mymy-ui .ig-following-arrow { font-size: 24px; opacity: .6; }
+
+
+/* Expanded X experience */
+.mymy-ui.mymy-x .kzx-account-strip{display:flex;gap:14px;padding:12px 14px;overflow-x:auto;border-bottom:1px solid var(--line,#333)}
+.mymy-ui.mymy-x .kzx-account-strip>button{display:flex;align-items:center;gap:8px;flex:0 0 auto;background:transparent;border:0;color:inherit;text-align:left}
+.mymy-ui.mymy-x .kzx-account-strip span{display:flex;flex-direction:column;font-size:12px}
+.mymy-ui.mymy-x .kzx-account-strip small,.mymy-ui.mymy-x .kzx-profile p{opacity:.68}
+.mymy-ui.mymy-x .kzx-searchbox{display:flex;align-items:center;gap:8px;margin:12px 14px;padding:9px 12px;border-radius:22px;background:rgba(128,128,128,.15)}
+.mymy-ui.mymy-x .kzx-searchbox input{min-width:0;flex:1;border:0;outline:0;background:transparent;color:inherit}
+.mymy-ui.mymy-x .kzx-avatar-button,.mymy-ui.mymy-x .kzxn button{padding:0;border:0;background:transparent;color:inherit}
+.mymy-ui.mymy-x .kzx-profile{padding-bottom:20px}
+.mymy-ui.mymy-x .kzx-backlink{margin:12px;padding:7px 12px;border:0;border-radius:18px;background:rgba(128,128,128,.18);color:inherit}
+.mymy-ui.mymy-x .kzx-cover{height:105px;background:linear-gradient(120deg,#35445c,#75899b,#d5b9a2)}
+.mymy-ui.mymy-x .kzx-profile-head{display:flex;justify-content:space-between;align-items:end;padding:0 16px;margin-top:-26px}
+.mymy-ui.mymy-x .kzx-profile-head .catalog-avatar{width:76px;height:76px;border:4px solid var(--surface,#111);border-radius:50%}
+.mymy-ui.mymy-x .kzx-profile-head button,.mymy-ui.mymy-x .kzx-compose-sheet button{border:0;border-radius:20px;padding:8px 16px;background:#1d9bf0;color:white;font-weight:700}
+.mymy-ui.mymy-x .kzx-profile h2,.mymy-ui.mymy-x .kzx-profile>p{margin:8px 16px}
+.mymy-ui.mymy-x .kzx-stats{padding:12px 0;border-block:1px solid rgba(128,128,128,.25);font-size:12px;opacity:.8}
+.mymy-ui.mymy-x .kzx-detail{padding:12px;overflow:auto}
+.mymy-ui.mymy-x .kzx-detail h3,.mymy-ui.mymy-x .kzx-notice h3,.mymy-ui.mymy-x .kzx-compose-sheet h3{margin:8px 0 16px}
+.mymy-ui.mymy-x .kzx-comment{display:flex;flex-direction:column;gap:4px;padding:12px 4px;border-bottom:1px solid rgba(128,128,128,.2);font-size:13px}
+.mymy-ui.mymy-x .kzx-comment b{font-size:12px;opacity:.75}
+.mymy-ui.mymy-x .kzx-notice{padding:16px}
+.mymy-ui.mymy-x .kzx-notice p{padding:14px;border-bottom:1px solid rgba(128,128,128,.2)}
+.mymy-ui.mymy-x .kzx-compose{position:absolute;right:20px;bottom:70px;width:52px;height:52px;border:0;border-radius:50%;background:#1d9bf0;color:white;box-shadow:0 4px 14px #0005}
+.mymy-ui.mymy-x .kzx-compose-sheet{position:absolute;z-index:5;inset:auto 10px 65px;padding:16px;border-radius:18px;background:var(--surface,#181818);box-shadow:0 4px 30px #0008}
+.mymy-ui.mymy-x .kzx-compose-sheet textarea{width:100%;min-height:110px;resize:vertical;border:0;outline:0;background:transparent;color:inherit;font:inherit}
+.mymy-ui.mymy-x .kzx-compose-sheet>div{display:flex;justify-content:flex-end;gap:10px}
+.mymy-ui.mymy-x .kzx-compose-sheet button:first-child{background:rgba(128,128,128,.2);color:inherit}
+.mymy-ui.mymy-x .kzx-local-post{padding:12px 16px;border-bottom:1px solid rgba(128,128,128,.2)}
