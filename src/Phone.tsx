@@ -958,8 +958,13 @@ function AppContent({
   useEffect(() => {
     setPlayCallAudio(false);
     if (creator || app.id !== "phone") return;
-    const timer = window.setTimeout(() => setPlayCallAudio(true), 1000);
+    const timer = window.setTimeout(() => {
+      setPlayCallAudio(true);
+      onUi?.("incomingCall", "call-voice-01");
+    }, 1000);
     return () => window.clearTimeout(timer);
+    // onUi is supplied inline by PhoneRuntime; depend on app launch, not rerenders.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [app.id, creator]);
   const shown = items
     .filter((i) => creator || visible(i, state))
