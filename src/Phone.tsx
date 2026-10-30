@@ -662,7 +662,6 @@ function PhoneRuntime({
                   );
                   return record?.kind === "audio" && safeMedia(record.media) ? (
                     <audio
-                      controls
                       autoPlay
                       src={safeMedia(record.media)}
                       onTimeUpdate={(event) => {
