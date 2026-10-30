@@ -58,7 +58,7 @@ export function defaultLayout(input: Work): DeviceLayout {
   return {
     version: 1,
     workId: w.id,
-    previewLayoutRevision: markchan ? 5 : w.id === "ui-test-phone-v2" ? 1 : 0,
+    previewLayoutRevision: markchan ? 8 : w.id === "ui-test-phone-v2" ? 1 : 0,
     apps: structuredClone(w.apps)
       .sort((a, b) => (a.id === "appstore" ? -1 : b.id === "appstore" ? 1 : 0))
       .map((a) =>
@@ -73,13 +73,13 @@ export function defaultLayout(input: Work): DeviceLayout {
           { id: "widget-markchan-weather", type: "weather", size: "small" },
         ]
       : [],
-    order: [],
+    order: markchan\n      ? w.apps.filter((a) => a.installed && a.visible && !a.dock && a.id !== "phone").map((a) => a.id).concat("phone")\n      : [],
     cleared: [],
     positions: markchan
       ? {
           "widget-markchan-music": { page: 0, x: 0, y: 0 },
           "widget-markchan-photos": { page: 0, x: 0, y: 2 },
-          "widget-markchan-weather": { page: 0, x: 2, y: 2 },
+          "widget-markchan-weather": { page: 0, x: 2, y: 2 },\n          phone: { page: 0, x: 3, y: 5 },
         }
       : {},
   };
@@ -163,6 +163,26 @@ export function validateLayout(raw: unknown, input: Work) {
       layout.order = ["phone", ...layout.order.filter((id) => id !== "phone")];
     }
     layout.previewLayoutRevision = 7;
+  }
+  if (w.id === "markchan-found-phone" && layout.previewLayoutRevision < 8) {
+    const phone = layout.apps.find((app) => app.id === "phone");
+    if (phone) {
+      phone.installed = true;
+      phone.visible = true;
+      phone.dock = false;
+      phone.folder = "";
+      for (const [id, position] of Object.entries(layout.positions)) {
+        if (id !== "phone" && position.page === 0 && position.x === 3 && position.y === 5) {
+          delete layout.positions[id];
+        }
+      }
+      layout.positions.phone = { page: 0, x: 3, y: 5 };
+      layout.order = [
+        ...homeEntries(layout).map((entry) => entry.key).filter((id) => id !== "phone"),
+        "phone",
+      ];
+    }
+    layout.previewLayoutRevision = 8;
   }
   if (w.id === "ui-test-phone-v2" && layout.previewLayoutRevision < 1) {
     const visibleApps = ["wechat", "douyin"];
