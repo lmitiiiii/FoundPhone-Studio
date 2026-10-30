@@ -76,34 +76,52 @@ export function MymyKakao(p: SkinProps) {
     [query, setQuery] = useState(""),
     [menu, setMenu] = useState(false);
   const list = grouped(p.items),
-    messages = [
-      ...p.items.filter((i) => i.title === p.thread),
-      ...sent.flatMap((raw, index) => {
-        try {
-          const entry: unknown = JSON.parse(raw);
-          if (
-            !Array.isArray(entry) ||
-            entry.length !== 3 ||
-            !entry.every((v) => typeof v === "string") ||
-            entry[0] !== p.thread
-          )
+    messages = (() => {
+      const all = [
+        ...p.items.filter((i) => i.title === p.thread),
+        ...sent.flatMap((raw, index) => {
+          try {
+            const entry: unknown = JSON.parse(raw);
+            if (
+              !Array.isArray(entry) ||
+              entry.length !== 3 ||
+              !entry.every((v) => typeof v === "string") ||
+              entry[0] !== p.thread
+            )
+              return [];
+            return [
+              makeItem({
+                id: "local-kkt-" + index,
+                title: entry[0],
+                body: entry[1],
+                time: entry[2],
+                sender: p.owner || "机主",
+                outgoing: true,
+                meta: { local: "true" },
+              }),
+            ];
+          } catch {
             return [];
-          return [
-            makeItem({
-              id: "local-kkt-" + index,
-              title: entry[0],
-              body: entry[1],
-              time: entry[2],
-              sender: p.owner || "机主",
-              outgoing: true,
-              meta: { local: "true" },
-            }),
-          ];
-        } catch {
-          return [];
-        }
-      }),
-    ],
+          }
+        }),
+      ];
+      // Remove exact duplicate imports while preserving legitimate repeated
+      // messages that differ by sender, time, direction, or media.
+      const seen = new Set<string>();
+      return all.filter((item) => {
+        const signature = JSON.stringify([
+          item.title,
+          item.body,
+          item.time,
+          item.sender,
+          item.outgoing,
+          item.media || "",
+        ]);
+        if (seen.has(signature)) return false;
+        seen.add(signature);
+        return true;
+      });
+    })(),
     scroll = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const node = scroll.current;
