@@ -632,12 +632,17 @@ export function MymyInstagram(p: SkinProps) {
                 ...replies
                   .filter((r) => r.startsWith(sheet.id + "\t"))
                   .map((r) => r.split("\t").slice(1).join("\t")),
-              ].map((c, n) => (
-                <p key={n}>
-                  <Avatar name={c.split(":")[0]} />
-                  {c}
-                </p>
-              ))}
+              ].map((c, n) => {
+                const separator = c.indexOf("：") >= 0 ? c.indexOf("：") : c.indexOf(":");
+                const username = separator >= 0 ? c.slice(0, separator).trim() : "你";
+                const comment = separator >= 0 ? c.slice(separator + 1).trim() : c;
+                return (
+                  <div className="mymy-comment" key={n}>
+                    <b>{username}</b>
+                    <span>{comment}</span>
+                  </div>
+                );
+              })}
             </div>
             <form
               className="cmb2"
