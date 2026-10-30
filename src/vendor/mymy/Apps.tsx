@@ -725,7 +725,7 @@ export function MymyX(p: SkinProps) {
     const name = i.meta.username || "";
     if (profile && name !== profile) return false;
     if (i.meta.visibility === "private" && !profile) return false;
-    if (tab === "正在关注" && !followed.includes(name) && !profiles.some(x => x.meta.username === name && x.meta.username === "coco_oo66")) return false;
+    if (tab === "正在关注" && !followed.includes(name)) return false;
     if (tab === "喜欢") return isLiked(i.id);
     if (tab === "已收藏") return isSaved(i.id);
     if (query && !(i.body + name + i.meta.handle).toLowerCase().includes(query.toLowerCase())) return false;
@@ -768,7 +768,7 @@ export function MymyX(p: SkinProps) {
         ) : (
           <>
             <div className="kzxtb">
-              {["为你推荐", "正在关注"].map(t => <button className={tab === t ? "on" : ""} key={t} onClick={() => {setTab(t);setProfile(null);}}>{t}</button>)}
+              {["为你推荐", "正在关注", "喜欢", "已收藏"].map(t => <button className={tab === t ? "on" : ""} key={t} onClick={() => {setTab(t);setProfile(null);}}>{t}</button>)}
             </div>
             <div className="kzx-account-strip">
               {profiles.map(x => <button key={x.id} onClick={() => {setProfile(x.meta.username);setTab("主页");}}><Avatar name={x.meta.username} src={x.meta.avatarUrl}/><span><b>{x.meta.username}</b><small>@{x.meta.handle}</small></span></button>)}
