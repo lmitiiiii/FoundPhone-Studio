@@ -2119,31 +2119,31 @@
     "recorder": [
       {
         "id": "recording-1",
-        "title": "未命名录音 1",
-        "body": "音频链接占位，请填写 meta.audioUrl。",
+        "title": "录音 1",
+        "body": "录音文件",
         "kind": "audio",
         "meta": {
-          "audioUrl": "",
+          "audioUrl": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/story/markchan-phone/public/audio/%E8%A7%86%E9%A2%91%E8%BD%AC%E9%9F%B3%E9%A2%91%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E9%9F%B3%E9%A2%9120261029223739.mp3",
           "duration": ""
         }
       },
       {
         "id": "recording-2",
-        "title": "未命名录音 2",
-        "body": "音频链接占位，请填写 meta.audioUrl。",
+        "title": "录音 2",
+        "body": "录音文件",
         "kind": "audio",
         "meta": {
-          "audioUrl": "",
+          "audioUrl": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/story/markchan-phone/public/audio/%E8%A7%86%E9%A2%91%E8%BD%AC%E9%9F%B3%E9%A2%91%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E9%9F%B3%E9%A2%9120261029223748.mp3",
           "duration": ""
         }
       },
       {
         "id": "recording-3",
-        "title": "未命名录音 3",
-        "body": "音频链接占位，请填写 meta.audioUrl。",
+        "title": "录音 3",
+        "body": "录音文件",
         "kind": "audio",
         "meta": {
-          "audioUrl": "",
+          "audioUrl": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/story/markchan-phone/public/audio/%E8%A7%86%E9%A2%91%E8%BD%AC%E9%9F%B3%E9%A2%91%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E9%9F%B3%E9%A2%9120261029223756.mp3",
           "duration": ""
         }
       }
