@@ -31,10 +31,32 @@ import { useSkinState } from "../../skinState";
 import { makeItem, type Item } from "../../schema";
 import "./ui.css";
 import "./adapter.css";
+// Some imported chat histories can contain the same message twice when
+// story content and runtime-saved messages are merged. Keep the first copy
+// of an identical message while preserving genuinely repeated messages that
+// differ by sender, text, timestamp, direction, or attachment.
+function uniqueChatItems(items: Item[]) {
+  const seen = new Set<string>();
+  return items.filter((item) => {
+    const signature = JSON.stringify([
+      item.title,
+      item.sender,
+      item.body,
+      item.time,
+      item.outgoing,
+      item.kind,
+      item.media,
+    ]);
+    if (seen.has(signature)) return false;
+    seen.add(signature);
+    return true;
+  });
+}
 function grouped(items: Item[]) {
-  return [...new Set(items.map((i) => i.title))].map((title) => ({
+  const uniqueItems = uniqueChatItems(items);
+  return [...new Set(uniqueItems.map((i) => i.title))].map((title) => ({
     title,
-    items: items.filter((i) => i.title === title),
+    items: uniqueItems.filter((i) => i.title === title),
   }));
 }
 export function messageRun(items: Item[], index: number) {
@@ -68,7 +90,7 @@ export function MymyKakao(p: SkinProps) {
     [query, setQuery] = useState(""),
     [menu, setMenu] = useState(false);
   const list = grouped(p.items),
-    messages = [
+    messages = uniqueChatItems([
       ...p.items.filter((i) => i.title === p.thread),
       ...sent.flatMap((raw, index) => {
         try {
@@ -95,7 +117,7 @@ export function MymyKakao(p: SkinProps) {
           return [];
         }
       }),
-    ],
+    ]),
     scroll = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const node = scroll.current;
