@@ -757,7 +757,7 @@ export function MymyX(p: SkinProps) {
                 <div className="kzxn"><b>{detail.meta.username}</b><small>@{detail.meta.handle} · {detail.time}</small></div>
                 <p className="kzxx">{detail.body}</p>
                 {detail.media && <Media item={detail} />}
-                <p className="kzx-stats">{count(detail.meta.replies)} 回复　{count(detail.meta.reposts)} 转发　{count(detail.meta.likes)} 喜欢　{count(detail.meta.views)} 浏览</p>
+                <p className="kzx-stats">{count(detail.meta.replies)} 回复 {count(detail.meta.reposts)} 转发 {count(detail.meta.likes)} 喜欢 {count(detail.meta.views)} 浏览</p>
                 <h4>回复</h4>
                 {comments(detail).map((line, n) => { const at = line.indexOf("："); return <div className="kzx-comment" key={n}><b>{at > -1 ? line.slice(0, at) : "用户"}</b><span>{at > -1 ? line.slice(at + 1) : line}</span></div>; })}
               </div>
@@ -769,7 +769,7 @@ export function MymyX(p: SkinProps) {
             <div className="kzx-cover" />
             <div className="kzx-profile-head"><Avatar name={selectedProfile.meta.username} src={selectedProfile.meta.avatarUrl || socialAvatar(selectedProfile.meta.username)} /><button onClick={() => toggle(profile, followed, setFollowed)}>{followed.includes(profile) ? "正在关注" : "关注"}</button></div>
             <h2>{selectedProfile.meta.username}</h2><p>@{selectedProfile.meta.handle}</p><p>{selectedProfile.body}</p>
-            <p className="kzx-stats">{selectedProfile.meta.following} 正在关注　{selectedProfile.meta.followers} 关注者</p>
+            <p className="kzx-stats">{selectedProfile.meta.following} 正在关注 {selectedProfile.meta.followers} 关注者</p>
             <div className="kzxtb"><button className="on">帖子</button><button onClick={() => setTab("喜欢")}>喜欢</button></div>
             {posts.filter(i => i.meta.username === profile).map(i => <article className="kzxt" key={i.id}><Avatar name={profile} src={selectedProfile?.meta.avatarUrl || socialAvatar(profile)} /><div className="kzxb"><div className="kzxn"><b>{profile}</b><small>@{i.meta.handle} · {i.time}</small></div><button className="kzxx" onClick={() => setDetail(i)}>{i.body}</button>{i.media && <button className="kzxv" onClick={() => setDetail(i)}><Media item={i}/></button>}<div className="kzxac"><button onClick={() => setDetail(i)}><MessageCircle/>{count(i.meta.replies)}</button><button><Repeat2/>{count(i.meta.reposts)}</button><button><Heart/>{count(i.meta.likes)}</button></div></div></article>)}
           </section>
