@@ -40,6 +40,7 @@ export function useTrack(
 export function AudioPlayer({ p, item }: { p: SkinProps; item: Item }) {
   const last = useRef(-1);
   const element = useRef<HTMLAudioElement>(null);
+  useExclusiveAudio(element);
   const key = `audio-${item.id}`,
     saved = p.ui?.[key];
   const commit = (time: number, force = false) => {
