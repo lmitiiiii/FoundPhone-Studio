@@ -908,6 +908,7 @@ function AppContent({
     .filter((i) =>
       (i.title + i.body + i.sender).toLowerCase().includes(q.toLowerCase()),
     );
+  const recentCalls = shown.filter((item) => item.kind === "call");
   const filtered =
     tab === "收藏"
       ? shown.filter((i) => i.favorite)
