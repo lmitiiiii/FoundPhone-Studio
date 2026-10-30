@@ -461,6 +461,20 @@ function PhoneRuntime({
                   onSettings={onSettings}
                   onUi={(key, value) => {
                     const current = runtimeRef.current;
+                    if (app === "phone" && key === "incomingCall" && typeof value === "string") {
+                      const record = work.data.phone?.find((item) => item.id === value);
+                      if (record) {
+                        update({
+                          ...current,
+                          incomingCall: {
+                            caller: record.title || "东赫",
+                            target: record.id,
+                            status: "ringing",
+                          },
+                        });
+                      }
+                      return;
+                    }
                     update(
                       dispatch(
                         work,
@@ -626,7 +640,12 @@ function PhoneRuntime({
                     (i) => i.id === s.incomingCall?.target,
                   );
                   return record?.kind === "audio" && safeMedia(record.media) ? (
-                    <audio controls src={safeMedia(record.media)} />
+                    <div className="incoming-call-voice">
+                      <audio controls autoPlay playsInline src={safeMedia(record.media)} aria-label="东赫的来电语音" />
+                      <p className="incoming-call-subtitle" lang="ko">
+                        여보세요, 제 휴대폰 주우신 분이신가요? 이 폰 안에 정말 소중한 추억들이 담겨 있어요. 잠시 맡아주실 수 있을까요? 괜찮으시면 장소를 알려주세요. 남자친구가 직접 찾아가겠습니다. 정말 정말 감사해요.
+                      </p>
+                    </div>
                   ) : (
                     <p>这是一通虚构来电。</p>
                   );
