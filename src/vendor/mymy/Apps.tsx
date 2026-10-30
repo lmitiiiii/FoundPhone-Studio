@@ -271,7 +271,7 @@ export function MymyKakao(p: SkinProps) {
               .filter((g) => g.title.includes(query.trim()))
               .map((g) => {
                 const last = g.items.at(-1)!;
-                const contactMessage = [...g.items].reverse().find((item) => !item.outgoing) || last;
+                const contactMessage = g.title === "ㅁㅋ" ? ([...g.items].reverse().find((item) => !item.outgoing) || last) : last;
                 return (
                   <button
                     className="kzkr kzkcr"
