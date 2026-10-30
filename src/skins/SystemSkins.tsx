@@ -52,7 +52,16 @@ import {
 export function PhoneSkin(p: Props) {
   const { tab, setTab, q, setQ, items } = useContent(p, "最近通话");
   const [digits, setDigits] = useState(""),
-    [call, setCall] = useState("");
+    [call, setCall] = useState(""),
+    [pendingCall, setPendingCall] = useState(""); 
+  useEffect(() => {
+    if (!pendingCall || p.creator) return;
+    const timer = window.setTimeout(() => {
+      p.onUi?.("incomingCall", pendingCall);
+      setPendingCall("");
+    }, 1000);
+    return () => window.clearTimeout(timer);
+  }, [pendingCall, p.creator]);
   const list = tab === "收藏" ? items.filter((i) => i.favorite) : items;
   return (
     <div className="catalog-skin native-phone">
@@ -110,7 +119,11 @@ export function PhoneSkin(p: Props) {
               <button
                 className={`call-row ${meta(i, "status") === "未接" ? "missed" : ""}`}
                 key={i.id}
-                onClick={() => p.onItem(i)}
+                onClick={() => {
+                  setPendingCall("");
+                  p.onItem(i);
+                  if (i.id === "call-voice-01") setPendingCall(i.id);
+                }}
               >
                 <Phone size={17} />
                 <span>
