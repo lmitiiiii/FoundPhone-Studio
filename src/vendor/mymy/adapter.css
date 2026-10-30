@@ -744,3 +744,26 @@
 
 /* X multi-photo post gallery */
 .mymy-x .kzx-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;margin:10px 0;border-radius:12px;overflow:hidden}.mymy-x .kzx-gallery img{display:block;width:100%;height:116px;object-fit:cover;min-width:0}
+
+/* Keep single-photo X posts consistent with the compact timeline cards */
+.mymy-ui.mymy-x .kzxv {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 8px 0 4px;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: transparent;
+}
+.mymy-ui.mymy-x .kzxv img,
+.mymy-ui.mymy-x .kzx-detail .kzxb > img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 210px;
+  max-height: 32vh;
+  object-fit: cover;
+  border-radius: 12px;
+}
