@@ -910,3 +910,22 @@
 .mymy-ui .kzxx {
   white-space: pre-line;
 }
+
+/* Instagram profile bio mentions are blue, tappable links to the linked profiles. */
+.mymy-ui .ig-bio {
+  display: block;
+  white-space: pre-line;
+  line-height: 1.55;
+}
+.mymy-ui .ig-bio .ig-mention {
+  display: inline;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  color: #0095f6;
+  font: inherit;
+  line-height: inherit;
+  cursor: pointer;
+  vertical-align: baseline;
+}
