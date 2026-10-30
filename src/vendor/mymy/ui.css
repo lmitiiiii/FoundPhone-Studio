@@ -702,6 +702,20 @@
   width: 34px;
   height: 34px;
 }
+.mymy-ui .kzxaccounts{display:flex;gap:10px;padding:8px 14px 10px;border-bottom:1px solid #eff3f4}
+.mymy-ui .kzxaccounts button{flex:1;min-width:0;display:flex;align-items:center;gap:8px;padding:7px 9px;border:1px solid #eff3f4;border-radius:12px;text-align:left;background:transparent}
+.mymy-ui .kzxaccounts button.on{background:#eff3f4;border-color:#cfd9de}
+.mymy-ui .kzxaccounts .catalog-avatar{width:34px;height:34px;flex:none}
+.mymy-ui .kzxaccounts span:not(.catalog-avatar){min-width:0;display:flex;flex-direction:column;gap:2px}
+.mymy-ui .kzxaccounts b{font-size:13px}
+.mymy-ui .kzxaccounts small{color:#536471;font-size:10px;overflow:hidden;text-overflow:ellipsis}
+.mymy-ui .kzxv{display:block;width:100%;max-height:260px;aspect-ratio:4/3;border-radius:14px;background:#f2f2f2}
+.mymy-ui .kzxv img{display:block;width:100%;height:100%;max-height:260px;object-fit:contain}
+.mymy-ui .kzxgallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;aspect-ratio:1/1;max-height:230px;border-radius:12px}
+.mymy-ui .kzxgallery img{width:100%;height:100%;max-height:230px;object-fit:cover;min-width:0}
+.mymy-ui.x-reference-dark .kzxaccounts{border-color:#2f3336}
+.mymy-ui.x-reference-dark .kzxaccounts button{border-color:#2f3336;color:#e7e9ea}
+.mymy-ui.x-reference-dark .kzxaccounts button.on{background:#202327}
 .mymy-ui .kzxw {
   position: absolute;
   inset: 0;
