@@ -110,14 +110,7 @@ export function PhoneSkin(p: Props) {
               <button
                 className={`call-row ${meta(i, "status") === "未接" ? "missed" : ""}`}
                 key={i.id}
-                onClick={() => {
-                  p.onItem(i);
-                  if (i.id === "call-voice-01" && !p.creator) {
-                    window.setTimeout(() => {
-                      p.onUi?.("incomingCall", i.id);
-                    }, 1000);
-                  }
-                }}
+                onClick={() => p.onItem(i)}
               >
                 <Phone size={17} />
                 <span>
