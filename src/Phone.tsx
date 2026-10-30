@@ -163,6 +163,10 @@ function PhoneRuntime({
   const [folder, setFolder] = useState("");
   const [panel, setPanel] = useState("");
   const [own, setOwn] = useState(() => initialRuntime(work));
+  const [callSubtitleIndex, setCallSubtitleIndex] = useState(0);
+  useEffect(() => {
+    if (s.incomingCall?.status === "ringing") setCallSubtitleIndex(0);
+  }, [s.incomingCall?.status]);
   const [ready, setReady] = useState(creator || !!external);
   const [loadError, setLoadError] = useState("");
   useEffect(() => {
@@ -629,13 +633,46 @@ function PhoneRuntime({
                 {s.incomingCall.caller.slice(0, 1)}
               </div>
               <h2>{s.incomingCall.caller}</h2>
+              <div className="incoming-call-subtitle" aria-live="polite">
+                <p key={callSubtitleIndex} className="incoming-subtitle-korean">
+                  {[
+                    "여보세요, 제 휴대폰 주우신 분이신가요?🥺",
+                    "이 폰 안에 정말 소중한 추억들이 담겨 있어요.",
+                    "잠시 맡아주실 수 있을까요?🙏🏽",
+                    "괜찮으시면 장소를 알려주세요.",
+                    "남자친구가 직접 찾아가겠습니다.",
+                    "정말 정말 감사해요.❣️",
+                  ][callSubtitleIndex]}
+                </p>
+                <p key={callSubtitleIndex + "-zh"} className="incoming-subtitle-chinese">
+                  {[
+                    "喂，请问是捡到手机的人吗？",
+                    "这部手机里有我很重要的回忆。",
+                    "可以先帮我保管一下吗？",
+                    "方便的话留一个位置吧。",
+                    "我男朋友会去找您的。",
+                    "真的真的非常感谢。",
+                  ][callSubtitleIndex]}
+                </p>
+              </div>
               {s.incomingCall.status === "answered" &&
                 (() => {
                   const record = work.data.phone?.find(
                     (i) => i.id === s.incomingCall?.target,
                   );
                   return record?.kind === "audio" && safeMedia(record.media) ? (
-                    <audio controls autoPlay src={safeMedia(record.media)} />
+                    <audio
+                      controls
+                      autoPlay
+                      src={safeMedia(record.media)}
+                      onTimeUpdate={(event) => {
+                        const audio = event.currentTarget;
+                        const progress = audio.duration ? audio.currentTime / audio.duration : 0;
+                        const boundaries = [0, 0.17, 0.36, 0.54, 0.70, 0.86];
+                        const next = boundaries.reduce((index, boundary, i) => progress >= boundary ? i : index, 0);
+                        setCallSubtitleIndex(next);
+                      }}
+                    />
                   ) : (
                     <p>这是一通虚构来电。</p>
                   );
@@ -904,6 +941,13 @@ function AppContent({
   const [pwError, setPwError] = useState("");
   const [likes, setLikes] = useState<string[]>([]);
   const gestureStart = useRef<number | null>(null);
+  useEffect(() => {
+    if (creator || app.id !== "phone" || state.incomingCall) return;
+    const timer = window.setTimeout(() => {
+      startIncoming("东赫", "call-voice-01");
+    }, 3000);
+    return () => window.clearTimeout(timer);
+  }, [app.id, creator, state.incomingCall, startIncoming]);
   const incomingGestureTriggered = useRef(false);
   const shown = items
     .filter((i) => creator || visible(i, state))
