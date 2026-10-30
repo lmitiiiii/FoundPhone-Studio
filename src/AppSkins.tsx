@@ -31,7 +31,8 @@ import {
   Layers,
   ShoppingBag,
 } from "lucide-react";
-import { safeMedia, type Item, type UiValue } from "./schema";\nimport { useExclusiveAudio } from "./audio";
+import { safeMedia, type Item, type UiValue } from "./schema";
+import { useExclusiveAudio } from "./audio";
 export type SkinProps = {
   ui?: Record<string, UiValue>;
   onUi?: (key: string, value: UiValue) => void;
