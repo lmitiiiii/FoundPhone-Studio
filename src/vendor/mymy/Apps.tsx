@@ -343,6 +343,8 @@ export function MymyInstagram(p: SkinProps) {
   const profilePosts = posts.filter(
     (i) => i.kind === "post" && i.meta.username === profileUser && !i.id.startsWith("ig-question-"),
   );
+  const accountAvatar = (username: string) =>
+    p.items.find((i) => i.meta.profileType && i.meta.username === username)?.meta.avatarUrl || "";
   const openProfile = (username: string) => {
     setProfileUser(username);
     setSelected(null);
@@ -388,7 +390,7 @@ export function MymyInstagram(p: SkinProps) {
   const post = (i: Item) => (
     <article className="igp" key={i.id}>
       <header className="igph">
-        <Avatar name={i.sender} src={i.avatar} />
+        <Avatar name={i.sender} src={accountAvatar(i.meta.username || i.sender)} />
         <div className="igpn">
           <button onClick={() => setTab("个人主页")}>
             <b>{i.sender}</b>
@@ -508,7 +510,7 @@ export function MymyInstagram(p: SkinProps) {
           {!selected && tab === "个人主页" && (
             <>
               <div className="pf">
-                <Avatar name={profileUser} src={profile?.avatar} />
+                <Avatar name={profileUser} src={profile?.meta.avatarUrl} />
                 <div className="ps">
                   <div>
                     <b>{profilePosts.length}</b>
@@ -553,7 +555,7 @@ export function MymyInstagram(p: SkinProps) {
                     </header>
                     {p.items.filter((i) => i.meta.profileType && i.meta.username !== profileUser).map((i) => (
                       <button className="ig-following-row" key={i.meta.username} onClick={() => { setFollowingOpen(false); openProfile(i.meta.username); }}>
-                        <Avatar name={i.meta.username} src={i.avatar} />
+                        <Avatar name={i.meta.username} src={i.meta.avatarUrl} />
                         <span><b>{i.meta.username}</b><small>{i.meta.username === "coco66_" ? "最萌的达人" : i.meta.username === "mark82_" ? "最酷的达人" : "恋爱日记本"}</small></span>
                         <span className="ig-following-arrow">›</span>
                       </button>
