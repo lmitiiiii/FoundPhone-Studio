@@ -671,7 +671,7 @@ export function MymyInstagram(p: SkinProps) {
                   .filter((r) => r.startsWith(sheet.id + "\t"))
                   .map((r) => r.split("\t").slice(1).join("\t")),
               ].map((c, n) => {
-                const separator = c.indexOf(":");
+                const separator = c.search(/[:：]/);
                 const author = separator >= 0 ? c.slice(0, separator).trim() : "你";
                 const message = separator >= 0 ? c.slice(separator + 1).trim() : c;
                 return (
