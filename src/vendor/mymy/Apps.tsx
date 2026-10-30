@@ -96,6 +96,11 @@ function Back({ onClick }: { onClick: () => void }) {
     </button>
   );
 }
+function KakaoAvatar({ name, src }: { name: string; src: string }) {
+  return <span className="catalog-avatar round"><img src={src} alt={name} /></span>;
+}
+const KAKAO_MARK_AVATAR = "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4449.jpeg";
+const KAKAO_DONGHYUCK_AVATAR = "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg";
 export function MymyKakao(p: SkinProps) {
   const [tab, setTab] = useSkinState<string>(p, "mymyTab", "聊天"),
     [sent, setSent] = useSkinState<string[]>(p, "mymyKktSent", []),
@@ -164,7 +169,7 @@ export function MymyKakao(p: SkinProps) {
                   {!m.outgoing && run.first && (
                     <>
                       <div className="kzmav">
-                        <Avatar name={m.sender} src={m.avatar} />
+                        <KakaoAvatar name={m.sender} src={p.thread === "ㅁㅋ" ? KAKAO_MARK_AVATAR : KAKAO_DONGHYUCK_AVATAR} />
                       </div>
                       <div className="kzmn">{m.sender}</div>
                     </>
@@ -304,7 +309,7 @@ export function MymyKakao(p: SkinProps) {
                     key={g.title}
                     onClick={() => p.onThread(g.title)}
                   >
-                    <Avatar name={last.sender || g.title} src={last.avatar} />
+                    <KakaoAvatar name={g.title} src={g.title === "ㅁㅋ" ? KAKAO_MARK_AVATAR : KAKAO_DONGHYUCK_AVATAR} />
                     <span className="kzkn">
                       <b>{g.title}</b>
                       <small>{tab === "好友" ? last.sender : last.body || last.meta.preview || " "}</small>
