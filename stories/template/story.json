@@ -2151,7 +2151,11 @@
           "views": "2.1万",
           "comments": "hc_daily：被照顾得好自然ㅋㅋ\ncocoball：玄关小管家上线\nmarkonly：他应该早就习惯了吧"
         },
-        "comments": "hc_daily：玄关真的什么都有ㅋㅋ\ncocoball：哥哥已经习惯了吧\nmarkonly：下次出门记得看一眼"
+        "comments": [
+          "hc_daily：玄关真的什么都有ㅋㅋ",
+          "cocoball：哥哥已经习惯了吧",
+          "markonly：下次出门记得看一眼"
+        ]
       },
       {
         "id": "x-mark-diary-1",
@@ -2169,7 +2173,11 @@
           "views": "3.8万",
           "comments": "markonly：三条都要认真回复ㅋㅋ\ncoco_lover：猫猫表情包才是重点吧\nmklove：有人在认真等你下班"
         },
-        "comments": "markonly：消息一条接一条ㅋㅋ\ncoco_lover：是在等哥哥回家吧\nmklove：回去记得抱一下"
+        "comments": [
+          "markonly：消息一条接一条ㅋㅋ",
+          "coco_lover：是在等哥哥回家吧",
+          "mklove：回去记得抱一下"
+        ]
       },
       {
         "id": "x-coco-diary-2",
@@ -2187,7 +2195,11 @@
           "views": "1.8万",
           "comments": "coco_daily：明天还是会帮忙洗吧ㅋㅋ\nhc_lover：括号出卖你了\nmarkcoco_fan：哥哥的衣服有专属待遇"
         },
-        "comments": "coco_daily：分工还挺明确ㅋㅋ\nhc_lover：最后是谁在偷懒一目了然\nmarkcoco_fan：哥哥嘴上说得好听，手上还是做了"
+        "comments": [
+          "coco_daily：分工还挺明确ㅋㅋ",
+          "hc_lover：最后是谁在偷懒一目了然",
+          "markcoco_fan：哥哥嘴上说得好听，手上还是做了"
+        ]
       },
       {
         "id": "x-coco-diary-4",
@@ -2207,7 +2219,11 @@
           "galleryUrl1": "https://www.gotunez.com/cdn/shop/articles/best_wireless_earbuds_for_calls.jpg?v=1772692589&width=1024",
           "galleryUrl2": "https://www.elecom.co.jp/photo/p31/LBT-TWS12BK_31.jpg"
         },
-        "comments": "hc_daily：又在路上睡着了ㅋㅋ\ncocoball：哥哥记得叫醒就好\nmarkonly：那张歌单又要循环一天了"
+        "comments": [
+          "hc_daily：又在路上睡着了ㅋㅋ",
+          "cocoball：哥哥记得叫醒就好",
+          "markonly：那张歌单又要循环一天了"
+        ]
       },
       {
         "id": "x-mark-diary-4",
@@ -2227,7 +2243,11 @@
           "galleryUrl1": "https://www.elecom.co.jp/photo/p31/LBT-TWS12BK_31.jpg",
           "galleryUrl2": "https://www.gotunez.com/cdn/shop/articles/best_wireless_earbuds_for_calls.jpg?v=1772692589&width=1024"
         },
-        "comments": "coco_lover：本人完全不意外ㅋㅋ\nmarkonly：沙发缝是固定失物招领处\nhc_daily：找到了就好嘛"
+        "comments": [
+          "coco_lover：本人完全不意外ㅋㅋ",
+          "markonly：沙发缝是固定失物招领处",
+          "hc_daily：找到了就好嘛"
+        ]
       },
       {
         "id": "x-mark-diary-2",
@@ -2248,7 +2268,11 @@
           "galleryUrl2": "https://www.atpress.ne.jp/releases/423303/img_423303_1.jpg",
           "galleryUrl3": "https://img-baila.hpplus.jp/common/large/image/15/15556706-ffe7-4122-954d-49a4e9d932d8.jpg"
         },
-        "comments": "hc_daily：草莓牛奶是我的吧ㅋㅋ\ncoco_ball：饼干也要记得买\nmarkonly：哥哥已经很熟练了"
+        "comments": [
+          "hc_daily：草莓牛奶是我的吧ㅋㅋ",
+          "coco_ball：饼干也要记得买",
+          "markonly：哥哥已经很熟练了"
+        ]
       },
       {
         "id": "x-coco-diary-3",
@@ -2266,7 +2290,11 @@
           "views": "3.4万",
           "comments": "hyuckie.zip：最后八拍有这么难吗ㅋㅋ\nmarkcoco_fan：陪练员尽力了\nhc_lover：有人陪着就会更有动力"
         },
-        "comments": "hyuckie.zip：那八拍怎么还没放过你ㅋㅋ\nmarkcoco_fan：陪练也不容易\nhc_lover：明天一定能记住"
+        "comments": [
+          "hyuckie.zip：那八拍怎么还没放过你ㅋㅋ",
+          "markcoco_fan：陪练也不容易",
+          "hc_lover：明天一定能记住"
+        ]
       },
       {
         "id": "x-mark-diary-3",
@@ -2286,7 +2314,11 @@
           "galleryUrl1": "https://s.yimg.com/ny/api/res/1.2/pK7gtZ_Rf0p6FopDtiKM7A--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTU0MDtjZj13ZWJw/https%3A/media.zenfs.com/en/ny_post_articles_869/102f63cccd13dac18fa78fd1bea3f3cc",
           "galleryUrl2": "https://assets.simpleviewinc.com/simpleview/image/fetch/c_limit%2Ch_1200%2Cq_75%2Cw_1200/https%3A/assets.simpleviewinc.com/simpleview/image/upload/crm/rutherfordnc/Hope-House-Coffee-Co.-1_58BBC4ED-5056-A36A-07859E599AB47EA2-58bbc2db5056a36_58bbd000-5056-a36a-070ae223e589b264.jpg"
         },
-        "comments": "mklove：所以到底哪杯更好喝ㅋㅋ\ncoco_lover：交换着喝才有意思\nmarkonly：下次直接买一杯大的"
+        "comments": [
+          "mklove：所以到底哪杯更好喝ㅋㅋ",
+          "coco_lover：交换着喝才有意思",
+          "markonly：下次直接买一杯大的"
+        ]
       },
       {
         "id": "x-coco-diary-5",
@@ -2307,7 +2339,11 @@
           "galleryUrl2": "https://cdn.myfunnow.com/imgs/blog/album/JP_OKA_CHUDOG_%E3%83%A4%E3%83%B3%E3%83%8B%E3%83%A7%E3%83%A0%E3%83%81%E3%82%AD%E3%83%B3_%2015%20%E6%9C%AC_3%20%281%29_edb271.jpg",
           "galleryUrl3": "https://tblg.k-img.com/restaurant/images/Rvw/314429/640x640_rect_212ff386a20659d686b516a20b957664.jpg"
         },
-        "comments": "coco_daily：香菜每次都要出现ㅋㅋ\nhc_lover：最后一块才是重点\nmarkcoco_fan：遥控器换炸鸡，公平"
+        "comments": [
+          "coco_daily：香菜每次都要出现ㅋㅋ",
+          "hc_lover：最后一块才是重点",
+          "markcoco_fan：遥控器换炸鸡，公平"
+        ]
       },
       {
         "id": "x-mark-diary-5",
@@ -2328,7 +2364,11 @@
           "galleryUrl2": "https://www.segment.com.tr/images/productimages/35660_08.jpg",
           "galleryUrl3": "https://www.bitmore.co.uk/cdn/shop/files/ChatGPT_Image_May_15_2026_at_05_55_42_PM.png?v=1778864195&width=2000"
         },
-        "comments": "markonly：下次别忘了ㅋㅋ\ncoco_ball：两个人都要有电\nhc_daily：我会记得的（大概）"
+        "comments": [
+          "markonly：下次别忘了ㅋㅋ",
+          "coco_ball：两个人都要有电",
+          "hc_daily：我会记得的（大概）"
+        ]
       },
       {
         "id": "x-coco-post-5",
@@ -2430,7 +2470,11 @@
           "comments": "hc_daily：雨伞肯定全偏到东赫那边了ㅋㅋ\nmarkonly：回家记得给他吹头发\ncoco_ball：雨天约会也好浪漫",
           "galleryUrl1": "https://images.unsplash.com/photo-1445116572660-8f5f5f5f5f5f"
         },
-        "comments": "hc_daily：伞肯定又偏到东赫那边了ㅋㅋ\nmarkonly：回家记得换掉湿衣服\ncoco_ball：雨天就找家店坐一会儿吧"
+        "comments": [
+          "hc_daily：伞肯定又偏到东赫那边了ㅋㅋ",
+          "markonly：回家记得换掉湿衣服",
+          "coco_ball：雨天就找家店坐一会儿吧"
+        ]
       },
       {
         "id": "x-mark-movie-night",
@@ -2447,7 +2491,11 @@
           "comments": "markonly：电影：我到底做错了什么ㅋㅋ\ncoco_lover：东赫睡着才是固定剧情\nhc_daily：哥哥是不是又把外套给他盖了",
           "galleryUrl1": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba"
         },
-        "comments": "markonly：电影又没看完ㅋㅋ\ncoco_lover：他醒来肯定还要问结局\nhc_daily：毯子记得盖好"
+        "comments": [
+          "markonly：电影又没看完ㅋㅋ",
+          "coco_lover：他醒来肯定还要问结局",
+          "hc_daily：毯子记得盖好"
+        ]
       },
       {
         "id": "x-coco-cook-together",
@@ -2464,7 +2512,11 @@
           "comments": "coco_daily：洗碗环节才是重头戏ㅋㅋ\nmarkcoco_fan：哥哥把好吃的都留给宝贝\nhc_lover：求菜谱！",
           "galleryUrl1": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f"
         },
-        "comments": "coco_daily：洗碗猜拳每次都要来ㅋㅋ\nmarkcoco_fan：哥哥是不是故意赢的\nhc_lover：下次做别的菜吧"
+        "comments": [
+          "coco_daily：洗碗猜拳每次都要来ㅋㅋ",
+          "markcoco_fan：哥哥是不是故意赢的",
+          "hc_lover：下次做别的菜吧"
+        ]
       },
       {
         "id": "x-mark-grocery-date",
@@ -2481,7 +2533,11 @@
           "comments": "markonly：购物篮里怎么全是东赫喜欢的ㅋㅋ\ncoco_ball：哥哥负责拎袋子\nhc_daily：我有说只买一样吗",
           "galleryUrl1": "https://images.unsplash.com/photo-1542838132-92c53300491e"
         },
-        "comments": "markonly：购物清单最后总会变长ㅋㅋ\ncoco_ball：零食当然要买\nhc_daily：下次还要去"
+        "comments": [
+          "markonly：购物清单最后总会变长ㅋㅋ",
+          "coco_ball：零食当然要买",
+          "hc_daily：下次还要去"
+        ]
       },
       {
         "id": "x-mark-music-sleep",
@@ -2498,7 +2554,11 @@
           "comments": "markonly：这条怎么有声音ㅋㅋ\ncoco_lover：东赫听歌睡着是传统艺能\nhc_daily：哥哥是不是又不舍得动了",
           "galleryUrl1": "https://images.unsplash.com/photo-1511379938547-c1f69419868d"
         },
-        "comments": "markonly：又听着歌睡着了ㅋㅋ\ncoco_lover：哥哥记得把音量调小\nhc_daily：我才没有睡着"
+        "comments": [
+          "markonly：又听着歌睡着了ㅋㅋ",
+          "coco_lover：哥哥记得把音量调小",
+          "hc_daily：我才没有睡着"
+        ]
       }
     ],
     "recorder": [
