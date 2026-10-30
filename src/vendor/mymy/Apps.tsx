@@ -31,6 +31,14 @@ import { useSkinState } from "../../skinState";
 import { makeItem, type Item } from "../../schema";
 import "./ui.css";
 import "./adapter.css";
+const HC_AVATAR = "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg";
+const MK_AVATAR = "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4449.jpeg";
+function socialAvatar(name: string) {
+  const value = name.toLowerCase();
+  if (["东赫", "donghyuck", "coco66_", "coco_oo66", "hc"].some((key) => value.includes(key))) return HC_AVATAR;
+  if (["马克", "mark", "rem_ark9982", "mk", "owner"].some((key) => value.includes(key))) return MK_AVATAR;
+  return "";
+}
 function grouped(items: Item[]) {
   return [...new Set(items.map((i) => i.title))].map((title) => ({
     title,
@@ -129,7 +137,7 @@ export function MymyKakao(p: SkinProps) {
                   {!m.outgoing && run.first && (
                     <>
                       <div className="kzmav">
-                        <Avatar name={m.sender} src={m.avatar} />
+                        <Avatar name={m.sender} src={m.avatar || socialAvatar(m.sender)} />
                       </div>
                       <div className="kzmn">{m.sender}</div>
                     </>
@@ -269,7 +277,7 @@ export function MymyKakao(p: SkinProps) {
                     key={g.title}
                     onClick={() => p.onThread(g.title)}
                   >
-                    <Avatar name={last.sender || g.title} src={last.avatar} />
+                    <Avatar name={last.sender || g.title} src={last.avatar || socialAvatar(last.sender || g.title)} />
                     <span className="kzkn">
                       <b>{g.title}</b>
                       <small>{tab === "好友" ? last.sender : last.body || last.meta.preview || " "}</small>
@@ -759,11 +767,11 @@ export function MymyX(p: SkinProps) {
           <section className="kzx-profile">
             <button className="kzx-backlink" onClick={() => setProfile(null)}>← 返回时间线</button>
             <div className="kzx-cover" />
-            <div className="kzx-profile-head"><Avatar name={selectedProfile.meta.username} src={selectedProfile.meta.avatarUrl} /><button onClick={() => toggle(profile, followed, setFollowed)}>{followed.includes(profile) ? "正在关注" : "关注"}</button></div>
+            <div className="kzx-profile-head"><Avatar name={selectedProfile.meta.username} src={selectedProfile.meta.avatarUrl || socialAvatar(selectedProfile.meta.username)} /><button onClick={() => toggle(profile, followed, setFollowed)}>{followed.includes(profile) ? "正在关注" : "关注"}</button></div>
             <h2>{selectedProfile.meta.username}</h2><p>@{selectedProfile.meta.handle}</p><p>{selectedProfile.body}</p>
             <p className="kzx-stats">{selectedProfile.meta.following} 正在关注　{selectedProfile.meta.followers} 关注者</p>
             <div className="kzxtb"><button className="on">帖子</button><button onClick={() => setTab("喜欢")}>喜欢</button></div>
-            {posts.filter(i => i.meta.username === profile).map(i => <article className="kzxt" key={i.id}><Avatar name={profile} /><div className="kzxb"><div className="kzxn"><b>{profile}</b><small>@{i.meta.handle} · {i.time}</small></div><button className="kzxx" onClick={() => setDetail(i)}>{i.body}</button>{i.media && <button className="kzxv" onClick={() => setDetail(i)}><Media item={i}/></button>}<div className="kzxac"><button onClick={() => setDetail(i)}><MessageCircle/>{count(i.meta.replies)}</button><button><Repeat2/>{count(i.meta.reposts)}</button><button><Heart/>{count(i.meta.likes)}</button></div></div></article>)}
+            {posts.filter(i => i.meta.username === profile).map(i => <article className="kzxt" key={i.id}><Avatar name={profile} src={selectedProfile?.meta.avatarUrl || socialAvatar(profile)} /><div className="kzxb"><div className="kzxn"><b>{profile}</b><small>@{i.meta.handle} · {i.time}</small></div><button className="kzxx" onClick={() => setDetail(i)}>{i.body}</button>{i.media && <button className="kzxv" onClick={() => setDetail(i)}><Media item={i}/></button>}<div className="kzxac"><button onClick={() => setDetail(i)}><MessageCircle/>{count(i.meta.replies)}</button><button><Repeat2/>{count(i.meta.reposts)}</button><button><Heart/>{count(i.meta.likes)}</button></div></div></article>)}
           </section>
         ) : (
           <>
@@ -771,13 +779,13 @@ export function MymyX(p: SkinProps) {
               {["为你推荐", "正在关注", "喜欢", "已收藏"].map(t => <button className={tab === t ? "on" : ""} key={t} onClick={() => {setTab(t);setProfile(null);}}>{t}</button>)}
             </div>
             <div className="kzx-account-strip">
-              {profiles.map(x => <button key={x.id} onClick={() => {setProfile(x.meta.username);setTab("主页");}}><Avatar name={x.meta.username} src={x.meta.avatarUrl}/><span><b>{x.meta.username}</b><small>@{x.meta.handle}</small></span></button>)}
+              {profiles.map(x => <button key={x.id} onClick={() => {setProfile(x.meta.username);setTab("主页");}}><Avatar name={x.meta.username} src={x.meta.avatarUrl || socialAvatar(x.meta.username)}/><span><b>{x.meta.username}</b><small>@{x.meta.handle}</small></span></button>)}
             </div>
             <div className="kzx-searchbox"><Search size={17}/><input value={query} onChange={e => setQuery(e.target.value)} placeholder="搜索帖子、账号和话题"/></div>
             <div className="kzxfd">
               {visible.map(i => (
                 <article className="kzxt" key={i.id}>
-                  <button className="kzx-avatar-button" onClick={() => setProfile(i.meta.username)}><Avatar name={i.meta.username || "用户"} src={i.avatar}/></button>
+                  <button className="kzx-avatar-button" onClick={() => setProfile(i.meta.username)}><Avatar name={i.meta.username || "用户"} src={i.avatar || socialAvatar(i.meta.username || "")}/></button>
                   <div className="kzxb">
                     <div className="kzxn"><button onClick={() => setProfile(i.meta.username)}><b>{i.meta.username}</b></button><small>@{i.meta.handle || "user"} · {i.time}{i.meta.visibility === "private" ? " · 🔒 私密" : ""}</small><em><MoreHorizontal size={18}/></em></div>
                     <button className="kzxx" onClick={() => setDetail(i)}>{i.body}</button>
