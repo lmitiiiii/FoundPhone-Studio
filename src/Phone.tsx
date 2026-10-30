@@ -876,6 +876,7 @@ function AppContent({
   onAdd,
   onBack,
   onSettings,
+  startIncoming,
   onUi,
   work,
 }: {
