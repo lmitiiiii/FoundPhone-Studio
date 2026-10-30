@@ -58,13 +58,15 @@ export function defaultLayout(input: Work): DeviceLayout {
   return {
     version: 1,
     workId: w.id,
-    previewLayoutRevision: markchan ? 9 : w.id === "ui-test-phone-v2" ? 1 : 0,
+    previewLayoutRevision: markchan ? 10 : w.id === "ui-test-phone-v2" ? 1 : 0,
     apps: structuredClone(w.apps)
       .sort((a, b) => (a.id === "appstore" ? -1 : b.id === "appstore" ? 1 : 0))
       .map((a) =>
-        a.id === "appstore"
-          ? { ...a, installed: true, visible: true, folder: "", dock: false }
-          : a,
+        markchan && ["phone", "mail", "appstore", "settings"].includes(a.id)
+          ? { ...a, installed: true, visible: true, folder: "", dock: true }
+          : a.id === "appstore"
+            ? { ...a, installed: true, visible: true, folder: "", dock: false }
+            : a,
       ),
     widgets: markchan
       ? [
@@ -208,6 +210,20 @@ export function validateLayout(raw: unknown, input: Work) {
       mail.folder = "";
     }
     layout.previewLayoutRevision = 9;
+  }
+  if (w.id === "markchan-found-phone" && layout.previewLayoutRevision < 10) {
+    for (const id of ["phone", "mail", "appstore", "settings"]) {
+      const app = layout.apps.find((item) => item.id === id);
+      if (app) {
+        app.installed = true;
+        app.visible = true;
+        app.dock = true;
+        app.folder = "";
+        delete layout.positions[id];
+      }
+    }
+    layout.order = homeEntries(layout).map((entry) => entry.key);
+    layout.previewLayoutRevision = 10;
   }
   if (w.id === "ui-test-phone-v2" && layout.previewLayoutRevision < 1) {
     const visibleApps = ["wechat", "douyin"];
