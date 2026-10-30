@@ -904,6 +904,7 @@ function AppContent({
   const [pwError, setPwError] = useState("");
   const [likes, setLikes] = useState<string[]>([]);
   const gestureStart = useRef<number | null>(null);
+  const incomingGestureTriggered = useRef(false);
   const shown = items
     .filter((i) => creator || visible(i, state))
     .filter((i) =>
@@ -1107,15 +1108,27 @@ function AppContent({
           </div>
           <div
             className="phone-incoming-trigger"
+            role="button"
+            tabIndex={0}
+            aria-label="接收东赫来电"
+            onClick={() => {
+              if (incomingGestureTriggered.current) {
+                incomingGestureTriggered.current = false;
+                return;
+              }
+              if (!state.incomingCall) startIncoming("东赫", "call-voice-01");
+            }}
             onPointerDown={(event) => {
               event.stopPropagation();
+              incomingGestureTriggered.current = false;
               gestureStart.current = event.clientY;
             }}
             onPointerUp={(event) => {
               event.stopPropagation();
               const start = gestureStart.current;
               gestureStart.current = null;
-              if (start !== null && start - event.clientY > 32 && !state.incomingCall) {
+              if (start !== null && start - event.clientY > 24 && !state.incomingCall) {
+                incomingGestureTriggered.current = true;
                 startIncoming("东赫", "call-voice-01");
               }
             }}
@@ -1124,8 +1137,8 @@ function AppContent({
             }}
           >
             <span className="phone-incoming-orb"><PhoneIcon size={23} /></span>
-            <strong>有一通新的来电</strong>
-            <small>向上轻轻滑动，查看来电提醒</small>
+            <strong>东赫有一通来电</strong>
+            <small>轻点这里，或向上滑动接收来电</small>
             <ArrowUp size={18} />
           </div>
         </div>
