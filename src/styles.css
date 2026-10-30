@@ -4874,10 +4874,47 @@ label {
   font-size: 38px;
   margin-top: 45px;
 }
+.incoming-call-screen .incoming-avatar {
+  margin-top: 20px;
+}
 .incoming-call-screen h2 {
   font-size: 28px;
   font-weight: 400;
-  margin-top: 23px;
+  margin-top: 13px;
+}
+.incoming-call-subtitle {
+  width: 100%;
+  max-width: 330px;
+  min-height: 88px;
+  margin-top: 16px;
+  padding: 12px 14px;
+  border: 1px solid #ffffff24;
+  border-radius: 15px;
+  background: #ffffff12;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.incoming-call-subtitle p {
+  margin: 0;
+  animation: incoming-subtitle-enter .35s ease both;
+}
+.incoming-call-subtitle .incoming-subtitle-korean {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #fff;
+}
+.incoming-call-subtitle .incoming-subtitle-chinese {
+  font-size: 11px;
+  line-height: 1.7;
+  color: #cbd7dc;
+  margin-top: 4px;
+}
+@keyframes incoming-subtitle-enter {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 .incoming-call-screen > p {
   font-size: 11px;
@@ -4887,7 +4924,7 @@ label {
 }
 .incoming-call-screen audio {
   width: 100%;
-  margin-top: 30px;
+  margin-top: 15px;
 }
 .incoming-actions {
   display: flex;
