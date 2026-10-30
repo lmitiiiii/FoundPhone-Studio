@@ -212,6 +212,7 @@ export function validateLayout(raw: unknown, input: Work) {
     layout.previewLayoutRevision = 9;
   }
   if (w.id === "markchan-found-phone" && layout.previewLayoutRevision < 10) {
+    for (const app of layout.apps) app.dock = false;
     for (const id of ["phone", "mail", "appstore", "settings"]) {
       const app = layout.apps.find((item) => item.id === id);
       if (app) {
