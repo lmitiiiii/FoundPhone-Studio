@@ -959,8 +959,6 @@ function AppContent({
       onUi?.("incomingCall", "call-voice-01");
     }, 1000);
     return () => window.clearTimeout(timer);
-    // onUi is supplied inline by PhoneRuntime; depend on app launch, not rerenders.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [app.id, creator]);
   const shown = items
     .filter((i) => creator || visible(i, state))
