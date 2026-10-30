@@ -633,7 +633,7 @@ export function MymyInstagram(p: SkinProps) {
             <div className="mymy-sheet-handle" />
             <header>
               <b>{dmMode ? "消息" : "评论"}</b>
-              <button aria-label="关闭评论面板" onClick={() => setSheet(null)}>
+              <button aria-label="关闭评论面板" onClick={() => { setSheet(null); setDmMode(false); }}>
                 <X />
               </button>
             </header>
