@@ -724,6 +724,7 @@ export function MymyX(p: SkinProps) {
   const visible = posts.filter(i => {
     const name = i.meta.username || "";
     if (profile && name !== profile) return false;
+    if (i.meta.visibility === "private" && !profile) return false;
     if (tab === "正在关注" && !followed.includes(name) && !profiles.some(x => x.meta.username === name && x.meta.username === "coco_oo66")) return false;
     if (tab === "喜欢") return isLiked(i.id);
     if (tab === "已收藏") return isSaved(i.id);
@@ -778,7 +779,7 @@ export function MymyX(p: SkinProps) {
                 <article className="kzxt" key={i.id}>
                   <button className="kzx-avatar-button" onClick={() => setProfile(i.meta.username)}><Avatar name={i.meta.username || "用户"} src={i.avatar}/></button>
                   <div className="kzxb">
-                    <div className="kzxn"><button onClick={() => setProfile(i.meta.username)}><b>{i.meta.username}</b></button><small>@{i.meta.handle || "user"} · {i.time}</small><em><MoreHorizontal size={18}/></em></div>
+                    <div className="kzxn"><button onClick={() => setProfile(i.meta.username)}><b>{i.meta.username}</b></button><small>@{i.meta.handle || "user"} · {i.time}{i.meta.visibility === "private" ? " · 🔒 私密" : ""}</small><em><MoreHorizontal size={18}/></em></div>
                     <button className="kzxx" onClick={() => setDetail(i)}>{i.body}</button>
                     {i.media && <button className="kzxv" aria-label="打开媒体" onClick={() => setDetail(i)}><Media item={i}/></button>}
                     <div className="kzxac">
