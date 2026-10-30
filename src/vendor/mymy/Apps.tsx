@@ -670,12 +670,20 @@ export function MymyInstagram(p: SkinProps) {
                 ...replies
                   .filter((r) => r.startsWith(sheet.id + "\t"))
                   .map((r) => r.split("\t").slice(1).join("\t")),
-              ].map((c, n) => (
-                <p key={n}>
-                  <Avatar name={c.split(":")[0]} />
-                  {c}
-                </p>
-              ))}
+              ].map((c, n) => {
+                const separator = c.indexOf(":");
+                const author = separator >= 0 ? c.slice(0, separator).trim() : "你";
+                const message = separator >= 0 ? c.slice(separator + 1).trim() : c;
+                return (
+                  <p key={n}>
+                    <Avatar name={author} />
+                    <span className="mymy-comment-copy">
+                      <b className="mymy-comment-author">{author}</b>
+                      <span className="mymy-comment-message">{message}</span>
+                    </span>
+                  </p>
+                );
+              })}
             </div>
             <form
               className="cmb2"
