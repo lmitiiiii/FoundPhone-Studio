@@ -8,7 +8,8 @@ import {
 } from "lucide-react";
 import { useRef, useState, type ReactNode } from "react";
 import type { SkinProps } from "../AppSkins";
-import { safeMedia, type Item } from "../schema";\nimport { useExclusiveAudio } from "../audio";
+import { safeMedia, type Item } from "../schema";
+import { useExclusiveAudio } from "../audio";
 export type Props = SkinProps;
 export const meta = (
   i: Pick<Item, "meta"> | undefined,
