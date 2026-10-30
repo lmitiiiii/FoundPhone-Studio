@@ -164,6 +164,20 @@ function PhoneRuntime({
   const [panel, setPanel] = useState("");
   const [own, setOwn] = useState(() => initialRuntime(work));
   const [callSubtitleIndex, setCallSubtitleIndex] = useState(0);
+  // Keep audio playback mutually exclusive inside the phone UI (including Voice Memos).
+  useEffect(() => {
+    const root = shell.current;
+    if (!root) return;
+    const stopOtherAudio = (event: Event) => {
+      const playing = event.target;
+      if (!(playing instanceof HTMLAudioElement)) return;
+      root.querySelectorAll("audio").forEach((audio) => {
+        if (audio !== playing && !audio.paused) audio.pause();
+      });
+    };
+    root.addEventListener("play", stopOtherAudio, true);
+    return () => root.removeEventListener("play", stopOtherAudio, true);
+  }, []);
   const [ready, setReady] = useState(creator || !!external);
   const [loadError, setLoadError] = useState("");
   useEffect(() => {
@@ -633,7 +647,7 @@ function PhoneRuntime({
                 {s.incomingCall.caller.slice(0, 1)}
               </div>
               <h2>{s.incomingCall.caller}</h2>
-              <div className="incoming-call-subtitle" aria-live="polite">
+              {s.incomingCall.status === "answered" && <div className="incoming-call-subtitle" aria-live="polite">
                 <p key={callSubtitleIndex} className="incoming-subtitle-korean">
                   {[
                     "여보세요, 제 휴대폰 주우신 분이신가요?🥺",
@@ -654,7 +668,7 @@ function PhoneRuntime({
                     "真的真的非常感谢。",
                   ][callSubtitleIndex]}
                 </p>
-              </div>
+              </div>}
               {s.incomingCall.status === "answered" &&
                 (() => {
                   const record = work.data.phone?.find(
