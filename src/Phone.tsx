@@ -953,14 +953,13 @@ function AppContent({
   const [unlocks, setUnlocks] = useState<string[]>([]);
   const [pwError, setPwError] = useState("");
   const [likes, setLikes] = useState<string[]>([]);
+  const [playCallAudio, setPlayCallAudio] = useState(false);
+  const callAudio = work.data.phone?.find((item) => item.id === "call-voice-01");
   useEffect(() => {
+    setPlayCallAudio(false);
     if (creator || app.id !== "phone") return;
-    const timer = window.setTimeout(() => {
-      onUi?.("incomingCall", "call-voice-01");
-    }, 1000);
+    const timer = window.setTimeout(() => setPlayCallAudio(true), 1000);
     return () => window.clearTimeout(timer);
-    // Trigger once when the Phone app is opened, not on its internal rerenders.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [app.id, creator]);
   const shown = items
     .filter((i) => creator || visible(i, state))
@@ -1056,6 +1055,15 @@ function AppContent({
   if (Skin)
     return (
       <>
+        {app.id === "phone" && playCallAudio && callAudio?.media && (
+          <audio
+            key={callAudio.id}
+            src={safeMedia(callAudio.media)}
+            autoPlay
+            playsInline
+            aria-label="东赫的来电语音"
+          />
+        )}
         <div className="catalog-slot" hidden={!!detail}>
           <Suspense fallback={<div className="catalog-loading">正在打开…</div>}>
             <Skin
