@@ -175,13 +175,15 @@
       "id": "donghyuck",
       "name": "东赫",
       "phone": "",
-      "bio": "KakaoTalk 联系人"
+      "bio": "KakaoTalk 联系人",
+      "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
     },
     {
       "id": "mk",
       "name": "mk",
       "phone": "",
-      "bio": "KakaoTalk 联系人"
+      "bio": "KakaoTalk 联系人",
+      "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4449.jpeg"
     }
   ],
   "chats": [
