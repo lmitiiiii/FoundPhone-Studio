@@ -459,7 +459,7 @@ function PhoneRuntime({
                   onAdd={() => onAdd?.(app)}
                   onBack={() => setApp("")}
                   onSettings={onSettings}
-                  onCall={(caller, target) => {
+                  startIncoming={(caller, target) => {
                     const current = runtimeRef.current;
                     update({
                       ...current,
