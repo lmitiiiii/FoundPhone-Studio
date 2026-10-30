@@ -333,7 +333,8 @@ export function MymyInstagram(p: SkinProps) {
     [followingOpen, setFollowingOpen] = useState(false),
     [story, setStory] = useState(0),
     [draft, setDraft] = useState(""),
-    [pop, setPop] = useState("");
+    [pop, setPop] = useState(""),
+    [dmMode, setDmMode] = useState(false);
   const posts = p.items.filter(
       (i) =>
         i.kind === "post" &&
@@ -466,7 +467,7 @@ export function MymyInstagram(p: SkinProps) {
       >
         <b>{i.sender}</b> {i.body}
       </button>
-      <button className="cmall" onClick={() => setSheet(i)}>
+      <button className="cmall" onClick={() => { setDmMode(false); setSheet(i); }}>
         查看评论{" "}
         {i.comments.length +
           replies.filter((r) => r.startsWith(i.id + "\t")).length}
@@ -577,7 +578,7 @@ export function MymyInstagram(p: SkinProps) {
           {!selected && tab === "私信" && (
             <>
               {dms.map((i) => (
-                <button className="kzkr" key={i.id} onClick={() => openPost(i)}>
+                <button className="kzkr" key={i.id} onClick={() => { setDmMode(true); setSheet(i); }}>
                   <Avatar name={i.sender} src={i.avatar} />
                   <span className="kzkn">
                     <b>{i.title}</b>
@@ -626,12 +627,12 @@ export function MymyInstagram(p: SkinProps) {
           <button
             className="kzbk"
             aria-label="关闭评论"
-            onClick={() => setSheet(null)}
+            onClick={() => { setSheet(null); setDmMode(false); }}
           />
-          <section className="kzsh" role="dialog" aria-label="Instagram评论">
+          <section className="kzsh" role="dialog" aria-label={dmMode ? "Instagram私信" : "Instagram评论"}>
             <div className="mymy-sheet-handle" />
             <header>
-              <b>评论</b>
+              <b>{dmMode ? "消息" : "评论"}</b>
               <button aria-label="关闭评论面板" onClick={() => setSheet(null)}>
                 <X />
               </button>
@@ -668,10 +669,10 @@ export function MymyInstagram(p: SkinProps) {
                 aria-label="添加评论"
                 value={draft}
                 onChange={(e) => setDraft(e.target.value)}
-                placeholder="添加评论"
+                placeholder={dmMode ? "发送消息…" : "添加评论"}
                 maxLength={500}
               />
-              <button>发布</button>
+              <button>{dmMode ? "发送" : "发布"}</button>
             </form>
           </section>
         </div>
