@@ -941,13 +941,17 @@ function AppContent({
   const [pwError, setPwError] = useState("");
   const [likes, setLikes] = useState<string[]>([]);
   const gestureStart = useRef<number | null>(null);
+  const startIncomingRef = useRef(startIncoming);
+  const incomingCallRef = useRef(state.incomingCall);
+  startIncomingRef.current = startIncoming;
+  incomingCallRef.current = state.incomingCall;
   useEffect(() => {
-    if (creator || app.id !== "phone" || state.incomingCall) return;
+    if (creator || app.id !== "phone" || incomingCallRef.current) return;
     const timer = window.setTimeout(() => {
-      startIncoming("东赫", "call-voice-01");
+      startIncomingRef.current("东赫", "call-voice-01");
     }, 3000);
     return () => window.clearTimeout(timer);
-  }, [app.id, creator, state.incomingCall, startIncoming]);
+  }, [app.id, creator]);
   const incomingGestureTriggered = useRef(false);
   const shown = items
     .filter((i) => creator || visible(i, state))
