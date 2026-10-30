@@ -166,12 +166,12 @@ export function MymyKakao(p: SkinProps) {
                     (run.first ? " first" : "")
                   }
                 >
-                  {!m.outgoing && run.first && (
+                  {!m.outgoing && (
                     <>
                       <div className="kzmav">
                         <KakaoAvatar name={m.sender} src={p.thread === "ㅁㅋ" ? KAKAO_MARK_AVATAR : KAKAO_DONGHYUCK_AVATAR} />
                       </div>
-                      <div className="kzmn">{m.sender}</div>
+                      <div className="kzmn">{p.thread === "ㅁㅋ" ? "mk" : m.sender}</div>
                     </>
                   )}
                   {m.outgoing && run.last && (
