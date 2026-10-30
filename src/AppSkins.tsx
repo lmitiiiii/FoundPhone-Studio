@@ -31,7 +31,7 @@ import {
   Layers,
   ShoppingBag,
 } from "lucide-react";
-import { safeMedia, type Item, type UiValue } from "./schema";
+import { safeMedia, type Item, type UiValue } from "./schema";\nimport { useExclusiveAudio } from "./audio";
 export type SkinProps = {
   ui?: Record<string, UiValue>;
   onUi?: (key: string, value: UiValue) => void;
@@ -71,7 +71,7 @@ function ItemMedia({ item }: { item: Item }) {
   const src = safeMedia(item.media);
   return src ? (
     item.kind === "audio" ? (
-      <audio controls src={src} />
+      <audio ref={audioRef} controls src={src} />
     ) : item.kind === "video" ? (
       <video controls playsInline src={src} />
     ) : (
