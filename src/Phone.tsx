@@ -459,6 +459,14 @@ function PhoneRuntime({
                   onAdd={() => onAdd?.(app)}
                   onBack={() => setApp("")}
                   onSettings={onSettings}
+                  onCall={(caller, target) => {
+                    const current = runtimeRef.current;
+                    update({
+                      ...current,
+                      incomingCall: { caller: caller, target: target, status: "ringing" },
+                      notifications: current.notifications.concat(caller + " 来电"),
+                    });
+                  }}
                   onUi={(key, value) => {
                     const current = runtimeRef.current;
                     update(
