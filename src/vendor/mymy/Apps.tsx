@@ -736,8 +736,8 @@ export function MymyX(p: SkinProps) {
     [marks, setMarks] = useSkinState<string[]>(p, "mymyXMarks", []),
     [query, setQuery] = useState("");
   const profiles = {
-    coco_oo66: { name: "东赫", avatar: "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg" },
-    rem_ark9982: { name: "马克", avatar: "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4449.jpeg" },
+    coco_oo66: { name: "coco_oo66", avatar: "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg" },
+    rem_ark9982: { name: "rem_ark9982", avatar: "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4449.jpeg" },
   };
   const selected = profiles[account as keyof typeof profiles] || profiles.coco_oo66;
   const posts = p.items.filter((i) =>
