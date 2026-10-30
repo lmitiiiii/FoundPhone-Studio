@@ -54,6 +54,53 @@ import {
   Folder,
   Phone as PhoneIcon,
 } from "lucide-react";
+
+const DONGHYUCK_CALL_LINES = [
+  ["여보세요, 제 휴대폰 주우신 분이신가요?", "喂，请问是捡到手机的人吗？"],
+  ["이 폰 안에 정말 소중한 추억들이 담겨 있어요.", "这部手机里有我很重要的回忆。"],
+  ["잠시 맡아주실 수 있을까요?", "可以先帮我保管一下吗？"],
+  ["괜찮으시면 장소를 알려주세요.", "方便的话留一个位置吧。"],
+  ["남자친구가 직접 찾아가겠습니다.", "我男朋友会去找您的。"],
+  ["정말 정말 감사해요.", "真的真的非常感谢。"],
+] as const;
+
+function IncomingCallVoice({ src }: { src: string }) {
+  const [line, setLine] = useState(0);
+  const weights = [1.12, 1.2, 0.9, 0.92, 1.08, 0.78];
+  const total = weights.reduce((sum, value) => sum + value, 0);
+  return (
+    <div className="incoming-call-voice">
+      <audio
+        controls
+        autoPlay
+        playsInline
+        src={src}
+        aria-label="东赫的来电语音"
+        onTimeUpdate={(event) => {
+          const audio = event.currentTarget;
+          if (!Number.isFinite(audio.duration) || audio.duration <= 0) return;
+          const progress = audio.currentTime / audio.duration;
+          let boundary = 0;
+          let next = weights.length - 1;
+          for (let index = 0; index < weights.length; index++) {
+            boundary += weights[index] / total;
+            if (progress < boundary) {
+              next = index;
+              break;
+            }
+          }
+          setLine(next);
+        }}
+        onPlay={() => setLine(0)}
+      />
+      <p className="incoming-call-subtitle" aria-live="polite">
+        <span lang="ko">{DONGHYUCK_CALL_LINES[line][0]}</span>
+        <span>{DONGHYUCK_CALL_LINES[line][1]}</span>
+      </p>
+    </div>
+  );
+}
+
 import { getApp, type AppPlugin } from "./registry";
 import {
   initialRuntime,
@@ -640,12 +687,7 @@ function PhoneRuntime({
                     (i) => i.id === s.incomingCall?.target,
                   );
                   return record?.kind === "audio" && safeMedia(record.media) ? (
-                    <div className="incoming-call-voice">
-                      <audio controls autoPlay playsInline src={safeMedia(record.media)} aria-label="东赫的来电语音" />
-                      <p className="incoming-call-subtitle" lang="ko">
-                        여보세요, 제 휴대폰 주우신 분이신가요? 이 폰 안에 정말 소중한 추억들이 담겨 있어요. 잠시 맡아주실 수 있을까요? 괜찮으시면 장소를 알려주세요. 남자친구가 직접 찾아가겠습니다. 정말 정말 감사해요.
-                      </p>
-                    </div>
+                    <IncomingCallVoice src={safeMedia(record.media)} />
                   ) : (
                     <p>这是一通虚构来电。</p>
                   );
