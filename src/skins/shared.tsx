@@ -111,6 +111,8 @@ export function Media({
   item: Item;
   className?: string;
 }) {
+  const audioRef = useRef<HTMLAudioElement>(null);
+  useExclusiveAudio(audioRef);
   const src = safeMedia(
     item.media ||
       (item.kind === "audio"
