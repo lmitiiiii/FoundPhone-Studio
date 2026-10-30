@@ -108,7 +108,8 @@ export function SocialDetail(p: {
         (weibo
           ? "weibo-post-detail"
           : "x-post-detail" +
-            (p.ui?.["x-dark"] !== false ? " x-reference-dark" : ""))
+            (p.ui?.["x-dark"] !== false ? " x-reference-dark" : "") +
+            (["x-coco-post-1", "x-coco-post-3"].includes(item.id) ? " x-detail-compact-media" : ""))
       }
     >
       <header className="post-detail-nav">
