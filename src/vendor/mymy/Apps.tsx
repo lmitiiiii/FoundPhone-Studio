@@ -703,152 +703,110 @@ export function MymyInstagram(p: SkinProps) {
 }
 export function MymyX(p: SkinProps) {
   const [dark, setDark] = useSkinState<boolean>(p, "x-dark", true);
-  const [tab, setTab] = useSkinState<string>(p, "mymyTab", "推荐"),
-    [likes, setLikes] = useSkinState<string[]>(p, "mymyXLikes", []),
-    [reposts, setReposts] = useSkinState<string[]>(p, "mymyXReposts", []),
-    [marks, setMarks] = useSkinState<string[]>(p, "mymyXMarks", []),
-    [query, setQuery] = useState("");
-  const isLiked = (id: string) =>
-    typeof p.ui?.["liked-" + id] === "boolean"
-      ? Boolean(p.ui["liked-" + id])
-      : likes.includes(id);
-  const isSaved = (id: string) =>
-    typeof p.ui?.["saved-" + id] === "boolean"
-      ? Boolean(p.ui["saved-" + id])
-      : marks.includes(id);
-  const toggle = (id: string, v: string[], set: (x: string[]) => void) =>
-    set(v.includes(id) ? v.filter((x) => x !== id) : [...v, id]);
+  const [tab, setTab] = useSkinState<string>(p, "mymyTab", "为你推荐");
+  const [likes, setLikes] = useSkinState<string[]>(p, "mymyXLikes", []);
+  const [reposts, setReposts] = useSkinState<string[]>(p, "mymyXReposts", []);
+  const [marks, setMarks] = useSkinState<string[]>(p, "mymyXMarks", []);
+  const [followed, setFollowed] = useSkinState<string[]>(p, "mymyXFollows", []);
+  const [query, setQuery] = useState("");
+  const [profile, setProfile] = useState<string | null>(null);
+  const [detail, setDetail] = useState<Item | null>(null);
+  const [compose, setCompose] = useState(false);
+  const [draft, setDraft] = useState("");
+  const [localPosts, setLocalPosts] = useSkinState<string[]>(p, "mymyXLocalPosts", []);
+  const profiles = p.items.filter(i => i.id.startsWith("x-profile-"));
+  const posts = p.items.filter(i => i.id.startsWith("x-") && i.kind === "post");
+  const selectedProfile = profiles.find(i => i.meta.username === profile);
+  const isLiked = (id: string) => typeof p.ui?.["liked-" + id] === "boolean" ? Boolean(p.ui["liked-" + id]) : likes.includes(id);
+  const isSaved = (id: string) => typeof p.ui?.["saved-" + id] === "boolean" ? Boolean(p.ui["saved-" + id]) : marks.includes(id);
+  const toggle = (id: string, values: string[], setter: (x: string[]) => void) => setter(values.includes(id) ? values.filter(x => x !== id) : [...values, id]);
+  const count = (v: string | undefined) => v || "0";
+  const visible = posts.filter(i => {
+    const name = i.meta.username || "";
+    if (profile && name !== profile) return false;
+    if (tab === "正在关注" && !followed.includes(name) && !profiles.some(x => x.meta.username === name && x.meta.username === "coco_oo66")) return false;
+    if (tab === "喜欢") return isLiked(i.id);
+    if (tab === "已收藏") return isSaved(i.id);
+    if (query && !(i.body + name + i.meta.handle).toLowerCase().includes(query.toLowerCase())) return false;
+    return true;
+  });
+  const comments = (item: Item) => (item.meta.comments || "").split("\n").filter(Boolean);
   return (
-    <div
-      className={"mymy-ui mymy-x " + (dark ? "x-reference-dark" : "")}
-      data-mymy="twitter"
-    >
+    <div className={"mymy-ui mymy-x " + (dark ? "x-reference-dark" : "")} data-mymy="twitter">
       <div className="kzxw">
         <header className="kzxh">
-          <button aria-label="关闭当前App" onClick={p.onBack}>
-            <ArrowLeft />
-          </button>
+          <button aria-label="返回" onClick={() => profile || detail ? (setProfile(null), setDetail(null)) : p.onBack()}><ArrowLeft /></button>
           <div className="kzxlg">𝕏</div>
-          <button aria-label="切换X外观" onClick={() => setDark(!dark)}>
-            <User />
-          </button>
+          <button aria-label="切换外观" onClick={() => setDark(!dark)}><User /></button>
         </header>
-        <div className="kzxtb">
-          {["为你推荐", "正在关注", "添加 +", "时间"].map((t) => (
-            <button
-              className={t === tab ? "on" : ""}
-              key={t}
-              onClick={() => setTab(t)}
-            >
-              {t}
-            </button>
-          ))}
-        </div>
-        {tab === "搜索" && (
-          <input
-            className="mymy-search"
-            aria-label="搜索X"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="搜索"
-          />
+        {detail ? (
+          <section className="kzx-detail">
+            <h3>帖子</h3>
+            <article className="kzxt">
+              <Avatar name={detail.meta.username || "用户"} src={detail.avatar} />
+              <div className="kzxb">
+                <div className="kzxn"><b>{detail.meta.username}</b><small>@{detail.meta.handle} · {detail.time}</small></div>
+                <p className="kzxx">{detail.body}</p>
+                {detail.media && <Media item={detail} />}
+                <p className="kzx-stats">{count(detail.meta.replies)} 回复　{count(detail.meta.reposts)} 转发　{count(detail.meta.likes)} 喜欢　{count(detail.meta.views)} 浏览</p>
+                <h4>回复</h4>
+                {comments(detail).map((line, n) => { const at = line.indexOf("："); return <div className="kzx-comment" key={n}><b>{at > -1 ? line.slice(0, at) : "用户"}</b><span>{at > -1 ? line.slice(at + 1) : line}</span></div>; })}
+              </div>
+            </article>
+          </section>
+        ) : profile && selectedProfile ? (
+          <section className="kzx-profile">
+            <button className="kzx-backlink" onClick={() => setProfile(null)}>← 返回时间线</button>
+            <div className="kzx-cover" />
+            <div className="kzx-profile-head"><Avatar name={selectedProfile.meta.username} src={selectedProfile.meta.avatarUrl} /><button onClick={() => toggle(profile, followed, setFollowed)}>{followed.includes(profile) ? "正在关注" : "关注"}</button></div>
+            <h2>{selectedProfile.meta.username}</h2><p>@{selectedProfile.meta.handle}</p><p>{selectedProfile.body}</p>
+            <p className="kzx-stats">{selectedProfile.meta.following} 正在关注　{selectedProfile.meta.followers} 关注者</p>
+            <div className="kzxtb"><button className="on">帖子</button><button onClick={() => setTab("喜欢")}>喜欢</button></div>
+            {posts.filter(i => i.meta.username === profile).map(i => <article className="kzxt" key={i.id}><Avatar name={profile} /><div className="kzxb"><div className="kzxn"><b>{profile}</b><small>@{i.meta.handle} · {i.time}</small></div><button className="kzxx" onClick={() => setDetail(i)}>{i.body}</button>{i.media && <button className="kzxv" onClick={() => setDetail(i)}><Media item={i}/></button>}<div className="kzxac"><button onClick={() => setDetail(i)}><MessageCircle/>{count(i.meta.replies)}</button><button><Repeat2/>{count(i.meta.reposts)}</button><button><Heart/>{count(i.meta.likes)}</button></div></div></article>)}
+          </section>
+        ) : (
+          <>
+            <div className="kzxtb">
+              {["为你推荐", "正在关注"].map(t => <button className={tab === t ? "on" : ""} key={t} onClick={() => {setTab(t);setProfile(null);}}>{t}</button>)}
+            </div>
+            <div className="kzx-account-strip">
+              {profiles.map(x => <button key={x.id} onClick={() => {setProfile(x.meta.username);setTab("主页");}}><Avatar name={x.meta.username} src={x.meta.avatarUrl}/><span><b>{x.meta.username}</b><small>@{x.meta.handle}</small></span></button>)}
+            </div>
+            <div className="kzx-searchbox"><Search size={17}/><input value={query} onChange={e => setQuery(e.target.value)} placeholder="搜索帖子、账号和话题"/></div>
+            <div className="kzxfd">
+              {visible.map(i => (
+                <article className="kzxt" key={i.id}>
+                  <button className="kzx-avatar-button" onClick={() => setProfile(i.meta.username)}><Avatar name={i.meta.username || "用户"} src={i.avatar}/></button>
+                  <div className="kzxb">
+                    <div className="kzxn"><button onClick={() => setProfile(i.meta.username)}><b>{i.meta.username}</b></button><small>@{i.meta.handle || "user"} · {i.time}</small><em><MoreHorizontal size={18}/></em></div>
+                    <button className="kzxx" onClick={() => setDetail(i)}>{i.body}</button>
+                    {i.media && <button className="kzxv" aria-label="打开媒体" onClick={() => setDetail(i)}><Media item={i}/></button>}
+                    <div className="kzxac">
+                      <button aria-label="评论" onClick={() => setDetail(i)}><MessageCircle/>{count(i.meta.replies)}</button>
+                      <button aria-label="转发" aria-pressed={reposts.includes(i.id)} onClick={() => toggle(i.id,reposts,setReposts)}><Repeat2/>{count(i.meta.reposts)}</button>
+                      <button aria-label="点赞" aria-pressed={isLiked(i.id)} onClick={() => {toggle(i.id,likes,setLikes);p.onUi?.("liked-"+i.id,!isLiked(i.id));}}><Heart fill={isLiked(i.id) ? "#f91880" : "none"}/>{count(i.meta.likes)}</button>
+                      <span><BarChart2/>{count(i.meta.views)}</span>
+                      <button aria-label="收藏" aria-pressed={isSaved(i.id)} onClick={() => {toggle(i.id,marks,setMarks);p.onUi?.("saved-"+i.id,!isSaved(i.id));}}><Bookmark/></button>
+                      <button aria-label="分享" onClick={() => setDetail(i)}><Share/></button>
+                    </div>
+                  </div>
+                </article>
+              ))}
+              {!visible.length && <Blank/>}
+            </div>
+            <nav className="kzxnav">
+              <button aria-label="首页" onClick={() => {setTab("为你推荐");setQuery("");}}><Home/></button>
+              <button aria-label="搜索" onClick={() => document.querySelector(".kzx-searchbox input")?.focus()}><Search/></button>
+              <button aria-label="通知" onClick={() => setTab("通知")}><Bell/></button>
+              <button aria-label="私信" onClick={() => setTab("私信")}><MessageCircle/></button>
+            </nav>
+            <button className="kzx-compose" aria-label="发布帖子" onClick={() => setCompose(true)}><Plus/></button>
+            {compose && <div className="kzx-compose-sheet"><h3>发布帖子</h3><textarea value={draft} onChange={e => setDraft(e.target.value)} placeholder="有什么新鲜事？"/><div><button onClick={() => setCompose(false)}>取消</button><button disabled={!draft.trim()} onClick={() => {setLocalPosts([...localPosts,draft.trim()]);setDraft("");setCompose(false);}}>发布</button></div></div>}
+            {tab === "通知" && <div className="kzx-notice"><h3>通知</h3><p>有人回复了你的动态</p><p>你的帖子收到了新的喜欢</p><p>你关注的账号发布了新动态</p></div>}
+            {tab === "私信" && <div className="kzx-notice"><h3>私信</h3><p>暂时没有新的私信</p><p>与你关注的账号保持联系</p></div>}
+            {localPosts.map((body,n)=><div className="kzx-local-post" key={n}><b>你</b><p>{body}</p><small>刚刚</small></div>)}
+          </>
         )}
-        <div className="kzxfd">
-          {p.items
-            .filter((i) => (i.title + i.body).includes(query))
-            .map((i) => (
-              <article className="kzxt" key={i.id}>
-                <Avatar name={i.sender} src={i.avatar} />
-                <div className="kzxb">
-                  <div className="kzxn">
-                    <b>{i.sender}</b>
-                    <small>
-                      @{i.meta.handle || "user"} · {i.time.slice(-5)}
-                    </small>
-                    <em>
-                      <MoreHorizontal size={18} />
-                    </em>
-                  </div>
-                  <button
-                    className="kzxx"
-                    onClick={() => {
-                      read(p, i);
-                      p.onItem(i);
-                    }}
-                  >
-                    {i.body}
-                  </button>
-                  {i.media && (
-                    <button
-                      className="kzxv"
-                      aria-label="打开媒体"
-                      onClick={() => p.onItem(i)}
-                    >
-                      <Media item={i} />
-                    </button>
-                  )}
-                  <div className="kzxac">
-                    <button
-                      aria-label={"评论" + i.title}
-                      onClick={() => p.onItem(i)}
-                    >
-                      <MessageCircle />
-                      {i.comments.length}
-                    </button>
-                    <button
-                      aria-label={"转发" + i.title}
-                      aria-pressed={reposts.includes(i.id)}
-                      onClick={() => toggle(i.id, reposts, setReposts)}
-                    >
-                      <Repeat2 />
-                      {reposts.includes(i.id) ? 1 : 0}
-                    </button>
-                    <button
-                      aria-label={"点赞" + i.title}
-                      aria-pressed={isLiked(i.id)}
-                      onClick={() => {
-                        toggle(i.id, likes, setLikes);
-                        p.onUi?.("liked-" + i.id, !isLiked(i.id));
-                      }}
-                    >
-                      <Heart fill={isLiked(i.id) ? "#f91880" : "none"} />
-                      {i.likes + (isLiked(i.id) ? 1 : 0)}
-                    </button>
-                    <span>
-                      <BarChart2 />
-                      {i.meta.views || "—"}
-                    </span>
-                    <button
-                      aria-label={"收藏" + i.title}
-                      aria-pressed={isSaved(i.id)}
-                      onClick={() => {
-                        toggle(i.id, marks, setMarks);
-                        p.onUi?.("saved-" + i.id, !isSaved(i.id));
-                      }}
-                    >
-                      <Bookmark />
-                    </button>
-                    <button aria-label="分享" onClick={() => p.onItem(i)}>
-                      <Share />
-                    </button>
-                  </div>
-                </div>
-              </article>
-            ))}
-          {!p.items.length && <Blank />}
-        </div>
-        <nav className="kzxnav">
-          {[Home, Search, Bell, MessageCircle].map((Icon, n) => (
-            <button
-              key={n}
-              aria-label={["时间线", "搜索", "通知", "私信"][n]}
-              onClick={() => n < 2 && setTab(n ? "搜索" : "推荐")}
-              disabled={n > 1}
-            >
-              <Icon />
-            </button>
-          ))}
-        </nav>
       </div>
     </div>
   );
