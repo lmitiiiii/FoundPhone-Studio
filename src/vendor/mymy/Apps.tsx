@@ -771,7 +771,7 @@ export function MymyX(p: SkinProps) {
             <h2>{selectedProfile.meta.username}</h2><p>@{selectedProfile.meta.handle}</p><p>{selectedProfile.body}</p>
             <p className="kzx-stats">{selectedProfile.meta.following} 正在关注 {selectedProfile.meta.followers} 关注者</p>
             <div className="kzxtb"><button className="on">帖子</button><button onClick={() => setTab("喜欢")}>喜欢</button></div>
-            {posts.filter(i => i.meta.username === profile).map(i => <article className="kzxt" key={i.id}><Avatar name={profile} src={selectedProfile?.meta.avatarUrl || socialAvatar(profile)} /><div className="kzxb"><div className="kzxn"><b>{profile}</b><small>@{i.meta.handle} · {i.time}</small></div><button className="kzxx" onClick={() => setDetail(i)}>{i.body}</button>{i.media && <div className="kzx-gallery">{(i.meta.galleryUrls || []).map((url: string) => <img key={url} src={url} loading="lazy" alt="动态配图" />)}</div>{i.media && <button className="kzxv" onClick={() => setDetail(i)}><Media item={i}/></button>}}<div className="kzxac"><button onClick={() => setDetail(i)}><MessageCircle/>{count(i.meta.replies)}</button><button><Repeat2/>{count(i.meta.reposts)}</button><button><Heart/>{count(i.meta.likes)}</button></div></div></article>)}
+            {posts.filter(i => i.meta.username === profile).map(i => <article className="kzxt" key={i.id}><Avatar name={profile} src={selectedProfile?.meta.avatarUrl || socialAvatar(profile)} /><div className="kzxb"><div className="kzxn"><b>{profile}</b><small>@{i.meta.handle} · {i.time}</small></div><button className="kzxx" onClick={() => setDetail(i)}>{i.body}</button>{i.media && {i.meta.galleryUrls?.length ? <div className="kzx-gallery">{i.meta.galleryUrls.map((url: string) => <img key={url} src={url} loading="lazy" alt="动态配图" />)}</div> : i.media && <button className="kzxv" onClick={() => setDetail(i)}><Media item={i}/></button>}<div className="kzxac"><button onClick={() => setDetail(i)}><MessageCircle/>{count(i.meta.replies)}</button><button><Repeat2/>{count(i.meta.reposts)}</button><button><Heart/>{count(i.meta.likes)}</button></div></div></article>)}
           </section>
         ) : (
           <>
@@ -789,7 +789,7 @@ export function MymyX(p: SkinProps) {
                   <div className="kzxb">
                     <div className="kzxn"><button onClick={() => setProfile(i.meta.username)}><b>{i.meta.username}</b></button><small>@{i.meta.handle || "user"} · {i.time}{i.meta.visibility === "private" ? " · 🔒 私密" : ""}</small><em><MoreHorizontal size={18}/></em></div>
                     <button className="kzxx" onClick={() => setDetail(i)}>{i.body}</button>
-                    {i.media && <div className="kzx-gallery">{(i.meta.galleryUrls || []).map((url: string) => <img key={url} src={url} loading="lazy" alt="动态配图" />)}</div>{i.media && <button className="kzxv" aria-label="打开媒体" onClick={() => setDetail(i)}><Media item={i}/></button>}}
+                    {i.media && {i.meta.galleryUrls?.length ? <div className="kzx-gallery">{i.meta.galleryUrls.map((url: string) => <img key={url} src={url} loading="lazy" alt="动态配图" />)}</div> : i.media && <button className="kzxv" aria-label="打开媒体" onClick={() => setDetail(i)}><Media item={i}/></button>}
                     <div className="kzxac">
                       <button aria-label="评论" onClick={() => setDetail(i)}><MessageCircle/>{count(i.meta.replies)}</button>
                       <button aria-label="转发" aria-pressed={reposts.includes(i.id)} onClick={() => toggle(i.id,reposts,setReposts)}><Repeat2/>{count(i.meta.reposts)}</button>
