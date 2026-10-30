@@ -624,6 +624,7 @@ function PhoneRuntime({
                 {s.incomingCall.status === "ringing" ? "来电" : "通话中"} ·
                 作品内模拟
               </small>
+              {s.incomingCall.status === "ringing" && <audio className="incoming-ringtone" autoPlay loop />}
               <div className="incoming-avatar">
                 {s.incomingCall.caller.slice(0, 1)}
               </div>
