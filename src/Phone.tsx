@@ -626,7 +626,7 @@ function PhoneRuntime({
                     (i) => i.id === s.incomingCall?.target,
                   );
                   return record?.kind === "audio" && safeMedia(record.media) ? (
-                    <audio controls src={safeMedia(record.media)} />
+                    <audio controls autoPlay src={safeMedia(record.media)} />
                   ) : (
                     <p>这是一通虚构来电。</p>
                   );
