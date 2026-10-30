@@ -137,7 +137,7 @@ export function MymyKakao(p: SkinProps) {
                   {!m.outgoing && run.first && (
                     <>
                       <div className="kzmav">
-                        <Avatar name={m.sender} src={m.avatar || socialAvatar(m.sender)} />
+                        <Avatar name={p.thread === "ㅁㅋ" ? "李马克" : m.sender} src={p.thread === "ㅁㅋ" ? MK_AVATAR : m.avatar || socialAvatar(m.sender)} />
                       </div>
                       <div className="kzmn">{m.sender}</div>
                     </>
@@ -271,14 +271,14 @@ export function MymyKakao(p: SkinProps) {
               .filter((g) => g.title.includes(query.trim()))
               .map((g) => {
                 const last = g.items.at(-1)!;
-                const contactMessage = g.title === "ㅁㅋ" ? ([...g.items].reverse().find((item) => !item.outgoing) || last) : last;
+                const contactMessage = g.title === "ㅁㅋ" ? last : last;
                 return (
                   <button
                     className="kzkr kzkcr"
                     key={g.title}
                     onClick={() => p.onThread(g.title)}
                   >
-                    <Avatar name={contactMessage.sender || g.title} src={contactMessage.avatar || socialAvatar(contactMessage.sender || g.title)} />
+                    <Avatar name={g.title === "ㅁㅋ" ? "李马克" : contactMessage.sender || g.title} src={g.title === "ㅁㅋ" ? MK_AVATAR : contactMessage.avatar || socialAvatar(contactMessage.sender || g.title)} />
                     <span className="kzkn">
                       <b>{g.title}</b>
                       <small>{tab === "好友" ? last.sender : last.body || last.meta.preview || " "}</small>
