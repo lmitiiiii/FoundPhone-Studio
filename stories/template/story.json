@@ -3,7 +3,7 @@
   "id": "markchan-found-phone",
   "title": "Markchan · 捡手机",
   "description": "Coco & Mark 互动捡手机；密码 8266。媒体链接均留空待替换。",
-  "revision": 31,
+  "revision": 32,
   "phone": {
     "owner": "Markchan",
     "date": "2026-10-29",
@@ -1284,24 +1284,24 @@
       {
         "id": "ig-main-post-2",
         "title": "主页内容 2",
-        "body": "相册里最舍不得删掉的几张。♡︎ ( ˶ˆᗜˆ˵ )",
+        "body": "被好好爱着的感觉是粉色的 🎀🌷♡",
         "kind": "post",
         "meta": {
           "username": "markcocolove",
           "postUrl": "",
-          "imageUrl": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/837a012be0a9485c5ebe8c62b2333430.jpeg",
-          "mediaUrl": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/837a012be0a9485c5ebe8c62b2333430.jpeg",
-          "photoId": "photo-14"
+          "imageUrl": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/114.jpeg",
+          "mediaUrl": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/114.jpeg",
+          "photoId": "photo-4"
         },
         "sender": "markcocolove",
         "time": "2026-10-26 19:42",
         "likes": 62400,
         "comments": [
-          "coco66_：这几张不许删！尤其最后一张！",
-          "mintchoco：马克的相册是不是有一个专门叫“东赫”的文件夹ㅋㅋ",
-          "luvmarkhyuck：温柔男友和小太阳的日常……我先哭",
-          "sunnycoco：东赫笑起来真的像太阳☀️",
-          "peachy.zip：请继续更新，我的精神食粮"
+          "mark82_：喜欢粉色？下次给你买。",
+          "coco66_：那我要一大束！🌷",
+          "pinkcloud：救命，Mark讲话好淡定但好会宠",
+          "hyuckie_sun：东赫的幸福真的会溢出屏幕",
+          "markhyuckluv：求你们把日常vlog安排上！"
         ]
       },
       {
@@ -1389,24 +1389,24 @@
       {
         "id": "ig-coco-post-3",
         "title": "@coco66_ 内容 3",
-        "body": "被好好爱着的感觉是粉色的 🎀🌷♡",
+        "body": "相册里最舍不得删掉的几张。♡︎ ( ˶ˆᗜˆ˵ )",
         "kind": "post",
         "meta": {
           "username": "coco66_",
           "postUrl": "",
-          "imageUrl": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/114.jpeg",
-          "mediaUrl": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/114.jpeg",
-          "photoId": "photo-4"
+          "imageUrl": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/837a012be0a9485c5ebe8c62b2333430.jpeg",
+          "mediaUrl": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/837a012be0a9485c5ebe8c62b2333430.jpeg",
+          "photoId": "photo-14"
         },
         "sender": "coco66_",
         "time": "2026-10-22 21:19",
         "likes": 60300,
         "comments": [
-          "mark82_：喜欢粉色？下次给你买。",
-          "coco66_：那我要一大束！🌷",
-          "pinkcloud：救命，Mark讲话好淡定但好会宠",
-          "hyuckie_sun：东赫的幸福真的会溢出屏幕",
-          "markhyuckluv：求你们把日常vlog安排上！"
+          "coco66_：这几张不许删！尤其最后一张！",
+          "mintchoco：马克的相册是不是有一个专门叫“东赫”的文件夹ㅋㅋ",
+          "luvmarkhyuck：温柔男友和小太阳的日常……我先哭",
+          "sunnycoco：东赫笑起来真的像太阳☀️",
+          "peachy.zip：请继续更新，我的精神食粮"
         ]
       },
       {
