@@ -70,7 +70,7 @@ function WidgetFace({
 }) {
   const date = new Date((work.phone.date || "2026-10-25") + "T12:00:00Z");
   const weather = work.data.weather?.[0];
-  const widgetPhoto = work.data.photos?.find((item) => item.kind === "image" && item.meta?.mediaUrl);
+  const widgetPhoto = work.data.photos?.find((item) => item.id === "photo-2" && item.kind === "image" && item.meta?.mediaUrl);
   return (
     <div className={"widget-face widget-" + widget.type}>
       {widget.type === "calendar" ? (
