@@ -1,4 +1,4 @@
-name: Validate and deploy Pages
+name: Validate and deploy Pages # redeploy latest story data
 on:
   push:
     branches: [main, story/markchan-phone]
