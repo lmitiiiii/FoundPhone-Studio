@@ -140,10 +140,14 @@ export function compileStory(raw: unknown): { story: Story; work: Work } {
   ) => {
     if (!installed.has(app)) fail(p, `App ${app} 未安装`);
     unique(raw.id!, p + ".id");
+    const normalized = { ...raw };
+    if (app === "twitter" && !normalized.comments?.length && typeof normalized.meta?.comments === "string") {
+      normalized.comments = normalized.meta.comments.split("\n").map((line) => line.trim()).filter(Boolean);
+    }
     const item = itemSchema.parse({
       time: s.phone.date + " " + (s.phone.time || "21:41"),
       sender: s.phone.owner,
-      ...raw,
+      ...normalized,
     });
     for (const k of ["media", "avatar"] as const)
       if (
