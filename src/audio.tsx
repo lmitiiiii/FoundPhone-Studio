@@ -37,7 +37,7 @@ export function useTrack(
   ];
 }
 
-export function AudioPlayer({ p, item }: { p: SkinProps; item: Item }) {
+export function AudioPlayer({ p, item, mediaSrc }: { p: SkinProps; item: Item; mediaSrc?: string }) {
   const last = useRef(-1);
   const element = useRef<HTMLAudioElement>(null);
   useExclusiveAudio(element);
@@ -75,7 +75,7 @@ export function AudioPlayer({ p, item }: { p: SkinProps; item: Item }) {
     <audio
       ref={element}
       controls
-      src={safeMedia(item.media)}
+      src={mediaSrc ?? safeMedia(item.media)}
       aria-label={`播放${item.title}`}
       onTimeUpdate={(e) => {
         if (e.currentTarget.isConnected) commit(e.currentTarget.currentTime);
