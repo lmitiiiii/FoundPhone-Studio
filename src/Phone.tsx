@@ -1116,7 +1116,7 @@ function AppContent({
               const start = gestureStart.current;
               gestureStart.current = null;
               if (start !== null && start - event.clientY > 32 && !state.incomingCall) {
-                startIncoming("Mark", "call-voice-01");
+                startIncoming("东赫", "call-voice-01");
               }
             }}
             onPointerCancel={() => {
