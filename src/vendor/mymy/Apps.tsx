@@ -789,7 +789,7 @@ export function MymyX(p: SkinProps) {
                   <div className="kzxb">
                     <div className="kzxn"><button onClick={() => setProfile(i.meta.username)}><b>{i.meta.username}</b></button><small>@{i.meta.handle || "user"} · {i.time}{i.meta.visibility === "private" ? " · 🔒 私密" : ""}</small><em><MoreHorizontal size={18}/></em></div>
                     <button className="kzxx" onClick={() => setDetail(i)}>{i.body}</button>
-                    {i.meta.galleryUrls?.length ? <div className="kzx-gallery">{i.meta.galleryUrls.map((url: string) => <img key={url} src={url} loading="lazy" alt="动态配图" />)}</div> : i.media && <button className="kzxv" aria-label="打开媒体" onClick={() => setDetail(i)}><Media item={i}/></button>}
+                    {[i.meta.galleryUrl1, i.meta.galleryUrl2, i.meta.galleryUrl3].filter(Boolean).length ? <div className="kzx-gallery">{[i.meta.galleryUrl1, i.meta.galleryUrl2, i.meta.galleryUrl3].filter(Boolean).map((url) => <img key={url} src={url} loading="lazy" alt="动态配图" />)}</div> : i.media && <button className="kzxv" aria-label="打开媒体" onClick={() => setDetail(i)}><Media item={i}/></button>}
                     <div className="kzxac">
                       <button aria-label="评论" onClick={() => setDetail(i)}><MessageCircle/>{count(i.meta.replies)}</button>
                       <button aria-label="转发" aria-pressed={reposts.includes(i.id)} onClick={() => toggle(i.id,reposts,setReposts)}><Repeat2/>{count(i.meta.reposts)}</button>
