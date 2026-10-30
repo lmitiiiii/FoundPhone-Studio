@@ -179,7 +179,7 @@
     },
     {
       "id": "mk",
-      "name": "李马克",
+      "name": "mk",
       "phone": "",
       "bio": "KakaoTalk 联系人"
     }
@@ -191,7 +191,7 @@
       "title": "ㅁㅋ",
       "participants": [
         "owner",
-        "donghyuck"
+        "mk"
       ],
       "messages": [
         {
@@ -208,8 +208,8 @@
           "body": "马上到家了",
           "kind": "text",
           "time": "2026-10-29 21:01",
-          "senderId": "donghyuck",
-          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
+          "senderId": "mk",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4449.jpeg"
         },
         {
           "id": "kakao-dh-03",
@@ -217,8 +217,8 @@
           "body": "有没有想吃的东西",
           "kind": "text",
           "time": "2026-10-29 21:02",
-          "senderId": "donghyuck",
-          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
+          "senderId": "mk",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4449.jpeg"
         },
         {
           "id": "kakao-dh-04",
@@ -226,8 +226,8 @@
           "body": "我带回来",
           "kind": "text",
           "time": "2026-10-29 21:03",
-          "senderId": "donghyuck",
-          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
+          "senderId": "mk",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4449.jpeg"
         },
         {
           "id": "kakao-dh-05",
@@ -251,8 +251,8 @@
           "body": "好",
           "kind": "text",
           "time": "2026-10-29 21:06",
-          "senderId": "donghyuck",
-          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
+          "senderId": "mk",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4449.jpeg"
         },
         {
           "id": "kakao-dh-08",
@@ -284,8 +284,8 @@
           "body": "不在我这呀",
           "kind": "text",
           "time": "2026-10-29 21:10",
-          "senderId": "donghyuck",
-          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
+          "senderId": "mk",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4449.jpeg"
         },
         {
           "id": "kakao-dh-12",
@@ -293,8 +293,8 @@
           "body": "找不到就不找了",
           "kind": "text",
           "time": "2026-10-29 21:11",
-          "senderId": "donghyuck",
-          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
+          "senderId": "mk",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4449.jpeg"
         },
         {
           "id": "kakao-dh-13",
@@ -302,8 +302,8 @@
           "body": "先休息一会儿吧东赫🤌",
           "kind": "text",
           "time": "2026-10-29 21:12",
-          "senderId": "donghyuck",
-          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
+          "senderId": "mk",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4449.jpeg"
         },
         {
           "id": "kakao-dh-14",
@@ -311,8 +311,8 @@
           "body": "回家我来找吧",
           "kind": "text",
           "time": "2026-10-29 21:13",
-          "senderId": "donghyuck",
-          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
+          "senderId": "mk",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4449.jpeg"
         },
         {
           "id": "kakao-dh-15",
@@ -320,8 +320,8 @@
           "body": "直播的事情晚点再说",
           "kind": "text",
           "time": "2026-10-29 21:14",
-          "senderId": "donghyuck",
-          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
+          "senderId": "mk",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4449.jpeg"
         },
         {
           "id": "kakao-dh-16",
@@ -372,7 +372,8 @@
           "body": "我知道了嘛",
           "kind": "text",
           "time": "2026-10-29 19:33",
-          "senderId": "donghyuck"
+          "senderId": "donghyuck",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
         },
         {
           "id": "kakao-dh-heart-05",
@@ -380,7 +381,8 @@
           "body": "哥哥怎么总是话那么多",
           "kind": "text",
           "time": "2026-10-29 19:34",
-          "senderId": "donghyuck"
+          "senderId": "donghyuck",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
         },
         {
           "id": "kakao-dh-heart-06",
@@ -396,7 +398,8 @@
           "body": "马克呀",
           "kind": "text",
           "time": "2026-10-29 19:36",
-          "senderId": "donghyuck"
+          "senderId": "donghyuck",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
         },
         {
           "id": "kakao-dh-heart-08",
@@ -404,7 +407,8 @@
           "body": "marrrrr",
           "kind": "text",
           "time": "2026-10-29 19:37",
-          "senderId": "donghyuck"
+          "senderId": "donghyuck",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
         },
         {
           "id": "kakao-dh-heart-09",
@@ -412,7 +416,8 @@
           "body": "老公",
           "kind": "text",
           "time": "2026-10-29 19:38",
-          "senderId": "donghyuck"
+          "senderId": "donghyuck",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
         },
         {
           "id": "kakao-dh-heart-10",
@@ -420,7 +425,8 @@
           "body": "马克哥哥",
           "kind": "text",
           "time": "2026-10-29 19:39",
-          "senderId": "donghyuck"
+          "senderId": "donghyuck",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
         },
         {
           "id": "kakao-dh-heart-11",
@@ -436,7 +442,8 @@
           "body": "我爱你",
           "kind": "text",
           "time": "2026-10-29 19:41",
-          "senderId": "donghyuck"
+          "senderId": "donghyuck",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
         },
         {
           "id": "kakao-dh-heart-13",
@@ -452,7 +459,8 @@
           "body": "只是这样嘛😔",
           "kind": "text",
           "time": "2026-10-29 19:43",
-          "senderId": "donghyuck"
+          "senderId": "donghyuck",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
         },
         {
           "id": "kakao-dh-heart-15",
@@ -476,7 +484,8 @@
           "body": "这就对了",
           "kind": "text",
           "time": "2026-10-29 19:46",
-          "senderId": "donghyuck"
+          "senderId": "donghyuck",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
         },
         {
           "id": "kakao-dh-heart-18",
@@ -484,7 +493,8 @@
           "body": "😈",
           "kind": "text",
           "time": "2026-10-29 19:47",
-          "senderId": "donghyuck"
+          "senderId": "donghyuck",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
         }
       ]
     }
