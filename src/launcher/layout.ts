@@ -137,6 +137,16 @@ export function validateLayout(raw: unknown, input: Work) {
     ]) delete layout.positions[id];
     layout.previewLayoutRevision = 5;
   }
+  if (markchan && layout.previewLayoutRevision < 6) {
+    const phone = layout.apps.find((app) => app.id === "phone");
+    if (phone) {
+      phone.installed = true;
+      phone.visible = true;
+      phone.dock = false;
+      phone.folder = "";
+    }
+    layout.previewLayoutRevision = 6;
+  }
   if (w.id === "ui-test-phone-v2" && layout.previewLayoutRevision < 1) {
     const visibleApps = ["wechat", "douyin"];
     for (const app of layout.apps) {
