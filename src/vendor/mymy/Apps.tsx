@@ -796,7 +796,7 @@ export function MymyX(p: SkinProps) {
             </div>
             <nav className="kzxnav">
               <button aria-label="首页" onClick={() => {setTab("为你推荐");setQuery("");}}><Home/></button>
-              <button aria-label="搜索" onClick={() => document.querySelector(".kzx-searchbox input")?.focus()}><Search/></button>
+              <button aria-label="搜索" onClick={() => (document.querySelector(".kzx-searchbox input") as HTMLInputElement | null)?.focus()}><Search/></button>
               <button aria-label="通知" onClick={() => setTab("通知")}><Bell/></button>
               <button aria-label="私信" onClick={() => setTab("私信")}><MessageCircle/></button>
             </nav>
