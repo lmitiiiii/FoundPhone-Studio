@@ -70,6 +70,7 @@ function WidgetFace({
 }) {
   const date = new Date((work.phone.date || "2026-10-25") + "T12:00:00Z");
   const weather = work.data.weather?.[0];
+  const widgetPhoto = work.data.photos?.find((item) => item.kind === "image" && item.meta?.mediaUrl);
   return (
     <div className={"widget-face widget-" + widget.type}>
       {widget.type === "calendar" ? (
@@ -115,9 +116,11 @@ function WidgetFace({
         </>
       ) : widget.type === "photos" ? (
         <div className="widget-photo-placeholder">
-          <Images size={30} />
-          <strong>照片</strong>
-          <small>等你发来照片</small>
+          {widgetPhoto?.meta?.mediaUrl ? (
+            <img src={widgetPhoto.meta.mediaUrl} alt="相册照片" />
+          ) : (
+            <><Images size={30} /><strong>照片</strong><small>暂无照片</small></>
+          )}
         </div>
       ) : widget.type === "music" ? (
         <div className="widget-music-face">
