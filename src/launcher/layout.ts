@@ -73,13 +73,16 @@ export function defaultLayout(input: Work): DeviceLayout {
           { id: "widget-markchan-weather", type: "weather", size: "small" },
         ]
       : [],
-    order: markchan\n      ? w.apps.filter((a) => a.installed && a.visible && !a.dock && a.id !== "phone").map((a) => a.id).concat("phone")\n      : [],
+    order: markchan
+      ? w.apps.filter((a) => a.installed && a.visible && !a.dock && a.id !== "phone").map((a) => a.id).concat("phone")
+      : [],
     cleared: [],
     positions: markchan
       ? {
           "widget-markchan-music": { page: 0, x: 0, y: 0 },
           "widget-markchan-photos": { page: 0, x: 0, y: 2 },
-          "widget-markchan-weather": { page: 0, x: 2, y: 2 },\n          phone: { page: 0, x: 3, y: 5 },
+          "widget-markchan-weather": { page: 0, x: 2, y: 2 },
+          phone: { page: 0, x: 3, y: 5 },
         }
       : {},
   };
