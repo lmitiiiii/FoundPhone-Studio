@@ -49,7 +49,7 @@ function TrackPlayer({
         </span>
       </button>
       {item.kind === "audio" && safeMedia(item.media) ? (
-        <AudioPlayer p={p} item={item} mediaSrc={src} />
+        <AudioPlayer p={p} item={item} />
       ) : (
         <button onClick={() => p.onItem(item)}>查看</button>
       )}
@@ -600,7 +600,7 @@ export function RecorderSkin(p: Props) {
                 {item.time || "今天"}{item.meta?.duration ? ` · ${String(item.meta.duration)}` : ""}
               </small>
               {src ? (
-                <AudioPlayer p={p} item={item} />
+                <AudioPlayer p={p} item={item} mediaSrc={src} />
               ) : (
                 <div style={{ color: "#8e8e93", fontSize: 13, padding: "8px 0 2px" }}>
                   音频链接待补充
