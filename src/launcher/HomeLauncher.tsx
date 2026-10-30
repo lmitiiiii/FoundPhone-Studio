@@ -117,7 +117,7 @@ function WidgetFace({
       ) : widget.type === "photos" ? (
         <div className="widget-photo-placeholder">
           {widgetPhoto?.meta?.mediaUrl ? (
-            <img src={widgetPhoto.meta.mediaUrl} alt="相册照片" style={{ width: "100%", height: "100%", objectFit: "contain", display: "block", borderRadius: 23 }} />
+            <img src={widgetPhoto.meta.mediaUrl} alt="相册照片" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", borderRadius: 23 }} />
           ) : (
             <><Images size={30} /><strong>照片</strong><small>暂无照片</small></>
           )}
