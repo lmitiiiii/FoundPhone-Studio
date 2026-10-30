@@ -36,8 +36,9 @@ import "./adapter.css";
 // of an identical message while preserving genuinely repeated messages that
 // differ by sender, text, timestamp, direction, or attachment.
 function uniqueChatItems(items: Item[]) {
-  const seen = new Set<string>();
-  return items.filter((item) => {
+  const positions = new Map<string, number>();
+  const unique: Item[] = [];
+  for (const item of items) {
     const signature = JSON.stringify([
       item.title,
       item.sender,
@@ -47,10 +48,22 @@ function uniqueChatItems(items: Item[]) {
       item.kind,
       item.media,
     ]);
-    if (seen.has(signature)) return false;
-    seen.add(signature);
-    return true;
-  });
+    const existingIndex = positions.get(signature);
+    if (existingIndex === undefined) {
+      positions.set(signature, unique.length);
+      unique.push(item);
+      continue;
+    }
+    // Prefer the duplicate that carries the actual profile photo/media.
+    const existing = unique[existingIndex];
+    unique[existingIndex] = {
+      ...existing,
+      avatar: existing.avatar || item.avatar,
+      media: existing.media || item.media,
+      meta: { ...item.meta, ...existing.meta },
+    };
+  }
+  return unique;
 }
 function grouped(items: Item[]) {
   const uniqueItems = uniqueChatItems(items);
