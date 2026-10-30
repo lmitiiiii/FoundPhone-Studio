@@ -71,7 +71,6 @@ function IncomingCallVoice({ src }: { src: string }) {
   return (
     <div className="incoming-call-voice">
       <audio
-        controls
         autoPlay
         playsInline
         src={src}
