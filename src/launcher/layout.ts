@@ -34,23 +34,33 @@ export type DeviceLayout = z.infer<typeof layoutSchema>;
 export type Widget = z.infer<typeof widgetSchema>;
 export type AppConfig = Work["apps"][number];
 export function ensureAppStore(work: Work): Work {
-  return work.apps.some((a) => a.id === "appstore")
-    ? work
-    : {
-        ...work,
-        apps: [
-          ...work.apps,
-          {
-            id: "appstore",
-            name: "App Store",
-            installed: true,
-            visible: true,
-            dock: false,
-            folder: "",
-            icon: "",
-          },
-        ],
-      };
+  const additions: Work["apps"] = [];
+  if (!work.apps.some((a) => a.id === "appstore")) {
+    additions.push({
+      id: "appstore",
+      name: "App Store",
+      installed: true,
+      visible: true,
+      dock: false,
+      folder: "",
+      icon: "",
+    });
+  }
+  if (
+    work.id === "markchan-found-phone" &&
+    !work.apps.some((a) => a.id === "kakao")
+  ) {
+    additions.push({
+      id: "kakao",
+      name: "KakaoTalk",
+      installed: true,
+      visible: true,
+      dock: false,
+      folder: "",
+      icon: "",
+    });
+  }
+  return additions.length ? { ...work, apps: [...work.apps, ...additions] } : work;
 }
 export function defaultLayout(input: Work): DeviceLayout {
   const w = ensureAppStore(input);
@@ -58,13 +68,15 @@ export function defaultLayout(input: Work): DeviceLayout {
   return {
     version: 1,
     workId: w.id,
-    previewLayoutRevision: markchan ? 10 : w.id === "ui-test-phone-v2" ? 1 : 0,
+    previewLayoutRevision: markchan ? 11 : w.id === "ui-test-phone-v2" ? 1 : 0,
     apps: structuredClone(w.apps)
       .sort((a, b) => (a.id === "appstore" ? -1 : b.id === "appstore" ? 1 : 0))
       .map((a) =>
         markchan && ["phone", "mail", "appstore", "settings"].includes(a.id)
           ? { ...a, installed: true, visible: true, folder: "", dock: true }
-          : a.id === "appstore"
+          : markchan && a.id === "kakao"
+            ? { ...a, installed: true, visible: true, folder: "", dock: false }
+            : a.id === "appstore"
             ? { ...a, installed: true, visible: true, folder: "", dock: false }
             : a,
       )
@@ -236,6 +248,21 @@ export function validateLayout(raw: unknown, input: Work) {
     });
     layout.order = homeEntries(layout).map((entry) => entry.key);
     layout.previewLayoutRevision = 10;
+  }
+  if (w.id === "markchan-found-phone" && layout.previewLayoutRevision < 11) {
+    const kakao = layout.apps.find((app) => app.id === "kakao");
+    if (kakao) {
+      kakao.installed = true;
+      kakao.visible = true;
+      kakao.dock = false;
+      kakao.folder = "";
+      delete layout.positions.kakao;
+    }
+    layout.order = [
+      "kakao",
+      ...homeEntries(layout).map((entry) => entry.key).filter((id) => id !== "kakao"),
+    ];
+    layout.previewLayoutRevision = 11;
   }
   if (w.id === "ui-test-phone-v2" && layout.previewLayoutRevision < 1) {
     const visibleApps = ["wechat", "douyin"];
