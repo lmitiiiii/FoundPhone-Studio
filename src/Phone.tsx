@@ -962,7 +962,7 @@ function AppContent({
     if (creator || app.id !== "phone" || incomingCallRef.current) return;
     const timer = window.setTimeout(() => {
       startIncomingRef.current("东赫", "call-voice-01");
-    }, 3000);
+    }, 1000);
     return () => window.clearTimeout(timer);
   }, [app.id, creator]);
   const incomingGestureTriggered = useRef(false);
