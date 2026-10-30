@@ -6,9 +6,9 @@ import {
   Plus,
   Search,
 } from "lucide-react";
-import { useState, type ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import type { SkinProps } from "../AppSkins";
-import { safeMedia, type Item } from "../schema";
+import { safeMedia, type Item } from "../schema";\nimport { useExclusiveAudio } from "../audio";
 export type Props = SkinProps;
 export const meta = (
   i: Pick<Item, "meta"> | undefined,
@@ -118,7 +118,7 @@ export function Media({
   );
   return src ? (
     item.kind === "audio" ? (
-      <audio className={className} controls src={src} />
+      <audio ref={audioRef} className={className} controls src={src} />
     ) : item.kind === "video" ? (
       <video
         className={className}
