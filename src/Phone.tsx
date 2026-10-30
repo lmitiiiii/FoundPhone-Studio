@@ -164,9 +164,6 @@ function PhoneRuntime({
   const [panel, setPanel] = useState("");
   const [own, setOwn] = useState(() => initialRuntime(work));
   const [callSubtitleIndex, setCallSubtitleIndex] = useState(0);
-  useEffect(() => {
-    if (s.incomingCall?.status === "ringing") setCallSubtitleIndex(0);
-  }, [s.incomingCall?.status]);
   const [ready, setReady] = useState(creator || !!external);
   const [loadError, setLoadError] = useState("");
   useEffect(() => {
@@ -194,6 +191,9 @@ function PhoneRuntime({
     };
   }, [creator, ready]);
   const s = external ?? own;
+  useEffect(() => {
+    if (s.incomingCall?.status === "ringing") setCallSubtitleIndex(0);
+  }, [s.incomingCall?.status]);
   const runtimeRef = useRef(s);
   runtimeRef.current = s;
   const update = (next: Runtime) => {
