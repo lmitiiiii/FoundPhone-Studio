@@ -890,6 +890,7 @@ function AppContent({
   onAdd: () => void;
   onBack: () => void;
   onSettings?: () => void;
+  startIncoming: (caller: string, target: string) => void;
   onUi?: (key: string, value: UiValue) => void;
   work: Work;
 }) {
