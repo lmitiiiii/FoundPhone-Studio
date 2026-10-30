@@ -137,7 +137,7 @@ export function validateLayout(raw: unknown, input: Work) {
     ]) delete layout.positions[id];
     layout.previewLayoutRevision = 5;
   }
-  if (markchan && layout.previewLayoutRevision < 6) {
+  if (w.id === "markchan-found-phone" && layout.previewLayoutRevision < 6) {
     const phone = layout.apps.find((app) => app.id === "phone");
     if (phone) {
       phone.installed = true;
