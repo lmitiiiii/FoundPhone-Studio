@@ -902,6 +902,7 @@ function AppContent({
   const [unlocks, setUnlocks] = useState<string[]>([]);
   const [pwError, setPwError] = useState("");
   const [likes, setLikes] = useState<string[]>([]);
+  const gestureStart = useRef<number | null>(null);
   const shown = items
     .filter((i) => creator || visible(i, state))
     .filter((i) =>
