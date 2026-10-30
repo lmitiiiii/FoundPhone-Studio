@@ -69,6 +69,8 @@ function Avatar({
   );
 }
 function ItemMedia({ item }: { item: Item }) {
+  const audioRef = useRef<HTMLAudioElement>(null);
+  useExclusiveAudio(audioRef);
   const src = safeMedia(item.media);
   return src ? (
     item.kind === "audio" ? (
