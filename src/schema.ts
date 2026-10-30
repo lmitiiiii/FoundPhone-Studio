@@ -202,7 +202,7 @@ export function safeMedia(value: string) {
     );
   // Permit only this project's raw GitHub assets; reject arbitrary remote media.
   const projectAsset =
-    /^https:\/\/raw\.githubusercontent\.com\/lmitiiiii\/FoundPhone-Studio\/main\/[A-Za-z0-9._%()-]+\.(?:jpe?g|png|webp|gif)$/i.test(
+    /^https:\/\/raw\.githubusercontent\.com\/lmitiiiii\/FoundPhone-Studio\/(?:main|story\/markchan-phone)\/(?:[A-Za-z0-9._%()-]+\/)*[A-Za-z0-9._%()-]+\.(?:jpe?g|png|webp|gif|mp3|m4a|wav|ogg|aac)$/i.test(
       value,
     );
   return inlineMedia || projectAsset ? value : "";
