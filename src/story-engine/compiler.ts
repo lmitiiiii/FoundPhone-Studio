@@ -146,6 +146,16 @@ export function compileStory(raw: unknown): { story: Story; work: Work } {
     if (!normalized.avatar && typeof normalized.meta?.avatarUrl === "string") {
       normalized.avatar = normalized.meta.avatarUrl;
     }
+    if (app === "instagram" && !normalized.avatar) {
+      const username = String(normalized.meta?.username || normalized.sender || "");
+      const profile = (s.content.instagram || []).find(
+        (entry) =>
+          entry.kind === "text" &&
+          String(entry.meta?.username || "").replace(/^@/, "") === username.replace(/^@/, ""),
+      );
+      const profileAvatar = profile?.avatar || profile?.meta?.avatarUrl;
+      if (typeof profileAvatar === "string") normalized.avatar = profileAvatar;
+    }
     if (!normalized.media) {
       const mediaUrl =
         normalized.kind === "audio"
