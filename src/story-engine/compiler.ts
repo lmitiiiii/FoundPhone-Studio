@@ -141,6 +141,18 @@ export function compileStory(raw: unknown): { story: Story; work: Work } {
     if (!installed.has(app)) fail(p, `App ${app} 未安装`);
     unique(raw.id!, p + ".id");
     const normalized = { ...raw };
+    // Restore project-hosted media and profile avatars from the original story metadata.
+    // Older story entries keep these URLs in meta rather than the runtime item fields.
+    if (!normalized.avatar && typeof normalized.meta?.avatarUrl === "string") {
+      normalized.avatar = normalized.meta.avatarUrl;
+    }
+    if (!normalized.media) {
+      const mediaUrl =
+        normalized.kind === "audio"
+          ? normalized.meta?.audioUrl
+          : normalized.meta?.mediaUrl || normalized.meta?.imageUrl || normalized.meta?.coverUrl;
+      if (typeof mediaUrl === "string") normalized.media = mediaUrl;
+    }
     if (app === "twitter" && !normalized.comments?.length && typeof normalized.meta?.comments === "string") {
       normalized.comments = normalized.meta.comments.split("\n").map((line) => line.trim()).filter(Boolean);
     }
