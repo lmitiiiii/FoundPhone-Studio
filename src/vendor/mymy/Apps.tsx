@@ -362,7 +362,10 @@ export function MymyInstagram(p: SkinProps) {
     [draft, setDraft] = useState(""),
     [pop, setPop] = useState("");
   const posts = p.items.filter(
-      (i) => i.folder !== "私信" && i.meta.story !== "true",
+      (i) =>
+        i.folder !== "私信" &&
+        i.meta.story !== "true" &&
+        !i.meta.profileType,
     ),
     stories = p.items.filter((i) => i.meta.story === "true"),
     dms = p.items.filter((i) => i.folder === "私信"),
