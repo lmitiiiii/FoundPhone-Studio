@@ -154,7 +154,7 @@ export function compileStory(raw: unknown): { story: Story; work: Work } {
           /^https:\/\/raw\.githubusercontent\.com\/lmitiiiii\/FoundPhone-Studio\/main\/[A-Za-z0-9._%-]+$/.test(item[k])
         )
       )
-        fail(p + "." + k, "仅允许受支持的内嵌媒体或项目内头像资源");
+        fail(p + "." + k, "不允许脚本或远程资源；仅允许受支持的内嵌媒体或项目内头像资源");
     if (item.richText) {
       let doc;
       try {
