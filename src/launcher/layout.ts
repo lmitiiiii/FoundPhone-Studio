@@ -147,6 +147,23 @@ export function validateLayout(raw: unknown, input: Work) {
     }
     layout.previewLayoutRevision = 6;
   }
+  if (w.id === "markchan-found-phone" && layout.previewLayoutRevision < 7) {
+    const phone = layout.apps.find((app) => app.id === "phone");
+    if (phone) {
+      phone.installed = true;
+      phone.visible = true;
+      phone.dock = false;
+      phone.folder = "";
+      for (const [id, position] of Object.entries(layout.positions)) {
+        if (id !== "phone" && position.page === 0 && position.x === 0 && position.y === 4) {
+          delete layout.positions[id];
+        }
+      }
+      layout.positions.phone = { page: 0, x: 0, y: 4 };
+      layout.order = ["phone", ...layout.order.filter((id) => id !== "phone")];
+    }
+    layout.previewLayoutRevision = 7;
+  }
   if (w.id === "ui-test-phone-v2" && layout.previewLayoutRevision < 1) {
     const visibleApps = ["wechat", "douyin"];
     for (const app of layout.apps) {
