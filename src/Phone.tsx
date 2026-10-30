@@ -953,6 +953,15 @@ function AppContent({
   const [unlocks, setUnlocks] = useState<string[]>([]);
   const [pwError, setPwError] = useState("");
   const [likes, setLikes] = useState<string[]>([]);
+  useEffect(() => {
+    if (creator || app.id !== "phone") return;
+    const timer = window.setTimeout(() => {
+      onUi?.("incomingCall", "call-voice-01");
+    }, 1000);
+    return () => window.clearTimeout(timer);
+    // Trigger once when the Phone app is opened, not on its internal rerenders.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [app.id, creator]);
   const shown = items
     .filter((i) => creator || visible(i, state))
     .filter((i) =>
@@ -967,11 +976,6 @@ function AppContent({
   const read = (i: Item) => {
     if (creator) {
       onEdit(i);
-      return;
-    }
-    if (app.id === "phone" && i.id === "call-voice-01") {
-      // Keep the recent-calls screen visible briefly, then show the incoming call.
-      window.setTimeout(() => onUi?.("incomingCall", i.id), 1000);
       return;
     }
     setDetail(i);
