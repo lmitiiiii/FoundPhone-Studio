@@ -286,10 +286,28 @@
 }
 .mymy-comments p {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   padding: 8px 0;
   overflow-wrap: anywhere;
+}
+.mymy-comment-copy {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+.mymy-comment-author {
+  color: #262626;
+  font-size: 13px;
+  line-height: 1.25;
+}
+.mymy-comment-message {
+  color: #262626;
+  font-size: 13px;
+  line-height: 1.4;
 }
 .mymy-ui .cmb2 {
   padding-bottom: 18px;
