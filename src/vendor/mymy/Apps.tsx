@@ -139,7 +139,7 @@ export function MymyKakao(p: SkinProps) {
                       <div className="kzmav">
                         <Avatar name={p.thread === "ㅁㅋ" ? "李马克" : m.sender} src={p.thread === "ㅁㅋ" ? MK_AVATAR : m.avatar || socialAvatar(m.sender)} />
                       </div>
-                      <div className="kzmn">{m.sender}</div>
+                      <div className="kzmn">{p.thread === "ㅁㅋ" ? "MK" : m.sender}</div>
                     </>
                   )}
                   {m.outgoing && run.last && (
