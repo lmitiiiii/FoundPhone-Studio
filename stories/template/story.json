@@ -12,7 +12,8 @@
     "network": "5G",
     "wallpaper": "markchan-photo",
     "passcode": "8266",
-    "theme": "light"
+    "theme": "light",
+    "notifications": false
   },
   "installedApps": [
     {
@@ -158,6 +159,15 @@
       "dock": false,
       "folder": "",
       "icon": "💬"
+    },
+    {
+      "id": "mail",
+      "name": "邮件",
+      "installed": true,
+      "visible": true,
+      "dock": false,
+      "folder": "",
+      "icon": "✉️"
     }
   ],
   "contacts": [
@@ -2561,6 +2571,93 @@
         },
         "folder": "促销",
         "read": true
+      }
+    ],
+    "mail": [
+      {
+        "id": "mail-promo-01",
+        "title": "本周精选｜首尔生活方式礼遇",
+        "body": "为你挑选了本周值得关注的城市灵感：周末咖啡地图、居家香氛新品和限时生活好物。订阅用户可领取专属 9 折礼遇，活动详情请查看品牌精选页。",
+        "time": "2026-10-29 10:18",
+        "sender": "LUMI 生活精选",
+        "kind": "text",
+        "folder": "收件箱",
+        "read": true,
+        "meta": {
+          "category": "推广邮件",
+          "offer": "订阅用户专属 9 折",
+          "website": "lumi-select.example"
+        }
+      },
+      {
+        "id": "mail-promo-02",
+        "title": "新品预览邀请｜Morrow 秋季系列",
+        "body": "你好，Morrow Studio 秋季系列即将上线。我们准备了新品预览清单与预约体验名额，欢迎提前浏览本季家居与生活方式单品。部分商品将在正式发售前开放会员价。",
+        "time": "2026-10-28 15:42",
+        "sender": "Morrow Studio",
+        "kind": "text",
+        "folder": "收件箱",
+        "read": true,
+        "meta": {
+          "category": "新品推广",
+          "offer": "新品预览 / 会员价"
+        }
+      },
+      {
+        "id": "mail-promo-03",
+        "title": "商务合作邀约｜品牌内容企划",
+        "body": "您好，我们正在筹备新一季品牌内容企划，希望邀请您了解合作方案。合作内容包含社交媒体专题、产品体验与活动拍摄，可根据档期及内容方向进一步沟通。若有兴趣，欢迎回复本邮件获取企划简介。",
+        "time": "2026-10-27 11:06",
+        "sender": "NORTH Creative 商务部",
+        "kind": "text",
+        "folder": "收件箱",
+        "read": true,
+        "meta": {
+          "category": "商务合作",
+          "contact": "partnerships@northcreative.example"
+        }
+      },
+      {
+        "id": "mail-promo-04",
+        "title": "限时体验｜NOVA 云端办公 Pro",
+        "body": "让日程、文件与团队协作更轻松。NOVA Pro 新用户可免费体验 30 天，升级后可使用更多云端空间、团队共享与自动整理功能。优惠体验名额开放至本月底。",
+        "time": "2026-10-25 09:30",
+        "sender": "NOVA Workspace",
+        "kind": "text",
+        "folder": "收件箱",
+        "read": true,
+        "meta": {
+          "category": "服务推广",
+          "offer": "Pro 版免费体验 30 天"
+        }
+      },
+      {
+        "id": "mail-promo-05",
+        "title": "活动邀请｜Seoul Select 周末咖啡节",
+        "body": "诚邀你参加 Seoul Select 周末咖啡节！现场将有独立咖啡品牌、新品试饮与限定周边。提前登记可领取饮品兑换券，也可以把这封邮件转发给同行朋友。",
+        "time": "2026-10-23 16:20",
+        "sender": "Seoul Select 活动团队",
+        "kind": "text",
+        "folder": "收件箱",
+        "read": true,
+        "meta": {
+          "category": "活动推广",
+          "offer": "提前登记领取饮品兑换券"
+        }
+      },
+      {
+        "id": "mail-promo-06",
+        "title": "会员通讯｜本月精选优惠汇总",
+        "body": "本月会员通讯已更新：精选餐厅预约礼遇、周末短途出行折扣，以及数码配件组合优惠。所有活动以合作商户页面公布的规则为准，点击对应专题即可查看详情。",
+        "time": "2026-10-21 08:55",
+        "sender": "The Monthly Edit",
+        "kind": "text",
+        "folder": "收件箱",
+        "read": true,
+        "meta": {
+          "category": "会员通讯",
+          "offer": "多项合作商户优惠"
+        }
       }
     ]
   },
