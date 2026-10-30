@@ -1,7 +1,27 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type RefObject } from "react";
 import type { SkinProps } from "./AppSkins";
 import { safeMedia, type Item } from "./schema";
 import { useSkinState } from "./skinState";
+
+const activeAudioElements = new Set<HTMLAudioElement>();
+
+export function useExclusiveAudio(ref: RefObject<HTMLAudioElement | null>) {
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+    activeAudioElements.add(element);
+    const stopOthers = () => {
+      activeAudioElements.forEach((other) => {
+        if (other !== element && !other.paused) other.pause();
+      });
+    };
+    element.addEventListener("play", stopOthers);
+    return () => {
+      element.removeEventListener("play", stopOthers);
+      activeAudioElements.delete(element);
+    };
+  }, [ref]);
+}
 
 export function useTrack(
   p: SkinProps,
