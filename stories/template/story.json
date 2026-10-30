@@ -175,8 +175,7 @@
       "id": "donghyuck",
       "name": "东赫",
       "phone": "",
-      "bio": "KakaoTalk 联系人",
-      "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
+      "bio": "KakaoTalk 联系人"
     },
     {
       "id": "mk",
@@ -209,7 +208,8 @@
           "body": "马上到家了",
           "kind": "text",
           "time": "2026-10-29 21:01",
-          "senderId": "donghyuck"
+          "senderId": "donghyuck",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
         },
         {
           "id": "kakao-dh-03",
@@ -217,7 +217,8 @@
           "body": "有没有想吃的东西",
           "kind": "text",
           "time": "2026-10-29 21:02",
-          "senderId": "donghyuck"
+          "senderId": "donghyuck",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
         },
         {
           "id": "kakao-dh-04",
@@ -225,7 +226,8 @@
           "body": "我带回来",
           "kind": "text",
           "time": "2026-10-29 21:03",
-          "senderId": "donghyuck"
+          "senderId": "donghyuck",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
         },
         {
           "id": "kakao-dh-05",
@@ -249,7 +251,8 @@
           "body": "好",
           "kind": "text",
           "time": "2026-10-29 21:06",
-          "senderId": "donghyuck"
+          "senderId": "donghyuck",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
         },
         {
           "id": "kakao-dh-08",
@@ -281,7 +284,8 @@
           "body": "不在我这呀",
           "kind": "text",
           "time": "2026-10-29 21:10",
-          "senderId": "donghyuck"
+          "senderId": "donghyuck",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
         },
         {
           "id": "kakao-dh-12",
@@ -289,7 +293,8 @@
           "body": "找不到就不找了",
           "kind": "text",
           "time": "2026-10-29 21:11",
-          "senderId": "donghyuck"
+          "senderId": "donghyuck",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
         },
         {
           "id": "kakao-dh-13",
@@ -297,7 +302,8 @@
           "body": "先休息一会儿吧东赫🤌",
           "kind": "text",
           "time": "2026-10-29 21:12",
-          "senderId": "donghyuck"
+          "senderId": "donghyuck",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
         },
         {
           "id": "kakao-dh-14",
@@ -305,7 +311,8 @@
           "body": "回家我来找吧",
           "kind": "text",
           "time": "2026-10-29 21:13",
-          "senderId": "donghyuck"
+          "senderId": "donghyuck",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
         },
         {
           "id": "kakao-dh-15",
@@ -313,7 +320,8 @@
           "body": "直播的事情晚点再说",
           "kind": "text",
           "time": "2026-10-29 21:14",
-          "senderId": "donghyuck"
+          "senderId": "donghyuck",
+          "avatar": "https://raw.githubusercontent.com/lmitiiiii/FoundPhone-Studio/main/IMG_4453.jpeg"
         },
         {
           "id": "kakao-dh-16",
@@ -1256,7 +1264,6 @@
     ],
     "kakao": [
       {
-        "id": "kakao-dh-01",
         "title": "ㅁㅋ",
         "body": "我好想你 你怎么还不回来",
         "kind": "text",
@@ -1268,7 +1275,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-02",
         "title": "ㅁㅋ",
         "body": "马上到家了",
         "kind": "text",
@@ -1280,7 +1286,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-03",
         "title": "ㅁㅋ",
         "body": "有没有想吃的东西",
         "kind": "text",
@@ -1292,7 +1297,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-04",
         "title": "ㅁㅋ",
         "body": "我带回来",
         "kind": "text",
@@ -1304,7 +1308,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-05",
         "title": "ㅁㅋ",
         "body": "想吃甜的",
         "kind": "text",
@@ -1316,7 +1319,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-06",
         "title": "ㅁㅋ",
         "body": "你决定吧",
         "kind": "text",
@@ -1328,7 +1330,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-07",
         "title": "ㅁㅋ",
         "body": "好",
         "kind": "text",
@@ -1340,7 +1341,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-08",
         "title": "ㅁㅋ",
         "body": "老公 直播的那个手机在你那吗？",
         "kind": "text",
@@ -1352,7 +1352,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-09",
         "title": "ㅁㅋ",
         "body": "我在家找了好久都没找到",
         "kind": "text",
@@ -1364,7 +1363,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-10",
         "title": "ㅁㅋ",
         "body": "😔",
         "kind": "text",
@@ -1376,7 +1374,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-11",
         "title": "ㅁㅋ",
         "body": "不在我这呀",
         "kind": "text",
@@ -1388,7 +1385,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-12",
         "title": "ㅁㅋ",
         "body": "找不到就不找了",
         "kind": "text",
@@ -1400,7 +1396,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-13",
         "title": "ㅁㅋ",
         "body": "先休息一会儿吧东赫🤌",
         "kind": "text",
@@ -1412,7 +1407,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-14",
         "title": "ㅁㅋ",
         "body": "回家我来找吧",
         "kind": "text",
@@ -1424,7 +1418,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-15",
         "title": "ㅁㅋ",
         "body": "直播的事情晚点再说",
         "kind": "text",
@@ -1436,7 +1429,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-16",
         "title": "ㅁㅋ",
         "body": "好><♡♡♡♡",
         "kind": "text",
@@ -1448,7 +1440,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-heart-01",
         "title": "东赫💗",
         "body": "少喝点",
         "kind": "text",
@@ -1460,7 +1451,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-heart-02",
         "title": "东赫💗",
         "body": "结束了给我打电话知道吗",
         "kind": "text",
@@ -1472,7 +1462,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-heart-03",
         "title": "东赫💗",
         "body": "我来接你",
         "kind": "text",
@@ -1484,7 +1473,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-heart-04",
         "title": "东赫💗",
         "body": "我知道了嘛",
         "kind": "text",
@@ -1496,7 +1484,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-heart-05",
         "title": "东赫💗",
         "body": "哥哥怎么总是话那么多",
         "kind": "text",
@@ -1508,7 +1495,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-heart-06",
         "title": "东赫💗",
         "body": "小没良心的",
         "kind": "text",
@@ -1520,7 +1506,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-heart-07",
         "title": "东赫💗",
         "body": "马克呀",
         "kind": "text",
@@ -1532,7 +1517,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-heart-08",
         "title": "东赫💗",
         "body": "marrrrr",
         "kind": "text",
@@ -1544,7 +1528,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-heart-09",
         "title": "东赫💗",
         "body": "老公",
         "kind": "text",
@@ -1556,7 +1539,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-heart-10",
         "title": "东赫💗",
         "body": "马克哥哥",
         "kind": "text",
@@ -1568,7 +1550,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-heart-11",
         "title": "东赫💗",
         "body": "怎么了",
         "kind": "text",
@@ -1580,7 +1561,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-heart-12",
         "title": "东赫💗",
         "body": "我爱你",
         "kind": "text",
@@ -1592,7 +1572,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-heart-13",
         "title": "东赫💗",
         "body": "知道了…",
         "kind": "text",
@@ -1604,7 +1583,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-heart-14",
         "title": "东赫💗",
         "body": "只是这样嘛😔",
         "kind": "text",
@@ -1616,7 +1594,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-heart-15",
         "title": "东赫💗",
         "body": "…",
         "kind": "text",
@@ -1628,7 +1605,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-heart-16",
         "title": "东赫💗",
         "body": "我也爱你",
         "kind": "text",
@@ -1640,7 +1616,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-heart-17",
         "title": "东赫💗",
         "body": "这就对了",
         "kind": "text",
@@ -1652,7 +1627,6 @@
         "meta": {}
       },
       {
-        "id": "kakao-dh-heart-18",
         "title": "东赫💗",
         "body": "😈",
         "kind": "text",
