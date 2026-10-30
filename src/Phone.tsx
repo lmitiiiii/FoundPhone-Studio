@@ -94,8 +94,8 @@ function IncomingCallVoice({ src }: { src: string }) {
         onPlay={() => setLine(0)}
       />
       <p className="incoming-call-subtitle" aria-live="polite">
-        <span lang="ko">{DONGHYUCK_CALL_LINES[line][0]}</span>
-        <span>{DONGHYUCK_CALL_LINES[line][1]}</span>
+        <span lang="ko" style={{ display: "block" }}>{DONGHYUCK_CALL_LINES[line][0]}</span>
+        <span style={{ display: "block" }}>{DONGHYUCK_CALL_LINES[line][1]}</span>
       </p>
     </div>
   );
@@ -953,13 +953,9 @@ function AppContent({
   const [unlocks, setUnlocks] = useState<string[]>([]);
   const [pwError, setPwError] = useState("");
   const [likes, setLikes] = useState<string[]>([]);
-  const [playCallAudio, setPlayCallAudio] = useState(false);
-  const callAudio = work.data.phone?.find((item) => item.id === "call-voice-01");
   useEffect(() => {
-    setPlayCallAudio(false);
     if (creator || app.id !== "phone") return;
     const timer = window.setTimeout(() => {
-      setPlayCallAudio(true);
       onUi?.("incomingCall", "call-voice-01");
     }, 1000);
     return () => window.clearTimeout(timer);
@@ -1060,15 +1056,6 @@ function AppContent({
   if (Skin)
     return (
       <>
-        {app.id === "phone" && playCallAudio && callAudio?.media && (
-          <audio
-            key={callAudio.id}
-            src={safeMedia(callAudio.media)}
-            autoPlay
-            playsInline
-            aria-label="东赫的来电语音"
-          />
-        )}
         <div className="catalog-slot" hidden={!!detail}>
           <Suspense fallback={<div className="catalog-loading">正在打开…</div>}>
             <Skin
