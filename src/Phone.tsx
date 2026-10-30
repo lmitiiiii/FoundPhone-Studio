@@ -1085,6 +1085,49 @@ function AppContent({
           ui={state.ui?.[app.id]}
           onUi={onUi}
         />
+      ) : app.id === "phone" && !detail ? (
+        <div className="phone-dialer-content">
+          <div className="phone-history-heading">
+            <span>最近通话</span>
+            <small>{recentCalls.length} 条记录</small>
+          </div>
+          <div className="phone-history-list">
+            {recentCalls.map((item) => (
+              <button className="phone-history-row" key={item.id} onClick={() => read(item)}>
+                <span className="phone-history-avatar">{item.sender.slice(0, 1)}</span>
+                <span className="phone-history-main">
+                  <strong>{item.sender}</strong>
+                  <small>{item.meta?.direction || "来电"} · {item.meta?.status || item.body}</small>
+                </span>
+                <span className="phone-history-time">{item.time.slice(5, 16).replace("T", " ")}</span>
+                <PhoneIcon size={17} />
+              </button>
+            ))}
+          </div>
+          <div
+            className="phone-incoming-trigger"
+            onPointerDown={(event) => {
+              event.stopPropagation();
+              gestureStart.current = event.clientY;
+            }}
+            onPointerUp={(event) => {
+              event.stopPropagation();
+              const start = gestureStart.current;
+              gestureStart.current = null;
+              if (start !== null && start - event.clientY > 32 && !state.incomingCall) {
+                startIncoming("Mark", "call-voice-01");
+              }
+            }}
+            onPointerCancel={() => {
+              gestureStart.current = null;
+            }}
+          >
+            <span className="phone-incoming-orb"><PhoneIcon size={23} /></span>
+            <strong>有一通新的来电</strong>
+            <small>向上轻轻滑动，查看来电提醒</small>
+            <ArrowUp size={18} />
+          </div>
+        </div>
       ) : detail ? (
         detailView
       ) : app.engine === "messaging" && thread ? (
