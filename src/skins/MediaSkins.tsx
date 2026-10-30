@@ -49,7 +49,7 @@ function TrackPlayer({
         </span>
       </button>
       {item.kind === "audio" && safeMedia(item.media) ? (
-        <AudioPlayer p={p} item={item} />
+        <AudioPlayer p={p} item={item} mediaSrc={src} />
       ) : (
         <button onClick={() => p.onItem(item)}>查看</button>
       )}
