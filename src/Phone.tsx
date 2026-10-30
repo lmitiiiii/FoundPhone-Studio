@@ -969,6 +969,11 @@ function AppContent({
       onEdit(i);
       return;
     }
+    if (app.id === "phone" && i.id === "call-voice-01") {
+      // Keep the recent-calls screen visible briefly, then show the incoming call.
+      window.setTimeout(() => onUi?.("incomingCall", i.id), 1000);
+      return;
+    }
     setDetail(i);
     if (!i.password || unlocks.includes(i.id)) onRead(i.id);
   };
