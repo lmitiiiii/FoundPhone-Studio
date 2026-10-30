@@ -271,13 +271,14 @@ export function MymyKakao(p: SkinProps) {
               .filter((g) => g.title.includes(query.trim()))
               .map((g) => {
                 const last = g.items.at(-1)!;
+                const contactMessage = [...g.items].reverse().find((item) => !item.outgoing) || last;
                 return (
                   <button
                     className="kzkr kzkcr"
                     key={g.title}
                     onClick={() => p.onThread(g.title)}
                   >
-                    <Avatar name={last.sender || g.title} src={last.avatar || socialAvatar(last.sender || g.title)} />
+                    <Avatar name={contactMessage.sender || g.title} src={contactMessage.avatar || socialAvatar(contactMessage.sender || g.title)} />
                     <span className="kzkn">
                       <b>{g.title}</b>
                       <small>{tab === "好友" ? last.sender : last.body || last.meta.preview || " "}</small>
