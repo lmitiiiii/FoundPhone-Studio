@@ -358,7 +358,10 @@ export function MymyInstagram(p: SkinProps) {
     [liked, setLiked] = useSkinState<string[]>(p, "mymyLiked", []),
     [saved, setSaved] = useSkinState<string[]>(p, "mymySaved", []),
     [replies, setReplies] = useSkinState<string[]>(p, "mymyReplies", []),
-    [seen, setSeen] = useSkinState<string[]>(p, "mymySeen", []);
+    [seen, setSeen] = useSkinState<string[]>(p, "mymySeen", []),
+    [dmSent, setDmSent] = useSkinState<string[]>(p, "mymyInstagramDmSent", []);
+  const [activeDM, setActiveDM] = useState<string | null>(null),
+    [dmDraft, setDmDraft] = useState("");
   const [sheet, setSheet] = useState<Item | null>(null),
     [selected, setSelected] = useState<Item | null>(null),
     [profileUser, setProfileUser] = useState("markcocolove"),
@@ -507,13 +510,13 @@ export function MymyInstagram(p: SkinProps) {
       <div className="ig">
         <header className="igh">
           <button
-            aria-label={selected ? "返回Instagram动态" : "关闭当前App"}
-            onClick={() => (selected ? setSelected(null) : p.onBack())}
+            aria-label={activeDM ? "返回私信列表" : selected ? "返回Instagram动态" : "关闭当前App"}
+            onClick={() => (activeDM ? setActiveDM(null) : selected ? setSelected(null) : p.onBack())}
           >
             <ArrowLeft />
           </button>
           <span className="igl2">
-            {selected ? "帖子" : tab === "个人主页" ? profileUser : tab === "主页" ? "Instagram" : tab}
+            {activeDM ? (dms.find((m) => m.id === activeDM)?.title || "私信") : selected ? "帖子" : tab === "个人主页" ? profileUser : tab === "主页" ? "Instagram" : tab}
           </span>
           <button aria-label="打开私信" onClick={() => setTab("私信")}>
             <Send />
@@ -602,20 +605,64 @@ export function MymyInstagram(p: SkinProps) {
               {!profilePosts.length && <Blank />}
             </>
           )}
-          {!selected && tab === "私信" && (
-            <>
+          {!selected && tab === "私信" && !activeDM && (
+            <div className="ig-dm-list">
               {dms.map((i) => (
-                <button className="kzkr" key={i.id} onClick={() => openPost(i)}>
+                <button className="kzkr ig-dm-row" key={i.id} onClick={() => setActiveDM(i.id)}>
                   <Avatar name={i.sender} src={i.avatar} />
                   <span className="kzkn">
                     <b>{i.title}</b>
-                    <small>{i.body}</small>
+                    <small>{i.comments.at(-1) || i.body}</small>
                   </span>
+                  <time>{i.time.slice(-5)}</time>
                 </button>
               ))}
               {!dms.length && <Blank />}
-            </>
+            </div>
           )}
+          {!selected && tab === "私信" && activeDM && (() => {
+            const thread = dms.find((i) => i.id === activeDM);
+            if (!thread) return <Blank />;
+            const ownMessages = dmSent.flatMap((raw) => {
+              try {
+                const entry = JSON.parse(raw);
+                return Array.isArray(entry) && entry[0] === activeDM && typeof entry[1] === "string" ? [entry[1]] : [];
+              } catch { return []; }
+            });
+            const entries = [...thread.comments, ...ownMessages.map((message) => "markcocolove：" + message)];
+            return (
+              <section className="ig-dm-thread">
+                <div className="ig-dm-contact">
+                  <Avatar name={thread.sender} src={thread.avatar} />
+                  <b>{thread.title}</b>
+                  <small>Instagram 私信</small>
+                </div>
+                <div className="ig-dm-messages">
+                  {entries.map((entry, index) => {
+                    const separator = entry.search(/[:：]/);
+                    const author = separator >= 0 ? entry.slice(0, separator).trim() : thread.sender;
+                    const message = separator >= 0 ? entry.slice(separator + 1).trim() : entry;
+                    const outgoing = ["markcocolove", "coco66_", "mark82_"].includes(author);
+                    return (
+                      <div className={"ig-dm-line " + (outgoing ? "outgoing" : "incoming")} key={index}>
+                        {!outgoing && <Avatar name={thread.sender} src={thread.avatar} />}
+                        <p>{message}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+                <form className="ig-dm-compose" onSubmit={(e) => {
+                  e.preventDefault();
+                  if (!dmDraft.trim()) return;
+                  setDmSent([...dmSent, JSON.stringify([activeDM, dmDraft.trim()])]);
+                  setDmDraft("");
+                }}>
+                  <input aria-label="发送Instagram私信" placeholder="发送消息……" value={dmDraft} onChange={(e) => setDmDraft(e.target.value)} />
+                  <button disabled={!dmDraft.trim()}>发送</button>
+                </form>
+              </section>
+            );
+          })()}
           {!selected && tab === "搜索" && (
             <>
               <input
