@@ -718,3 +718,26 @@
 }
 .mymy-ui .ig-following-row small { opacity: .65; }
 .mymy-ui .ig-following-arrow { font-size: 24px; opacity: .6; }
+
+/* Instagram Direct: inbox rows and native-style chat bubbles. */
+.mymy-ui.mymy-instagram .ig-dm-list { min-height: 0; overflow-y: auto; }
+.mymy-ui.mymy-instagram .ig-dm-row { align-items: center; gap: 12px; min-height: 70px; border-bottom: 1px solid #ededed; }
+.mymy-ui.mymy-instagram .ig-dm-row .kzkn { flex: 1; min-width: 0; }
+.mymy-ui.mymy-instagram .ig-dm-row .kzkn b,
+.mymy-ui.mymy-instagram .ig-dm-row .kzkn small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mymy-ui.mymy-instagram .ig-dm-row .kzkn small { color: #777; margin-top: 5px; }
+.mymy-ui.mymy-instagram .ig-dm-row time { color: #999; font-size: 11px; }
+.mymy-ui.mymy-instagram .ig-dm-thread { display: flex; flex-direction: column; min-height: 0; height: 100%; background: #fff; }
+.mymy-ui.mymy-instagram .ig-dm-contact { display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 16px 12px; border-bottom: 1px solid #eee; }
+.mymy-ui.mymy-instagram .ig-dm-contact .catalog-avatar { width: 58px; height: 58px; }
+.mymy-ui.mymy-instagram .ig-dm-contact small { color: #888; font-size: 11px; }
+.mymy-ui.mymy-instagram .ig-dm-messages { flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; padding: 16px 12px; }
+.mymy-ui.mymy-instagram .ig-dm-line { display: flex; align-items: flex-end; gap: 7px; max-width: 88%; }
+.mymy-ui.mymy-instagram .ig-dm-line .catalog-avatar { width: 27px; height: 27px; flex: none; }
+.mymy-ui.mymy-instagram .ig-dm-line p { margin: 0; padding: 10px 13px; border-radius: 18px; background: #efefef; color: #171717; line-height: 1.4; white-space: pre-wrap; overflow-wrap: anywhere; }
+.mymy-ui.mymy-instagram .ig-dm-line.outgoing { align-self: flex-end; }
+.mymy-ui.mymy-instagram .ig-dm-line.outgoing p { color: #fff; background: linear-gradient(135deg,#c13584,#833ab4); }
+.mymy-ui.mymy-instagram .ig-dm-compose { display: flex; align-items: center; gap: 8px; margin: 8px 12px 12px; padding: 7px 10px; border: 1px solid #ddd; border-radius: 24px; }
+.mymy-ui.mymy-instagram .ig-dm-compose input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: #111; padding: 6px; }
+.mymy-ui.mymy-instagram .ig-dm-compose button { color: #0095f6; font-weight: 600; }
+.mymy-ui.mymy-instagram .ig-dm-compose button:disabled { opacity: .4; }
